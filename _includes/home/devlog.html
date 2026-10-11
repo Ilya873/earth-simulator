@@ -7,10 +7,14 @@
     <h2 class="part__title" id="devlog-title">{{ t.devlog_title[L] }}</h2>
   </header>
   <p class="part__lead">{{ t.devlog_lead[L] }}</p>
-  {% include devlog-list.html limit=3 %}
-  <div class="subscribe">
-    <a class="btn btn--ink" href="{{ devlog_url }}">{{ t.devlog_all[L] }} →</a>
-    <a class="btn" href="{{ site.telegram_url }}" rel="noopener" target="_blank">Telegram<span class="ext" aria-hidden="true">↗</span></a>
-    <a class="btn" href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a>
+  <div class="journal">
+    <div class="journal__main">
+      {% include devlog-list.html limit=4 %}
+      <div class="subscribe">
+        <a class="btn btn--solid" href="{{ devlog_url }}">{{ t.devlog_all[L] }} →</a>
+        <a class="btn" href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a>
+      </div>
+    </div>
+    {% include telegram.html limit=2 %}
   </div>
 </section>

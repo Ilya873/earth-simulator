@@ -8,7 +8,12 @@
   </header>
 
   <div class="world__intro">
-    <p class="world__lead dropcap">{{ t.world_lead[L] }}</p>
+    <div class="world__left">
+      <p class="world__lead dropcap">{{ t.world_lead[L] }}</p>
+      <div class="steam-embed" data-steam-embed>
+        <iframe src="https://store.steampowered.com/widget/4932460/?l={% if L == 'en' %}english{% else %}russian{% endif %}" width="646" height="190" title="{{ t.steam_widget_title[L] }}" loading="lazy"></iframe>
+      </div>
+    </div>
     <dl class="passport">
       <div class="passport__title label">{{ t.passport_title[L] }}</div>
       <div><dt>{{ t.pp_release[L] }}</dt><dd>{{ t.pp_release_v[L] }}</dd></div>

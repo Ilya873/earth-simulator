@@ -1,4 +1,4 @@
-/* Earth Simulator — общий скрипт сайта: увеличение иллюстраций, связи на шкале времени,
+/* Earth Simulator — общий скрипт сайта: увеличение иллюстраций, масштаб виджета Steam,
    язык записей дневника. Без зависимостей. */
 (function () {
   'use strict';
@@ -8,7 +8,7 @@
   if (dlg && typeof dlg.showModal === 'function') {
     var img = dlg.querySelector('[data-lb-img]'), cap = dlg.querySelector('[data-lb-cap]'), cnt = dlg.querySelector('[data-lb-count]');
     var group = [], at = 0;
-    function show(i) {
+    var show = function (i) {
       at = (i + group.length) % group.length;
       var f = group[at];
       img.src = f.getAttribute('data-lb-src');
@@ -16,7 +16,7 @@
       cap.textContent = f.getAttribute('data-lb-cap') || '';
       cnt.textContent = group.length > 1 ? (at + 1) + ' / ' + group.length : '';
       dlg.classList.toggle('is-single', group.length < 2);
-    }
+    };
     document.addEventListener('click', function (e) {
       var btn = e.target.closest('.plate-fig__btn');
       if (!btn) return;
@@ -40,53 +40,12 @@
     dlg.addEventListener('close', function () { img.removeAttribute('src'); });
   }
 
-  /* ---------- шкала времени: подсветка зависимостей ---------- */
-  var tl = document.querySelector('[data-tl]');
-  if (tl) {
-    var rows = tl.querySelectorAll('.tl__row');
-    function hl(id, on) {
-      var row = tl.querySelector('.tl__row[data-row="' + id + '"]');
-      if (!row) return;
-      var deps = (row.getAttribute('data-deps') || '').split(' ').filter(Boolean);
-      tl.classList.toggle('has-hl', on);
-      row.classList.toggle('is-hl', on);
-      tl.querySelectorAll('.tl__arc').forEach(function (a) {
-        var hit = a.getAttribute('data-to') === id || a.getAttribute('data-from') === id;
-        a.classList.toggle('is-hl', on && hit);
-        if (on && hit) a.parentNode.appendChild(a); // поверх остальных дуг
-      });
-      tl.querySelectorAll('.tl__node').forEach(function (n) {
-        var nid = n.getAttribute('data-node');
-        var linked = nid === id || deps.indexOf(nid) >= 0 || !!tl.querySelector('.tl__row[data-row="' + nid + '"][data-deps~="' + id + '"]');
-        n.classList.toggle('is-hl', on && linked);
-        if (on && linked) n.parentNode.appendChild(n);
-      });
-      if (!on) return;
-      rows.forEach(function (r) {
-        var rid = r.getAttribute('data-row');
-        var linked = deps.indexOf(rid) >= 0 || (r.getAttribute('data-deps') || '').split(' ').indexOf(id) >= 0;
-        r.classList.toggle('is-linked', linked);
-      });
-    }
-    function clear() { rows.forEach(function (r) { r.classList.remove('is-linked'); }); }
-    rows.forEach(function (r) {
-      var id = r.getAttribute('data-row');
-      r.querySelectorAll('.tl__c').forEach(function (c) {
-        c.addEventListener('mouseenter', function () { clear(); hl(id, true); });
-        c.addEventListener('mouseleave', function () { hl(id, false); clear(); });
-        c.addEventListener('click', function (e) {
-          if (e.target.closest('a')) return;
-          var a = r.querySelector('a[href^="#"]');
-          if (a) a.click();
-        });
-      });
-      var link = r.querySelector('a');
-      if (link) {
-        link.addEventListener('focus', function () { clear(); hl(id, true); });
-        link.addEventListener('blur', function () { hl(id, false); clear(); });
-      }
-    });
-  }
+  /* ---------- виджет Steam: у него фиксированные 646×190, масштабируем под ширину колонки ---------- */
+  document.querySelectorAll('[data-steam-embed]').forEach(function (box) {
+    var fit = function () { box.style.setProperty('--s', Math.min(1, box.clientWidth / 646).toFixed(4)); };
+    fit();
+    if ('ResizeObserver' in window) new ResizeObserver(fit).observe(box); else window.addEventListener('resize', fit);
+  });
 
   /* ---------- язык записи дневника ---------- */
   var bodies = document.querySelectorAll('[data-lang-body]');
@@ -94,14 +53,13 @@
     var want = null;
     try { want = new URLSearchParams(location.search).get('lang'); } catch (e) {}
     if (!want) { try { want = localStorage.getItem('es-lang'); } catch (e) {} }
-    function setLang(l) {
-      var has = document.querySelector('[data-lang-body="' + l + '"]');
-      if (!has) return;
+    var setLang = function (l) {
+      if (!document.querySelector('[data-lang-body="' + l + '"]')) return;
       bodies.forEach(function (b) { b.hidden = b.getAttribute('data-lang-body') !== l; });
       document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
         b.setAttribute('aria-pressed', b.getAttribute('data-lang-btn') === l ? 'true' : 'false');
       });
-    }
+    };
     if (want) setLang(want);
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.addEventListener('click', function () {

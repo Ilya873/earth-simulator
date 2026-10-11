@@ -1,34 +1,22 @@
-# Дорожная карта Earth Simulator.
+# Дорожная карта Earth Simulator — звёздная карта на главной.
+# Каждое обновление (phase) — звёздная система, каждый пункт (item) — планета на её орбите.
+#
 # Как обновлять:
-#   * статус пункта:  s: done | wip | plan | idea
-#       done — уже в игре, wip — в работе, plan — запланировано, idea — исследование/вижн
-#   * статус листа (phase.status) — те же значения; лист с now: true получает метку «Вы здесь»
-#   * пункт, о котором просили игроки, помечается req: true
-#   * k — дорожка: sim, walk, play, eng, gfx, com (названия — в tracks ниже)
+#   * статус пункта: s: done | wip | plan | idea   (в игре / в работе / запланировано / задумка)
+#     готовые планеты на карте светятся, в работе — наполовину
+#   * статус обновления: status (те же значения); now: true — метка «Вы здесь» (ровно у одного)
+#   * пункт, о котором просили игроки: req: true (подсвечивается фильтром «Идеи игроков»)
+#   * k — направление: sim, walk, play, eng, gfx, com (названия ниже, в tracks)
+#   * t — дата в долях года (2027.5 = середина 2027) — по ней строится шкала времени внизу карты
+#   * pos — место системы на карте: x 0…1400 (слева направо — время), y 0…640 (выше — ближе к звёздам)
+#   * img — скриншот в карточке обновления (необязательно)
 # Каждый пункт: ru: [заголовок, пояснение], en: [title, description]
-
-precision:
-  exact:
-    ru: "Инструментальная съёмка"
-    en: "Surveyed"
-    note_ru: "сроки точны до месяца"
-    note_en: "dates accurate to a month"
-  approx:
-    ru: "Глазомерная съёмка"
-    en: "Sketched"
-    note_ru: "сроки точны до квартала"
-    note_en: "dates accurate to a quarter"
-  conj:
-    ru: "Предполагаемые очертания"
-    en: "Conjectural"
-    note_ru: "ориентир, будет уточняться"
-    note_en: "a heading, will be refined"
 
 status:
   done: { ru: "в игре", en: "in the game" }
   wip: { ru: "в работе", en: "in progress" }
   plan: { ru: "запланировано", en: "planned" }
-  idea: { ru: "исследование", en: "research" }
+  idea: { ru: "задумка", en: "concept" }
 
 tracks:
   sim: { ru: "Симуляция", en: "Simulation" }
@@ -41,41 +29,45 @@ tracks:
 eons:
   - id: e1
     roman: "I"
-    color: "#D19A4E"
+    color: "#D9A75B"
     name: { ru: "Мир людей", en: "The Human World" }
     span: { ru: "2026 — 2028", en: "2026 — 2028" }
+    label: { x: 560, y: 92 }
   - id: e2
     roman: "II"
-    color: "#6E9C7C"
+    color: "#6FB39E"
     name: { ru: "Мир живого", en: "The Living World" }
     span: { ru: "2028 — 2029", en: "2028 — 2029" }
+    label: { x: 880, y: 560 }
   - id: e3
     roman: "III"
-    color: "#6F7DAE"
+    color: "#8E9BD8"
     name: { ru: "Мир звёзд", en: "The World of Stars" }
     span: { ru: "2029 →", en: "2029 →" }
+    label: { x: 1120, y: 58 }
 
 phases:
 
-  # ───────────────────────────── 0 · 2.0
+  # ───────────────────────────── 2.0
   - id: v20
-    sheet: "0"
     ver: "2.0"
     eon: e1
-    color: "#CDBF9C"
+    color: "#E8D3A2"
     status: done
-    precision: exact
+    t: 2026.76
+    pos: { x: 95, y: 330 }
     deps: []
+    img: /assets/img/shots/walk-volaria-1600.jpg
     name: { ru: "Новый мир", en: "A New World" }
-    when: { ru: "август — октябрь 2026", en: "August — October 2026" }
+    when: { ru: "октябрь 2026", en: "October 2026" }
     goal:
       ru: "Глобальное обновление, с которого всё началось: новая графика, прогулка от первого лица по любой точке планеты, династии, летопись и подробная статистика."
       en: "The global update where it all began: new graphics, first-person walks anywhere on the planet, dynasties, a chronicle and detailed statistics."
     why:
-      ru: "Это нулевой лист — точка отсчёта. Всё, что ниже, строится на том, что уже работает в игре."
-      en: "Sheet zero is the datum line. Everything below is built on what already works in the game."
+      ru: "Точка отсчёта. Всё остальное строится на том, что уже работает в игре."
+      en: "The starting point. Everything else is built on what already works in the game."
     hood:
-      ru: "Климат: модель испарения и переноса влаги ветром, муссоны и дождевая тень, океанские течения по модели Стоммела, льды и парниковый эффект. Природа: 19 биомов по схеме Уиттекера, 35 видов животных с моделью «хищник — жертва». Общество: численность по клеткам, знать — поимённо, до 24 000 персонажей с родословными."
+      ru: "Климат: испарение и перенос влаги ветром, муссоны и дождевая тень, океанские течения по модели Стоммела, льды и парниковый эффект. Природа: 19 биомов по схеме Уиттекера, 35 видов животных с моделью «хищник — жертва». Общество: численность по клеткам, знать — поимённо, до 24 000 персонажей с родословными."
       en: "Climate: evaporation and wind-borne moisture, monsoons and rain shadows, Stommel-model ocean currents, ice and greenhouse forcing. Nature: 19 Whittaker biomes and 35 species with predator–prey dynamics. Society: population per cell, nobility tracked by name — up to 24,000 characters with family trees."
     items:
       - k: sim
@@ -96,153 +88,155 @@ phases:
         en: ["Dynasties", "Family trees, rulers’ traits and skills, elections, coups and wars of succession."]
       - k: walk
         s: done
-        ru: ["Прогулка от первого лица", "В любой клетке мира: погода, день и ночь, жители, оружие своей эпохи."]
-        en: ["First-person walks", "In any cell of the world: weather, day and night, locals, weapons of the era."]
+        ru: ["Прогулка от первого лица", "В любой клетке мира: погода, день и ночь, жители, транспорт и оружие своей эпохи."]
+        en: ["First-person walks", "In any cell of the world: weather, day and night, locals, vehicles and weapons of the era."]
+      - k: gfx
+        s: done
+        ru: ["Новая графика и музыка", "Рельеф, динамическая вода, смена дня и ночи; музыка подстраивается под эпоху."]
+        en: ["New graphics and music", "Terrain, dynamic water, day and night; music adapts to the era."]
       - k: com
         s: done
-        ru: ["Моды и Мастерская Steam", "Редактор модов прямо в игре: сценарии, биомы, животные, модели и баланс."]
-        en: ["Mods and Steam Workshop", "An in-game mod editor: scenarios, biomes, animals, models and balance."]
+        ru: ["Мастерская Steam", "Редактор модов прямо в игре: карты из картинок, сценарии, животные, модели и баланс."]
+        en: ["Steam Workshop", "An in-game mod editor: maps from images, scenarios, animals, models and balance."]
 
-  # ───────────────────────────── I · 2.1
+  # ───────────────────────────── 2.1
   - id: v21
-    sheet: "I"
     ver: "2.1"
     eon: e1
-    color: "#E2B157"
+    color: "#E8B65E"
     status: wip
     now: true
-    precision: exact
+    t: 2026.88
+    pos: { x: 205, y: 250 }
     deps: [v20]
+    img: /assets/devlog/2026-10-11-update-2-1-0/port-modern-1600.jpg
     name: { ru: "Пути сообщения", en: "Connections" }
-    when: { ru: "ноябрь 2026", en: "November 2026" }
+    when: { ru: "≈ ноябрь 2026", en: "≈ November 2026" }
     goal:
-      ru: "Мир обзаводится инфраструктурой — портами, железными дорогами, аэропортами и военными базами, а прогулка — работой, деньгами, законом и поручениями жителей."
-      en: "The world gains infrastructure — ports, railways, airports and military bases — and walk mode gains jobs, money, law and quests from the locals."
+      ru: "Мир обзаводится портами, железными дорогами, аэропортами и военными базами, а прогулка — работой, деньгами, законом и поручениями жителей."
+      en: "The world gains ports, railways, airports and military bases, and walk mode gains jobs, money, law and quests from the locals."
     why:
-      ru: "Большая часть уже собрана и работает в тестовой сборке. Задача листа — доделать, отполировать и выпустить, попутно исправив несостыковки эпох, которые новые системы сделали заметнее."
-      en: "Most of it is already built and running in the test build. This sheet is about finishing, polishing and shipping — and fixing the era inconsistencies the new systems make more visible."
+      ru: "Большая часть уже собрана и работает в тестовой сборке. Осталось доделать, отполировать и выпустить, попутно исправив несостыковки эпох."
+      en: "Most of it is already built and running in the test build. What’s left is to finish, polish and ship it — and fix era inconsistencies along the way."
     hood:
-      ru: "Новые системы прогулки подключаются к ядру через реестры и не трогают старый код. Исправление «лошадей до приручения»: проверять не номер эпохи, а то, какие животные приручены державой и изобретено ли колесо; там, где коней нет, — ламы и верблюды. Моровые корабли должны переносить эпидемии через море."
-      en: "The new walk-mode systems hook into the core through registries without touching old code. The ‘horses before domestication’ fix: check which animals a state has actually tamed and whether it knows the wheel, instead of the era number; where there are no horses — llamas and camels. Plague ships should carry epidemics across the sea."
+      ru: "Новые системы прогулки подключаются к ядру через реестры и не трогают старый код. Лошади и повозки будут зависеть не от номера эпохи, а от того, приручила ли держава коня и знает ли колесо; там, где коней нет, — ламы и верблюды."
+      en: "The new walk-mode systems hook into the core through registries without touching old code. Horses and carts will depend not on the era number but on whether a state has tamed the horse and knows the wheel; where there are no horses — llamas and camels."
     items:
+      - k: walk
+        s: wip
+        ru: ["Морские порты", "Торговые суда прибывают и уходят; можно работать грузчиком и болтать с капитанами и матросами."]
+        en: ["Seaports", "Merchant ships arrive and depart; work as a docker and chat with captains and sailors."]
       - k: sim
         s: wip
-        ru: ["Флоты и морская война", "Блокады, перехват десантов, морские сражения и торговые морские пути."]
-        en: ["Fleets and naval war", "Blockades, intercepted landings, sea battles and maritime trade lanes."]
+        ru: ["Морские сражения", "Флоты, блокады и десанты — бой можно смотреть с палубы от первого лица."]
+        en: ["Naval battles", "Fleets, blockades and landings — watch the battle from the deck in first person."]
       - k: walk
         s: wip
-        ru: ["Морские порты", "14 типов судов, палубы, по которым можно ходить, работа в доках."]
-        en: ["Seaports", "14 ship types, walkable decks, work at the docks."]
+        ru: ["Железные дороги", "От паровоза до магнитного поезда: ехать пассажиром или работать машинистом."]
+        en: ["Railways", "From steam engines to maglev: ride as a passenger or work as a driver."]
       - k: walk
         s: wip
-        ru: ["Железные дороги", "От паровоза до маглева: станции, переезды, можно ехать или вести поезд."]
-        en: ["Railways", "From steam to maglev: stations, crossings — ride as a passenger or drive the train."]
+        ru: ["Аэропорты", "Самолёты и вертолёты; угнанный самолёт перехватят истребители — придётся прыгать с парашютом."]
+        en: ["Airports", "Planes and helicopters; steal one and fighters will intercept you — time for the parachute."]
       - k: walk
         s: wip
-        ru: ["Аэропорты", "Лайнеры, винтовые самолёты, истребители и вертолёты, парашют, работа пилота."]
-        en: ["Airports", "Airliners, prop planes, fighters and helicopters, parachutes, a pilot’s job."]
+        ru: ["Военные базы", "От частокола до базы будущего: угнать танк или наняться в караул."]
+        en: ["Military bases", "From a stockade to a base of the future: steal a tank or sign up for guard duty."]
       - k: walk
         s: wip
-        ru: ["Военные базы", "От деревянного частокола до базы будущего; техника от колесниц до танков, служба."]
-        en: ["Military bases", "From a wooden stockade to a base of the future; vehicles from chariots to tanks; enlisting."]
-      - k: walk
-        s: wip
-        ru: ["Деньги и работа", "Валюты держав — от шкур до кредитов, лавки, подработки и репутация."]
-        en: ["Money and work", "State currencies — from hides to credits — shops, odd jobs and reputation."]
+        ru: ["Деньги и работа", "Валюты держав — от мер зерна до кредитов, лавки, подработки и репутация."]
+        en: ["Money and work", "State currencies — from measures of grain to credits — shops, odd jobs and reputation."]
       - k: walk
         s: wip
         ru: ["Закон и порядок", "Розыск, стража, полиция, штрафы, награды за голову и помилование."]
         en: ["Law and order", "Wanted levels, guards, police, fines, bounties and pardons."]
       - k: walk
         s: wip
-        ru: ["Поручения жителей", "12 видов квестов из событий мира: голод, мор, разбойники, война, поиск родни."]
-        en: ["Quests from locals", "12 quest types born from world events: famine, plague, bandits, war, lost relatives."]
+        ru: ["Поручения жителей", "12 видов заданий из событий мира: голод, мор, разбойники, война, урожай."]
+        en: ["Quests from locals", "12 quest types born from world events: famine, plague, bandits, war, harvest."]
       - k: sim
         s: plan
         ru: ["Лошади — только после приручения", "Кони, колесницы и повозки появляются, когда держава их действительно приручила и знает колесо."]
         en: ["Horses only after taming", "Horses, chariots and carts appear once a state has actually tamed them and knows the wheel."]
 
-  # ───────────────────────────── II · 2.2
+  # ───────────────────────────── 2.2
   - id: v22
-    sheet: "II"
     ver: "2.2"
     eon: e1
-    color: "#EDCF7E"
+    color: "#EDD08A"
     status: plan
-    precision: exact
+    t: 2027.02
+    pos: { x: 305, y: 365 }
     deps: [v21]
-    name: { ru: "Голос сообщества", en: "Community Voice" }
-    when: { ru: "декабрь 2026 — январь 2027", en: "December 2026 — January 2027" }
+    name: { ru: "Стихии и картография", en: "Elements and Cartography" }
+    when: { ru: "≈ зима 2026/27", en: "≈ winter 2026/27" }
     goal:
-      ru: "Быстро закрыть самые частые просьбы игроков — всё, что не требует перестройки движка."
-      en: "Quickly deliver the most frequent player requests — everything that doesn’t require rebuilding the engine."
+      ru: "Бедствия получают настоящие масштабы и следы, моря — лёд, а карта — новые краски и ваши названия."
+      en: "Disasters get real scales and lasting marks, seas get ice, and the map gets new colours and your own names."
     why:
-      ru: "Каждый пункт здесь — от нескольких часов до пары дней работы, а польза для игроков большая. Обновление держит темп, пока готовится большая перестройка движка."
-      en: "Each item takes from a few hours to a couple of days, yet players get a lot out of it. The update keeps momentum while the big engine rebuild is being prepared."
+      ru: "Всё это не требует перестройки движка и быстро делается, а играть становится заметно интереснее. Пока зреет большая перестройка, игра продолжает расти."
+      en: "None of this needs an engine rebuild and it’s quick to do, while the game gets noticeably richer. The game keeps growing while the big rebuild is prepared."
     hood:
-      ru: "Внутренняя «сила» бедствия пересчитывается в настоящие шкалы и обратно — для ползунка. Поиск пути кораблей начинает учитывать морской лёд, а лёд — сезоны. Кратер — понижение рельефа, которое со временем выравнивается к окружению, заполняется водой и зарастает."
-      en: "A disaster’s internal ‘power’ is mapped to real scales and back for the slider. Ship pathfinding starts respecting sea ice, and ice follows the seasons. A crater is a dent in the terrain that relaxes towards its surroundings over time, fills with water and greens over."
+      ru: "Внутренняя «сила» бедствия пересчитывается в настоящие шкалы и обратно. Поиск морского пути начинает учитывать лёд, а лёд — сезоны. Кратер — понижение рельефа, которое со временем выравнивается, заполняется водой и зарастает."
+      en: "A disaster’s internal ‘power’ is mapped to real scales and back. Sea pathfinding starts respecting ice, and ice follows the seasons. A crater is a dent in the terrain that levels out over time, fills with water and greens over."
     items:
       - k: play
         s: plan
         req: true
         ru: ["Карточки бедствий", "Наведите на ураган или пожар — сила, площадь, осадки, ущерб и сколько ещё продлится."]
         en: ["Disaster cards", "Hover a hurricane or a wildfire to see strength, area, rainfall, damage and time remaining."]
-      - k: play
-        s: plan
-        req: true
-        ru: ["Реальные шкалы", "Ураганы по Саффиру — Симпсону, вулканы по VEI, землетрясения по магнитуде, удары — в килотоннах."]
-        en: ["Real-world scales", "Hurricanes on Saffir–Simpson, volcanoes on VEI, earthquakes by magnitude, impacts in kilotons."]
-      - k: play
-        s: plan
-        req: true
-        ru: ["Отклонение температуры", "Вместо средней температуры суши — насколько теплее или холоднее начала игры."]
-        en: ["Temperature anomaly", "Instead of average land temperature — how much warmer or colder than at the start."]
       - k: sim
         s: plan
         req: true
-        ru: ["Замерзающие моря", "Лёд закрывает путь кораблям; сезонные окна навигации и замёрзшие проливы."]
-        en: ["Freezing seas", "Ice blocks ships; seasonal navigation windows and frozen straits."]
+        ru: ["Настоящие шкалы", "Ураганы по Саффиру — Симпсону, вулканы по VEI, землетрясения по магнитуде, удары — в килотоннах."]
+        en: ["Real-world scales", "Hurricanes on Saffir–Simpson, volcanoes on VEI, earthquakes by magnitude, impacts in kilotons."]
+      - k: sim
+        s: plan
+        req: true
+        ru: ["Замерзающие моря", "Лёд закрывает путь кораблям: сезонные окна навигации и замёрзшие проливы."]
+        en: ["Freezing seas", "Ice blocks ships: seasonal navigation windows and frozen straits."]
       - k: sim
         s: plan
         req: true
         ru: ["Кратеры", "Метеориты и ядерные удары оставляют кратеры, которые заполняются водой и со временем зарастают."]
         en: ["Craters", "Meteors and nukes leave craters that fill with water and slowly heal over time."]
-      - k: gfx
-        s: plan
-        req: true
-        ru: ["Новые палитры карты", "Эпохи и показатели различимы с первого взгляда, режим для дальтоников, тонкие стрелки ветра."]
-        en: ["New map palettes", "Eras and indicators distinct at a glance, a colour-blind mode, slimmer wind barbs."]
       - k: play
         s: plan
         req: true
-        ru: ["Переименование", "Державы, города, правители и формы правления — свои названия, цвета и флаги."]
-        en: ["Renaming", "States, cities, rulers and forms of government — your own names, colours and flags."]
-      - k: com
-        s: wip
-        ru: ["Дневник разработки", "Этот сайт: дорожная карта и новости с разработки."]
-        en: ["Development journal", "This site: the roadmap and news from development."]
+        ru: ["Отклонение температуры", "Вместо средней температуры суши — насколько теплее или холоднее начала мира."]
+        en: ["Temperature anomaly", "Instead of average land temperature — how much warmer or colder than at the start."]
+      - k: gfx
+        s: plan
+        req: true
+        ru: ["Новые краски карты", "Эпохи и показатели различимы с первого взгляда, режим для дальтоников, тонкие стрелки ветра."]
+        en: ["New map colours", "Eras and indicators distinct at a glance, a colour-blind mode, slimmer wind barbs."]
+      - k: play
+        s: plan
+        req: true
+        ru: ["Свои названия", "Переименуйте державы, города, правителей и формы правления; свои цвета и флаги."]
+        en: ["Your own names", "Rename states, cities, rulers and forms of government; your own colours and flags."]
 
-  # ───────────────────────────── III · 3.0
+  # ───────────────────────────── 3.0
   - id: v30
-    sheet: "III"
     ver: "3.0"
     eon: e1
-    color: "#B9A27C"
+    color: "#D9B98A"
     status: plan
-    precision: approx
+    major: true
+    t: 2027.2
+    pos: { x: 415, y: 280 }
     deps: [v22]
     name: { ru: "Фундамент", en: "Foundation" }
-    when: { ru: "февраль — март 2027", en: "February — March 2027" }
+    when: { ru: "≈ весна 2027", en: "≈ spring 2027" }
     goal:
       ru: "Перестроить движок под большие планы: мир становится шаром, симуляция — быстрой и предсказуемой, а код — готовым к сети и другим планетам."
       en: "Rebuild the engine for the big plans: the world becomes a globe, the simulation fast and predictable, the code ready for networking and other planets."
     why:
-      ru: "Самый важный лист. Мультиплеер, другие планеты и «живые» жители невозможно надстроить поверх однопоточного мира, существующего в единственном экземпляре. Чем позже это сделать, тем больше кода придётся переписывать, поэтому — сейчас, пока его меньше всего."
-      en: "The most important sheet. Multiplayer, other planets and ‘living’ inhabitants can’t be built on top of a single-threaded, one-of-a-kind world. The later it’s done, the more code must be rewritten — so it’s now, while there is least of it."
+      ru: "Самое важное обновление: от него тянутся связи почти ко всем остальным. Мультиплеер, другие планеты и живые жители невозможно надстроить поверх однопоточного мира, существующего в единственном экземпляре. Чем позже это сделать, тем больше кода придётся переписывать."
+      en: "The most important update: links run from it to almost all the others. Multiplayer, other planets and living inhabitants can’t be built on top of a single-threaded, one-of-a-kind world. The later it’s done, the more code must be rewritten."
     hood:
-      ru: "Симуляция переезжает в отдельный поток (Web Worker): состояние мира — типизированные массивы в общей памяти, рендер читает их без копирования. Каждое действие игрока — команда с номером тика; единый генератор случайности с зерном и фиксированный шаг дают воспроизводимую историю. Мир становится объектом: в памяти может жить несколько миров. Технологии, здания, техника и товары описываются таблицами данных — их же читают моды. Сохранения получают цепочку миграций версий. three.js обновляется до современной версии с прицелом на WebGPU. Симуляцию можно запускать без интерфейса в Node.js — для автотестов, а позже и для сервера."
-      en: "The simulation moves to its own thread (Web Worker): world state lives in typed arrays in shared memory, and the renderer reads them without copying. Every player action becomes a command stamped with a tick; one seeded random generator and a fixed step make history reproducible. The world becomes an object, so several worlds can live in memory. Technologies, buildings, vehicles and goods are described in data tables that mods can read too. Saves get a chain of version migrations. three.js is updated to a modern release with WebGPU in mind. The simulation can run headless in Node.js — for automated tests now, and for the server later."
+      ru: "Симуляция переезжает в отдельный поток (Web Worker): состояние мира — типизированные массивы в общей памяти, рендер читает их без копирования. Каждое действие игрока — команда с номером тика; единый генератор случайности с зерном и фиксированный шаг дают воспроизводимую историю. Мир становится объектом — их может быть несколько. Технологии, здания, техника и товары описываются таблицами данных, которые читают и моды. Сохранения получают цепочку миграций. three.js обновляется с прицелом на WebGPU. Симуляцию можно запускать без интерфейса в Node.js — для автотестов, а позже для сервера."
+      en: "The simulation moves to its own thread (Web Worker): world state lives in typed arrays in shared memory, read by the renderer without copying. Every player action becomes a command stamped with a tick; one seeded random generator and a fixed step make history reproducible. The world becomes an object — there can be several. Technologies, buildings, vehicles and goods are described in data tables that mods can read too. Saves get a chain of migrations. three.js is updated with WebGPU in mind. The simulation can run headless in Node.js — for automated tests now, and for the server later."
     items:
       - k: sim
         s: plan
@@ -270,8 +264,8 @@ phases:
         en: ["Data, not code", "Technologies, buildings, vehicles and goods live in tables that mods can reach."]
       - k: eng
         s: plan
-        ru: ["Сохранения нового формата", "Старые миры переносятся автоматически, сколько бы версий ни прошло."]
-        en: ["New save format", "Old worlds migrate automatically, however many versions later."]
+        ru: ["Новые сохранения", "Старые миры переносятся автоматически, сколько бы версий ни прошло."]
+        en: ["New saves", "Old worlds migrate automatically, however many versions later."]
       - k: gfx
         s: plan
         ru: ["Новый рендер", "Свежий three.js: атмосфера с рассеянием света, вода с пеной, мягкие тени, цветокоррекция."]
@@ -281,25 +275,25 @@ phases:
         ru: ["Переводы сообществом", "Таблицы строк вместо встроенного текста — дорога к немецкому, испанскому, китайскому и другим."]
         en: ["Community translations", "String tables instead of inline text — the road to German, Spanish, Chinese and more."]
 
-  # ───────────────────────────── IV · 3.1
+  # ───────────────────────────── 3.1
   - id: v31
-    sheet: "IV"
     ver: "3.1"
     eon: e1
-    color: "#A9B66C"
+    color: "#C9C27A"
     status: plan
-    precision: approx
+    t: 2027.42
+    pos: { x: 520, y: 188 }
     deps: [v30]
     name: { ru: "Древо знаний", en: "Tree of Knowledge" }
-    when: { ru: "II квартал 2027", en: "Q2 2027" }
+    when: { ru: "≈ лето 2027", en: "≈ summer 2027" }
     goal:
       ru: "Вместо одного числа «технологии» — настоящее древо открытий. Всё в мире, от повозок до архитектуры, следует тому, что этот народ уже знает."
       en: "Instead of a single ‘technology’ number — a real tree of discoveries. Everything in the world, from carts to architecture, follows what this people actually knows."
     why:
-      ru: "Одежда жителей, товары в лавках, техника армий, профессии и здания — всё ссылается на знания державы. Без древа каждая следующая система снова привязывалась бы к номеру эпохи, как вышло с лошадьми."
+      ru: "Одежда жителей, товары в лавках, техника армий, профессии и здания — всё ссылается на знания державы. Без древа каждая новая система снова привязывалась бы к номеру эпохи, как вышло с лошадьми."
       en: "Clothing, shop goods, army equipment, professions and buildings all refer to what a state knows. Without the tree, every new system would again key off the era number — as happened with horses."
     hood:
-      ru: "Открытия образуют граф зависимостей; вес каждого направления зависит от условий державы — рельефа, ресурсов, войн, торговли, культуры. Эпоха становится следствием набора открытий, а не порогом числа. Прогулка, 3D-карта, лавки и армии спрашивают «знает ли держава X», а не «какая сейчас эпоха»."
+      ru: "Открытия образуют граф зависимостей; вес каждого направления зависит от условий державы — рельефа, ресурсов, войн, торговли, культуры. Эпоха становится следствием открытий, а не порогом числа. Прогулка, 3D-карта, лавки и армии спрашивают «знает ли держава X», а не «какая сейчас эпоха»."
       en: "Discoveries form a dependency graph; each direction is weighted by the state’s conditions — terrain, resources, wars, trade, culture. An era becomes a consequence of discoveries rather than a numeric threshold. Walk mode, the 3D map, shops and armies ask ‘does this state know X’, not ‘what era is it’."
     items:
       - k: sim
@@ -342,23 +336,23 @@ phases:
         ru: ["Дороги начинают работать", "Дороги, рельсы и порты ускоряют торговлю, переселение и войска — сейчас они только для красоты."]
         en: ["Roads that matter", "Roads, rails and ports speed up trade, migration and troops — today they are only decoration."]
 
-  # ───────────────────────────── V · 3.2
+  # ───────────────────────────── 3.2
   - id: v32
-    sheet: "V"
     ver: "3.2"
     eon: e1
-    color: "#93B47E"
+    color: "#A8C48A"
     status: plan
-    precision: approx
+    t: 2027.66
+    pos: { x: 625, y: 302 }
     deps: [v31]
     name: { ru: "Живые люди", en: "Living People" }
-    when: { ru: "III квартал 2027", en: "Q3 2027" }
+    when: { ru: "≈ осень 2027", en: "≈ autumn 2027" }
     goal:
       ru: "Каждый житель — человек со своей судьбой: имя, семья, работа, распорядок дня, память и история."
       en: "Every inhabitant is a person with a fate of their own: a name, family, job, daily routine, memory and story."
     why:
-      ru: "Прогулка — самое необычное в игре, и игроки любят её больше всего. Постоянные, помнящие люди нужны всему, что идёт дальше: карьере, вселению в любого человека, компаниям с владельцами и полководцам."
-      en: "Walk mode is the most unusual part of the game and the one players love most. Persistent people with memories are needed by everything that follows: careers, possessing anyone, companies with owners, generals."
+      ru: "Прогулка — самое необычное в игре. Постоянные люди с памятью нужны всему, что идёт дальше: карьере, вселению в любого человека, компаниям с владельцами и полководцам."
+      en: "Walk mode is the most unusual part of the game. Persistent people with memories are needed by everything that follows: careers, possessing anyone, companies with owners, generals."
     hood:
       ru: "Уровни детализации общества: вдали от игрока жители — статистика клетки, ближе — кварталы с семьями и профессиями, рядом — полноценные люди. Встреченный человек «материализуется» по зерну и дальше живёт постоянно, даже когда вы ушли. Поведение — ИИ на потребностях с расписаниями. Интерьеры собираются из шаблонов комнат по эпохе и культуре."
       en: "Levels of detail for society: far from the player, people are cell statistics; closer — neighbourhoods of families and trades; nearby — full individuals. A person you meet ‘materialises’ from the seed and lives on permanently after you leave. Behaviour is needs-based AI with schedules. Interiors are assembled from room templates by era and culture."
@@ -396,39 +390,39 @@ phases:
       - k: sim
         s: plan
         req: true
-        ru: ["Эпидемии 2.0", "Болезни со штаммами и переносчиками, карантины, лекари и вакцины."]
-        en: ["Epidemics 2.0", "Diseases with strains and carriers, quarantines, healers and vaccines."]
+        ru: ["Эпидемии и вирусы", "Болезни со штаммами и переносчиками, карантины, лекари и вакцины."]
+        en: ["Epidemics and viruses", "Diseases with strains and carriers, quarantines, healers and vaccines."]
       - k: gfx
         s: plan
         ru: ["Люди с лицами", "Lowpoly-персонажи с лицами и анимацией; одежда по культуре, климату и достатку."]
         en: ["People with faces", "Low-poly characters with faces and animation; clothing by culture, climate and wealth."]
 
-  # ───────────────────────────── VI · 3.3
+  # ───────────────────────────── 3.3
   - id: v33
-    sheet: "VI"
     ver: "3.3"
     eon: e1
-    color: "#CF8B6B"
+    color: "#D99A78"
     status: plan
-    precision: approx
+    t: 2027.88
+    pos: { x: 730, y: 198 }
     deps: [v32]
     name: { ru: "Власть и вера", en: "Power and Faith" }
-    when: { ru: "IV квартал 2027", en: "Q4 2027" }
+    when: { ru: "≈ зима 2027/28", en: "≈ winter 2027/28" }
     goal:
       ru: "Стать частью любой державы и пройти путь от простолюдина до правителя. Боги и идеологии начинают иметь значение."
       en: "Join any state and rise from commoner to ruler. Gods and ideologies start to matter."
     why:
-      ru: "Чтобы подниматься по лестнице власти и вселяться в любого человека, нужны постоянные люди из листа V. А идеологии и законы придадут смысл решениям в экономике и войне, которые идут следом."
-      en: "Climbing the ladder of power and possessing anyone requires the persistent people of sheet V. Ideologies and laws then give meaning to the economic and military choices that follow."
+      ru: "Чтобы подниматься по лестнице власти и вселяться в любого человека, нужны постоянные люди из 3.2. Идеологии и законы придают смысл решениям в экономике и войне, которые идут следом."
+      en: "Climbing the ladder of power and possessing anyone requires the persistent people of 3.2. Ideologies and laws give meaning to the economic and military choices that follow."
     hood:
-      ru: "Идеология — точка в пространстве осей (экономика, власть, вера, открытость), правительство — набор законов, партии — группы населения со схожими взглядами. Вселение — общий механизм: игрок берёт под контроль любую сущность с ролью, а при выходе её снова ведёт ИИ. Вера копит «память о богах»: проявления силы над землями культа рождают божеств пантеона."
-      en: "An ideology is a point in a space of axes (economy, authority, faith, openness); a government is a set of laws; parties are groups of people with similar views. Possession is one general mechanism: the player takes over any entity with a role, and AI resumes when they leave. Faith accumulates a ‘memory of the gods’: displays of power over a cult’s lands give birth to the deities of its pantheon."
+      ru: "Идеология — точка в пространстве осей (экономика, власть, вера, открытость), правительство — набор законов, партии — группы людей со схожими взглядами. Вселение — общий механизм: игрок берёт под контроль любую сущность с ролью, а при выходе её снова ведёт ИИ. Вера копит «память о богах»: проявления силы над землями культа рождают божеств пантеона."
+      en: "An ideology is a point in a space of axes (economy, authority, faith, openness); a government is a set of laws; parties are groups of people with similar views. Possession is one general mechanism: the player takes over any entity with a role, and AI resumes when they leave. Faith accumulates a ‘memory of the gods’: displays of power over a cult’s lands give birth to deities."
     items:
       - k: sim
         s: plan
         req: true
-        ru: ["Идеологии", "Феодализм, абсолютизм, либерализм, демократия, социализм, коммунизм, центризм, теократия и диктатуры — со своими сильными и слабыми сторонами."]
-        en: ["Ideologies", "Feudalism, absolutism, liberalism, democracy, socialism, communism, centrism, theocracy and dictatorships — each with strengths and weaknesses."]
+        ru: ["Идеологии", "Феодализм, либерализм, демократия, социализм, коммунизм, центризм, теократия, диктатуры — с сильными и слабыми сторонами."]
+        en: ["Ideologies", "Feudalism, liberalism, democracy, socialism, communism, centrism, theocracy, dictatorships — with strengths and weaknesses."]
       - k: sim
         s: plan
         ru: ["Партии и законы", "Налоги, призыв, свобода слова, вера, торговля; фракции борются за влияние."]
@@ -441,8 +435,8 @@ phases:
       - k: play
         s: plan
         req: true
-        ru: ["Путь к власти по законам страны", "Переворот при феодализме, выборы в демократиях, партийная лестница в однопартийных режимах."]
-        en: ["The road to power, by the country’s rules", "A coup under feudalism, elections in democracies, the party ladder in one-party states."]
+        ru: ["Путь к власти", "Переворот при феодализме, выборы в демократиях, партийная лестница в однопартийных режимах."]
+        en: ["The road to power", "A coup under feudalism, elections in democracies, the party ladder in one-party states."]
       - k: play
         s: plan
         req: true
@@ -453,6 +447,10 @@ phases:
         req: true
         ru: ["Правитель от первого лица", "Тронный зал, указы, назначения, объявление войны, приём послов."]
         en: ["Rule in first person", "A throne room, decrees, appointments, declarations of war, receiving envoys."]
+      - k: play
+        s: plan
+        ru: ["Правление как в стратегии", "Управляйте любой державой с карты: экономика, армия, дипломатия, наука."]
+        en: ["Rule like a strategy game", "Run any state from the map: economy, army, diplomacy, science."]
       - k: sim
         s: plan
         req: true
@@ -463,26 +461,26 @@ phases:
         ru: ["Договоры", "Союзы, торговые соглашения, пакты о ненападении и границы как настоящие документы."]
         en: ["Treaties", "Alliances, trade agreements, non-aggression pacts and borders as real documents."]
 
-  # ───────────────────────────── VII · 3.4
+  # ───────────────────────────── 3.4
   - id: v34
-    sheet: "VII"
     ver: "3.4"
     eon: e1
-    color: "#DCA94A"
+    color: "#E2B04F"
     status: plan
-    precision: approx
+    t: 2028.1
+    pos: { x: 835, y: 312 }
     deps: [v31, v33]
     name: { ru: "Капитал", en: "Capital" }
-    when: { ru: "I квартал 2028", en: "Q1 2028" }
+    when: { ru: "≈ весна 2028", en: "≈ spring 2028" }
     goal:
       ru: "Экономика из настоящих товаров, цен и компаний, где подъёмы и кризисы возникают сами."
       en: "An economy of real goods, prices and companies, where booms and crises emerge on their own."
     why:
-      ru: "Что можно производить, решает древо знаний (лист IV). Компаниям нужны владельцы и работники — живые люди (лист V). Бюджетом и налогами управляет правитель (лист VI). Поэтому экономика идёт после них."
-      en: "What can be produced is decided by the tree of knowledge (sheet IV). Companies need owners and workers — living people (sheet V). Budgets and taxes are run by a ruler (sheet VI). That’s why the economy comes after them."
+      ru: "Что можно производить, решает древо знаний (3.1). Компаниям нужны владельцы и работники (3.2). Бюджетом и налогами управляет правитель (3.3). Поэтому экономика идёт после них."
+      en: "What can be produced is decided by the tree of knowledge (3.1). Companies need owners and workers (3.2). Budgets and taxes are run by a ruler (3.3). That’s why the economy comes after them."
     hood:
-      ru: "Экономика на уровне фирм: у каждой есть владелец, работники, запасы и цены, а рынок в каждом регионе уравновешивает спрос и предложение. Товары — данные из таблиц листа III. Перевозки идут по графу путей (дороги, рельсы, морские линии) с ограниченной пропускной способностью. Финансовый слой: кредит, ставка центробанка, акции как доли фирм."
-      en: "A firm-level economy: each firm has an owner, workers, stock and prices, and every region’s market clears supply against demand. Goods are data from sheet III’s tables. Freight moves over a graph of routes (roads, rails, sea lanes) with limited capacity. A financial layer adds credit, a central bank rate and shares as stakes in firms."
+      ru: "Экономика на уровне фирм: у каждой есть владелец, работники, запасы и цены, а рынок в каждом регионе уравновешивает спрос и предложение. Товары — данные из таблиц 3.0. Перевозки идут по графу путей (дороги, рельсы, морские линии) с ограниченной пропускной способностью. Финансовый слой: кредит, ставка центробанка, акции как доли фирм."
+      en: "A firm-level economy: each firm has an owner, workers, stock and prices, and every region’s market clears supply against demand. Goods are data from 3.0’s tables. Freight moves over a graph of routes (roads, rails, sea lanes) with limited capacity. A financial layer adds credit, a central bank rate and shares as stakes in firms."
     items:
       - k: sim
         s: plan
@@ -494,7 +492,7 @@ phases:
         en: ["Regional markets", "Prices from supply and demand; cargo moves by caravan, ship, train and truck."]
       - k: play
         s: plan
-        ru: ["Свои компании", "Частные и государственные: найм, конкуренция, банкротства. Основать можно и в прогулке, и как правитель."]
+        ru: ["Свои компании", "Частные и государственные: найм, конкуренция, банкротства. Основать можно и на прогулке, и как правитель."]
         en: ["Your own companies", "Private and state-owned: hiring, competition, bankruptcy. Found one on foot or as a ruler."]
       - k: sim
         s: plan
@@ -509,26 +507,26 @@ phases:
         ru: ["Бюджет державы", "Налоги и расходы на армию, науку, дороги и людей — в руках игрока-правителя."]
         en: ["The state budget", "Taxes and spending on army, science, roads and people — in the player-ruler’s hands."]
 
-  # ───────────────────────────── VIII · 3.5
+  # ───────────────────────────── 3.5
   - id: v35
-    sheet: "VIII"
     ver: "3.5"
     eon: e1
-    color: "#BE7458"
+    color: "#D0805F"
     status: plan
-    precision: approx
+    t: 2028.34
+    pos: { x: 940, y: 208 }
     deps: [v34]
     name: { ru: "Фронт и тыл", en: "Front and Supply" }
-    when: { ru: "II квартал 2028", en: "Q2 2028" }
+    when: { ru: "≈ лето 2028", en: "≈ summer 2028" }
     goal:
       ru: "Армии, которые идут, едут и снабжаются, — вместо солдат, возникающих прямо на поле боя."
       en: "Armies that march, ride and need supplies — instead of soldiers appearing right on the battlefield."
     why:
-      ru: "Снабжению нужны товары и пути из листа VII, полководцам — люди из листа V. Без них движение войск было бы декорацией."
-      en: "Supply needs the goods and routes of sheet VII; generals need the people of sheet V. Without them troop movement would be mere decoration."
+      ru: "Снабжению нужны товары и пути из 3.4, полководцам — люди из 3.2. Без них движение войск было бы декорацией."
+      en: "Supply needs the goods and routes of 3.4; generals need the people of 3.2. Without them troop movement would be mere decoration."
     hood:
-      ru: "Отряд — сущность с позицией, составом, запасами и командиром. Путь ищется по графу дорог и рельефу с учётом сезона. Снабжение — поток грузов по логистической сети листа VII. Небоевые потери считаются по климату клетки: обморожения, жара, голод."
-      en: "A unit is an entity with a position, composition, supplies and a commander. Paths are found over the road graph and terrain, accounting for season. Supply is a flow of cargo over sheet VII’s logistics network. Non-combat losses follow the local climate: frostbite, heat, hunger."
+      ru: "Отряд — сущность с позицией, составом, запасами и командиром. Путь ищется по графу дорог и рельефу с учётом сезона. Снабжение — поток грузов по логистической сети из 3.4. Небоевые потери считаются по климату клетки: обморожения, жара, голод."
+      en: "A unit is an entity with a position, composition, supplies and a commander. Paths are found over the road graph and terrain, accounting for season. Supply is a flow of cargo over 3.4’s logistics network. Non-combat losses follow the local climate: frostbite, heat, hunger."
     items:
       - k: sim
         s: plan
@@ -555,26 +553,27 @@ phases:
         en: ["Generals", "Commanders’ skills, army composition and terrain decide battles."]
       - k: walk
         s: plan
-        ru: ["Ваш бой имеет значение", "Сражение в прогулке влияет на исход битвы на карте."]
+        ru: ["Ваш бой имеет значение", "Сражение на прогулке влияет на исход битвы на карте."]
         en: ["Your fight matters", "A battle fought on foot changes the outcome on the map."]
 
-  # ───────────────────────────── IX · 4.0
+  # ───────────────────────────── 4.0
   - id: v40
-    sheet: "IX"
     ver: "4.0"
     eon: e1
-    color: "#8FB1A5"
+    color: "#9CC3B8"
     status: plan
-    precision: conj
+    major: true
+    t: 2028.6
+    pos: { x: 1045, y: 330 }
     deps: [v30, v33]
     name: { ru: "Общий мир", en: "Shared World" }
-    when: { ru: "III квартал 2028", en: "Q3 2028" }
+    when: { ru: "≈ осень 2028", en: "≈ autumn 2028" }
     goal:
       ru: "Один мир на нескольких игроков — по интернету и по локальной сети."
       en: "One world for several players — over the internet and on a local network."
     why:
-      ru: "Сеть строится на фундаменте листа III: команды, предсказуемая симуляция и запуск без интерфейса. Роли — бог, правитель, житель — появляются в листе VI. Выпускать мультиплеер имеет смысл, когда основные системы перестали меняться каждую неделю."
-      en: "Networking stands on sheet III’s foundation: commands, a predictable simulation and headless runs. Roles — god, ruler, citizen — arrive in sheet VI. It makes sense to ship multiplayer once the core systems stop changing every week."
+      ru: "Сеть стоит на фундаменте 3.0: команды, предсказуемая симуляция и запуск без интерфейса. Роли — бог, правитель, житель — появляются в 3.3. Выпускать мультиплеер имеет смысл, когда основные системы перестали меняться каждую неделю."
+      en: "Networking stands on 3.0’s foundation: commands, a predictable simulation and headless runs. Roles — god, ruler, citizen — arrive in 3.3. It makes sense to ship multiplayer once the core systems stop changing every week."
     hood:
       ru: "Авторитетный сервер: симуляция идёт на сервере (Node.js на VPS или у хоста в локальной сети), клиенты отправляют команды и получают изменения состояния. Прогулка считается локально, синхронизируются позиции и действия. Предсказуемость симуляции позволяет быстро ловить рассинхронизацию."
       en: "An authoritative server: the simulation runs on the server (Node.js on a VPS, or on the host’s PC for LAN), clients send commands and receive state changes. Walk mode runs locally, with positions and actions synchronised. A predictable simulation makes desyncs quick to catch."
@@ -604,23 +603,24 @@ phases:
         ru: ["Графика «Ультра»", "Для мощных ПК: WebGPU, физически корректные материалы, объёмные облака, густая растительность."]
         en: ["‘Ultra’ graphics", "For powerful PCs: WebGPU, physically based materials, volumetric clouds, dense vegetation."]
 
-  # ───────────────────────────── X · 5.0
+  # ───────────────────────────── 5.0
   - id: v50
-    sheet: "X"
     ver: "5.0"
     eon: e2
-    color: "#A3917F"
+    color: "#7FB69A"
     status: plan
-    precision: conj
+    major: true
+    t: 2028.86
+    pos: { x: 1110, y: 505 }
     deps: [v30]
     name: { ru: "Глубокое время", en: "Deep Time" }
-    when: { ru: "IV квартал 2028", en: "Q4 2028" }
+    when: { ru: "≈ зима 2028/29", en: "≈ winter 2028/29" }
     goal:
       ru: "Планета, живущая миллионы лет: плиты движутся, горы растут и разрушаются, а в недрах лежат настоящие руды."
       en: "A planet that lives for millions of years: plates drift, mountains rise and erode, and real ores lie deep below."
     why:
-      ru: "Тектонике нужны глобус и многомасштабное время из листа III. Шахты опираются на экономику листа VII. А эволюции (лист XI) нужна меняющаяся география: виды расходятся, когда континенты разделяются."
-      en: "Tectonics needs the globe and multi-scale time of sheet III. Mines build on sheet VII’s economy. And evolution (sheet XI) needs changing geography: species diverge when continents split."
+      ru: "Тектонике нужны глобус и многомасштабное время из 3.0. А эволюции нужна меняющаяся география: виды расходятся, когда континенты разделяются."
+      en: "Tectonics needs the globe and multi-scale time of 3.0. And evolution needs changing geography: species diverge when continents split."
     hood:
       ru: "Многомасштабное время: при ускорении до тысячелетий климат и общество сворачиваются в усреднённые модели. Плиты — поля скоростей на сфере: столкновения поднимают горы, рифты рождают океаны. Гидравлическая эрозия по потоку рек и перенос осадков. Недра — слоистая модель, месторождения возникают из геологических процессов и истощаются."
       en: "Multi-scale time: when sped up to millennia, climate and society collapse into averaged models. Plates are velocity fields on a sphere: collisions raise mountains, rifts open oceans. Hydraulic erosion follows river flow and moves sediment. The interior is a layered model; deposits arise from geology and can be exhausted."
@@ -646,23 +646,23 @@ phases:
         ru: ["Шахты", "Спуститесь в рудник: штреки, проходка, добыча руды."]
         en: ["Mines", "Descend into a mine: tunnels, digging, ore extraction."]
 
-  # ───────────────────────────── XI · 5.5
+  # ───────────────────────────── 5.5
   - id: v55
-    sheet: "XI"
     ver: "5.5"
     eon: e2
-    color: "#74AE8F"
+    color: "#64B3AA"
     status: plan
-    precision: conj
+    t: 2029.2
+    pos: { x: 1222, y: 470 }
     deps: [v50, v33]
     name: { ru: "Происхождение видов", en: "Origin of Species" }
-    when: { ru: "2029", en: "2029" }
+    when: { ru: "≈ 2029", en: "≈ 2029" }
     goal:
       ru: "Виды рождаются, приспосабливаются и вымирают сами, а разум может возникнуть у любого из них."
       en: "Species emerge, adapt and die out on their own — and intelligence can arise in any of them."
     why:
-      ru: "Видообразованию нужно глубокое время и меняющиеся континенты (лист X). Игра за существо — это то же вселение из листа VI."
-      en: "Speciation needs deep time and shifting continents (sheet X). Playing as a creature is the same possession mechanism from sheet VI."
+      ru: "Видообразованию нужно глубокое время и меняющиеся континенты (5.0). Игра за существо — это то же вселение из 3.3."
+      en: "Speciation needs deep time and shifting continents (5.0). Playing as a creature is the same possession mechanism from 3.3."
     hood:
       ru: "Вид — это геном (набор признаков: размер, питание, покров, конечности, терпимость к холоду и жаре, плодовитость) плюс ареал. Отбор идёт по приспособленности к климату и биому, а изоляция популяций ведёт к расхождению видов. Облик существ собирается процедурно из тех же признаков — в том же lowpoly-стиле."
       en: "A species is a genome (traits: size, diet, coat, limbs, cold and heat tolerance, fertility) plus a range. Selection follows fitness to climate and biome; isolated populations diverge into new species. Creatures’ looks are assembled procedurally from the same traits — in the same low-poly style."
@@ -670,8 +670,8 @@ phases:
       - k: sim
         s: idea
         req: true
-        ru: ["Эволюция", "Отбор и видообразование: острова и континенты рождают новые ветви жизни."]
-        en: ["Evolution", "Selection and speciation: islands and continents give rise to new branches of life."]
+        ru: ["Эволюция", "Отбор и видообразование по биомам: острова и континенты рождают новые ветви жизни."]
+        en: ["Evolution", "Selection and speciation by biome: islands and continents give rise to new branches of life."]
       - k: play
         s: idea
         ru: ["Древо жизни", "Интерактивная родословная видов от первых до ныне живущих."]
@@ -694,23 +694,24 @@ phases:
         ru: ["Болезни эволюционируют", "Вирусы мутируют и переходят между видами."]
         en: ["Diseases evolve", "Viruses mutate and jump between species."]
 
-  # ───────────────────────────── XII · 6.0
+  # ───────────────────────────── 6.0
   - id: v60
-    sheet: "XII"
     ver: "6.0"
     eon: e3
-    color: "#7E9FC3"
+    color: "#8FB0DA"
     status: plan
-    precision: conj
+    major: true
+    t: 2029.62
+    pos: { x: 1255, y: 228 }
     deps: [v50, v34]
     name: { ru: "Солнечная система", en: "Solar System" }
-    when: { ru: "2029", en: "2029" }
+    when: { ru: "≈ 2029", en: "≈ 2029" }
     goal:
       ru: "Ваша планета становится одной из многих: орбиты, соседние миры, терраформирование и колонии."
       en: "Your planet becomes one of many: orbits, neighbouring worlds, terraforming and colonies."
     why:
-      ru: "Несколько миров одновременно в памяти даёт лист III, параметры и недра планет — лист X, космическая экономика — лист VII."
-      en: "Several worlds in memory at once come from sheet III, planetary parameters and interiors from sheet X, and the space economy from sheet VII."
+      ru: "Несколько миров одновременно в памяти даёт 3.0, параметры и недра планет — 5.0, космическую экономику — 3.4."
+      en: "Several worlds in memory at once come from 3.0, planetary parameters and interiors from 5.0, and the space economy from 3.4."
     hood:
       ru: "Каждая планета — отдельный мир со своими радиусом, гравитацией, атмосферой и водой. Орбиты считаются по Кеплеру, инсоляция и времена года следуют из орбиты и наклона оси. Космос — отдельный слой симуляции с низкой частотой обновления."
       en: "Each planet is a world of its own with radius, gravity, atmosphere and water. Orbits follow Kepler; insolation and seasons follow from the orbit and axial tilt. Space is a separate, low-frequency layer of the simulation."
@@ -736,23 +737,24 @@ phases:
         ru: ["Колонии", "Поселения на других планетах со своей историей."]
         en: ["Colonies", "Settlements on other planets with histories of their own."]
 
-  # ───────────────────────────── XIII · 7.0
+  # ───────────────────────────── 7.0
   - id: v70
-    sheet: "XIII"
     ver: "7.0"
     eon: e3
-    color: "#8C82B8"
+    color: "#A49AE0"
     status: plan
-    precision: conj
+    major: true
+    t: 2030.2
+    pos: { x: 1338, y: 118 }
     deps: [v60, v40]
     name: { ru: "Галактика", en: "Galaxy" }
-    when: { ru: "2030 и далее", en: "2030 and beyond" }
+    when: { ru: "≈ 2030", en: "≈ 2030" }
     goal:
       ru: "Галактика, которую создаёте вы, и цивилизации, которые её заселяют."
       en: "A galaxy you create — and the civilisations that settle it."
     why:
-      ru: "Это масштабирование листа XII на множество звёзд. Общий мир (лист IX) позволит дать каждому игроку свою систему."
-      en: "This scales sheet XII up to many stars. The shared world (sheet IX) lets every player own a system."
+      ru: "Это масштабирование 6.0 на множество звёзд. Общий мир (4.0) позволит дать каждому игроку свою систему."
+      en: "This scales 6.0 up to many stars. The shared world (4.0) lets every player own a system."
     hood:
       ru: "Галактика генерируется по зерну с уровнями детализации: пока у звезды нет цивилизаций, она — строка статистики; подробности появляются при посещении."
       en: "The galaxy is generated from a seed with levels of detail: until a star hosts a civilisation it is a line of statistics; details appear when visited."

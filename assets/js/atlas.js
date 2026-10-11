@@ -1,7 +1,8 @@
 /* Earth Simulator — титульная карта.
    Процедурная физическая карта: послойная окраска высот, отмывка рельефа, горизонтали,
-   «водная штриховка» у берегов, градусная сетка и рамка. Материки медленно дрейфуют.
-   Зажатая кнопка мыши поднимает сушу (с Shift — опускает), как кисть «Земля» в игре. */
+   «водная штриховка» у берегов, градусная сетка и рамка. Материки медленно дрейфуют,
+   города плывут вместе с ними. Зажатая кнопка мыши поднимает сушу (с Shift — опускает),
+   как кисть «Земля» в игре. */
 (function () {
   'use strict';
 
@@ -16,6 +17,8 @@
   try { S = JSON.parse(host.getAttribute('data-str') || '{}'); } catch (e) {}
   var LANG = host.getAttribute('data-lang') || 'ru';
   var reduceMotion = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  var M_LAND = 5000, M_SEA = 5000;   // метров на единицу высоты — совпадает с легендой
 
   /* ---------- шум: 2D simplex (Gustavson) с зерном ---------- */
   function mulberry(seed) {
@@ -58,7 +61,7 @@
   }
 
   /* ---------- мир ---------- */
-  var seed, blobs, cities = [];
+  var seed, blobs, cities = [], cityRnd, citiesPlaced = false;
   var NAMES = LANG === 'en'
     ? ['Volaria', 'Karor', 'Velest', 'Tirnia', 'Omland', 'Drapolis', 'Mimir', 'Kaen', 'Sinvess', 'Goros', 'Lumir', 'Arstan']
     : ['Волария', 'Карор', 'Велест', 'Тирния', 'Омланд', 'Драполис', 'Мимир', 'Каен', 'Синвесь', 'Горос', 'Лумир', 'Арстан'];
@@ -71,23 +74,20 @@
     // «плиты-лайт»: несколько гауссовых материков в видимой части листа
     var n = 4 + Math.floor(rnd() * 3);
     for (var k = 0; k < n; k++) {
-      blobs.push({
-        x: 0.34 + rnd() * 0.62, y: 0.1 + rnd() * 0.66,
-        r2: Math.pow(0.13 + rnd() * 0.17, 2), w: 0.6 + rnd() * 0.5
-      });
+      blobs.push({ x: 0.34 + rnd() * 0.62, y: 0.1 + rnd() * 0.66, r2: Math.pow(0.13 + rnd() * 0.17, 2), w: 0.6 + rnd() * 0.5 });
     }
     blobs.push({ x: 0.08 + rnd() * 0.2, y: 0.08 + rnd() * 0.2, r2: 0.012, w: 0.5 });
     cities = [];
     cityRnd = mulberry(seed ^ 0x9e3779b9);
     citiesPlaced = false;
   }
-  var cityRnd, citiesPlaced = false;
 
-  var T = 0; // геологическое время листа
+  var T = 0; // «геологическое» время листа: от него зависит изгиб материков
+  // изгиб пространства (domain warp): точка экрана (u,v) показывает «материковую» точку (u+wx, v+wy)
+  function warpX(u, v) { return noise(u * 1.15 + 13.7 + T * 0.55, v * 1.15 - 4.2) * 0.32; }
+  function warpY(u, v) { return noise(u * 1.15 - 7.9, v * 1.15 + 21.3 - T * 0.45) * 0.32; }
   function heightAt(u, v) {
-    var wx = noise(u * 1.15 + 13.7 + T * 0.55, v * 1.15 - 4.2) * 0.32;
-    var wy = noise(u * 1.15 - 7.9, v * 1.15 + 21.3 - T * 0.45) * 0.32;
-    var x = u + wx, y = v + wy, c = 0;
+    var x = u + warpX(u, v), y = v + warpY(u, v), c = 0;
     for (var k = 0; k < blobs.length; k++) {
       var b = blobs[k], dx = x - b.x * aspect, dy = y - b.y;
       c += b.w * Math.exp(-(dx * dx + dy * dy) / b.r2);
@@ -105,7 +105,7 @@
   var FR = 18;                        // поле рамки, css px
   var mapX, mapY, mapW, mapH;
   var gw, gh, cs, csy, B, U, Hh, off, offCtx, img, stripe = 0;
-  var LON0 = 22, LON_SPAN = 150, LAT_C = 16, lat0, latSpan;
+  var LON0 = 22, LON_SPAN = 150, LAT_C = 16, lat0, latSpan, toolsRect = null;
 
   function layout() {
     var r = host.getBoundingClientRect();
@@ -129,18 +129,17 @@
     for (var j = 0; j < gh; j++) computeRow(j);
     citiesPlaced = false;
   }
-  var toolsRect = null;
   function inTools(x, y) { return toolsRect && x > toolsRect[0] && x < toolsRect[2] && y > toolsRect[1] && y < toolsRect[3]; }
   function computeRow(j) {
     var v = j / (gh - 1), base = j * gw;
     for (var i = 0; i < gw; i++) B[base + i] = heightAt((i / (gw - 1)) * aspect, v);
   }
 
-  /* ---------- палитра: послойная окраска ---------- */
+  /* ---------- палитра: послойная окраска (границы — как в легенде) ---------- */
   function hex(c) { return [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)]; }
-  var SEA = [[0.06, hex('#C9D9D5')], [0.16, hex('#B9CFD1')], [0.32, hex('#A8C3CA')], [9, hex('#9AB8C3')]];
-  var LAND = [[0.05, hex('#CAD7AA')], [0.12, hex('#D6DDB0')], [0.20, hex('#E2E0B3')], [0.30, hex('#E7D7A5')], [0.42, hex('#E0C292')],
-              [0.56, hex('#D3AC83')], [0.70, hex('#C39B7D')], [9, hex('#EFEBE2')]];
+  var SEA = [[0.04, hex('#C9D9D5')], [0.2, hex('#B9CFD1')], [0.4, hex('#A8C3CA')], [9, hex('#9AB8C3')]];
+  var LAND = [[0.04, hex('#CAD7AA')], [0.1, hex('#D6DDB0')], [0.2, hex('#E2E0B3')], [0.3, hex('#E7D7A5')], [0.4, hex('#E0C292')],
+              [0.6, hex('#D3AC83')], [0.8, hex('#C39B7D')], [9, hex('#EFEBE2')]];
   function band(tab, x) { for (var k = 0; k < tab.length; k++) if (x < tab[k][0]) return tab[k][1]; return tab[tab.length - 1][1]; }
 
   function paintTint() {
@@ -217,13 +216,18 @@
     var a = Math.abs(v), d = Math.floor(a), m = Math.floor((a - d) * 60);
     return d + '°' + (m < 10 ? '0' : '') + m + '′ ' + (v >= 0 ? pos : neg);
   }
+  function hAtXY(x, y) {
+    var i = Math.round((x - mapX) / cs), j = Math.round((y - mapY) / csy);
+    if (i < 0 || j < 0 || i >= gw || j >= gh) return -1;
+    return Hh[j * gw + i];
+  }
 
-  /* ---------- города ---------- */
+  /* ---------- города: живут в «материковых» координатах и плывут вместе с сушей ---------- */
   function avoidRects() {
     var hr = host.getBoundingClientRect(), out = [];
     host.querySelectorAll('.cartouche, .legend, .hero__tools, .hero__north').forEach(function (el) {
       var r = el.getBoundingClientRect();
-      if (!r.width) return;
+      if (!r.width || getComputedStyle(el).display === 'none') return;
       out.push([r.left - hr.left - 26, r.top - hr.top - 18, r.right - hr.left + 90, r.bottom - hr.top + 18]);
     });
     return out;
@@ -234,19 +238,29 @@
     while (cities.length < 9 && tries++ < 1600) {
       var i = 2 + Math.floor(cityRnd() * (gw - 4)), j = 2 + Math.floor(cityRnd() * (gh - 4));
       var h = B[j * gw + i];
-      if (h < 0.025 || h > 0.3) continue;
+      if (h < 0.03 || h > 0.3) continue;
       var x = mapX + i * cs, y = mapY + j * csy, ok = true, q;
       for (q = 0; q < rects.length; q++) { var R = rects[q]; if (x > R[0] && x < R[2] && y > R[1] && y < R[3]) { ok = false; break; } }
-      if (!ok || x > mapX + mapW - 110 || y < mapY + 34 || y > mapY + mapH - 20) continue;
+      if (!ok || x > mapX + mapW - 110 || y < mapY + 40 || y > mapY + mapH - 30) continue;
       for (q = 0; q < cities.length; q++) { var dx = cities[q].x - x, dy = cities[q].y - y; if (dx * dx + dy * dy < minD * minD) { ok = false; break; } }
       if (!ok) continue;
-      cities.push({ i: i, j: j, x: x, y: y, name: NAMES[cities.length % NAMES.length], cap: cities.length === 0 });
+      var u = (i / (gw - 1)) * aspect, v = j / (gh - 1);
+      cities.push({ mx: u + warpX(u, v), my: v + warpY(u, v), u: u, v: v, x: x, y: y, name: NAMES[cities.length % NAMES.length], cap: cities.length === 0 });
     }
     citiesPlaced = true;
   }
+  function moveCities() {
+    // обратный изгиб: ищем точку экрана, которая сейчас показывает «материковую» точку города
+    for (var q = 0; q < cities.length; q++) {
+      var c = cities[q], u = c.u, v = c.v;
+      for (var it = 0; it < 4; it++) { var nu = c.mx - warpX(u, v), nv = c.my - warpY(u, v); u = nu; v = nv; }
+      c.u = u; c.v = v;
+      c.x = mapX + (u / aspect) * mapW; c.y = mapY + v * mapH;
+    }
+  }
 
   /* ---------- отрисовка ---------- */
-  var INK = '#1D252C', PAPER = '#F5F0E3', SEA_INK = '#2B5A73', CONTOUR = '#8A6848';
+  var INK = '#1D252C', PAPER = '#F5F0E3', NIGHT = '#0A1320', BRASS = '#C9A35B', SEA_INK = '#2B5A73', CONTOUR = '#8A6848';
   var serifFont = '"Alegreya", Georgia, serif', monoFont = '"IBM Plex Mono", Consolas, monospace';
 
   function label(text, x, y, font, color, align, halo) {
@@ -258,7 +272,7 @@
   function draw() {
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.clearRect(0, 0, Wc, Hc);
-    ctx.fillStyle = PAPER; ctx.fillRect(0, 0, Wc, Hc);
+    ctx.fillStyle = NIGHT; ctx.fillRect(0, 0, Wc, Hc);
 
     ctx.save();
     ctx.beginPath(); ctx.rect(mapX, mapY, mapW, mapH); ctx.clip();
@@ -319,8 +333,9 @@
   function drawCities() {
     if (!citiesPlaced) placeCities();
     for (var q = 0; q < cities.length; q++) {
-      var c = cities[q], h = Hh[c.j * gw + c.i];
-      if (h < 0.008) continue;
+      var c = cities[q];
+      if (c.x < mapX + 4 || c.x > mapX + mapW - 4 || c.y < mapY + 4 || c.y > mapY + mapH - 4) continue;
+      if (hAtXY(c.x, c.y) < 0.006) continue;               // город ушёл под воду — не рисуем
       ctx.lineWidth = 1.3; ctx.strokeStyle = INK; ctx.fillStyle = PAPER;
       ctx.beginPath(); ctx.arc(c.x, c.y, c.cap ? 5 : 3.6, 0, 6.2832); ctx.fill(); ctx.stroke();
       ctx.fillStyle = INK; ctx.beginPath(); ctx.arc(c.x, c.y, c.cap ? 2.2 : 1.5, 0, 6.2832); ctx.fill();
@@ -329,13 +344,13 @@
   }
 
   function drawFrame() {
-    // градусная рамка: чередующиеся штрихи через 5°
+    // градусная рамка: чередующиеся латунные штрихи через 5°
     var bw = 6, ox = mapX - bw, oy = mapY - bw;
-    ctx.fillStyle = PAPER; ctx.fillRect(ox, oy, mapW + 2 * bw, bw); ctx.fillRect(ox, mapY + mapH, mapW + 2 * bw, bw);
+    ctx.fillStyle = NIGHT; ctx.fillRect(ox, oy, mapW + 2 * bw, bw); ctx.fillRect(ox, mapY + mapH, mapW + 2 * bw, bw);
     ctx.fillRect(ox, mapY, bw, mapH); ctx.fillRect(mapX + mapW, mapY, bw, mapH);
-    ctx.fillStyle = INK;
-    var lon, lat, a, b, n = 0;
-    for (lon = Math.floor(LON0 / 5) * 5; lon < LON0 + LON_SPAN; lon += 5, n++) {
+    ctx.fillStyle = BRASS;
+    var lon, lat, a, b;
+    for (lon = Math.floor(LON0 / 5) * 5; lon < LON0 + LON_SPAN; lon += 5) {
       if ((Math.round(lon / 5) & 1) === 0) continue;
       a = Math.max(mapX, xOfLon(lon)); b = Math.min(mapX + mapW, xOfLon(lon + 5));
       if (b > a) { ctx.fillRect(a, oy, b - a, bw); ctx.fillRect(a, mapY + mapH, b - a, bw); }
@@ -345,8 +360,9 @@
       a = Math.max(mapY, yOfLat(lat)); b = Math.min(mapY + mapH, yOfLat(lat - 5));
       if (b > a) { ctx.fillRect(ox, a, bw, b - a); ctx.fillRect(mapX + mapW, a, bw, b - a); }
     }
-    ctx.strokeStyle = INK; ctx.lineWidth = 1;
+    ctx.strokeStyle = BRASS; ctx.lineWidth = 1;
     ctx.strokeRect(ox + 0.5, oy + 0.5, mapW + 2 * bw - 1, mapH + 2 * bw - 1);
+    ctx.strokeStyle = INK;
     ctx.strokeRect(mapX - 0.5, mapY - 0.5, mapW + 1, mapH + 1);
   }
 
@@ -378,12 +394,11 @@
   }
   function updateReadout() {
     if (!readout) return;
-    var i = Math.round((pointer.x - mapX) / cs), j = Math.round((pointer.y - mapY) / csy);
-    var on = pointer.in && i >= 0 && j >= 0 && i < gw && j < gh;
+    var h = hAtXY(pointer.x, pointer.y), on = pointer.in && h !== -1;
     readout.classList.toggle('is-on', on);
     if (!on) return;
-    var h = Hh[j * gw + i], lat = latAt(pointer.y), lon = lonAt(pointer.x);
-    var m = h >= 0 ? Math.round(h * 5600 / 10) * 10 : Math.round(-h * 6800 / 10) * 10;
+    var lat = latAt(pointer.y), lon = lonAt(pointer.x);
+    var m = h >= 0 ? Math.round(h * M_LAND / 10) * 10 : Math.round(-h * M_SEA / 10) * 10;
     var num = m.toLocaleString(LANG === 'en' ? 'en-US' : 'ru-RU');
     readout.textContent = dms(lat, S.n || 'N', S.s || 'S') + ' · ' + dms(lon, S.e || 'E', S.w || 'W') + ' · ' +
       (h >= 0 ? (S.elev || 'elevation') : (S.depth || 'depth')) + ' ' + num + ' ' + (S.m || 'm');
@@ -407,23 +422,23 @@
   window.addEventListener('keyup', function (e) { if (e.key === 'Shift') pointer.sign = 1; });
   if (btnNew) btnNew.addEventListener('click', function () {
     newWorld((Math.random() * 4294967296) >>> 0);
-    T = 0; for (var j = 0; j < gh; j++) computeRow(j); U.fill(0); wake();
+    T = 0; for (var j = 0; j < gh; j++) computeRow(j); U.fill(0); lastDraw = 0; wake();
   });
 
   /* ---------- цикл ---------- */
-  var visible = true, last = 0, lastDraw = 0, raf = 0, idleFrames = 0;
+  var visible = true, lastDraw = 0, raf = 0, idleFrames = 0;
   function frame(now) {
     raf = 0;
     if (!visible || document.hidden) return;
-    var dt = Math.min(0.1, (now - last) / 1000 || 0.016); last = now;
     var active = pointer.down || pointer.in;
     var fps = active ? 40 : 14;
     if (now - lastDraw >= 1000 / fps) {
-      var step = (now - lastDraw) / 1000; lastDraw = now;
+      var step = Math.min(0.25, (now - lastDraw) / 1000); lastDraw = now;
       if (!reduceMotion) {
         T += step * 0.016;
         var rows = Math.ceil(gh / 5);
         for (var r = 0; r < rows; r++) { computeRow(stripe); stripe = (stripe + 1) % gh; }
+        if (citiesPlaced) moveCities();
       }
       if (pointer.down && pointer.in) brush(step);
       var decay = Math.exp(-step / 40), n = gw * gh, k, anyU = false;

@@ -1,0 +1,50 @@
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+<section class="part" id="versions" aria-labelledby="versions-title">
+  <header class="part__head">
+    <span class="part__num">III</span>
+    <h2 class="part__title" id="versions-title">{{ t.versions_title[L] }}</h2>
+  </header>
+  <p class="part__lead">{{ t.versions_lead[L] }}</p>
+  <ol class="chron">
+    {%- for v in site.data.versions %}
+    {%- capture kind_key -%}v_{{ v.kind }}{%- endcapture -%}
+    {%- assign items = v.items[L] -%}
+    {%- assign n = items | size -%}
+    <li class="chron__row chron__row--{{ v.kind }}">
+      <div class="chron__when">
+        {%- if v.date and v.date != "" %}
+        <time class="mono" datetime="{{ v.date | date: '%Y-%m-%d' }}">{{ v.date | date: '%Y-%m-%d' }}</time>
+        {%- else %}
+        <span class="mono">{{ v.when[L] }}</span>
+        {%- endif %}
+        <span class="chron__kind label">{{ t[kind_key][L] }}</span>
+      </div>
+      <div class="chron__mark" aria-hidden="true"><i></i></div>
+      <article class="chron__body">
+        <h3 class="chron__title">{% if v.ver != "" %}<span class="chron__ver mono">{{ v.ver }}</span>{% endif %}{{ v.name[L] }}</h3>
+        <ul class="chron__list">
+          {%- for it in items limit: 3 %}
+          <li>{{ it }}</li>
+          {%- endfor %}
+        </ul>
+        {%- if n > 3 %}
+        <details class="chron__more">
+          <summary class="label">{{ t.v_more[L] }} · {{ n }}</summary>
+          <ul class="chron__list">
+            {%- for it in items offset: 3 %}
+            <li>{{ it }}</li>
+            {%- endfor %}
+          </ul>
+        </details>
+        {%- endif %}
+        <p class="chron__links">
+          {%- if v.post %}<a href="{{ v.post | relative_url }}{% if L == 'en' %}?lang=en{% endif %}">{{ t.v_post[L] }} →</a>{% endif %}
+          {%- if v.steam %}<a href="https://store.steampowered.com/news/app/4932460/view/{{ v.steam }}" rel="noopener" target="_blank">{{ t.v_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>{% endif %}
+          {%- if v.tg %}<a href="https://t.me/{{ site.data.telegram.channel }}/{{ v.tg }}" rel="noopener" target="_blank">{{ t.v_tg[L] }}<span class="ext" aria-hidden="true">↗</span></a>{% endif %}
+        </p>
+      </article>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

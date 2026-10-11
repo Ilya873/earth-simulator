@@ -10,11 +10,16 @@ layout: default
       <h1 class="part__title" id="devlog-title">{{ t.devlog_title[L] }}</h1>
     </header>
     <p class="part__lead">{{ t.devlog_lead[L] }}{% if t.devlog_lang_note[L] != '' %} {{ t.devlog_lang_note[L] }}{% endif %}</p>
-    {% include devlog-list.html %}
-    <div class="subscribe">
-      <a class="btn btn--ink" href="{{ site.telegram_url }}" rel="noopener" target="_blank">Telegram<span class="ext" aria-hidden="true">↗</span></a>
-      <a class="btn" href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a>
-      <a class="btn" href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a>
+    <div class="journal">
+      <div class="journal__main">
+        {% include devlog-list.html %}
+        <div class="subscribe">
+          <a class="btn btn--solid" href="{{ site.telegram_url }}" rel="noopener" target="_blank">Telegram<span class="ext" aria-hidden="true">↗</span></a>
+          <a class="btn" href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a>
+          <a class="btn" href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      {% include telegram.html limit=4 %}
     </div>
   </section>
 </div>

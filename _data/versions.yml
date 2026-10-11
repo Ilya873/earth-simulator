@@ -1,0 +1,132 @@
+# Летопись версий — по новостям обновлений в Steam (store.steampowered.com/news/app/4932460).
+# Новая версия добавляется сверху. kind: upcoming | major | update | patch | release
+# steam — id новости в Steam (ссылка store.steampowered.com/news/app/4932460/view/<id>)
+# tg — номер поста в канале t.me/gamesforfarmnews (необязательно)
+# post — ссылка на запись дневника на этом сайте (необязательно)
+
+- ver: "2.1.0"
+  kind: upcoming
+  date: ""
+  when: { ru: "≈ ноябрь 2026", en: "≈ November 2026" }
+  name: { ru: "Пути сообщения", en: "Connections" }
+  post: /devlog/2026/10/11/obnovlenie-2-1-0/
+  items:
+    ru:
+      - "Морские порты: торговые суда прибывают и уходят, можно работать грузчиком и разговаривать с капитанами и матросами."
+      - "Морские сражения, которые можно смотреть с палубы от первого лица."
+      - "Военные базы: угнать танк или наняться в караул."
+      - "Поезда — от паровоза до магнитного поезда: пассажиром или машинистом."
+      - "Аэропорты, самолёты и вертолёты; угонщика перехватят истребители — придётся прыгать с парашютом."
+      - "Деньги держав, работа, закон и поручения жителей на прогулке."
+    en:
+      - "Seaports: merchant ships arrive and depart; work as a docker and talk to captains and sailors."
+      - "Naval battles you can watch from the deck in first person."
+      - "Military bases: steal a tank or sign up for guard duty."
+      - "Trains — from steam engines to maglev: as a passenger or a driver."
+      - "Airports, planes and helicopters; hijackers get intercepted by fighters — time for the parachute."
+      - "State currencies, jobs, law and quests from locals in walk mode."
+
+- ver: "2.0.2"
+  kind: patch
+  date: 2026-10-06
+  name: { ru: "Исправления", en: "Fixes" }
+  steam: "674007628041423023"
+  items:
+    ru:
+      - "Меню по Esc снова открывается всегда — раньше, если держава была под курсором или выбрана, Esc только снимал подсветку."
+      - "Никаких лишних окон: вопросы и сообщения показываются внутри игры, она не выпадает из полноэкранного режима."
+      - "Подсказка у курсора в 3D показывает данные именно той клетки, на которую наведён курсор."
+      - "«Новый мир» и «Стереть жизнь» спрашивают подтверждение и предлагают сначала сохраниться."
+      - "Ссылка на Мастерскую открывается в браузере, а не новым окном игры."
+    en:
+      - "The Esc menu always opens again — before, with a state hovered or selected, Esc only cleared the highlight."
+      - "No extra windows: prompts and messages appear inside the game, which no longer drops out of full screen."
+      - "The 3D cursor tooltip shows data for exactly the tile under the cursor."
+      - "“New World” and “Erase Life” ask for confirmation and offer to save first."
+      - "The Workshop link opens in the browser instead of a new game window."
+
+- ver: "2.0.0"
+  kind: major
+  date: 2026-10-05
+  name: { ru: "Глобальное обновление", en: "The global update" }
+  steam: "674007628041422641"
+  items:
+    ru:
+      - "Прогулка от первого лица: спуститесь на сушу простым человеком — транспорт своей эпохи от лошадей до аэромобилей, сражения, охота и разговоры с жителями."
+      - "Живая история: путь от племён до космоса занимает 700–1000 лет вместо 250; 10 форм правления, реформы, революции и распад империй."
+      - "Правители с уникальным характером, династические браки и родословные любых жителей."
+      - "Живой мир: 35 видов животных, пищевые цепочки и вымирание; у каждого материка своя фауна, животных можно одомашнить."
+      - "Графика и звук: новый рельеф, динамическая вода, смена дня и ночи, детальные города; музыка рождается во время игры."
+      - "Новая Мастерская: карты из обычных картинок, свои сценарии и баланс; 3D стало быстрее."
+    en:
+      - "First-person exploration: walk the land as an ordinary person — era vehicles from horses to flying cars, fighting, hunting and talking to locals."
+      - "A living history: the road from tribes to space now takes 700–1,000 years instead of 250; 10 forms of government, reforms, revolutions and collapsing empires."
+      - "Rulers with unique personalities, dynastic marriages and family trees of any inhabitant."
+      - "A living world: 35 animal species, food chains and extinction; every continent has its own fauna, and animals can be domesticated."
+      - "Graphics and sound: new terrain, dynamic water, day and night, detailed cities; music is generated as you play."
+      - "A new Workshop: maps from ordinary images, custom scenarios and balance; faster 3D."
+
+- ver: ""
+  kind: update
+  date: 2026-09-01
+  name: { ru: "Мастерская Steam и новый интерфейс", en: "Steam Workshop and a new interface" }
+  steam: "717915187566346243"
+  tg: 3755
+  items:
+    ru:
+      - "Мастерская Steam заработала в полную силу — с подробным руководством для авторов."
+      - "Новые сценарии управления Землёй."
+      - "Уведомления о достижениях в полноэкранном режиме и синхронизация достижений со Steam."
+      - "Гибкие настройки графики и общая оптимизация."
+      - "Полностью обновлённый интерфейс игры."
+    en:
+      - "The Steam Workshop is fully working — with a detailed guide for creators."
+      - "New scenarios for managing the Earth."
+      - "Achievement notifications in full screen and achievements synced with Steam."
+      - "Flexible graphics settings and overall optimisation."
+      - "A completely updated game interface."
+
+- ver: ""
+  kind: update
+  date: 2026-08-24
+  name: { ru: "Обновление по вашим отзывам", en: "An update built on your feedback" }
+  steam: "693144122046809552"
+  items:
+    ru:
+      - "Steam присылает уведомления о достижениях в полноэкранном режиме."
+      - "Достижения синхронизированы между игрой и Steam."
+      - "Новые сценарии управления Землёй."
+      - "Первая, тестовая версия Мастерской."
+      - "Настройки графики."
+    en:
+      - "Steam now shows achievement notifications in full screen."
+      - "Achievements are synced between the game and Steam."
+      - "New scenarios for managing the Earth."
+      - "A first, test version of the Workshop."
+      - "Graphics settings."
+
+- ver: ""
+  kind: patch
+  date: 2026-08-21
+  name: { ru: "Исправление достижений", en: "Achievement fix" }
+  steam: "693144122046809027"
+  items:
+    ru:
+      - "Исправлены проблемы с получением достижений."
+    en:
+      - "Fixed problems with unlocking achievements."
+
+- ver: ""
+  kind: release
+  date: 2026-08-20
+  name: { ru: "Релиз в Steam", en: "Steam release" }
+  tg: 3693
+  items:
+    ru:
+      - "Песочница планеты: рельеф, ветра, течения и климат, биомы и реки."
+      - "Племена вырастают в державы и проходят шесть эпох — от древности до космоса: торговля, войны, флоты, колонии, ракеты."
+      - "Карта-атлас в 2D и полный 3D-мир, сценарии и свободная песочница, достижения Steam."
+    en:
+      - "A planet sandbox: terrain, winds, currents and climate, biomes and rivers."
+      - "Tribes grow into states and pass through six eras — from antiquity to space: trade, wars, fleets, colonies, missiles."
+      - "A 2D atlas map and a full 3D world, scenarios and a free sandbox, Steam achievements."

@@ -1,0 +1,15 @@
+{%- comment -%} Колонка с постами канала издателя (официальный виджет Telegram). Параметр: limit {%- endcomment -%}
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{%- assign tg = site.data.telegram -%}
+{%- assign lim = include.limit | default: 3 -%}
+<aside class="tg" aria-label="{{ t.tg_title[L] }}">
+  <p class="tg__head"><span class="label">{{ t.tg_title[L] }}</span><a class="mono" href="https://t.me/{{ tg.channel }}" rel="noopener" target="_blank">t.me/{{ tg.channel }}<span class="ext" aria-hidden="true">↗</span></a></p>
+  {%- for id in tg.posts limit: lim %}
+  <div class="tg__post">
+    <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="{{ tg.channel }}/{{ id }}" data-width="100%" data-dark="1" data-color="C9A35B" data-dark-color="E5C98D"></script>
+    <noscript><a href="https://t.me/{{ tg.channel }}/{{ id }}">t.me/{{ tg.channel }}/{{ id }}</a></noscript>
+  </div>
+  {%- endfor %}
+  <a class="btn tg__open" href="{{ site.telegram_url }}" rel="noopener" target="_blank">{{ t.tg_open[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+</aside>
