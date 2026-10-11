@@ -1,0 +1,8 @@
+{%- comment -%}
+  Галерея скриншотов, пути через «|», подписи — тоже через «|» (необязательно):
+  [include gallery.html images="/assets/devlog/x/1.jpg|/assets/devlog/x/2.jpg" captions="Первый|Второй" ]
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'ru' -%}
+{%- assign imgs = include.images | split: "|" -%}
+{%- assign caps = include.captions | default: "" | split: "|" -%}
+<div class="gallery">{% for src in imgs %}{% assign i = forloop.index0 %}{% assign cap = caps[i] | default: "" %}<figure class="fig" data-lb-group="post" data-lb-src="{{ src | strip | relative_url }}" data-lb-cap="{{ cap | xml_escape }}"><button type="button" class="plate-fig__btn" aria-label="{{ site.data.i18n.zoom[L] }}"><img src="{{ src | strip | relative_url }}" alt="{{ cap | xml_escape }}" loading="lazy"></button>{% if cap != "" %}<figcaption>{{ cap }}</figcaption>{% endif %}</figure>{% endfor %}</div>

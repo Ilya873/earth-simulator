@@ -1,0 +1,35 @@
+# Скриншоты для раздела «Мир сегодня». Файлы: assets/img/shots/<id>-1600.jpg и <id>-800.jpg
+
+- id: political-map
+  ru: "Политическая карта 102-го года: тридцать три державы на одном материке."
+  en: "Political map, year 102: thirty-three states on a single continent."
+- id: walk-volaria
+  ru: "Столица Волария, республика Миум, классическая эпоха. Прогулка от первого лица."
+  en: "Volaria, capital of the Republic of Mium, classical era. A first-person walk."
+- id: genealogy
+  ru: "Родословная верховного вождя: характер, навыки, семья и жизнеописание."
+  en: "A paramount chief’s family tree: traits, skills, family and biography."
+- id: precip-map
+  ru: "Слой осадков: изолинии, влажные побережья и дождевая тень за хребтом."
+  en: "Precipitation layer: isolines, wet coasts and a rain shadow behind the range."
+- id: walk-campfire
+  ru: "Хутор в широколиственном лесу, 363-й год."
+  en: "A farmstead in a broadleaf forest, year 363."
+- id: state-history
+  ru: "История королевства за 228 лет: население, технологии, армия и стабильность."
+  en: "228 years of a kingdom’s history: population, technology, army and stability."
+- id: walk-horse
+  ru: "Столица Карор в грозу. Аграрная эпоха, тропический лес."
+  en: "Karor, a capital in a thunderstorm. Agrarian era, tropical forest."
+- id: planet-panel
+  ru: "Параметры планеты: светимость Солнца, наклон оси, CO₂, сила ветров и течений."
+  en: "Planet settings: solar output, axial tilt, CO₂, wind and current strength."
+- id: walk-shaman
+  ru: "Разговор с шаманом в столице племени под зимним дождём."
+  en: "Talking to a shaman in a tribal capital in the winter rain."
+- id: map-start
+  ru: "Новый мир в первый год: реки, ледники и первые племена."
+  en: "A new world in its first year: rivers, glaciers and the first tribes."
+- id: stats-compare
+  ru: "Сравнение держав: население трёх королевств за восемьдесят лет."
+  en: "Comparing states: the population of three kingdoms over eighty years."

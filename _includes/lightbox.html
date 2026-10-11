@@ -1,0 +1,14 @@
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+<dialog class="lightbox" data-lightbox aria-label="{{ t.zoom[L] }}">
+  <figure class="lightbox__fig">
+    <img alt="" data-lb-img>
+    <figcaption class="lightbox__cap" data-lb-cap></figcaption>
+  </figure>
+  <div class="lightbox__bar">
+    <button type="button" data-lb-prev>← {{ t.prev[L] }}</button>
+    <span class="mono" data-lb-count></span>
+    <button type="button" data-lb-next>{{ t.next[L] }} →</button>
+    <button type="button" class="lightbox__close" data-lb-close>{{ t.close[L] }} ✕</button>
+  </div>
+</dialog>

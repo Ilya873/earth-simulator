@@ -1,0 +1,20 @@
+<!doctype html>
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+<html lang="{{ L }}" id="top">
+<head>
+{% include head.html %}
+</head>
+<body class="{{ page.body_class }}">
+<a class="skip" href="#main">{{ site.data.i18n.skip[L] }}</a>
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+{% include lightbox.html %}
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{%- if page.atlas %}
+<script src="{{ '/assets/js/atlas.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{%- endif %}
+</body>
+</html>

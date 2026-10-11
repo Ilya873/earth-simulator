@@ -1,0 +1,27 @@
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{%- assign rm = site.data.roadmap -%}
+<section class="part" id="requests" aria-labelledby="requests-title">
+  <header class="part__head">
+    <span class="part__num">III</span>
+    <h2 class="part__title" id="requests-title">{{ t.req_title[L] }}</h2>
+  </header>
+  <p class="part__lead">{{ t.req_lead[L] }}</p>
+  <div class="index">
+    <p class="index__head label" aria-hidden="true"><span>{{ t.req_col_idea[L] }}</span><span>{{ t.req_col_where[L] }}</span></p>
+    <ol class="index__list">
+      {%- for r in site.data.requests %}
+      {%- assign p = rm.phases | where: "id", r.phase | first -%}
+      {%- assign s = r.s | default: p.status -%}
+      <li class="index__row">
+        <a href="#sheet-{{ p.id }}" style="--pc: {{ p.color }}">
+          <span class="index__text">{{ r[L] }}</span>
+          <span class="index__dots" aria-hidden="true"></span>
+          <span class="index__ref"><i class="sym sym--{{ s }}" aria-label="{{ rm.status[s][L] }}"></i><span class="index__sheet mono">{{ p.sheet }}</span><span class="index__name">{{ p.ver }} · {{ p.name[L] }}</span></span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+  <p class="index__cta"><a class="btn" href="https://steamcommunity.com/app/4932460/discussions/" rel="noopener" target="_blank">{{ t.req_cta[L] }}<span class="ext" aria-hidden="true">↗</span></a></p>
+</section>

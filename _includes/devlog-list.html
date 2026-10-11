@@ -1,0 +1,36 @@
+{%- comment -%} Параметры: limit (число), compact (true/false) {%- endcomment -%}
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{%- assign total = site.posts | size -%}
+{%- assign lim = include.limit | default: 1000 -%}
+{%- if total == 0 %}
+<p class="entries__empty">{{ t.devlog_empty[L] }}</p>
+{%- else %}
+<ol class="entries{% if include.compact %} entries--compact{% endif %}">
+  {%- for post in site.posts limit: lim %}
+  {%- assign no = total | minus: forloop.index | plus: 1 -%}
+  {%- capture no3 -%}00{{ no }}{%- endcapture -%}
+  {%- if L == 'en' and post.title_en -%}{%- assign ptitle = post.title_en -%}{%- else -%}{%- assign ptitle = post.title -%}{%- endif -%}
+  {%- if L == 'en' and post.summary_en -%}{%- assign psum = post.summary_en -%}{%- else -%}{%- assign psum = post.summary -%}{%- endif -%}
+  {%- assign plang = post.lang | default: 'ru' -%}
+  {%- assign purl = post.url | relative_url -%}
+  {%- if post.body_en -%}{%- assign plang = L -%}{%- if L == 'en' -%}{%- assign purl = purl | append: '?lang=en' -%}{%- endif -%}{%- endif -%}
+  <li class="entry">
+    <div class="entry__meta mono">
+      <span class="entry__no">{{ t.devlog_entry[L] }} № {{ no3 | slice: -3, 3 }}</span>
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+      {%- if post.version %}<span>v{{ post.version }}</span>{% endif %}
+      {%- if plang != L %}<span class="entry__lang">{{ plang | upcase }}</span>{% endif %}
+    </div>
+    <div class="entry__main">
+      <h3 class="entry__title"><a href="{{ purl }}">{{ ptitle }}</a></h3>
+      {%- if psum %}<p class="entry__sum">{{ psum }}</p>{% endif %}
+      <a class="entry__more label" href="{{ purl }}" aria-hidden="true" tabindex="-1">{{ t.devlog_read[L] }} →</a>
+    </div>
+    {%- if post.cover %}
+    <a class="entry__cover" href="{{ purl }}" aria-hidden="true" tabindex="-1"><img src="{{ post.cover | relative_url }}" alt="" loading="lazy" width="800" height="450"></a>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ol>
+{%- endif %}

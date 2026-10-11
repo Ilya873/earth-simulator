@@ -1,0 +1,9 @@
+{%- comment -%}
+  Видео в записи. Один из источников:
+    [include video.html youtube="dQw4w9WgXcQ" caption="Подпись" ]
+    [include video.html rutube="ID_ролика" ]
+    [include video.html vk="https://vk.com/video_ext.php?oid=-123&id=456&hd=2" ]
+    [include video.html src="/assets/devlog/2026-10-11/clip.mp4" poster="/assets/devlog/2026-10-11/clip.jpg" ]
+  Свои ролики в репозитории — до ~20 МБ (mp4, H.264). Длинные — на YouTube / Rutube / VK.
+{%- endcomment -%}
+<figure class="fig fig--wide fig--video">{% if include.youtube %}<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ include.youtube }}" title="{{ include.caption | default: 'YouTube' | xml_escape }}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>{% elsif include.rutube %}<div class="video"><iframe src="https://rutube.ru/play/embed/{{ include.rutube }}" title="{{ include.caption | default: 'Rutube' | xml_escape }}" loading="lazy" allow="clipboard-write; autoplay; fullscreen" allowfullscreen></iframe></div>{% elsif include.vk %}<div class="video"><iframe src="{{ include.vk }}" title="{{ include.caption | default: 'VK Video' | xml_escape }}" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>{% elsif include.src %}<video controls preload="metadata" playsinline{% if include.poster %} poster="{{ include.poster | relative_url }}"{% endif %}{% if include.loop %} loop muted autoplay{% endif %}><source src="{{ include.src | relative_url }}" type="video/{% if include.src contains '.webm' %}webm{% else %}mp4{% endif %}"></video>{% endif %}{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}</figure>

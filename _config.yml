@@ -1,0 +1,45 @@
+title: Earth Simulator
+description: >-
+  Дорожная карта и дневник разработки Earth Simulator — песочницы планеты,
+  где климат, природа и цивилизации живут сами.
+url: https://ilya873.github.io
+baseurl: /earth-simulator
+lang: ru
+timezone: Europe/Moscow
+
+steam_url: https://store.steampowered.com/app/4932460/Earth_Simulator/
+telegram_url: https://t.me/gamesforfarmnews
+developer: Ilya873
+publisher: Gamesforfarm
+
+permalink: /devlog/:year/:month/:day/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      lang: ru
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - _private
+  - tools
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock

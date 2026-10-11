@@ -1,0 +1,171 @@
+# Строки интерфейса сайта. Доступ в шаблонах: {{ site.data.i18n.KEY[L] }}, где L — 'ru' или 'en'.
+
+site_title: { ru: "Earth Simulator — дорожная карта и дневник разработки", en: "Earth Simulator — roadmap and development journal" }
+site_desc:
+  ru: "Дорожная карта Earth Simulator от племён до галактики и полевой дневник разработки: видео, скриншоты и заметки."
+  en: "The Earth Simulator roadmap from tribes to the galaxy, and a field journal from development: videos, screenshots and notes."
+skip: { ru: "К содержанию", en: "Skip to content" }
+
+# навигация
+nav_world: { ru: "Мир сегодня", en: "The world today" }
+nav_roadmap: { ru: "Дорожная карта", en: "Roadmap" }
+nav_requests: { ru: "Вы просили", en: "You asked" }
+nav_devlog: { ru: "Дневник", en: "Journal" }
+nav_home: { ru: "На главную", en: "Home" }
+lang_name: { ru: "RU", en: "EN" }
+lang_other: { ru: "EN", en: "RU" }
+lang_other_label: { ru: "English version", en: "Русская версия" }
+
+# титульный лист
+hero_kicker: { ru: "Атлас грядущего мира", en: "An atlas of the world to come" }
+hero_native: { ru: "Симулятор Земли", en: "Simulator of the Earth" }
+hero_lead:
+  ru: "Песочница планеты, где климат, природа и цивилизации живут сами. Здесь — дорожная карта игры от первых племён до галактики и полевой дневник разработки."
+  en: "A planet sandbox where climate, nature and civilisations live on their own. Here is the game’s roadmap — from the first tribes to the galaxy — and a field journal from development."
+hero_edition: { ru: "Издание первое · октябрь 2026", en: "First edition · October 2026" }
+cta_steam: { ru: "Страница в Steam", en: "Steam page" }
+cta_telegram: { ru: "Новости в Telegram", en: "News on Telegram" }
+cta_roadmap: { ru: "Открыть карту", en: "Open the map" }
+hero_hint: { ru: "Зажмите кнопку мыши над картой, чтобы поднять сушу. С Shift — опустить.", en: "Hold the mouse button over the map to raise land. Hold Shift to lower it." }
+hero_new: { ru: "Новый мир", en: "New world" }
+hero_equator: { ru: "Экватор", en: "Equator" }
+hero_cancer: { ru: "Северный тропик", en: "Tropic of Cancer" }
+hero_capricorn: { ru: "Южный тропик", en: "Tropic of Capricorn" }
+hero_arctic: { ru: "Северный полярный круг", en: "Arctic Circle" }
+hero_antarctic: { ru: "Южный полярный круг", en: "Antarctic Circle" }
+hero_lat: { ru: "шир.", en: "lat" }
+hero_lon: { ru: "долг.", en: "lon" }
+hero_elev: { ru: "высота", en: "elevation" }
+hero_depth: { ru: "глубина", en: "depth" }
+hero_n: { ru: "с. ш.", en: "N" }
+hero_s: { ru: "ю. ш.", en: "S" }
+hero_e: { ru: "в. д.", en: "E" }
+hero_w: { ru: "з. д.", en: "W" }
+hero_m: { ru: "м", en: "m" }
+legend_title: { ru: "Условные знаки", en: "Legend" }
+legend_scale: { ru: "Масштаб времени", en: "Time scale" }
+legend_year: { ru: "год", en: "year" }
+legend_years: { ru: "года", en: "years" }
+
+# I. Мир сегодня
+world_title: { ru: "Мир сегодня", en: "The world today" }
+world_lead:
+  ru: "Вы задаёте рельеф, ветра, течения и климат, а дальше мир живёт сам. Реки находят дорогу к морю, пустыни и леса занимают свои широты. Племена вырастают в державы: торгуют, воюют, меняют династии и тянутся к космосу. В любой момент можно спуститься на землю и пройтись по миру от первого лица."
+  en: "You set the terrain, winds, currents and climate, and then the world lives on its own. Rivers find their way to the sea; deserts and forests settle into their latitudes. Tribes grow into states that trade, wage war, change dynasties and reach for space. At any moment you can step down to the ground and walk the world in first person."
+world_col1_t: { ru: "Природа", en: "Nature" }
+world_col1:
+  ru: "Испарение и перенос влаги ветром, муссоны и дождевая тень, океанские течения, ледники и парниковый эффект. Девятнадцать биомов и тридцать пять видов животных, которые мигрируют, вымирают и попадают в стада."
+  en: "Evaporation and wind-borne moisture, monsoons and rain shadows, ocean currents, ice sheets and the greenhouse effect. Nineteen biomes and thirty-five animal species that migrate, die out and end up in herds."
+world_col2_t: { ru: "Общество", en: "Society" }
+world_col2:
+  ru: "Шесть эпох — от племён до космоса. Десять форм правления, династии с родословными, войны, флоты, колонии и ядерное оружие. Каждая держава ведёт свою летопись."
+  en: "Six eras, from tribes to space. Ten forms of government, dynasties with family trees, wars, fleets, colonies and nuclear weapons. Every state keeps its own chronicle."
+world_col3_t: { ru: "Прогулка", en: "On foot" }
+world_col3:
+  ru: "Любая клетка карты — место, куда можно спуститься. Города своей эпохи, жители со своими именами и семьями, погода, день и ночь, оружие и транспорт."
+  en: "Any cell on the map is a place you can step into. Cities of their era, locals with names and families, weather, day and night, weapons and vehicles."
+passport_title: { ru: "Паспорт мира", en: "World passport" }
+pp_release: { ru: "Выход", en: "Released" }
+pp_release_v: { ru: "20 августа 2026", en: "20 August 2026" }
+pp_version: { ru: "Версия", en: "Version" }
+pp_version_v: { ru: "2.0 в Steam · 2.1 в работе", en: "2.0 on Steam · 2.1 in progress" }
+pp_reviews: { ru: "Отзывы", en: "Reviews" }
+pp_reviews_v: { ru: "очень положительные", en: "Very Positive" }
+pp_genre: { ru: "Жанр", en: "Genre" }
+pp_genre_v: { ru: "симулятор, стратегия, песочница", en: "simulation, strategy, sandbox" }
+pp_lang: { ru: "Языки", en: "Languages" }
+pp_lang_v: { ru: "русский, английский", en: "English, Russian" }
+pp_platform: { ru: "Платформа", en: "Platform" }
+pp_platform_v: { ru: "Windows", en: "Windows" }
+pp_dev: { ru: "Разработчик", en: "Developer" }
+pp_pub: { ru: "Издатель", en: "Publisher" }
+plates_title: { ru: "Таблица иллюстраций", en: "Plates" }
+fig: { ru: "Рис.", en: "Fig." }
+zoom: { ru: "Увеличить", en: "Enlarge" }
+close: { ru: "Закрыть", en: "Close" }
+prev: { ru: "Назад", en: "Previous" }
+next: { ru: "Вперёд", en: "Next" }
+
+# II. Дорожная карта
+roadmap_title: { ru: "Дорожная карта", en: "Roadmap" }
+roadmap_lead:
+  ru: "Карта составлена по исходному коду игры: что уже работает, на что опирается каждая следующая система и в каком порядке их выгоднее строить. Ближние листы сняты инструментально, их сроки точны до месяца. Дальние нанесены глазомерно и предположительно: очертания верны, а детали будут уточняться с каждым обновлением и вашими отзывами."
+  en: "This map was drawn from the game’s source code: what already works, what each next system rests on, and in which order they are best built. The nearest sheets are surveyed, with dates accurate to the month. The farther ones are sketched or conjectural: the outlines are right, and the details will be refined with every update and your feedback."
+chart_title: { ru: "Шкала времени проекта", en: "Project timescale" }
+chart_note:
+  ru: "Дуги справа — зависимости: лист опирается на тот, от которого к нему тянется дуга. Наведите на строку, чтобы увидеть связи."
+  en: "The arcs on the right are dependencies: a sheet builds on the one its arc comes from. Hover a row to see its links."
+col_eon: { ru: "Эон", en: "Eon" }
+col_sheet: { ru: "Лист", en: "Sheet" }
+col_update: { ru: "Обновление", en: "Update" }
+col_when: { ru: "Срок", en: "When" }
+col_progress: { ru: "Готовность", en: "Progress" }
+col_links: { ru: "Связи", en: "Links" }
+you_are_here: { ru: "Вы здесь", en: "You are here" }
+sheet: { ru: "Лист", en: "Sheet" }
+eon: { ru: "Эон", en: "Eon" }
+goal: { ru: "Цель", en: "Goal" }
+why_here: { ru: "Почему в этом месте", en: "Why here" }
+hood: { ru: "Под капотом", en: "Under the hood" }
+builds_on: { ru: "Опирается на", en: "Builds on" }
+leads_to: { ru: "Открывает путь", en: "Leads to" }
+survey: { ru: "Съёмка", en: "Survey" }
+players_asked: { ru: "просили игроки", en: "players asked" }
+items_done: { ru: "из", en: "of" }
+rules_title: { ru: "Пять правил этой карты", en: "Five rules of this map" }
+rule1_t: { ru: "Сначала опоры", en: "Foundations first" }
+rule1:
+  ru: "Система строится раньше тех, что на неё опираются. Поэтому перестройка движка стоит до живых людей, экономики и мультиплеера, а не после."
+  en: "A system is built before the systems that rest on it. That is why the engine rebuild comes before living people, the economy and multiplayer — not after."
+rule2_t: { ru: "Каждый лист играбелен", en: "Every sheet is playable" }
+rule2:
+  ru: "Даже технический лист приносит то, что видно в игре: глобус, большие карты и высокие скорости."
+  en: "Even a technical sheet brings something you can see in the game: a globe, bigger maps, higher speeds."
+rule3_t: { ru: "Одна правда о мире", en: "One truth about the world" }
+rule3:
+  ru: "Всё, что вы видите на прогулке, следует из состояния симуляции. Никаких лошадей до приручения и танков до пороха."
+  en: "Everything you see on foot follows from the state of the simulation. No horses before taming, no tanks before gunpowder."
+rule4_t: { ru: "Сначала глубина, потом блеск", en: "Depth first, then shine" }
+rule4:
+  ru: "Lowpoly остаётся и становится красивее с каждым листом. Реалистичная графика для мощных ПК придёт, когда игра станет глубокой."
+  en: "Low-poly stays and gets more beautiful with every sheet. Realistic graphics for powerful PCs come once the game is deep."
+rule5_t: { ru: "Моды — полноправные граждане", en: "Mods are first-class citizens" }
+rule5:
+  ru: "Всё, что описано данными, открыто мододелам и Мастерской Steam."
+  en: "Everything described as data is open to modders and the Steam Workshop."
+
+# III. Вы просили
+req_title: { ru: "Вы просили", en: "You asked" }
+req_lead:
+  ru: "Идеи из обсуждений в Steam и комментариев на YouTube. Каждая нашла своё место на карте — пишите ещё."
+  en: "Ideas from Steam discussions and YouTube comments. Each one has found its place on the map — keep them coming."
+req_col_idea: { ru: "Просьба", en: "Request" }
+req_col_where: { ru: "Где на карте", en: "Where on the map" }
+req_col_status: { ru: "Статус", en: "Status" }
+req_cta: { ru: "Предложить идею в обсуждениях Steam", en: "Suggest an idea in Steam discussions" }
+
+# IV. Дневник
+devlog_title: { ru: "Полевой дневник", en: "Field journal" }
+devlog_lead:
+  ru: "Записи с разработки: видео, скриншоты и заметки о том, что меняется в мире. Новости выходят и в Telegram-канале издателя."
+  en: "Notes from development: videos, screenshots and remarks on how the world is changing. News is also posted on the publisher’s Telegram channel."
+devlog_all: { ru: "Все записи", en: "All entries" }
+devlog_entry: { ru: "Запись", en: "Entry" }
+devlog_read: { ru: "Читать запись", en: "Read the entry" }
+devlog_empty: { ru: "Первые записи скоро появятся.", en: "The first entries are coming soon." }
+devlog_rss: { ru: "RSS-лента", en: "RSS feed" }
+devlog_back: { ru: "Ко всем записям", en: "All entries" }
+devlog_newer: { ru: "Новее", en: "Newer" }
+devlog_older: { ru: "Раньше", en: "Older" }
+devlog_lang_note: { ru: "", en: "Some entries are written in Russian." }
+devlog_version: { ru: "Версия", en: "Version" }
+
+# подвал
+colophon_title: { ru: "Выходные данные", en: "Colophon" }
+colophon:
+  ru: "Карта составлена в октябре 2026 года по исходному коду версии 2.1 и уточняется с каждым обновлением. Скриншоты — из игры."
+  en: "This map was drawn in October 2026 from the source code of version 2.1 and is refined with every update. Screenshots are from the game."
+footer_dev: { ru: "Разработка", en: "Development" }
+footer_pub: { ru: "Издатель", en: "Publisher" }
+footer_follow: { ru: "Следить", en: "Follow" }
+footer_top: { ru: "Наверх", en: "Back to top" }

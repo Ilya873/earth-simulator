@@ -1,0 +1,67 @@
+# Просьбы игроков из обсуждений в Steam и комментариев на YouTube.
+# phase — id листа из roadmap.yml, где просьба выполняется.
+# Статус берётся из листа; чтобы переопределить для конкретной просьбы — добавьте s: done | wip | plan | idea
+
+- phase: v22
+  ru: "Показывать информацию о бедствии при наведении: силу урагана, осадки, площадь пожара"
+  en: "Hover over disasters to see information: hurricane strength, rainfall, wildfire area"
+- phase: v22
+  ru: "Реальные шкалы: Саффир — Симпсон для ураганов, шкалы для вулканов и землетрясений"
+  en: "Real-world scales: Saffir–Simpson for hurricanes, proper scales for volcanoes and earthquakes"
+- phase: v22
+  ru: "Показывать отклонение температуры от начала игры, а не среднюю температуру суши"
+  en: "Show the temperature deviation from the start, not the average land temperature"
+- phase: v22
+  ru: "Корабли не должны плавать по замёрзшему океану; что будет, если важный пролив замёрзнет"
+  en: "Boats shouldn’t cross frozen oceans; simulate what happens when a key strait freezes"
+- phase: v22
+  ru: "Кратеры после ядерных ракет и метеоритов, которые со временем затягиваются"
+  en: "Craters left by nukes and meteors that heal over time"
+- phase: v22
+  ru: "Более яркие и различимые цвета на слоях карты; тоньше стрелки ветра"
+  en: "More colourful, distinct map overlays; thinner wind barbs"
+- phase: v22
+  ru: "Менять названия стран, городов, форм правления и идеологий"
+  en: "Rename countries, cities, governments and ideologies"
+- phase: v31
+  ru: "Меню исследований: что цивилизация уже изучила и что собирается изучать"
+  en: "A research menu: what a civilisation has learned and plans to learn next"
+- phase: v31
+  ru: "Города разного вида: в пустыне — из глины и песчаника, в тайге — из брёвен"
+  en: "Different city styles: clay and sandstone in deserts, logs in the taiga"
+- phase: v31
+  ru: "Приручение животных разными племенами"
+  en: "Different tribes taming different animals"
+- phase: v32
+  ru: "Заходить в здания с интерьерами в режиме прогулки"
+  en: "Enter buildings with interiors in walk mode"
+- phase: v32
+  ru: "Режим выживания: голод, жажда, здоровье"
+  en: "A survival mode: hunger, thirst, health"
+- phase: v32
+  ru: "Вирусы и эпидемии"
+  en: "Viruses and epidemics"
+- phase: v33
+  ru: "Идеологии с бонусами: феодализм, социализм, капитализм, коммунизм, либерализм, демократия, центризм и другие"
+  en: "Ideologies with bonuses: feudalism, socialism, capitalism, communism, liberalism, democracy, centrism and more"
+- phase: v33
+  ru: "Вступить в любую нацию и стать правителем: через свержение, выборы или социальную лестницу — по идеологии страны"
+  en: "Join any nation and become its ruler: by overthrow, elections or the social ladder — depending on the ideology"
+- phase: v33
+  ru: "Играть за любого человека, даже за правителя, и отдавать приказы"
+  en: "Play as any person, even the ruler, and give orders"
+- phase: v33
+  ru: "Вселяться в жителей племени, вождей и пророков"
+  en: "Take over tribe members, chieftains and prophets"
+- phase: v33
+  ru: "Религии и пантеоны, которые отвечают на действия бога: часто бьёшь молниями — поклоняются Богу Грозы"
+  en: "Religions and pantheons that react to the god: strike often with lightning and they worship a Thunder God"
+- phase: v35
+  ru: "Солдаты не телепортируются на поле боя, а добираются туда на конях, повозках, машинах, вертолётах"
+  en: "Soldiers don’t teleport to battle but travel there on horses, carts, cars and helicopters"
+- phase: v35
+  ru: "Логистика и партизанские войны, привязанные к климату: потери от обморожения и голода"
+  en: "Logistics and guerrilla wars tied to climate: losses from frostbite and hunger"
+- phase: v55
+  ru: "Эволюция животных в зависимости от биомов"
+  en: "Animal evolution shaped by biomes"

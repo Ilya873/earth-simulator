@@ -1,0 +1,51 @@
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{%- assign rm = site.data.roadmap -%}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__sheet" data-atlas
+       data-lang="{{ L }}"
+       data-str='{"n":"{{ t.hero_n[L] }}","s":"{{ t.hero_s[L] }}","e":"{{ t.hero_e[L] }}","w":"{{ t.hero_w[L] }}","m":"{{ t.hero_m[L] }}","elev":"{{ t.hero_elev[L] }}","depth":"{{ t.hero_depth[L] }}","eq":"{{ t.hero_equator[L] }}","cancer":"{{ t.hero_cancer[L] }}","capricorn":"{{ t.hero_capricorn[L] }}","arctic":"{{ t.hero_arctic[L] }}","antarctic":"{{ t.hero_antarctic[L] }}"}'>
+    <canvas class="hero__map" aria-hidden="true"></canvas>
+    <svg class="hero__north" viewBox="0 0 40 64" aria-hidden="true">
+      <path d="M20 4 L29 40 L20 33 L11 40 Z" fill="currentColor"/>
+      <path d="M20 4 L20 33 L11 40 Z" fill="var(--paper-hi)" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+      <text x="20" y="60" text-anchor="middle">{% if L == 'en' %}N{% else %}С{% endif %}</text>
+    </svg>
+
+    <div class="cartouche">
+      <p class="cartouche__kicker">{{ t.hero_kicker[L] }}</p>
+      <h1 class="cartouche__title" id="hero-title"><span>Earth</span> <span>Simulator</span></h1>
+      <p class="cartouche__native">{{ t.hero_native[L] }}</p>
+      <p class="cartouche__lead">{{ t.hero_lead[L] }}</p>
+      <div class="cartouche__actions">
+        <a class="btn btn--ink" href="{{ site.steam_url }}" rel="noopener" target="_blank">{{ t.cta_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+        <a class="btn" href="{{ site.telegram_url }}" rel="noopener" target="_blank">{{ t.cta_telegram[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+      </div>
+      <p class="cartouche__edition mono">{{ t.hero_edition[L] }} · <a href="#roadmap">{{ t.cta_roadmap[L] }} ↓</a></p>
+    </div>
+
+    <aside class="legend" aria-label="{{ t.legend_title[L] }}">
+      <p class="legend__title">{{ t.legend_title[L] }}</p>
+      <ul class="legend__list">
+        {%- for s in rm.status %}
+        <li><i class="sym sym--{{ s[0] }}" aria-hidden="true"></i>{{ s[1][L] }}</li>
+        {%- endfor %}
+      </ul>
+      <ul class="legend__list legend__lines">
+        {%- for p in rm.precision %}
+        <li><i class="line line--{{ p[0] }}" aria-hidden="true"></i>{{ p[1][L] }}</li>
+        {%- endfor %}
+      </ul>
+      <div class="scalebar" aria-hidden="true">
+        <div class="scalebar__bar"><i></i><i></i><i></i><i></i></div>
+        <div class="scalebar__nums mono"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
+      </div>
+    </aside>
+
+    <div class="hero__tools">
+      <p class="hero__readout mono" data-readout aria-hidden="true">&nbsp;</p>
+      <p class="hero__hint">{{ t.hero_hint[L] }}</p>
+      <button type="button" class="hero__new label" data-new-world>↻ {{ t.hero_new[L] }}</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{%- assign rm = site.data.roadmap -%}
+{%- assign phases = rm.phases -%}
+<div class="sheets">
+{%- assign cur_eon = '' -%}
+{%- for p in phases %}
+  {%- if p.eon != cur_eon -%}
+  {%- assign cur_eon = p.eon -%}
+  {%- assign e = rm.eons | where: "id", p.eon | first -%}
+  <div class="eon-band" style="--ec: {{ e.color }}">
+    <span class="eon-band__num">{{ t.eon[L] }} {{ e.roman }}</span>
+    <span class="eon-band__name">{{ e.name[L] }}</span>
+    <span class="eon-band__span mono">{{ e.span[L] }}</span>
+  </div>
+  {%- endif %}
+  {%- assign total = p.items | size -%}
+  {%- assign dn = p.items | where: "s", "done" | size -%}
+  {%- assign wp = p.items | where: "s", "wip" | size -%}
+  <article class="sheet sheet--{{ p.precision }} sheet--{{ p.status }}{% if p.now %} is-now{% endif %}" id="sheet-{{ p.id }}" style="--pc: {{ p.color }}" aria-labelledby="sheet-{{ p.id }}-t">
+    <div class="sheet__tab" aria-hidden="true"><span>{{ t.sheet[L] }} {{ p.sheet }}</span></div>
+    <div class="sheet__body">
+      <header class="sheet__head">
+        <p class="sheet__meta mono">
+          <span>{{ t.sheet[L] }} {{ p.sheet }}</span>
+          <span>v{{ p.ver }}</span>
+          <span>{{ p.when[L] }}</span>
+          <span class="sheet__survey"><i class="line line--{{ p.precision }}" aria-hidden="true"></i>{{ rm.precision[p.precision][L] }}</span>
+        </p>
+        <h3 class="sheet__title" id="sheet-{{ p.id }}-t">{{ p.name[L] }}</h3>
+        <p class="sheet__goal">{{ p.goal[L] }}</p>
+        <p class="sheet__status mono"><i class="sym sym--{{ p.status }}" aria-hidden="true"></i>{{ rm.status[p.status][L] }}{% if dn > 0 or wp > 0 %} · {{ dn | plus: wp }} {{ t.items_done[L] }} {{ total }}{% endif %}</p>
+        {%- if p.now %}<p class="stamp stamp--now" aria-hidden="true">{{ t.you_are_here[L] }}</p>{% endif %}
+        {%- if p.status == 'done' %}<p class="stamp stamp--done" aria-hidden="true">{{ rm.status.done[L] }}</p>{% endif %}
+      </header>
+      <div class="sheet__grid">
+        <ul class="sheet__items">
+          {%- for it in p.items %}
+          {%- assign tx = it[L] -%}
+          <li class="item item--{{ it.s }}">
+            <i class="sym sym--{{ it.s }}" aria-hidden="true"></i>
+            <div>
+              <p class="item__t">{{ tx[0] }}{% if it.req %}<span class="item__req">{{ t.players_asked[L] }}</span>{% endif %}</p>
+              <p class="item__d">{{ tx[1] }}</p>
+              <p class="item__k label">{{ rm.tracks[it.k][L] }} · {{ rm.status[it.s][L] }}</p>
+            </div>
+          </li>
+          {%- endfor %}
+        </ul>
+        <aside class="sheet__side">
+          <h4 class="label">{{ t.why_here[L] }}</h4>
+          <p>{{ p.why[L] }}</p>
+          <details class="sheet__hood">
+            <summary class="label">{{ t.hood[L] }}</summary>
+            <p>{{ p.hood[L] }}</p>
+          </details>
+          <dl class="sheet__links">
+            {%- if p.deps.size > 0 %}
+            <dt class="label">{{ t.builds_on[L] }}</dt>
+            <dd>{% for d in p.deps %}{% assign q = phases | where: "id", d | first %}<a href="#sheet-{{ q.id }}" style="--pc: {{ q.color }}"><span class="mono">{{ q.sheet }}</span> {{ q.name[L] }}</a>{% endfor %}</dd>
+            {%- endif %}
+            {%- assign nxt = '' -%}
+            {%- capture nxt -%}{% for q in phases %}{% if q.deps contains p.id %}<a href="#sheet-{{ q.id }}" style="--pc: {{ q.color }}"><span class="mono">{{ q.sheet }}</span> {{ q.name[L] }}</a>{% endif %}{% endfor %}{%- endcapture -%}
+            {%- if nxt != '' %}
+            <dt class="label">{{ t.leads_to[L] }}</dt>
+            <dd>{{ nxt }}</dd>
+            {%- endif %}
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </article>
+{%- endfor %}
+</div>

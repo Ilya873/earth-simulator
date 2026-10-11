@@ -1,0 +1,6 @@
+{%- comment -%}
+  Картинка с подписью и увеличением по клику.
+  [include figure.html src="/assets/devlog/2026-10-11/map.jpg" caption="Подпись" alt="Описание" wide=true ]
+{%- endcomment -%}
+{%- assign L = page.lang | default: 'ru' -%}
+<figure class="fig{% if include.wide %} fig--wide{% endif %}" data-lb-group="post" data-lb-src="{{ include.full | default: include.src | relative_url }}" data-lb-cap="{{ include.caption | xml_escape }}"><button type="button" class="plate-fig__btn" aria-label="{{ site.data.i18n.zoom[L] }}"><img src="{{ include.src | relative_url }}" alt="{{ include.alt | default: include.caption | xml_escape }}" loading="lazy"></button>{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}</figure>

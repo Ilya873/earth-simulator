@@ -1,0 +1,38 @@
+---
+layout: default
+---
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{% include home/hero.html %}
+
+<div class="page">
+{% include home/world.html %}
+
+<section class="part" id="roadmap" aria-labelledby="roadmap-title">
+  <header class="part__head">
+    <span class="part__num">II</span>
+    <h2 class="part__title" id="roadmap-title">{{ t.roadmap_title[L] }}</h2>
+  </header>
+  <p class="part__lead">{{ t.roadmap_lead[L] }}</p>
+
+  {% include home/timescale.html %}
+
+  <div class="rules">
+    <p class="rules__title label">{{ t.rules_title[L] }}</p>
+    <ol class="rules__list">
+      <li><h3>{{ t.rule1_t[L] }}</h3><p>{{ t.rule1[L] }}</p></li>
+      <li><h3>{{ t.rule2_t[L] }}</h3><p>{{ t.rule2[L] }}</p></li>
+      <li><h3>{{ t.rule3_t[L] }}</h3><p>{{ t.rule3[L] }}</p></li>
+      <li><h3>{{ t.rule4_t[L] }}</h3><p>{{ t.rule4[L] }}</p></li>
+      <li><h3>{{ t.rule5_t[L] }}</h3><p>{{ t.rule5[L] }}</p></li>
+    </ol>
+  </div>
+
+  {% include home/plates.html %}
+</section>
+
+{% include home/requests.html %}
+
+{% include home/devlog.html %}
+</div>
+{{ content }}

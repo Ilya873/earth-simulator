@@ -1,0 +1,24 @@
+{%- assign L = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+<footer class="colophon">
+  <div class="colophon__in">
+    <div class="colophon__block colophon__about">
+      <p class="label">{{ t.colophon_title[L] }}</p>
+      <p class="colophon__title">Earth Simulator</p>
+      <p>{{ t.colophon[L] }}</p>
+    </div>
+    <dl class="colophon__block colophon__credits">
+      <dt class="label">{{ t.footer_dev[L] }}</dt><dd>{{ site.developer }}</dd>
+      <dt class="label">{{ t.footer_pub[L] }}</dt><dd>{{ site.publisher }}</dd>
+    </dl>
+    <div class="colophon__block">
+      <p class="label">{{ t.footer_follow[L] }}</p>
+      <ul class="colophon__links">
+        <li><a href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a></li>
+        <li><a href="{{ site.telegram_url }}" rel="noopener" target="_blank">Telegram · gamesforfarmnews<span class="ext" aria-hidden="true">↗</span></a></li>
+        <li><a href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a></li>
+      </ul>
+    </div>
+    <p class="colophon__foot mono"><span>© 2026 {{ site.developer }} · {{ site.publisher }}</span><a href="#top">{{ t.footer_top[L] }} ↑</a></p>
+  </div>
+</footer>
