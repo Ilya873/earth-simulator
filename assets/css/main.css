@@ -250,6 +250,10 @@ html:not(.js) .sm-chart, html:not(.js) .sm-bar, html:not(.js) .upds__toggle { di
 .upd__status--wip, .upd__here { color: var(--verd); }
 .upd__goal { margin: 0; max-width: 44em; font-size: 1.32rem; line-height: 1.5; font-style: italic; color: var(--parch); }
 .upd__body { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr); gap: clamp(26px, 4vw, 56px); margin-top: 30px; }
+.upd__main { display: grid; gap: 34px; align-content: start; }
+.upd__grows { padding-top: 24px; border-top: 1px solid var(--hair); }
+.upd__grows h4 { margin: 0 0 12px; font: 700 1.15rem/1.3 var(--serif); color: var(--brass-hi); }
+.upd__grows p { margin: 0 0 10px; font-size: 1.08rem; line-height: 1.5; color: var(--parch-2); max-width: 46em; }
 .upd__items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 34px; align-content: start; }
 .upd__item { transition: opacity .2s; }
 .upd__it { margin: 0 0 4px; font: 700 1.15rem/1.3 var(--serif); color: var(--parch); }

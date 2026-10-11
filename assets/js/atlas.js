@@ -410,7 +410,7 @@
     if (now - lastDraw >= 1000 / fps) {
       var step = Math.min(0.25, (now - lastDraw) / 1000); lastDraw = now;
       if (!reduceMotion) {
-        T += step * 0.016;
+        T += step * 0.0035;                 // медленный дрейф: материки и города плывут едва заметно
         var rows = Math.ceil(gh / 5);
         for (var r = 0; r < rows; r++) { computeRow(stripe); stripe = (stripe + 1) % gh; }
         if (citiesPlaced) moveCities();

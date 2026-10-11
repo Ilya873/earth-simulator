@@ -29,6 +29,7 @@
           <p class="upd__goal">{{ p.goal[L] }}</p>
         </header>
         <div class="upd__body">
+          <div class="upd__main">
           <ul class="upd__items">
             {%- for it in p.items %}
             {%- assign tx = it[L] -%}
@@ -38,6 +39,15 @@
             </li>
             {%- endfor %}
           </ul>
+          {%- if p.grows %}
+          <div class="upd__grows">
+            <h4>{{ t.grows_title[L] }}</h4>
+            {%- for g in p.grows[L] %}
+            <p>{{ g }}</p>
+            {%- endfor %}
+          </div>
+          {%- endif %}
+          </div>
           <aside class="upd__side">
             {%- if p.img %}
             <figure class="plate-fig upd__fig" data-lb-group="upd-{{ p.id }}" data-lb-src="{{ p.img | relative_url }}" data-lb-cap="{{ p.ver }} · {{ p.name[L] | xml_escape }}">

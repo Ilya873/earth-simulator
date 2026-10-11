@@ -7,7 +7,7 @@
 - ver: "2.1.0"
   kind: upcoming
   date: ""
-  when: { ru: "≈ ноябрь 2026", en: "≈ November 2026" }
+  when: { ru: "≈ октябрь 2026", en: "≈ October 2026" }
   name: { ru: "Пути сообщения", en: "Connections" }
   post: /devlog/2026/10/11/obnovlenie-2-1-0/
   items:

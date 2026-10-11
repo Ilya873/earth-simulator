@@ -120,6 +120,7 @@ update: { ru: "Обновление", en: "Update" }
 goal: { ru: "Цель", en: "Goal" }
 why_here: { ru: "Почему в этом месте", en: "Why here" }
 hood: { ru: "Под капотом", en: "Under the hood" }
+grows_title: { ru: "Что станет глубже в уже существующем", en: "What gets deeper in what already exists" }
 builds_on: { ru: "Опирается на", en: "Builds on" }
 leads_to: { ru: "Открывает путь", en: "Leads to" }
 players_asked:
@@ -179,7 +180,7 @@ devlog_newer: { ru: "Новее", en: "Newer" }
 devlog_older: { ru: "Раньше", en: "Older" }
 devlog_lang_note: { ru: "", en: "Entries can be switched between Russian and English." }
 devlog_version: { ru: "Версия", en: "Version" }
-tg_title: { ru: "Из канала издателя", en: "From the publisher’s channel" }
+tg_title: { ru: "Последняя новость в канале издателя", en: "Latest news on the publisher’s channel" }
 tg_open: { ru: "Открыть канал", en: "Open the channel" }
 
 # подвал

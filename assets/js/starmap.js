@@ -101,13 +101,13 @@
   }
 
   /* ---------- построение карты ---------- */
-  var systems = [], links = [], planetGroups = [], planets = [];
+  var systems = [], links = [], planetGroups = [], planets = [], labels = {}, heres = {};
   function build() {
     layout();
     while (svg.firstChild) svg.removeChild(svg.firstChild);
     svg.setAttribute('viewBox', '0 0 ' + VW + ' ' + VH);
     svg.classList.toggle('is-tall', mode === 'tall');
-    systems = []; links = []; planetGroups = []; planets = [];
+    systems = []; links = []; planetGroups = []; planets = []; labels = {}; heres = {};
 
 
     // ось времени: только подписи лет
@@ -143,8 +143,14 @@
       }
     });
 
+    var lg = el('g', null, svg);       // линии — под системами, заполняются после раскладки подписей
+
+    // системы
+    var sg = el('g', null, svg);
+    phases.forEach(function (p) { buildSystem(p, sg); });
+    placeLabels();
+
     // маршрут: одна линия через обновления по порядку; до «Вы здесь» — сплошная, дальше — пунктир
-    var lg = el('g', null, svg);
     var ranked = phases.slice().sort(function (a, b) { return a.t - b.t; });
     var nowIdx = 0;
     ranked.forEach(function (p, i) { if (p.now) nowIdx = i; });
@@ -166,9 +172,6 @@
       });
     });
 
-    // системы
-    var sg = el('g', null, svg);
-    phases.forEach(function (p) { buildSystem(p, sg); });
     if (reduce) svg.classList.add('is-on');
     else if (introDone) svg.classList.add('is-on');
     applyFilter(curFilter);
@@ -211,8 +214,9 @@
     // подписи: «2.1 Пути сообщения» одной строкой
     var lab, lx = 0, ly = R + 30, anchor = 'middle';
     if (mode === 'tall') { var right = c.x < VW / 2; lx = right ? R + 12 : -R - 12; ly = 6; anchor = right ? 'start' : 'end'; }
-    if (p.now) el('text', { x: mode === 'wide' ? 0 : lx, y: mode === 'wide' ? -R - 14 : -16, 'text-anchor': anchor, 'class': 'sm-here' }, inner).textContent = STR.here || '';
+    if (p.now) { heres[p.id] = el('text', { x: lx, y: -R - 14, 'text-anchor': anchor, 'class': 'sm-here' }, inner); heres[p.id].textContent = STR.here || ''; }
     lab = el('text', { x: lx, y: ly, 'text-anchor': anchor, 'class': 'sm-name' }, inner);
+    labels[p.id] = lab;
     var tv = el('tspan', { 'class': 'sm-ver' }, lab); tv.textContent = p.ver + ' ';
     var tn = el('tspan', null, lab); tn.textContent = p.name[L];
     systems.push(g);
@@ -232,6 +236,47 @@
       if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); focusSys(p._i - 1); }
     });
   }
+  // подписи раскладываются так, чтобы не задевать чужие орбиты и друг друга:
+  // меряем настоящую ширину текста и пробуем стороны по очереди (снизу, сверху, справа, слева)
+  function placeLabels() {
+    var placed = [], order = phases.slice().sort(function (a, b) { return a.t - b.t; });
+    var bottom = mode === 'wide' ? VH - 40 : VH - 8;
+    function hitsCircle(b, cx, cy, r) {
+      var nx = Math.max(b[0], Math.min(cx, b[2])), ny = Math.max(b[1], Math.min(cy, b[3]));
+      return (nx - cx) * (nx - cx) + (ny - cy) * (ny - cy) < r * r;
+    }
+    function hitsBox(a, b) { return a[0] < b[2] + 8 && a[2] > b[0] - 8 && a[1] < b[3] + 4 && a[3] > b[1] - 4; }
+    function cost(b, own) {
+      var k = 0;
+      if (b[0] < 4 || b[2] > VW - 4 || b[1] < 4 || b[3] > bottom) k += 100;
+      phases.forEach(function (q) { var c = P[q.id]; if (q.id !== own && hitsCircle(b, c.x, c.y, c.R + 9)) k += 10; });
+      placed.forEach(function (o) { if (hitsBox(b, o)) k += 10; });
+      return k;
+    }
+    order.forEach(function (p) {
+      var c = P[p.id], R = c.R, t = labels[p.id], h = 24, w = 0;
+      try { w = t.getComputedTextLength(); } catch (e) {}
+      if (!w) w = 10.5 * (p.ver.length + 1 + p.name[L].length);
+      var extra = heres[p.id] ? 26 : 0;         // над подписью «вы здесь» нужна ещё строка
+      var cands = [
+        { k: 'b', x: 0, y: R + 30, a: 'middle', box: [c.x - w / 2, c.y + R + 12, c.x + w / 2, c.y + R + 12 + h] },
+        { k: 't', x: 0, y: -R - 16, a: 'middle', box: [c.x - w / 2, c.y - R - 34 - extra, c.x + w / 2, c.y - R - 10] },
+        { k: 'r', x: R + 14, y: 7, a: 'start', box: [c.x + R + 12, c.y - h / 2 - extra, c.x + R + 14 + w, c.y + h / 2] },
+        { k: 'l', x: -R - 14, y: 7, a: 'end', box: [c.x - R - 14 - w, c.y - h / 2 - extra, c.x - R - 12, c.y + h / 2] }
+      ];
+      if (mode === 'tall') cands = c.x < VW / 2 ? [cands[2], cands[3], cands[0], cands[1]] : [cands[3], cands[2], cands[0], cands[1]];
+      var best = null;
+      cands.forEach(function (cd) { cd.cost = cost(cd.box, p.id); if (!best || cd.cost < best.cost) best = cd; });
+      t.setAttribute('x', best.x); t.setAttribute('y', best.y); t.setAttribute('text-anchor', best.a);
+      c.lb = best.box; placed.push(best.box);
+      var here = heres[p.id];
+      if (here) {
+        if (best.k === 'b') { here.setAttribute('x', 0); here.setAttribute('y', -R - 14); here.setAttribute('text-anchor', 'middle'); placed.push([c.x - 50, c.y - R - 30, c.x + 50, c.y - R - 10]); }
+        else { here.setAttribute('x', best.x); here.setAttribute('y', best.y - 27); here.setAttribute('text-anchor', best.a); }
+      }
+    });
+  }
+
   function focusSys(i) {
     var p = phases[Math.max(0, Math.min(phases.length - 1, i))];
     var g = svg.querySelector('.sm-sys[data-id="' + p.id + '"]');
@@ -418,6 +463,7 @@
   /* ---------- запуск ---------- */
   counts();
   build();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { build(); });
   sizeTwinkle(); drawTwinkle(0);
   drawSky();
   var start = null, m = /^#upd-([\w-]+)$/.exec(location.hash || '');
