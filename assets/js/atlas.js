@@ -1,8 +1,8 @@
 /* Earth Simulator — титульная карта.
    Процедурная физическая карта: послойная окраска высот, отмывка рельефа, горизонтали,
-   «водная штриховка» у берегов, градусная сетка. Мир медленно и ровно плывёт на запад —
-   как планета, поворачивающаяся под картой; города привязаны к своей клетке суши и плывут вместе с ней.
-   Зажатая кнопка мыши поднимает сушу (с Shift — опускает), как кисть «Земля» в игре. */
+   «водная штриховка» у берегов, градусная сетка. Материки медленно текут и изгибаются,
+   города плывут вместе со своей сушей. Зажатая кнопка мыши поднимает сушу (с Shift — опускает),
+   как кисть «Земля» в игре. */
 (function () {
   'use strict';
 
@@ -19,7 +19,6 @@
   var reduceMotion = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   var M_LAND = 5000, M_SEA = 5000;   // метров на единицу высоты
-  var DRIFT = 0.4;                   // скорость дрейфа, клеток сетки в секунду (≈2–3 px/с)
 
   /* ---------- шум: 2D simplex (Gustavson) с зерном ---------- */
   function mulberry(seed) {
@@ -61,38 +60,73 @@
     return s / n;
   }
 
-  /* ---------- мир: бесконечная по долготе суша ---------- */
-  var rnd = mulberry(1);
+  /* ---------- течение суши ----------
+     Точка листа (u,v) показывает точку суши, в которую её переносят четыре слоя изгиба подряд.
+     Каждый слой слабый (растяжение < 1), поэтому лист нигде не складывается внахлёст:
+     у каждого клочка суши ровно одно место на карте, и город находится точно — обратным ходом по слоям. */
+  var T = 0;   // время течения
+  var WARP = [
+    // частота, сила, сдвиги шума, скорость по времени
+    { f: 0.42, a: 0.21, ax: 13.7, ay: -4.2, bx: -7.9, by: 21.3, tx: 0.55, ty: -0.45 },
+    { f: 0.6, a: 0.15, ax: 3.1, ay: 9.4, bx: 17.2, by: -6.6, tx: -0.5, ty: 0.6 },
+    { f: 0.85, a: 0.1, ax: -21.5, ay: 2.8, bx: 5.5, by: -14.1, tx: 0.65, ty: 0.5 },
+    { f: 1.2, a: 0.07, ax: 8.8, ay: 31.0, bx: -12.0, by: 4.4, tx: -0.6, ty: -0.55 }
+  ];
+  function wx(L, x, y) { return noise(x * L.f + L.ax + T * L.tx, y * L.f + L.ay) * L.a; }
+  function wy(L, x, y) { return noise(x * L.f + L.bx, y * L.f + L.by + T * L.ty) * L.a; }
+  // лист → суша; st (если дан) получает промежуточные точки по слоям
+  function toLand(u, v, st) {
+    var x = u, y = v;
+    for (var k = 0; k < WARP.length; k++) {
+      if (st) { st[k][0] = x; st[k][1] = y; }
+      var L = WARP[k], dx = wx(L, x, y), dy = wy(L, x, y);
+      x += dx; y += dy;
+    }
+    return [x, y];
+  }
+
+  /* ---------- мир ---------- */
+  var seed, blobs, cities = [], cityRnd, citiesPlaced = false;
   var NAMES = LANG === 'en'
-    ? ['Volaria', 'Karor', 'Velest', 'Tirnia', 'Omland', 'Drapolis', 'Mimir', 'Kaen', 'Sinvess', 'Goros', 'Lumir', 'Arstan', 'Elgrad', 'Beyum', 'Fengrad', 'Unos']
-    : ['Волария', 'Карор', 'Велест', 'Тирния', 'Омланд', 'Драполис', 'Мимир', 'Каен', 'Синвесь', 'Горос', 'Лумир', 'Арстан', 'Элград', 'Беум', 'Фенград', 'Унос'];
-  var nameAt = 0;
+    ? ['Volaria', 'Karor', 'Velest', 'Tirnia', 'Omland', 'Drapolis', 'Mimir', 'Kaen', 'Sinvess', 'Goros', 'Lumir', 'Arstan']
+    : ['Волария', 'Карор', 'Велест', 'Тирния', 'Омланд', 'Драполис', 'Мимир', 'Каен', 'Синвесь', 'Горос', 'Лумир', 'Арстан'];
 
   function newWorld(s) {
-    rnd = mulberry(s >>> 0);
+    seed = s >>> 0;
+    var rnd = mulberry(seed);
     seedNoise(rnd);
-    nameAt = Math.floor(rnd() * NAMES.length);
+    blobs = [];
+    // несколько материков в правой, открытой части листа (слева — картуш)
+    var n = 4 + Math.floor(rnd() * 3);
+    for (var k = 0; k < n; k++) {
+      blobs.push({ x: 0.34 + rnd() * 0.62, y: 0.1 + rnd() * 0.66, r2: Math.pow(0.13 + rnd() * 0.17, 2), w: 0.6 + rnd() * 0.5 });
+    }
+    blobs.push({ x: 0.08 + rnd() * 0.2, y: 0.08 + rnd() * 0.2, r2: 0.012, w: 0.5 });
+    cities = [];
+    cityRnd = mulberry(seed ^ 0x9e3779b9);
+    citiesPlaced = false;
   }
-  // u — долгота в долях высоты листа (растёт без предела), v — 0…1 сверху вниз
-  function heightAt(u, v) {
-    var x = u + noise(u * 1.15 + 13.7, v * 1.15 - 4.2) * 0.3;
-    var y = v + noise(u * 1.15 - 7.9, v * 1.15 + 21.3) * 0.3;
-    var cont = noise(x * 0.75 + 31.1, y * 0.75 + 5.3) * 0.7 + noise(x * 1.6 - 12.4, y * 1.6 + 8.8) * 0.3;
-    var c = 1 / (1 + Math.exp(-cont * 5));                   // мягкая маска материков
-    var h = c * 0.92 + fbm(x * 2.3, y * 2.3) * 0.5 - 0.52;
+
+  // высота точки суши (от времени не зависит: течёт лист, а не рельеф)
+  function landHeight(x, y) {
+    var c = 0;
+    for (var k = 0; k < blobs.length; k++) {
+      var b = blobs[k], dx = x - b.x * aspect, dy = y - b.y;
+      c += b.w * Math.exp(-(dx * dx + dy * dy) / b.r2);
+    }
+    c = 1 - Math.exp(-1.7 * c);                         // насыщение: материки не превращаются в столовые горы
+    var h = c * 0.92 + fbm(x * 2.3, y * 2.3) * 0.56 - 0.44;
     var r = 1 - Math.abs(noise(x * 3.3 + 40, y * 3.3 + 40));
     var land = h < 0 ? 0 : h > 0.2 ? 1 : h / 0.2;
     h += r * r * r * 0.34 * land;
     return h;
   }
+  function heightAt(u, v) { var p = toLand(u, v); return landHeight(p[0], p[1]); }
 
-  /* ---------- сетка листа ----------
-     Колонка i рисуется в x = mapX + (i − frac)·cs; когда дрейф набегает на целую клетку,
-     массивы сдвигаются на колонку влево и справа досчитывается одна новая. */
+  /* ---------- сетка и геометрия листа ---------- */
   var DPR = 1, Wc = 0, Hc = 0, aspect = 1.6;
   var mapX = 0, mapY = 0, mapW, mapH;
-  var nCols, nRows, gw, gh, cs, csy, cellU, B, U, Hh, off, offCtx, img;
-  var u0 = 0, frac = 0, avoid = [];   // u0 — долгота левой колонки в единицах листа, frac — дробный сдвиг (доля клетки)
+  var gw, gh, cs, csy, B, U, Hh, off, offCtx, img, stripe = 0, avoid = [];
   var LON0 = 22, LON_SPAN = 150, LAT_C = 16, lat0, latSpan;
 
   function layout() {
@@ -102,10 +136,8 @@
     canvas.width = Math.round(Wc * DPR); canvas.height = Math.round(Hc * DPR);
     mapW = Wc; mapH = Hc; aspect = mapW / mapH;
     var cell = Wc < 700 ? 5 : 6;
-    nCols = Math.max(40, Math.round(mapW / cell)); nRows = Math.max(30, Math.round(mapH / cell));
-    cs = mapW / nCols; csy = mapH / nRows;
-    gw = nCols + 3; gh = nRows + 1;
-    cellU = aspect / nCols;
+    gw = Math.max(40, Math.round(mapW / cell) + 1); gh = Math.max(30, Math.round(mapH / cell) + 1);
+    cs = mapW / (gw - 1); csy = mapH / (gh - 1);
     B = new Float32Array(gw * gh); U = new Float32Array(gw * gh); Hh = new Float32Array(gw * gh);
     off = document.createElement('canvas'); off.width = gw; off.height = gh;
     offCtx = off.getContext('2d'); img = offCtx.createImageData(gw, gh);
@@ -113,22 +145,12 @@
     LON_SPAN = aspect >= 1.36 ? 150 : Math.max(56, 110 * aspect);
     latSpan = LON_SPAN * mapH / mapW; lat0 = LAT_C + latSpan / 2;
     avoid = avoidRects();
-    for (var i = 0; i < gw; i++) computeColumn(i);
-    placeCities();
+    for (var j = 0; j < gh; j++) computeRow(j);
+    citiesPlaced = false;
   }
-  function computeColumn(i) {
-    var u = u0 + i * cellU;
-    for (var j = 0; j < gh; j++) B[j * gw + i] = heightAt(u, j / nRows);
-  }
-  function shiftLeft() {
-    for (var j = 0; j < gh; j++) {
-      var a = j * gw;
-      B.copyWithin(a, a + 1, a + gw); U.copyWithin(a, a + 1, a + gw); U[a + gw - 1] = 0;
-    }
-    u0 += cellU;
-    computeColumn(gw - 1);
-    for (var q = cities.length - 1; q >= 0; q--) { cities[q].i--; if (cities[q].i < -40) cities.splice(q, 1); }
-    maybeSpawnCity(gw - 1);
+  function computeRow(j) {
+    var v = j / (gh - 1), base = j * gw;
+    for (var i = 0; i < gw; i++) B[base + i] = heightAt((i / (gw - 1)) * aspect, v);
   }
 
   /* ---------- палитра: послойная окраска ---------- */
@@ -158,13 +180,14 @@
     offCtx.putImageData(img, 0, 0);
   }
 
-  /* ---------- горизонтали: marching squares (в координатах сетки без дробного сдвига) ---------- */
+  /* ---------- горизонтали: marching squares ---------- */
+  // уровни: [значение, класс]; классы: 0 берег, 1 водная штриховка, 2 изобаты, 3 горизонтали, 4 утолщённые
   var LEVELS = [[-0.5, 2], [-0.34, 2], [-0.2, 2], [-0.1, 1], [-0.058, 1], [-0.026, 1], [0, 0]];
   for (var lv = 0.08; lv < 0.95; lv += 0.08) LEVELS.push([Math.round(lv * 100) / 100, Math.abs(lv - 0.24) < 0.01 || Math.abs(lv - 0.48) < 0.01 || Math.abs(lv - 0.72) < 0.01 ? 4 : 3]);
   var paths;
   function contour() {
     paths = [new Path2D(), new Path2D(), new Path2D(), new Path2D(), new Path2D(), new Path2D(), new Path2D()];
-    var lining = [paths[5], paths[6], paths[1]];
+    var lining = [paths[5], paths[6], paths[1]]; // три линии штриховки — разной силы
     var i, j, k, v0, v1, v2, v3, mn, mx, L, l, cls, idx, x0, y0, x1, y1, P;
     for (j = 0; j < gh - 1; j++) {
       y0 = mapY + j * csy; y1 = y0 + csy;
@@ -203,24 +226,21 @@
   }
 
   /* ---------- координаты ---------- */
-  function colAt(x) { return (x - mapX) / cs + frac; }
-  function lonAt(x) { return LON0 + (u0 + colAt(x) * cellU) * LON_SPAN / aspect; }
+  function lonAt(x) { return LON0 + (x - mapX) / mapW * LON_SPAN; }
   function latAt(y) { return lat0 - (y - mapY) / mapH * latSpan; }
-  function xOfLon(lon) { return mapX + (((lon - LON0) * aspect / LON_SPAN - u0) / cellU - frac) * cs; }
+  function xOfLon(lon) { return mapX + (lon - LON0) / LON_SPAN * mapW; }
   function yOfLat(lat) { return mapY + (lat0 - lat) / latSpan * mapH; }
-  function wrapLon(l) { l = ((l + 180) % 360 + 360) % 360 - 180; return l; }
   function dms(v, pos, neg) {
     var a = Math.abs(v), d = Math.floor(a), m = Math.floor((a - d) * 60);
     return d + '°' + (m < 10 ? '0' : '') + m + '′ ' + (v >= 0 ? pos : neg);
   }
   function hAtXY(x, y) {
-    var i = Math.round(colAt(x)), j = Math.round((y - mapY) / csy);
+    var i = Math.round((x - mapX) / cs), j = Math.round((y - mapY) / csy);
     if (i < 0 || j < 0 || i >= gw || j >= gh) return -1;
     return Hh[j * gw + i];
   }
 
-  /* ---------- города: привязаны к своей клетке и плывут вместе с ней ---------- */
-  var cities = [];
+  /* ---------- города: точка суши, которая течёт вместе с материком ---------- */
   function avoidRects() {
     var hr = host.getBoundingClientRect(), out = [];
     host.querySelectorAll('.cartouche, .hero__tools, .hero__north').forEach(function (el) {
@@ -230,22 +250,7 @@
     });
     return out;
   }
-  function nextName() {
-    for (var t = 0; t < NAMES.length; t++) {
-      var n = NAMES[nameAt++ % NAMES.length], used = false;
-      for (var q = 0; q < cities.length; q++) if (cities[q].name === n) { used = true; break; }
-      if (!used) return n;
-    }
-    return NAMES[nameAt++ % NAMES.length];
-  }
-  function farFromCities(i, j, minD) {
-    for (var q = 0; q < cities.length; q++) {
-      var dx = (cities[q].i - i) * cs, dy = (cities[q].j - j) * csy;
-      if (dx * dx + dy * dy < minD * minD) return false;
-    }
-    return true;
-  }
-  // зазор от значка с подписью до ближайшей панели; отрицательный — заходит под неё
+  // зазор от значка с подписью до ближайшей панели (картуш, инструменты, роза ветров); отрицательный — заходит под неё
   function clearance(x, y, w) {
     var b0 = x - 8, b1 = y - 12, b2 = x + 12 + w, b3 = y + 12, d = 1e9;
     for (var q = 0; q < avoid.length; q++) {
@@ -254,25 +259,35 @@
     }
     return d;
   }
-  function goodSite(i, j) { var h = B[j * gw + i]; return h >= 0.03 && h <= 0.3 && j * csy > 40 && j * csy < mapH - 30; }
   function placeCities() {
     cities = [];
     var tries = 0, minD = Math.max(90, mapW * 0.09);
     while (cities.length < 9 && tries++ < 1600) {
-      var i = 2 + Math.floor(rnd() * (nCols - 4)), j = 2 + Math.floor(rnd() * (gh - 4));
-      if (!goodSite(i, j)) continue;
-      if (clearance(mapX + i * cs, mapY + j * csy, 110) < 30 || !farFromCities(i, j, minD)) continue;
-      cities.push({ i: i, j: j, name: nextName(), cap: cities.length === 0 });
+      var i = 2 + Math.floor(cityRnd() * (gw - 4)), j = 2 + Math.floor(cityRnd() * (gh - 4));
+      var h = B[j * gw + i];
+      if (h < 0.03 || h > 0.3) continue;
+      var x = mapX + i * cs, y = mapY + j * csy, ok = true, q;
+      if (clearance(x, y, 110) < 40 || x > mapX + mapW - 110 || y < mapY + 40 || y > mapY + mapH - 30) continue;
+      for (q = 0; q < cities.length; q++) { var dx = cities[q].x - x, dy = cities[q].y - y; if (dx * dx + dy * dy < minD * minD) { ok = false; break; } }
+      if (!ok) continue;
+      var u = (i / (gw - 1)) * aspect, v = j / (gh - 1), st = [];
+      for (q = 0; q < WARP.length; q++) st.push([0, 0]);
+      var m = toLand(u, v, st);
+      cities.push({ m: m, st: st, x: x, y: y, name: NAMES[cities.length % NAMES.length], cap: cities.length === 0 });
     }
+    citiesPlaced = true;
   }
-  function maybeSpawnCity(i) {
-    var onMap = 0, hasCap = false;
-    for (var q = 0; q < cities.length; q++) { if (cities[q].i >= 0 && cities[q].i <= nCols) onMap++; if (cities[q].cap) hasCap = true; }
-    if (onMap >= 10 || rnd() > 0.09) return;
-    var minD = Math.max(90, mapW * 0.09);
-    for (var t = 0; t < 12; t++) {
-      var j = 2 + Math.floor(rnd() * (gh - 4));
-      if (goodSite(i, j) && farFromCities(i, j, minD)) { cities.push({ i: i, j: j, name: nextName(), cap: !hasCap }); return; }
+  function moveCities() {
+    // обратный ход по слоям: в каком месте листа сейчас лежит точка суши города.
+    // Каждый слой сжимающий, поэтому решение единственное и находится за несколько шагов от прошлого положения.
+    for (var q = 0; q < cities.length; q++) {
+      var c = cities[q], tx = c.m[0], ty = c.m[1];
+      for (var k = WARP.length - 1; k >= 0; k--) {
+        var L = WARP[k], p = c.st[k], x = p[0], y = p[1];
+        for (var it = 0; it < 6; it++) { x = tx - wx(L, x, y); y = ty - wy(L, x, y); }
+        p[0] = x; p[1] = y; tx = x; ty = y;
+      }
+      c.x = mapX + (tx / aspect) * mapW; c.y = mapY + ty * mapH;
     }
   }
 
@@ -294,10 +309,8 @@
     ctx.save();
     ctx.beginPath(); ctx.rect(mapX, mapY, mapW, mapH); ctx.clip();
     ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(off, mapX - cs / 2 - frac * cs, mapY - csy / 2, gw * cs, gh * csy);
+    ctx.drawImage(off, mapX - cs / 2, mapY - csy / 2, gw * cs, gh * csy);
 
-    ctx.save();
-    ctx.translate(-frac * cs, 0);
     ctx.lineCap = 'round';
     ctx.strokeStyle = SEA_INK;
     ctx.globalAlpha = 0.22; ctx.lineWidth = 0.8; ctx.stroke(paths[2]);
@@ -309,7 +322,6 @@
     ctx.globalAlpha = 0.42; ctx.lineWidth = 0.7; ctx.stroke(paths[3]);
     ctx.globalAlpha = 0.62; ctx.lineWidth = 1.2; ctx.stroke(paths[4]);
     ctx.globalAlpha = 1; ctx.strokeStyle = INK; ctx.lineWidth = 1.5; ctx.stroke(paths[0]);
-    ctx.restore();
 
     drawGraticule();
     drawCities();
@@ -321,10 +333,10 @@
   }
 
   function drawGraticule() {
-    var lon, lat, x, y, l0 = Math.floor(lonAt(mapX) / 15) * 15, l1 = lonAt(mapX + mapW);
+    var lon, lat, x, y;
     ctx.strokeStyle = INK; ctx.lineWidth = 0.6; ctx.globalAlpha = 0.22;
     ctx.beginPath();
-    for (lon = l0; lon <= l1; lon += 15) { x = xOfLon(lon); ctx.moveTo(x, mapY); ctx.lineTo(x, mapY + mapH); }
+    for (lon = Math.ceil(LON0 / 15) * 15; lon <= LON0 + LON_SPAN; lon += 15) { x = xOfLon(lon); ctx.moveTo(x, mapY); ctx.lineTo(x, mapY + mapH); }
     for (lat = Math.floor(lat0 / 15) * 15; lat >= lat0 - latSpan; lat -= 15) { y = yOfLat(lat); ctx.moveTo(mapX, y); ctx.lineTo(mapX + mapW, y); }
     ctx.stroke();
     ctx.globalAlpha = 1;
@@ -341,19 +353,20 @@
   }
 
   function drawCities() {
+    if (!citiesPlaced) placeCities();
     for (var q = 0; q < cities.length; q++) {
-      var c = cities[q], x = mapX + (c.i - frac) * cs, y = mapY + c.j * csy;
-      if (x < mapX - 160 || x > mapX + mapW + 4) continue;
-      if (c.i < 0 || c.i >= gw || Hh[c.j * gw + c.i] < 0.006) continue;   // город ушёл под воду — не рисуем
+      var c = cities[q];
+      if (c.x < mapX + 4 || c.x > mapX + mapW - 4 || c.y < mapY + 4 || c.y > mapY + mapH - 4) continue;
+      if (hAtXY(c.x, c.y) < 0.006) continue;               // кисть опустила сушу под воду — город не рисуем
       var font = (c.cap ? 'italic 700 15px ' : 'italic 500 13.5px ') + serifFont;
       if (!c.w) { ctx.font = font; c.w = ctx.measureText(c.name).width; }
-      var a = clearance(x, y, c.w) / 36;
+      var a = clearance(c.x, c.y, c.w) / 36;               // у панелей город плавно гаснет, а не ныряет под них
       if (a <= 0) continue;
       ctx.globalAlpha = a > 1 ? 1 : a;
       ctx.lineWidth = 1.3; ctx.strokeStyle = INK; ctx.fillStyle = PAPER;
-      ctx.beginPath(); ctx.arc(x, y, c.cap ? 5 : 3.6, 0, 6.2832); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = INK; ctx.beginPath(); ctx.arc(x, y, c.cap ? 2.2 : 1.5, 0, 6.2832); ctx.fill();
-      label(c.name, x + 9, y - 1, font, INK, 'left', 3.4);
+      ctx.beginPath(); ctx.arc(c.x, c.y, c.cap ? 5 : 3.6, 0, 6.2832); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = INK; ctx.beginPath(); ctx.arc(c.x, c.y, c.cap ? 2.2 : 1.5, 0, 6.2832); ctx.fill();
+      label(c.name, c.x + 9, c.y - 1, font, INK, 'left', 3.4);
     }
     ctx.globalAlpha = 1;
   }
@@ -373,7 +386,7 @@
   var pointer = { x: 0, y: 0, in: false, down: false, sign: 1 };
   var finePointer = !!(window.matchMedia && matchMedia('(pointer: fine)').matches);
   function brush(dt) {
-    var R = BRUSH, ci = colAt(pointer.x), cj = (pointer.y - mapY) / csy;
+    var R = BRUSH, ci = (pointer.x - mapX) / cs, cj = (pointer.y - mapY) / csy;
     var ri = Math.ceil(R / cs), rj = Math.ceil(R / csy), amt = 0.9 * dt * pointer.sign;
     for (var j = Math.max(0, Math.floor(cj - rj)); j <= Math.min(gh - 1, Math.ceil(cj + rj)); j++) {
       for (var i = Math.max(0, Math.floor(ci - ri)); i <= Math.min(gw - 1, Math.ceil(ci + ri)); i++) {
@@ -389,7 +402,7 @@
     var h = hAtXY(pointer.x, pointer.y), on = pointer.in && h !== -1;
     readout.classList.toggle('is-on', on);
     if (!on) return;
-    var lat = latAt(pointer.y), lon = wrapLon(lonAt(pointer.x));
+    var lat = latAt(pointer.y), lon = lonAt(pointer.x);
     var m = h >= 0 ? Math.round(h * M_LAND / 10) * 10 : Math.round(-h * M_SEA / 10) * 10;
     var num = m.toLocaleString(LANG === 'en' ? 'en-US' : 'ru-RU');
     readout.textContent = dms(lat, S.n || 'N', S.s || 'S') + ' · ' + dms(lon, S.e || 'E', S.w || 'W') + ' · ' +
@@ -414,9 +427,7 @@
   window.addEventListener('keyup', function (e) { if (e.key === 'Shift') pointer.sign = 1; });
   if (btnNew) btnNew.addEventListener('click', function () {
     newWorld((Math.random() * 4294967296) >>> 0);
-    u0 = 0; frac = 0; U.fill(0);
-    for (var i = 0; i < gw; i++) computeColumn(i);
-    placeCities(); lastDraw = 0; wake();
+    T = 0; for (var j = 0; j < gh; j++) computeRow(j); U.fill(0); lastDraw = 0; wake();
   });
 
   /* ---------- цикл ---------- */
@@ -429,8 +440,10 @@
     if (now - lastDraw >= 1000 / fps) {
       var step = Math.min(0.25, (now - lastDraw) / 1000); lastDraw = now;
       if (!reduceMotion) {
-        frac += step * DRIFT;
-        while (frac >= 1) { frac -= 1; shiftLeft(); }
+        T += step * 0.0035;                 // медленное течение: материки и города плывут едва заметно
+        var rows = Math.ceil(gh / 5);
+        for (var r = 0; r < rows; r++) { computeRow(stripe); stripe = (stripe + 1) % gh; }
+        if (citiesPlaced) moveCities();
       }
       if (pointer.down && pointer.in) brush(step);
       var decay = Math.exp(-step / 40), n = gw * gh, k, anyU = false;
