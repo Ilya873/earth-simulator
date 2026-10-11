@@ -102,7 +102,7 @@
 
   /* ---------- сетка и геометрия листа ---------- */
   var DPR = 1, Wc = 0, Hc = 0, aspect = 1.6;
-  var FR = 18;                        // поле рамки, css px
+  var FR = 0;                         // поле рамки, css px (карта во весь лист)
   var mapX, mapY, mapW, mapH;
   var gw, gh, cs, csy, B, U, Hh, off, offCtx, img, stripe = 0;
   var LON0 = 22, LON_SPAN = 150, LAT_C = 16, lat0, latSpan, toolsRect = null;
@@ -317,17 +317,6 @@
       ctx.beginPath(); ctx.moveTo(mapX, y); ctx.lineTo(mapX + mapW, y); ctx.stroke(); ctx.restore();
       if (special[k][1] && y - 9 > mapY + 24) label(special[k][1], mapX + mapW - 78, y - 9, 'italic 500 12.5px ' + serifFont, SEA_INK, 'right');
     }
-    // подписи градусов: долготы — по верхнему краю, широты — по правому
-    var f = '400 10px ' + monoFont, stepLon = (mapW / LON_SPAN) * 15 < 80 ? 30 : 15;
-    for (lon = Math.ceil(LON0 / stepLon) * stepLon; lon <= LON0 + LON_SPAN; lon += stepLon) {
-      x = xOfLon(lon); if (x < mapX + 30 || x > mapX + mapW - 70 || inTools(x + 4, mapY + 10) || inTools(x + 50, mapY + 10)) continue;
-      label(Math.abs(lon) + '°' + (lon >= 0 ? (S.e || 'E') : (S.w || 'W')), x + 4, mapY + 10, f, INK, 'left', 3);
-    }
-    var stepLat = (mapH / latSpan) * 15 < 46 ? 30 : 15;
-    for (lat = Math.floor(lat0 / stepLat) * stepLat; lat >= lat0 - latSpan; lat -= stepLat) {
-      y = yOfLat(lat); if (y < mapY + 80 || y > mapY + mapH - 16) continue;
-      label(Math.abs(lat) + '°' + (lat > 0 ? ' ' + (S.n || 'N') : lat < 0 ? ' ' + (S.s || 'S') : ''), mapX + mapW - 6, y - 8, f, INK, 'right', 3);
-    }
   }
 
   function drawCities() {
@@ -344,25 +333,11 @@
   }
 
   function drawFrame() {
-    // градусная рамка: чередующиеся латунные штрихи через 5°
-    var bw = 6, ox = mapX - bw, oy = mapY - bw;
-    ctx.fillStyle = NIGHT; ctx.fillRect(ox, oy, mapW + 2 * bw, bw); ctx.fillRect(ox, mapY + mapH, mapW + 2 * bw, bw);
-    ctx.fillRect(ox, mapY, bw, mapH); ctx.fillRect(mapX + mapW, mapY, bw, mapH);
-    ctx.fillStyle = BRASS;
-    var lon, lat, a, b;
-    for (lon = Math.floor(LON0 / 5) * 5; lon < LON0 + LON_SPAN; lon += 5) {
-      if ((Math.round(lon / 5) & 1) === 0) continue;
-      a = Math.max(mapX, xOfLon(lon)); b = Math.min(mapX + mapW, xOfLon(lon + 5));
-      if (b > a) { ctx.fillRect(a, oy, b - a, bw); ctx.fillRect(a, mapY + mapH, b - a, bw); }
-    }
-    for (lat = Math.ceil(lat0 / 5) * 5; lat > lat0 - latSpan; lat -= 5) {
-      if ((Math.round(lat / 5) & 1) === 0) continue;
-      a = Math.max(mapY, yOfLat(lat)); b = Math.min(mapY + mapH, yOfLat(lat - 5));
-      if (b > a) { ctx.fillRect(ox, a, bw, b - a); ctx.fillRect(mapX + mapW, a, bw, b - a); }
-    }
-    ctx.strokeStyle = BRASS; ctx.lineWidth = 1;
-    ctx.strokeRect(ox + 0.5, oy + 0.5, mapW + 2 * bw - 1, mapH + 2 * bw - 1);
-    ctx.strokeStyle = INK;
+    // тонкая рамка листа
+    ctx.fillStyle = NIGHT;
+    ctx.fillRect(0, 0, Wc, mapY); ctx.fillRect(0, mapY + mapH, Wc, Hc - mapY - mapH);
+    ctx.fillRect(0, mapY, mapX, mapH); ctx.fillRect(mapX + mapW, mapY, Wc - mapX - mapW, mapH);
+    ctx.strokeStyle = 'rgba(232,223,201,.25)'; ctx.lineWidth = 1;
     ctx.strokeRect(mapX - 0.5, mapY - 0.5, mapW + 1, mapH + 1);
   }
 

@@ -18,30 +18,10 @@
       <p class="cartouche__lead">{{ t.hero_lead[L] }}</p>
       <div class="cartouche__actions">
         <a class="btn btn--solid" href="{{ site.steam_url }}" rel="noopener" target="_blank">{{ t.cta_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>
-        <a class="btn" href="{{ site.telegram_url }}" rel="noopener" target="_blank">{{ t.cta_telegram[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+        <a class="btn btn--ghost" href="{{ site.telegram_url }}" rel="noopener" target="_blank">{{ t.cta_telegram[L] }}<span class="ext" aria-hidden="true">↗</span></a>
       </div>
-      <p class="cartouche__edition mono">{{ t.hero_edition[L] }} · <a href="#roadmap">{{ t.cta_roadmap[L] }} ↓</a></p>
     </div>
 
-    <aside class="legend" aria-label="{{ t.legend_title[L] }}">
-      <p class="legend__title">{{ t.legend_title[L] }}</p>
-      <div class="hyps" aria-hidden="true">
-        <div class="hyps__bar">
-          <i style="background:#9AB8C3"></i><i style="background:#A8C3CA"></i><i style="background:#B9CFD1"></i><i style="background:#C9D9D5"></i>
-          <i style="background:#CAD7AA"></i><i style="background:#D6DDB0"></i><i style="background:#E2E0B3"></i><i style="background:#E7D7A5"></i><i style="background:#E0C292"></i><i style="background:#D3AC83"></i><i style="background:#C39B7D"></i><i style="background:#EFEBE2"></i>
-        </div>
-        <div class="hyps__nums mono"><span style="left:8.33%">2000</span><span style="left:33.33%">0</span><span style="left:58.33%">1000</span><span style="left:75%">2000</span><span style="left:91.67%">4000</span></div>
-        <div class="hyps__caps"><span>{{ t.legend_depths[L] }}</span><span>{{ t.legend_heights[L] }}</span></div>
-      </div>
-      <ul class="legend__list">
-        <li><svg viewBox="0 0 22 14" aria-hidden="true"><circle cx="11" cy="7" r="5.2" fill="#F5F0E3" stroke="#1D252C" stroke-width="1.3"/><circle cx="11" cy="7" r="2.2" fill="#1D252C"/></svg>{{ t.legend_capital[L] }}</li>
-        <li><svg viewBox="0 0 22 14" aria-hidden="true"><circle cx="11" cy="7" r="3.8" fill="#F5F0E3" stroke="#1D252C" stroke-width="1.3"/><circle cx="11" cy="7" r="1.5" fill="#1D252C"/></svg>{{ t.legend_city[L] }}</li>
-        <li><svg viewBox="0 0 22 14" aria-hidden="true"><path d="M1 9 C6 3, 10 12, 21 5" fill="none" stroke="#E8DFC9" stroke-width="1.6"/></svg>{{ t.legend_coast[L] }}</li>
-        <li><svg viewBox="0 0 22 14" aria-hidden="true"><path d="M1 5 C7 1, 13 9, 21 3 M1 11 C7 7, 13 14, 21 9" fill="none" stroke="#C9A06E" stroke-width="1"/></svg>{{ t.legend_contours[L] }}</li>
-        <li><svg viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7 H21" stroke="#8FB5C7" stroke-width="1.2" stroke-dasharray="4 3"/></svg>{{ t.legend_tropic[L] }}</li>
-      </ul>
-      <p class="legend__note">{{ t.legend_drift[L] }}</p>
-    </aside>
 
     <div class="hero__tools">
       <p class="hero__readout mono" data-readout aria-hidden="true">&nbsp;</p>

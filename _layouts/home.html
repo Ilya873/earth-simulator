@@ -3,15 +3,23 @@ layout: default
 ---
 {% include home/hero.html %}
 
-<div class="page">
+<div class="band band--world">
+  <div class="page">
 {% include home/world.html %}
+  </div>
 </div>
 
 {% include home/starmap.html %}
 
-<div class="page">
+<div class="band band--versions">
+  <div class="page">
 {% include home/versions.html %}
+  </div>
+</div>
 
+<div class="band band--journal">
+  <div class="page">
 {% include home/devlog.html %}
+  </div>
 </div>
 {{ content }}

@@ -15,8 +15,7 @@ layout: default
         {% include devlog-list.html %}
         <div class="subscribe">
           <a class="btn btn--solid" href="{{ site.telegram_url }}" rel="noopener" target="_blank">Telegram<span class="ext" aria-hidden="true">↗</span></a>
-          <a class="btn" href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a>
-          <a class="btn" href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a>
         </div>
       </div>
       {% include telegram.html limit=4 %}

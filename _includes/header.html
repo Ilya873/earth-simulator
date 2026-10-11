@@ -6,10 +6,10 @@
   <div class="runhead__in">
     <a class="runhead__brand" href="{{ home }}"><span class="runhead__mark" aria-hidden="true"></span>Earth Simulator</a>
     <nav class="runhead__nav" aria-label="{{ t.nav_roadmap[L] }}">
-      <a href="{{ home }}#world"><span class="runhead__num">I</span>{{ t.nav_world[L] }}</a>
-      <a href="{{ home }}#roadmap"><span class="runhead__num">II</span>{{ t.nav_roadmap[L] }}</a>
-      <a href="{{ home }}#versions"><span class="runhead__num">III</span>{{ t.nav_versions[L] }}</a>
-      <a href="{{ devlog_url }}"{% if page.layout == 'post' or page.devlog_index %} aria-current="page"{% endif %}><span class="runhead__num">IV</span>{{ t.nav_devlog[L] }}</a>
+      <a href="{{ home }}#world">{{ t.nav_world[L] }}</a>
+      <a href="{{ home }}#roadmap">{{ t.nav_roadmap[L] }}</a>
+      <a href="{{ home }}#versions">{{ t.nav_versions[L] }}</a>
+      <a href="{{ devlog_url }}"{% if page.layout == 'post' or page.devlog_index %} aria-current="page"{% endif %}>{{ t.nav_devlog[L] }}</a>
     </nav>
     <div class="runhead__ext">
       <a href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a>

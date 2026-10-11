@@ -4,7 +4,6 @@ title_en: "Opening the field journal"
 summary: "Зачем нужен этот сайт и как читать звёздную карту развития игры."
 summary_en: "Why this site exists and how to read the game’s star map."
 date: 2026-10-11 12:00:00 +0300
-version: "2.1"
 cover: /assets/img/shots/political-map-1600.jpg
 cover_caption: "Политическая карта 102-го года: тридцать три державы на одном материке."
 cover_caption_en: "Political map, year 102: thirty-three states on a single continent."
@@ -13,7 +12,7 @@ body_en: |
 
   ## The star map
 
-  The roadmap is drawn as a star chart. Every update is a star system, and every feature is a planet on its orbit. Planets that are already in the game shine; the ones in progress are half-lit. The lines between systems are dependencies: an update rests on the one its line comes from.
+  The roadmap is drawn as a star chart. Every update is a star system, and every feature is a planet on its orbit. Planets already in the game shine, and the ones in progress are teal. Hover a system and lines appear to the updates it rests on.
 
   The map was drawn from the game’s source code: what already works, what each next system rests on, and in which order they are best built. The most important system is 3.0, *Foundation*. It’s an engine rebuild: the world becomes a globe, and the simulation moves to its own thread and becomes predictable. Without it there can be no multiplayer, no other planets and no truly living inhabitants.
 
@@ -27,7 +26,7 @@ body_en: |
 
 ## Звёздная карта
 
-Дорожная карта нарисована как звёздная. Каждое обновление — звёздная система, каждая новая возможность — планета на её орбите. Планеты, которые уже в игре, светятся; те, что в работе, — наполовину. Линии между системами — зависимости: обновление опирается на то, от которого к нему тянется линия.
+Дорожная карта нарисована как звёздная. Каждое обновление — звёздная система, каждая новая возможность — планета на её орбите. Планеты, которые уже в игре, светятся, а те, что в работе, — бирюзовые. Наведите на систему, и появятся линии к обновлениям, на которые она опирается.
 
 Карта составлена по исходному коду игры: что уже работает, на что опирается каждая следующая система и в каком порядке их выгоднее строить. Самая важная система — 3.0, «Фундамент». Это перестройка движка: мир становится глобусом, а симуляция уходит в отдельный поток и становится предсказуемой. Без этого не получится ни мультиплеер, ни другие планеты, ни по-настоящему живые жители.
 

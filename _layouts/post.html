@@ -11,12 +11,8 @@ layout: default
 {%- assign bi = false -%}{%- if page.body_en -%}{%- assign bi = true -%}{%- endif -%}
 <article class="post">
   <header class="post__head">
-    <a class="post__back label" href="{{ devlog_url }}">← {{ t.devlog_back[L] }}</a>
-    <p class="post__meta mono">
-      <span>{{ t.devlog_entry[L] }} № {{ no3 | slice: -3, 3 }}</span>
-      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
-      {%- if page.version %}<span>v{{ page.version }}</span>{% endif %}
-    </p>
+    <a class="post__back" href="{{ devlog_url }}">← {{ t.devlog_back[L] }}</a>
+    <p class="post__meta"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% include date.html d=page.date %}</time></p>
     {%- if bi %}
     <div class="post__langs" role="group" aria-label="Язык / Language">
       <button type="button" data-lang-btn="ru" aria-pressed="true">Русский</button>
@@ -42,13 +38,13 @@ layout: default
   {%- endif %}
   <footer class="post__foot">
     <nav class="post__nav" aria-label="{{ t.devlog_title[L] }}">
-      {%- if page.next %}<a class="post__nav-newer" href="{{ page.next.url | relative_url }}"><span class="label">← {{ t.devlog_newer[L] }}</span>{{ page.next.title }}</a>{% else %}<span></span>{% endif %}
-      {%- if page.previous %}<a class="post__nav-older" href="{{ page.previous.url | relative_url }}"><span class="label">{{ t.devlog_older[L] }} →</span>{{ page.previous.title }}</a>{% endif %}
+      {%- if page.next %}<a class="post__nav-newer" href="{{ page.next.url | relative_url }}"><span class="post__nav-k">← {{ t.devlog_newer[L] }}</span>{{ page.next.title }}</a>{% else %}<span></span>{% endif %}
+      {%- if page.previous %}<a class="post__nav-older" href="{{ page.previous.url | relative_url }}"><span class="post__nav-k">{{ t.devlog_older[L] }} →</span>{{ page.previous.title }}</a>{% endif %}
     </nav>
     <div class="subscribe">
-      <a class="btn btn--ink" href="{{ site.steam_url }}" rel="noopener" target="_blank">{{ t.cta_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>
-      <a class="btn" href="{{ site.telegram_url }}" rel="noopener" target="_blank">{{ t.cta_telegram[L] }}<span class="ext" aria-hidden="true">↗</span></a>
-      <a class="btn" href="{{ devlog_url }}">{{ t.devlog_back[L] }}</a>
+      <a class="btn btn--solid" href="{{ site.steam_url }}" rel="noopener" target="_blank">{{ t.cta_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+      <a class="btn btn--ghost" href="{{ site.telegram_url }}" rel="noopener" target="_blank">{{ t.cta_telegram[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+      <a class="btn btn--ghost" href="{{ devlog_url }}">{{ t.devlog_back[L] }}</a>
     </div>
   </footer>
 </article>

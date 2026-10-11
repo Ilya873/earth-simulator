@@ -12,7 +12,6 @@
       {% include devlog-list.html limit=4 %}
       <div class="subscribe">
         <a class="btn btn--solid" href="{{ devlog_url }}">{{ t.devlog_all[L] }} →</a>
-        <a class="btn" href="{{ '/feed.xml' | relative_url }}">{{ t.devlog_rss[L] }}</a>
       </div>
     </div>
     {% include telegram.html limit=2 %}

@@ -25,7 +25,9 @@ hero_edition: { ru: "Издание второе · октябрь 2026", en: "S
 cta_steam: { ru: "Страница в Steam", en: "Steam page" }
 cta_telegram: { ru: "Новости в Telegram", en: "News on Telegram" }
 cta_roadmap: { ru: "К звёздной карте", en: "To the star map" }
-hero_hint: { ru: "Зажмите кнопку мыши над картой, чтобы поднять сушу. С Shift — опустить.", en: "Hold the mouse button over the map to raise land. Hold Shift to lower it." }
+hero_hint:
+  ru: "Зажмите мышь над картой — суша поднимется. С Shift — опустится."
+  en: "Hold the mouse over the map to raise land. With Shift — to lower it."
 hero_new: { ru: "Новый мир", en: "New world" }
 hero_equator: { ru: "Экватор", en: "Equator" }
 hero_cancer: { ru: "Северный тропик", en: "Tropic of Cancer" }
@@ -70,7 +72,9 @@ passport_title: { ru: "Паспорт мира", en: "World passport" }
 pp_release: { ru: "Выход", en: "Released" }
 pp_release_v: { ru: "20 августа 2026", en: "20 August 2026" }
 pp_version: { ru: "Версия", en: "Version" }
-pp_version_v: { ru: "2.0.2 · готовится 2.1.0", en: "2.0.2 · 2.1.0 in the works" }
+pp_version_v:
+  ru: "2.0.2, готовится 2.1.0"
+  en: "2.0.2, 2.1.0 coming"
 pp_reviews: { ru: "Отзывы", en: "Reviews" }
 pp_reviews_v: { ru: "очень положительные", en: "Very Positive" }
 pp_genre: { ru: "Жанр", en: "Genre" }
@@ -92,11 +96,13 @@ next: { ru: "Вперёд", en: "Next" }
 # II. Дорожная карта — звёздная карта
 roadmap_title: { ru: "Дорожная карта", en: "Roadmap" }
 roadmap_lead:
-  ru: "Карта развития нарисована как звёздная. Каждое обновление — звёздная система, каждая новая возможность — планета на её орбите; планеты, которые уже в игре, светятся. Линии — зависимости: система опирается на ту, от которой к ней тянется линия. Нажмите на систему, чтобы открыть подробности."
-  en: "The roadmap is drawn as a star chart. Every update is a star system and every new feature is a planet on its orbit; planets already in the game shine. The lines are dependencies: a system rests on the one its line comes from. Click a system to open its details."
+  ru: "Каждое обновление — звёздная система, каждая новая возможность — планета на её орбите. Светящиеся планеты уже в игре, бирюзовые — в работе. Наведите на систему, чтобы увидеть, на что она опирается, и нажмите, чтобы открыть подробности. Сроки примерные."
+  en: "Every update is a star system, and every new feature is a planet on its orbit. Shining planets are already in the game, teal ones are in progress. Hover a system to see what it rests on, and click it to open the details. Dates are approximate."
 sm_filter: { ru: "Подсветить", en: "Highlight" }
 sm_all: { ru: "Всё", en: "All" }
-sm_req: { ru: "Идеи игроков", en: "Players’ ideas" }
+sm_req:
+  ru: "Подсветить идеи игроков"
+  en: "Highlight players’ ideas"
 sm_today: { ru: "сегодня", en: "today" }
 sm_time: { ru: "время", en: "time" }
 sm_planets: { ru: "планет", en: "planets" }
@@ -116,7 +122,9 @@ why_here: { ru: "Почему в этом месте", en: "Why here" }
 hood: { ru: "Под капотом", en: "Under the hood" }
 builds_on: { ru: "Опирается на", en: "Builds on" }
 leads_to: { ru: "Открывает путь", en: "Leads to" }
-players_asked: { ru: "идея игроков", en: "players’ idea" }
+players_asked:
+  ru: "Идея игроков."
+  en: "Players’ idea."
 rules_title: { ru: "Как составлена карта", en: "How this map was drawn" }
 rule1_t: { ru: "Сначала опоры", en: "Foundations first" }
 rule1:
@@ -142,8 +150,8 @@ rule5:
 # III. Летопись версий
 versions_title: { ru: "Летопись версий", en: "Chronicle of versions" }
 versions_lead:
-  ru: "Все обновления игры с момента выхода в Steam — по новостям разработки. Сверху — то, что готовится."
-  en: "Every update since the Steam release, taken from the development news. On top — what’s being prepared."
+  ru: "Все обновления игры с выхода в Steam — по новостям разработки. Сверху то, что готовится."
+  en: "Every update since the Steam release, from the development news. On top is what’s being prepared."
 v_upcoming: { ru: "готовится", en: "in the works" }
 v_major: { ru: "большое обновление", en: "major update" }
 v_update: { ru: "обновление", en: "update" }
@@ -152,7 +160,9 @@ v_release: { ru: "релиз", en: "release" }
 v_steam: { ru: "Новость в Steam", en: "Steam news" }
 v_tg: { ru: "Пост в Telegram", en: "Telegram post" }
 v_post: { ru: "Запись в дневнике", en: "Journal entry" }
-v_more: { ru: "Все изменения", en: "All changes" }
+v_more:
+  ru: "Ещё изменения"
+  en: "More changes"
 
 # IV. Дневник
 devlog_title: { ru: "Полевой дневник", en: "Field journal" }

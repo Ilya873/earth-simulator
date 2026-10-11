@@ -9,19 +9,17 @@
 
   <div class="world__intro">
     <div class="world__left">
-      <p class="world__lead dropcap">{{ t.world_lead[L] }}</p>
+      <p class="world__lead">{{ t.world_lead[L] }}</p>
       <div class="steam-embed" data-steam-embed>
         <iframe src="https://store.steampowered.com/widget/4932460/?l={% if L == 'en' %}english{% else %}russian{% endif %}" width="646" height="190" title="{{ t.steam_widget_title[L] }}" loading="lazy"></iframe>
       </div>
     </div>
     <dl class="passport">
-      <div class="passport__title label">{{ t.passport_title[L] }}</div>
       <div><dt>{{ t.pp_release[L] }}</dt><dd>{{ t.pp_release_v[L] }}</dd></div>
       <div><dt>{{ t.pp_version[L] }}</dt><dd>{{ t.pp_version_v[L] }}</dd></div>
       <div><dt>{{ t.pp_reviews[L] }}</dt><dd>{{ t.pp_reviews_v[L] }}</dd></div>
       <div><dt>{{ t.pp_genre[L] }}</dt><dd>{{ t.pp_genre_v[L] }}</dd></div>
       <div><dt>{{ t.pp_lang[L] }}</dt><dd>{{ t.pp_lang_v[L] }}</dd></div>
-      <div><dt>{{ t.pp_platform[L] }}</dt><dd>{{ t.pp_platform_v[L] }}</dd></div>
       <div><dt>{{ t.pp_dev[L] }}</dt><dd>{{ site.developer }}</dd></div>
       <div><dt>{{ t.pp_pub[L] }}</dt><dd>{{ site.publisher }}</dd></div>
     </dl>
@@ -35,11 +33,10 @@
     {%- capture ct -%}world_col{{ n }}_t{%- endcapture -%}
     {%- capture cx -%}world_col{{ n }}{%- endcapture -%}
     <article class="world__col">
-      <figure class="plate-fig" data-lb-group="world" data-lb-src="{{ shots }}{{ id }}-1600.jpg" data-lb-cap="{{ t.fig[L] }} {{ n }}. {{ g[L] | xml_escape }}">
+      <figure class="plate-fig" data-lb-group="world" data-lb-src="{{ shots }}{{ id }}-1600.jpg" data-lb-cap="{{ g[L] | xml_escape }}">
         <button type="button" class="plate-fig__btn" aria-label="{{ t.zoom[L] }}: {{ g[L] | xml_escape }}">
           <img src="{{ shots }}{{ id }}-800.jpg" srcset="{{ shots }}{{ id }}-800.jpg 800w, {{ shots }}{{ id }}-1600.jpg 1600w" sizes="(min-width: 1100px) 31vw, (min-width: 760px) 45vw, 92vw" width="800" height="450" loading="lazy" alt="{{ g[L] | xml_escape }}">
         </button>
-        <figcaption><span class="label">{{ t.fig[L] }} {{ n }}</span> {{ g[L] }}</figcaption>
       </figure>
       <h3 class="world__col-title">{{ t[ct][L] }}</h3>
       <p>{{ t[cx][L] }}</p>
@@ -47,22 +44,16 @@
     {%- endfor %}
   </div>
 
-  <div class="plates">
-    <p class="plates__title label">{{ t.plates_title[L] }}</p>
-    <ol class="plates__grid">
-      {%- assign n0 = 3 -%}
-      {%- for g in site.data.gallery %}
-      {%- if cols contains g.id %}{% continue %}{% endif -%}
-      {%- assign n0 = n0 | plus: 1 -%}
-      <li class="plates__item">
-        <figure class="plate-fig plate-fig--sm" data-lb-group="world" data-lb-src="{{ shots }}{{ g.id }}-1600.jpg" data-lb-cap="{{ t.fig[L] }} {{ n0 }}. {{ g[L] | xml_escape }}">
-          <button type="button" class="plate-fig__btn" aria-label="{{ t.zoom[L] }}: {{ g[L] | xml_escape }}">
-            <img src="{{ shots }}{{ g.id }}-800.jpg" width="800" height="450" loading="lazy" alt="{{ g[L] | xml_escape }}">
-          </button>
-          <figcaption><span class="label">{{ t.fig[L] }} {{ n0 }}</span> {{ g[L] }}</figcaption>
-        </figure>
-      </li>
-      {%- endfor %}
-    </ol>
-  </div>
+  <ul class="shots">
+    {%- for g in site.data.gallery %}
+    {%- if cols contains g.id %}{% continue %}{% endif %}
+    <li>
+      <figure class="plate-fig" data-lb-group="world" data-lb-src="{{ shots }}{{ g.id }}-1600.jpg" data-lb-cap="{{ g[L] | xml_escape }}">
+        <button type="button" class="plate-fig__btn" aria-label="{{ t.zoom[L] }}: {{ g[L] | xml_escape }}">
+          <img src="{{ shots }}{{ g.id }}-800.jpg" width="800" height="450" loading="lazy" alt="{{ g[L] | xml_escape }}">
+        </button>
+      </figure>
+    </li>
+    {%- endfor %}
+  </ul>
 </section>

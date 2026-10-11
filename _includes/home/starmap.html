@@ -3,7 +3,7 @@
 {%- assign rm = site.data.roadmap -%}
 {%- assign phases = rm.phases -%}
 <section class="sky" id="roadmap" aria-labelledby="roadmap-title" data-starmap
-         data-str='{"today":"{{ t.sm_today[L] }}","time":"{{ t.sm_time[L] }}","here":"{{ t.you_are_here[L] }}","of":"{{ t.sm_of[L] }}","lit":"{{ t.sm_lit[L] }}","planets":"{{ t.sm_planets[L] }}","req":"{{ t.players_asked[L] }}","hint":"{{ t.sm_hint[L] }}","showAll":"{{ t.sm_show_all[L] }}","showOne":"{{ t.sm_show_one[L] }}"}'>
+         data-str='{"here":"{{ t.you_are_here[L] }}","planets":"{{ t.sm_planets[L] }}","req":"{{ t.players_asked[L] }}","showAll":"{{ t.sm_show_all[L] }}","showOne":"{{ t.sm_show_one[L] }}"}'>
   <canvas class="sky__stars" aria-hidden="true"></canvas>
   <div class="sky__in">
     <header class="part__head">
@@ -11,63 +11,30 @@
       <h2 class="part__title" id="roadmap-title">{{ t.roadmap_title[L] }}</h2>
     </header>
     <p class="part__lead">{{ t.roadmap_lead[L] }}</p>
-
-    <div class="sm-bar">
-      <span class="sm-bar__label label">{{ t.sm_filter[L] }}</span>
-      <div class="sm-filters" role="group" aria-label="{{ t.sm_filter[L] }}">
-        <button type="button" data-filter="all" aria-pressed="true">{{ t.sm_all[L] }}</button>
-        <button type="button" data-filter="req" aria-pressed="false" class="is-req">{{ t.sm_req[L] }} <span class="mono" data-count="req"></span></button>
-        {%- for tr in rm.tracks %}
-        <button type="button" data-filter="{{ tr[0] }}" aria-pressed="false">{{ tr[1][L] }} <span class="mono" data-count="{{ tr[0] }}"></span></button>
-        {%- endfor %}
-      </div>
-    </div>
+    <p class="sm-bar"><button type="button" class="sm-toggle" data-req-toggle aria-pressed="false">{{ t.sm_req[L] }}</button></p>
 
     <div class="sm-chart">
       <svg class="sm-svg" role="group" aria-label="{{ t.roadmap_title[L] }}"></svg>
       <div class="sm-tip" role="status" hidden></div>
-      <div class="sm-legend" aria-hidden="true">
-        <span><i class="pl pl--done"></i>{{ rm.status.done[L] }}</span>
-        <span><i class="pl pl--wip"></i>{{ rm.status.wip[L] }}</span>
-        <span><i class="pl pl--plan"></i>{{ rm.status.plan[L] }}</span>
-        <span><i class="pl pl--idea"></i>{{ rm.status.idea[L] }}</span>
-        <span><i class="lnk"></i>{{ t.sm_dep_line[L] }}</span>
-        <span><i class="lnk lnk--far"></i>{{ t.sm_far_line[L] }}</span>
-      </div>
     </div>
-    <p class="sm-note">{{ t.sm_dates[L] }}</p>
 
     <div class="upds" data-upds>
       {%- for p in phases %}
-      {%- assign e = rm.eons | where: "id", p.eon | first -%}
-      {%- assign total = p.items | size -%}
-      {%- assign dn = p.items | where: "s", "done" | size -%}
-      {%- assign wp = p.items | where: "s", "wip" | size -%}
       {%- assign prev = forloop.index0 | minus: 1 -%}
       {%- assign nextp = forloop.index0 | plus: 1 -%}
-      <article class="upd{% if p.now %} is-now{% endif %}" id="upd-{{ p.id }}" data-id="{{ p.id }}" style="--pc: {{ p.color }}; --ec: {{ e.color }}" aria-labelledby="upd-{{ p.id }}-t">
+      <article class="upd{% if p.now %} is-now{% endif %}" id="upd-{{ p.id }}" data-id="{{ p.id }}" style="--pc: {{ p.color }}" aria-labelledby="upd-{{ p.id }}-t">
         <header class="upd__head">
-          <p class="upd__kicker label">{{ t.eon[L] }} {{ e.roman }} · {{ e.name[L] }}</p>
-          <h3 class="upd__title" id="upd-{{ p.id }}-t"><span class="upd__ver mono">{{ p.ver }}</span>{{ p.name[L] }}</h3>
-          <p class="upd__meta">
-            <span class="mono">{{ p.when[L] }}</span>
-            <span class="upd__status upd__status--{{ p.status }}"><i class="pl pl--{{ p.status }}" aria-hidden="true"></i>{{ rm.status[p.status][L] }}</span>
-            {%- if dn > 0 or wp > 0 %}<span class="mono">{{ dn | plus: wp }} {{ t.sm_of[L] }} {{ total }} {{ t.sm_planets[L] }}</span>{% endif %}
-            {%- if p.now %}<span class="upd__here">{{ t.you_are_here[L] }}</span>{% endif %}
-          </p>
+          <h3 class="upd__title" id="upd-{{ p.id }}-t"><span class="upd__ver">{{ p.ver }}</span> {{ p.name[L] }}</h3>
+          <p class="upd__meta">{{ p.when[L] }} · <span class="upd__status upd__status--{{ p.status }}">{{ rm.status[p.status][L] }}</span>{% if p.now %} · <span class="upd__here">{{ t.you_are_here[L] | downcase }}</span>{% endif %}</p>
           <p class="upd__goal">{{ p.goal[L] }}</p>
         </header>
         <div class="upd__body">
           <ul class="upd__items">
             {%- for it in p.items %}
             {%- assign tx = it[L] -%}
-            <li class="upd__item" data-k="{{ it.k }}"{% if it.req %} data-req="1"{% endif %} data-i="{{ forloop.index0 }}">
-              <i class="pl pl--{{ it.s }}" aria-hidden="true"></i>
-              <div>
-                <p class="upd__it">{{ tx[0] }}</p>
-                <p class="upd__id">{{ tx[1] }}</p>
-                <p class="upd__tags label"><span>{{ rm.tracks[it.k][L] }}</span><span>{{ rm.status[it.s][L] }}</span>{% if it.req %}<span class="upd__req">{{ t.players_asked[L] }}</span>{% endif %}</p>
-              </div>
+            <li class="upd__item" data-k="{{ it.k }}" data-req="{% if it.req %}1{% else %}0{% endif %}" data-i="{{ forloop.index0 }}">
+              <h4 class="upd__it">{{ tx[0] }}</h4>
+              <p class="upd__id">{{ tx[1] }}{% if it.req %} <span class="upd__req">{{ t.players_asked[L] }}</span>{% endif %}</p>
             </li>
             {%- endfor %}
           </ul>
@@ -77,44 +44,27 @@
               <button type="button" class="plate-fig__btn" aria-label="{{ t.zoom[L] }}"><img src="{{ p.img | replace: '-1600.jpg', '-800.jpg' | relative_url }}" alt="{{ p.ver }} · {{ p.name[L] | xml_escape }}" loading="lazy" width="800" height="450"></button>
             </figure>
             {%- endif %}
-            <h4 class="label">{{ t.why_here[L] }}</h4>
+            <h4>{{ t.why_here[L] }}</h4>
             <p>{{ p.why[L] }}</p>
             <details class="upd__hood">
-              <summary class="label">{{ t.hood[L] }}</summary>
+              <summary>{{ t.hood[L] }}</summary>
               <p>{{ p.hood[L] }}</p>
             </details>
-            <dl class="upd__links">
-              {%- if p.deps.size > 0 %}
-              <dt class="label">{{ t.builds_on[L] }}</dt>
-              <dd>{% for d in p.deps %}{% assign q = phases | where: "id", d | first %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}" style="--pc: {{ q.color }}"><span class="mono">{{ q.ver }}</span>{{ q.name[L] }}</a>{% endfor %}</dd>
-              {%- endif %}
-              {%- capture nxt -%}{% for q in phases %}{% if q.deps contains p.id %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}" style="--pc: {{ q.color }}"><span class="mono">{{ q.ver }}</span>{{ q.name[L] }}</a>{% endif %}{% endfor %}{%- endcapture -%}
-              {%- if nxt != '' %}
-              <dt class="label">{{ t.leads_to[L] }}</dt>
-              <dd>{{ nxt }}</dd>
-              {%- endif %}
-            </dl>
+            {%- capture nxt -%}{% for q in phases %}{% if q.deps contains p.id %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}">{{ q.ver }} {{ q.name[L] }}</a>{% endif %}{% endfor %}{%- endcapture -%}
+            <p class="upd__rel">
+              {%- if p.deps.size > 0 %}<span>{{ t.builds_on[L] }}: {% for d in p.deps %}{% assign q = phases | where: "id", d | first %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}">{{ q.ver }} {{ q.name[L] }}</a>{% endfor %}</span>{% endif %}
+              {%- if nxt != '' %}<span>{{ t.leads_to[L] }}: {{ nxt }}</span>{% endif %}
+            </p>
           </aside>
         </div>
         <footer class="upd__nav">
-          {%- if prev >= 0 %}{% assign q = phases[prev] %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}" class="upd__prev"><span class="label">← {{ t.prev[L] }}</span><span><span class="mono">{{ q.ver }}</span> {{ q.name[L] }}</span></a>{% else %}<span></span>{% endif %}
-          {%- if nextp < phases.size %}{% assign q = phases[nextp] %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}" class="upd__next"><span class="label">{{ t.next[L] }} →</span><span><span class="mono">{{ q.ver }}</span> {{ q.name[L] }}</span></a>{% endif %}
+          {%- if prev >= 0 %}{% assign q = phases[prev] %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}" class="upd__prev">← {{ q.ver }} {{ q.name[L] }}</a>{% else %}<span></span>{% endif %}
+          {%- if nextp < phases.size %}{% assign q = phases[nextp] %}<a href="#upd-{{ q.id }}" data-goto="{{ q.id }}" class="upd__next">{{ q.ver }} {{ q.name[L] }} →</a>{% endif %}
         </footer>
       </article>
       {%- endfor %}
     </div>
-    <p class="upds__toggle"><button type="button" class="btn" data-list-toggle aria-expanded="false">{{ t.sm_show_all[L] }}</button></p>
-
-    <div class="rules">
-      <p class="rules__title label">{{ t.rules_title[L] }}</p>
-      <ol class="rules__list">
-        <li><h3>{{ t.rule1_t[L] }}</h3><p>{{ t.rule1[L] }}</p></li>
-        <li><h3>{{ t.rule2_t[L] }}</h3><p>{{ t.rule2[L] }}</p></li>
-        <li><h3>{{ t.rule3_t[L] }}</h3><p>{{ t.rule3[L] }}</p></li>
-        <li><h3>{{ t.rule4_t[L] }}</h3><p>{{ t.rule4[L] }}</p></li>
-        <li><h3>{{ t.rule5_t[L] }}</h3><p>{{ t.rule5[L] }}</p></li>
-      </ol>
-    </div>
+    <p class="upds__toggle"><button type="button" class="btn btn--ghost" data-list-toggle aria-expanded="false">{{ t.sm_show_all[L] }}</button></p>
   </div>
   <script type="application/json" id="starmap-data">{{ rm | jsonify }}</script>
 </section>

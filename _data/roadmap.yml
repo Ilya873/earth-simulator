@@ -31,19 +31,19 @@ eons:
     roman: "I"
     color: "#D9A75B"
     name: { ru: "Мир людей", en: "The Human World" }
-    span: { ru: "2026 — 2028", en: "2026 — 2028" }
+    span: { ru: "2026 — 2027", en: "2026 — 2027" }
     label: { x: 560, y: 92 }
   - id: e2
     roman: "II"
     color: "#6FB39E"
     name: { ru: "Мир живого", en: "The Living World" }
-    span: { ru: "2028 — 2029", en: "2028 — 2029" }
+    span: { ru: "2028", en: "2028" }
     label: { x: 880, y: 560 }
   - id: e3
     roman: "III"
     color: "#8E9BD8"
     name: { ru: "Мир звёзд", en: "The World of Stars" }
-    span: { ru: "2029 →", en: "2029 →" }
+    span: { ru: "2028 →", en: "2028 →" }
     label: { x: 1120, y: 58 }
 
 phases:
@@ -106,7 +106,7 @@ phases:
     color: "#E8B65E"
     status: wip
     now: true
-    t: 2026.88
+    t: 2026.86
     pos: { x: 205, y: 250 }
     deps: [v20]
     img: /assets/devlog/2026-10-11-update-2-1-0/port-modern-1600.jpg
@@ -116,11 +116,11 @@ phases:
       ru: "Мир обзаводится портами, железными дорогами, аэропортами и военными базами, а прогулка — работой, деньгами, законом и поручениями жителей."
       en: "The world gains ports, railways, airports and military bases, and walk mode gains jobs, money, law and quests from the locals."
     why:
-      ru: "Большая часть уже собрана и работает в тестовой сборке. Осталось доделать, отполировать и выпустить, попутно исправив несостыковки эпох."
-      en: "Most of it is already built and running in the test build. What’s left is to finish, polish and ship it — and fix era inconsistencies along the way."
+      ru: "Большая часть уже собрана и работает в тестовой сборке. Осталось доделать, отполировать и выпустить."
+      en: "Most of it is already built and running in the test build. What’s left is to finish, polish and ship it."
     hood:
-      ru: "Новые системы прогулки подключаются к ядру через реестры и не трогают старый код. Лошади и повозки будут зависеть не от номера эпохи, а от того, приручила ли держава коня и знает ли колесо; там, где коней нет, — ламы и верблюды."
-      en: "The new walk-mode systems hook into the core through registries without touching old code. Horses and carts will depend not on the era number but on whether a state has tamed the horse and knows the wheel; where there are no horses — llamas and camels."
+      ru: "Новые системы прогулки — порты, рельсы, аэропорты, базы, деньги, закон — подключаются к ядру через реестры и не трогают старый код. Корабли в портах ходят по тем же морским путям, что и на карте мира, а морские бои берутся из настоящих сражений симуляции."
+      en: "The new walk-mode systems — ports, rails, airports, bases, money, law — hook into the core through registries without touching old code. Ships in ports follow the same sea lanes as on the world map, and naval battles come from real battles in the simulation."
     items:
       - k: walk
         s: wip
@@ -154,10 +154,6 @@ phases:
         s: wip
         ru: ["Поручения жителей", "12 видов заданий из событий мира: голод, мор, разбойники, война, урожай."]
         en: ["Quests from locals", "12 quest types born from world events: famine, plague, bandits, war, harvest."]
-      - k: sim
-        s: plan
-        ru: ["Лошади — только после приручения", "Кони, колесницы и повозки появляются, когда держава их действительно приручила и знает колесо."]
-        en: ["Horses only after taming", "Horses, chariots and carts appear once a state has actually tamed them and knows the wheel."]
 
   # ───────────────────────────── 2.2
   - id: v22
@@ -165,21 +161,25 @@ phases:
     eon: e1
     color: "#EDD08A"
     status: plan
-    t: 2027.02
+    t: 2026.95
     pos: { x: 305, y: 365 }
     deps: [v21]
-    name: { ru: "Стихии и картография", en: "Elements and Cartography" }
-    when: { ru: "≈ зима 2026/27", en: "≈ winter 2026/27" }
+    name: { ru: "Достоверность", en: "Fidelity" }
+    when: { ru: "≈ декабрь 2026", en: "≈ December 2026" }
     goal:
-      ru: "Бедствия получают настоящие масштабы и следы, моря — лёд, а карта — новые краски и ваши названия."
-      en: "Disasters get real scales and lasting marks, seas get ice, and the map gets new colours and your own names."
+      ru: "На прогулке видно ровно то, до чего дошла держава: её животные, транспорт, оружие и постройки. А бедствия получают настоящие масштабы и следы, моря — лёд, карта — новые краски и ваши названия."
+      en: "On foot you see exactly what a state has reached: its animals, vehicles, weapons and buildings. Disasters get real scales and lasting marks, seas get ice, and the map gets new colours and your own names."
     why:
-      ru: "Всё это не требует перестройки движка и быстро делается, а играть становится заметно интереснее. Пока зреет большая перестройка, игра продолжает расти."
-      en: "None of this needs an engine rebuild and it’s quick to do, while the game gets noticeably richer. The game keeps growing while the big rebuild is prepared."
+      ru: "С портами, поездами и базами на прогулке стало видно гораздо больше техники, и несостыковки эпох бросаются в глаза. Всё это делается на нынешнем движке: данные о приручённых животных и изобретениях держав в симуляции уже есть."
+      en: "With ports, trains and bases, walk mode now shows far more technology, and era mismatches stand out. All of it can be done on the current engine: the simulation already tracks each state’s tamed animals and inventions."
     hood:
-      ru: "Внутренняя «сила» бедствия пересчитывается в настоящие шкалы и обратно. Поиск морского пути начинает учитывать лёд, а лёд — сезоны. Кратер — понижение рельефа, которое со временем выравнивается, заполняется водой и зарастает."
-      en: "A disaster’s internal ‘power’ is mapped to real scales and back. Sea pathfinding starts respecting ice, and ice follows the seasons. A crater is a dent in the terrain that levels out over time, fills with water and greens over."
+      ru: "Прогулка спрашивает у симуляции не номер эпохи, а что держава действительно знает: каких животных приручила и какие из 32 изобретений сделала — колесо, бронзу, мореходство, порох, двигатель. Внутренняя «сила» бедствия пересчитывается в настоящие шкалы. Поиск морского пути учитывает лёд, а лёд — сезоны. Кратер со временем выравнивается, заполняется водой и зарастает."
+      en: "Walk mode asks the simulation not for the era number but for what a state actually knows: which animals it has tamed and which of 32 inventions it has made — the wheel, bronze, seafaring, gunpowder, the engine. A disaster’s internal ‘power’ is mapped to real scales. Sea pathfinding respects ice, and ice follows the seasons. A crater levels out over time, fills with water and greens over."
     items:
+      - k: walk
+        s: plan
+        ru: ["Технологии на прогулке", "Кони и повозки — только после приручения и колеса, ламы и верблюды там, где нет лошадей; оружие, корабли и постройки — по изобретениям державы."]
+        en: ["Technology you can see", "Horses and carts only after taming and the wheel, llamas and camels where there are no horses; weapons, ships and buildings follow the state’s inventions."]
       - k: play
         s: plan
         req: true
@@ -223,11 +223,11 @@ phases:
     color: "#D9B98A"
     status: plan
     major: true
-    t: 2027.2
+    t: 2027.04
     pos: { x: 415, y: 280 }
     deps: [v22]
     name: { ru: "Фундамент", en: "Foundation" }
-    when: { ru: "≈ весна 2027", en: "≈ spring 2027" }
+    when: { ru: "≈ январь 2027", en: "≈ January 2027" }
     goal:
       ru: "Перестроить движок под большие планы: мир становится шаром, симуляция — быстрой и предсказуемой, а код — готовым к сети и другим планетам."
       en: "Rebuild the engine for the big plans: the world becomes a globe, the simulation fast and predictable, the code ready for networking and other planets."
@@ -281,17 +281,17 @@ phases:
     eon: e1
     color: "#C9C27A"
     status: plan
-    t: 2027.42
+    t: 2027.13
     pos: { x: 520, y: 188 }
     deps: [v30]
     name: { ru: "Древо знаний", en: "Tree of Knowledge" }
-    when: { ru: "≈ лето 2027", en: "≈ summer 2027" }
+    when: { ru: "≈ февраль 2027", en: "≈ February 2027" }
     goal:
       ru: "Вместо одного числа «технологии» — настоящее древо открытий. Всё в мире, от повозок до архитектуры, следует тому, что этот народ уже знает."
       en: "Instead of a single ‘technology’ number — a real tree of discoveries. Everything in the world, from carts to architecture, follows what this people actually knows."
     why:
-      ru: "Одежда жителей, товары в лавках, техника армий, профессии и здания — всё ссылается на знания державы. Без древа каждая новая система снова привязывалась бы к номеру эпохи, как вышло с лошадьми."
-      en: "Clothing, shop goods, army equipment, professions and buildings all refer to what a state knows. Without the tree, every new system would again key off the era number — as happened with horses."
+      ru: "Одежда жителей, товары в лавках, техника армий, профессии и здания — всё ссылается на знания державы. Без древа каждая новая система снова привязывалась бы к номеру эпохи."
+      en: "Clothing, shop goods, army equipment, professions and buildings all refer to what a state knows. Without the tree, every new system would again key off the era number."
     hood:
       ru: "Открытия образуют граф зависимостей; вес каждого направления зависит от условий державы — рельефа, ресурсов, войн, торговли, культуры. Эпоха становится следствием открытий, а не порогом числа. Прогулка, 3D-карта, лавки и армии спрашивают «знает ли держава X», а не «какая сейчас эпоха»."
       en: "Discoveries form a dependency graph; each direction is weighted by the state’s conditions — terrain, resources, wars, trade, culture. An era becomes a consequence of discoveries rather than a numeric threshold. Walk mode, the 3D map, shops and armies ask ‘does this state know X’, not ‘what era is it’."
@@ -319,8 +319,8 @@ phases:
         en: ["Knowledge travels", "Through trade, war, migrants and spies; technologies can be lost in dark ages."]
       - k: walk
         s: plan
-        ru: ["Мир без анахронизмов", "Животные, транспорт, оружие и одежда в прогулке следуют реальным знаниям державы."]
-        en: ["A world without anachronisms", "Animals, transport, weapons and clothing in walk mode follow what the state knows."]
+        ru: ["Мир без анахронизмов", "Одежда, ремёсла, товары и профессии на прогулке следуют древу знаний державы."]
+        en: ["A world without anachronisms", "Clothing, crafts, goods and professions in walk mode follow the state’s tree of knowledge."]
       - k: gfx
         s: plan
         req: true
@@ -342,11 +342,11 @@ phases:
     eon: e1
     color: "#A8C48A"
     status: plan
-    t: 2027.66
+    t: 2027.3
     pos: { x: 625, y: 302 }
     deps: [v31]
     name: { ru: "Живые люди", en: "Living People" }
-    when: { ru: "≈ осень 2027", en: "≈ autumn 2027" }
+    when: { ru: "≈ весна 2027", en: "≈ spring 2027" }
     goal:
       ru: "Каждый житель — человек со своей судьбой: имя, семья, работа, распорядок дня, память и история."
       en: "Every inhabitant is a person with a fate of their own: a name, family, job, daily routine, memory and story."
@@ -403,11 +403,11 @@ phases:
     eon: e1
     color: "#D99A78"
     status: plan
-    t: 2027.88
+    t: 2027.45
     pos: { x: 730, y: 198 }
     deps: [v32]
     name: { ru: "Власть и вера", en: "Power and Faith" }
-    when: { ru: "≈ зима 2027/28", en: "≈ winter 2027/28" }
+    when: { ru: "≈ начало лета 2027", en: "≈ early summer 2027" }
     goal:
       ru: "Стать частью любой державы и пройти путь от простолюдина до правителя. Боги и идеологии начинают иметь значение."
       en: "Join any state and rise from commoner to ruler. Gods and ideologies start to matter."
@@ -467,11 +467,11 @@ phases:
     eon: e1
     color: "#E2B04F"
     status: plan
-    t: 2028.1
+    t: 2027.62
     pos: { x: 835, y: 312 }
     deps: [v31, v33]
     name: { ru: "Капитал", en: "Capital" }
-    when: { ru: "≈ весна 2028", en: "≈ spring 2028" }
+    when: { ru: "≈ конец лета 2027", en: "≈ late summer 2027" }
     goal:
       ru: "Экономика из настоящих товаров, цен и компаний, где подъёмы и кризисы возникают сами."
       en: "An economy of real goods, prices and companies, where booms and crises emerge on their own."
@@ -513,11 +513,11 @@ phases:
     eon: e1
     color: "#D0805F"
     status: plan
-    t: 2028.34
+    t: 2027.78
     pos: { x: 940, y: 208 }
     deps: [v34]
     name: { ru: "Фронт и тыл", en: "Front and Supply" }
-    when: { ru: "≈ лето 2028", en: "≈ summer 2028" }
+    when: { ru: "≈ осень 2027", en: "≈ autumn 2027" }
     goal:
       ru: "Армии, которые идут, едут и снабжаются, — вместо солдат, возникающих прямо на поле боя."
       en: "Armies that march, ride and need supplies — instead of soldiers appearing right on the battlefield."
@@ -563,11 +563,11 @@ phases:
     color: "#9CC3B8"
     status: plan
     major: true
-    t: 2028.6
+    t: 2027.93
     pos: { x: 1045, y: 330 }
     deps: [v30, v33]
     name: { ru: "Общий мир", en: "Shared World" }
-    when: { ru: "≈ осень 2028", en: "≈ autumn 2028" }
+    when: { ru: "≈ конец 2027", en: "≈ late 2027" }
     goal:
       ru: "Один мир на нескольких игроков — по интернету и по локальной сети."
       en: "One world for several players — over the internet and on a local network."
@@ -610,11 +610,11 @@ phases:
     color: "#7FB69A"
     status: plan
     major: true
-    t: 2028.86
+    t: 2028.1
     pos: { x: 1110, y: 505 }
     deps: [v30]
     name: { ru: "Глубокое время", en: "Deep Time" }
-    when: { ru: "≈ зима 2028/29", en: "≈ winter 2028/29" }
+    when: { ru: "≈ начало 2028", en: "≈ early 2028" }
     goal:
       ru: "Планета, живущая миллионы лет: плиты движутся, горы растут и разрушаются, а в недрах лежат настоящие руды."
       en: "A planet that lives for millions of years: plates drift, mountains rise and erode, and real ores lie deep below."
@@ -652,11 +652,11 @@ phases:
     eon: e2
     color: "#64B3AA"
     status: plan
-    t: 2029.2
+    t: 2028.3
     pos: { x: 1222, y: 470 }
     deps: [v50, v33]
     name: { ru: "Происхождение видов", en: "Origin of Species" }
-    when: { ru: "≈ 2029", en: "≈ 2029" }
+    when: { ru: "≈ весна 2028", en: "≈ spring 2028" }
     goal:
       ru: "Виды рождаются, приспосабливаются и вымирают сами, а разум может возникнуть у любого из них."
       en: "Species emerge, adapt and die out on their own — and intelligence can arise in any of them."
@@ -701,11 +701,11 @@ phases:
     color: "#8FB0DA"
     status: plan
     major: true
-    t: 2029.62
+    t: 2028.55
     pos: { x: 1255, y: 228 }
     deps: [v50, v34]
     name: { ru: "Солнечная система", en: "Solar System" }
-    when: { ru: "≈ 2029", en: "≈ 2029" }
+    when: { ru: "≈ лето 2028", en: "≈ summer 2028" }
     goal:
       ru: "Ваша планета становится одной из многих: орбиты, соседние миры, терраформирование и колонии."
       en: "Your planet becomes one of many: orbits, neighbouring worlds, terraforming and colonies."
@@ -744,11 +744,11 @@ phases:
     color: "#A49AE0"
     status: plan
     major: true
-    t: 2030.2
+    t: 2028.88
     pos: { x: 1338, y: 118 }
     deps: [v60, v40]
     name: { ru: "Галактика", en: "Galaxy" }
-    when: { ru: "≈ 2030", en: "≈ 2030" }
+    when: { ru: "≈ конец 2028", en: "≈ late 2028" }
     goal:
       ru: "Галактика, которую создаёте вы, и цивилизации, которые её заселяют."
       en: "A galaxy you create — and the civilisations that settle it."

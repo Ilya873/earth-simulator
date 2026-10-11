@@ -1,0 +1,5 @@
+{%- comment -%} Дата словами: параметр d (дата), язык — из L {%- endcomment -%}
+{%- assign L_ = page.lang | default: site.lang | default: 'ru' -%}
+{%- assign mi_ = include.d | date: '%-m' | minus: 1 -%}
+{%- if L_ == 'en' -%}{%- assign mm_ = "January,February,March,April,May,June,July,August,September,October,November,December" | split: "," -%}{%- else -%}{%- assign mm_ = "января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря" | split: "," -%}{%- endif -%}
+{{ include.d | date: '%-d' }} {{ mm_[mi_] }} {{ include.d | date: '%Y' }}

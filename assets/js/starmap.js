@@ -55,9 +55,9 @@
       var c = P[p.id];
       c.R = p.major ? 36 : 31;
       // прямоугольник подписи — препятствие для линий
-      if (mode === 'wide') c.lb = [c.x - 82, c.y + c.R + 4, c.x + 82, c.y + c.R + 48];
-      else if (c.x < VW / 2) c.lb = [c.x + c.R + 6, c.y - 24, c.x + c.R + 176, c.y + 16];
-      else c.lb = [c.x - c.R - 176, c.y - 24, c.x - c.R - 6, c.y + 16];
+      if (mode === 'wide') c.lb = [c.x - 95, c.y + c.R + 10, c.x + 95, c.y + c.R + 36];
+      else if (c.x < VW / 2) c.lb = [c.x + c.R + 6, c.y - 14, c.x + c.R + 190, c.y + 12];
+      else c.lb = [c.x - c.R - 190, c.y - 14, c.x - c.R - 6, c.y + 12];
     });
   }
 
@@ -80,7 +80,7 @@
   function linkPath(a, b, ida, idb) {
     var dx = b.x - a.x, dy = b.y - a.y, dist = Math.sqrt(dx * dx + dy * dy) || 1;
     var ux = dx / dist, uy = dy / dist, nx = -uy, ny = ux;
-    var sx = a.x + ux * (a.R + 3), sy = a.y + uy * (a.R + 3), ex = b.x - ux * (b.R + 8), ey = b.y - uy * (b.R + 8);
+    var sx = a.x + ux * (a.R + 3), sy = a.y + uy * (a.R + 3), ex = b.x - ux * (b.R + 3), ey = b.y - uy * (b.R + 3);
     var ks = [0.06, -0.06, 0.16, -0.16, 0.26, -0.26, 0.38, -0.38, 0.52, -0.52], best = null;
     for (var q = 0; q < ks.length; q++) {
       var k = ks[q], cx = (sx + ex) / 2 + nx * k * dist, cy = (sy + ey) / 2 + ny * k * dist, minC = 1e9;
@@ -109,43 +109,22 @@
     svg.classList.toggle('is-tall', mode === 'tall');
     systems = []; links = []; planetGroups = []; planets = [];
 
-    var defs = el('defs', null, svg);
-    var mk = el('marker', { id: 'sm-arr', viewBox: '0 0 10 10', refX: '8.5', refY: '5', markerWidth: '7', markerHeight: '7', orient: 'auto' }, defs);
-    el('path', { d: 'M0 1.5 L9 5 L0 8.5 Z', 'class': 'sm-arrow' }, mk);
 
-    // ось времени и годы
+    // ось времени: только подписи лет
     var ax = el('g', { 'class': 'sm-axis' }, svg);
     var y0 = Math.floor(Math.min.apply(null, phases.map(function (p) { return p.t; })));
     var y1 = Math.ceil(Math.max.apply(null, phases.map(function (p) { return p.t; })));
-    if (mode === 'wide') {
-      var ay = VH - 26;
-      el('line', { x1: 20, y1: ay, x2: VW - 20, y2: ay }, ax);
-      for (var yr = y0 + 1; yr <= y1; yr++) {
-        var x = timeCoord(yr);
-        if (x < 30 || x > VW - 30) continue;
-        el('line', { x1: x, y1: 40, x2: x, y2: ay, 'class': 'sm-year' }, ax);
-        el('line', { x1: x, y1: ay - 5, x2: x, y2: ay + 5 }, ax);
-        el('text', { x: x, y: ay + 20, 'text-anchor': 'middle' }, ax).textContent = yr;
+    for (var yr = y0 + 1; yr <= y1; yr++) {
+      var tcv = timeCoord(yr);
+      if (mode === 'wide') {
+        if (tcv < 30 || tcv > VW - 30) continue;
+        el('line', { x1: tcv, y1: VH - 34, x2: tcv, y2: VH - 26 }, ax);
+        el('text', { x: tcv, y: VH - 6, 'text-anchor': 'middle' }, ax).textContent = yr;
+      } else {
+        if (tcv < 40 || tcv > VH - 20) continue;
+        el('line', { x1: 8, y1: tcv, x2: 20, y2: tcv }, ax);
+        el('text', { x: 24, y: tcv + 5 }, ax).textContent = yr;
       }
-      el('text', { x: 22, y: ay - 10, 'class': 'sm-axis__cap' }, ax).textContent = (STR.time || 'time') + ' →';
-    } else {
-      var axx = 16;
-      el('line', { x1: axx, y1: 40, x2: axx, y2: VH - 20 }, ax);
-      for (var yr2 = y0 + 1; yr2 <= y1; yr2++) {
-        var yy = timeCoord(yr2);
-        if (yy < 40 || yy > VH - 20) continue;
-        el('line', { x1: axx, y1: yy, x2: VW - 10, y2: yy, 'class': 'sm-year' }, ax);
-        el('text', { x: axx + 4, y: yy - 6 }, ax).textContent = yr2;
-      }
-    }
-    // «сегодня»
-    var tc = timeCoord(TODAY), td = el('g', { 'class': 'sm-today' }, svg);
-    if (mode === 'wide') {
-      el('line', { x1: tc, y1: 36, x2: tc, y2: VH - 26 }, td);
-      el('text', { x: tc + 6, y: 48 }, td).textContent = STR.today || 'today';
-    } else {
-      el('line', { x1: 16, y1: tc, x2: VW - 10, y2: tc }, td);
-      el('text', { x: VW - 12, y: tc - 6, 'text-anchor': 'end' }, td).textContent = STR.today || 'today';
     }
 
     // названия эонов — как названия созвездий
@@ -164,23 +143,27 @@
       }
     });
 
-    // связи
+    // маршрут: одна линия через обновления по порядку; до «Вы здесь» — сплошная, дальше — пунктир
     var lg = el('g', null, svg);
+    var ranked = phases.slice().sort(function (a, b) { return a.t - b.t; });
+    var nowIdx = 0;
+    ranked.forEach(function (p, i) { if (p.now) nowIdx = i; });
+    var past = '', fut = '';
+    for (var ri = 1; ri < ranked.length; ri++) {
+      var a = ranked[ri - 1], b = ranked[ri], seg = linkPath(P[a.id], P[b.id], a.id, b.id);
+      if (ri <= nowIdx) past += seg + ' '; else fut += seg + ' ';
+    }
+    if (past) {
+      var rp = el('path', { d: past, 'class': 'sm-route' }, lg);
+      try { rp.style.setProperty('--len', Math.ceil(rp.getTotalLength())); } catch (e) {}
+    }
+    if (fut) el('path', { d: fut, 'class': 'sm-route sm-route--future' }, lg);
+    // зависимости — появляются только при наведении на систему
     phases.forEach(function (p) {
       (p.deps || []).forEach(function (d) {
         if (!byId[d]) return;
-        var far = p.eon !== 'e1';
-        var path = el('path', {
-          d: linkPath(P[d], P[p.id], d, p.id), 'class': 'sm-link ' + (far ? 'sm-link--far' : 'sm-link--draw'),
-          'data-from': d, 'data-to': p.id, 'marker-end': 'url(#sm-arr)'
-        }, lg);
-        path.style.setProperty('--d', (0.25 + p._i * 0.09).toFixed(2) + 's');
-        links.push(path);
+        links.push(el('path', { d: linkPath(P[d], P[p.id], d, p.id), 'class': 'sm-link', 'data-from': d, 'data-to': p.id }, lg));
       });
-    });
-    links.forEach(function (l) {
-      if (!l.classList.contains('sm-link--draw')) return;
-      try { l.style.setProperty('--len', Math.ceil(l.getTotalLength())); } catch (e) {}
     });
 
     // системы
@@ -188,7 +171,7 @@
     phases.forEach(function (p) { buildSystem(p, sg); });
     if (reduce) svg.classList.add('is-on');
     else if (introDone) svg.classList.add('is-on');
-    if (curFilter) applyFilter(curFilter);
+    applyFilter(curFilter);
     if (sel) markSelected(sel);
   }
 
@@ -225,17 +208,13 @@
     });
     planetGroups.push({ g: pg, speed: (p._i % 2 ? -1 : 1) * 360 / (210 + p._i * 17), base: 0 });
 
-    // подписи
-    if (mode === 'wide') {
-      if (p.now) el('text', { x: 0, y: -R - 14, 'text-anchor': 'middle', 'class': 'sm-here' }, inner).textContent = (STR.here || '') + ' ▾';
-      el('text', { x: 0, y: R + 21, 'text-anchor': 'middle', 'class': 'sm-ver' }, inner).textContent = p.ver + '  ·  ' + lit + '/' + n;
-      el('text', { x: 0, y: R + 41, 'text-anchor': 'middle', 'class': 'sm-name' }, inner).textContent = p.name[L];
-    } else {
-      var right = c.x < VW / 2, lx = right ? R + 12 : -R - 12, anchor = right ? 'start' : 'end';
-      if (p.now) el('text', { x: lx, y: -26, 'text-anchor': anchor, 'class': 'sm-here' }, inner).textContent = STR.here || '';
-      el('text', { x: lx, y: -8, 'text-anchor': anchor, 'class': 'sm-ver' }, inner).textContent = p.ver + '  ·  ' + lit + '/' + n;
-      el('text', { x: lx, y: 12, 'text-anchor': anchor, 'class': 'sm-name' }, inner).textContent = p.name[L];
-    }
+    // подписи: «2.1 Пути сообщения» одной строкой
+    var lab, lx = 0, ly = R + 30, anchor = 'middle';
+    if (mode === 'tall') { var right = c.x < VW / 2; lx = right ? R + 12 : -R - 12; ly = 6; anchor = right ? 'start' : 'end'; }
+    if (p.now) el('text', { x: mode === 'wide' ? 0 : lx, y: mode === 'wide' ? -R - 14 : -16, 'text-anchor': anchor, 'class': 'sm-here' }, inner).textContent = STR.here || '';
+    lab = el('text', { x: lx, y: ly, 'text-anchor': anchor, 'class': 'sm-name' }, inner);
+    var tv = el('tspan', { 'class': 'sm-ver' }, lab); tv.textContent = p.ver + ' ';
+    var tn = el('tspan', null, lab); tn.textContent = p.name[L];
     systems.push(g);
 
     g.addEventListener('pointerenter', function (e) { highlight(p.id, true); if (!e.target.classList.contains('sm-pl')) showSysTip(p, e); });
@@ -286,8 +265,7 @@
   function showSysTip(p, e) {
     if (e.pointerType === 'touch') return;
     var items = p.items || [], lit = items.filter(function (it) { return it.s === 'done' || it.s === 'wip'; }).length;
-    tip.innerHTML = '<span class="mono">' + esc(p.ver) + ' · ' + esc(p.when[L]) + '</span><b>' + esc(p.name[L]) + '</b><small>' +
-      esc(DATA.status[p.status][L]) + ' · ' + lit + '/' + items.length + ' ' + esc(STR.planets || '') + '</small>';
+    tip.innerHTML = '<b>' + esc(p.ver) + ' ' + esc(p.name[L]) + '</b><small>' + esc(p.when[L]) + ' · ' + esc(DATA.status[p.status][L]) + '</small>';
     placeTip(e);
   }
   function hideTip() { tip.hidden = true; }
@@ -295,8 +273,7 @@
     var pl = e.target.closest && e.target.closest('.sm-pl');
     if (!pl || e.pointerType === 'touch') return;
     var p = byId[pl.getAttribute('data-id')], it = p.items[+pl.getAttribute('data-i')];
-    tip.innerHTML = '<span class="mono">' + esc(p.ver) + ' · ' + esc(p.name[L]) + '</span><b>' + esc(it[L][0]) + '</b><small>' +
-      esc(DATA.tracks[it.k][L]) + ' · ' + esc(DATA.status[it.s][L]) + (it.req ? ' · <span class="sm-tip__req">' + esc(STR.req || '') + '</span>' : '') + '</small>';
+    tip.innerHTML = '<b>' + esc(it[L][0]) + '</b><small>' + esc(p.ver) + ' ' + esc(p.name[L]) + (it.req ? ' · <span class="sm-tip__req">' + esc(STR.req || '') + '</span>' : '') + '</small>';
     placeTip(e);
   });
   svg.addEventListener('pointermove', function (e) {
@@ -346,25 +323,17 @@
     if (!all && sel) document.getElementById('upd-' + sel).scrollIntoView({ block: 'nearest' });
   });
 
-  /* ---------- фильтры ---------- */
-  var curFilter = 'all', fbtns = root.querySelectorAll('[data-filter]');
-  function matches(node, f) { return f === 'req' ? node.getAttribute('data-req') === '1' : node.getAttribute('data-k') === f; }
-  function applyFilter(f) {
-    curFilter = f;
-    svg.setAttribute('data-filter', f); upds.setAttribute('data-filter', f);
-    fbtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === f ? 'true' : 'false'); });
-    planets.forEach(function (pl) { pl.classList.toggle('is-match', f !== 'all' && matches(pl, f)); });
-    upds.querySelectorAll('.upd__item').forEach(function (li) {
-      if (!li.hasAttribute('data-req')) li.setAttribute('data-req', '0');
-      li.classList.toggle('is-match', f !== 'all' && matches(li, f));
-    });
+  /* ---------- подсветка идей игроков ---------- */
+  var curFilter = false, reqBtn = root.querySelector('[data-req-toggle]');
+  function applyFilter(on) {
+    curFilter = !!on;
+    svg.classList.toggle('is-req', curFilter); upds.classList.toggle('is-req', curFilter);
+    if (reqBtn) reqBtn.setAttribute('aria-pressed', curFilter ? 'true' : 'false');
+    planets.forEach(function (pl) { pl.classList.toggle('is-match', pl.getAttribute('data-req') === '1'); });
+    upds.querySelectorAll('.upd__item').forEach(function (li) { li.classList.toggle('is-match', li.getAttribute('data-req') === '1'); });
   }
-  fbtns.forEach(function (b) { b.addEventListener('click', function () { applyFilter(b.getAttribute('data-filter')); }); });
-  function counts() {
-    var cnt = { req: 0 };
-    phases.forEach(function (p) { (p.items || []).forEach(function (it) { cnt[it.k] = (cnt[it.k] || 0) + 1; if (it.req) cnt.req++; }); });
-    root.querySelectorAll('[data-count]').forEach(function (s) { s.textContent = cnt[s.getAttribute('data-count')] || 0; });
-  }
+  if (reqBtn) reqBtn.addEventListener('click', function () { applyFilter(!curFilter); });
+  function counts() {}
 
   /* ---------- вращение орбит и мерцание звёзд ---------- */
   var visible = false, raf = 0, last = 0, introDone = false;
