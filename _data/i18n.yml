@@ -186,8 +186,8 @@ tg_open: { ru: "Открыть канал", en: "Open the channel" }
 # подвал
 colophon_title: { ru: "Выходные данные", en: "Colophon" }
 colophon:
-  ru: "Карта составлена в октябре 2026 года по исходному коду игры и уточняется с каждым обновлением. Скриншоты — из игры."
-  en: "This map was drawn in October 2026 from the game’s source code and is refined with every update. Screenshots are from the game."
+  ru: "Последнее обновление — октябрь 2026 года. Скриншоты — из игры."
+  en: "Last updated in October 2026. Screenshots are from the game."
 footer_dev: { ru: "Разработка", en: "Development" }
 footer_pub: { ru: "Издатель", en: "Publisher" }
 footer_follow: { ru: "Следить", en: "Follow" }

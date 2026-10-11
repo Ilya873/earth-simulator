@@ -14,7 +14,7 @@ body_en: |
 
   The roadmap is drawn as a star chart. Every update is a star system, and every feature is a planet on its orbit. Planets already in the game shine, and the ones in progress are teal. Hover a system and lines appear to the updates it rests on.
 
-  The map was drawn from the game’s source code: what already works, what each next system rests on, and in which order they are best built. The most important system is 3.0, *Foundation*. It’s an engine rebuild: the world becomes a globe, and the simulation moves to its own thread and becomes predictable. Without it there can be no multiplayer, no other planets and no truly living inhabitants.
+  The map shows what already works, what each next system rests on, and in which order they are best built. The most important system is 3.0, *Foundation*. It’s an engine rebuild: the world becomes a globe, and the simulation moves to its own thread and becomes predictable. Without it there can be no multiplayer, no other planets and no truly living inhabitants.
 
   The dates on the map are approximate: some things will arrive earlier, some later. The order matters more than the dates.
 
@@ -28,7 +28,7 @@ body_en: |
 
 Дорожная карта нарисована как звёздная. Каждое обновление — звёздная система, каждая новая возможность — планета на её орбите. Планеты, которые уже в игре, светятся, а те, что в работе, — бирюзовые. Наведите на систему, и появятся линии к обновлениям, на которые она опирается.
 
-Карта составлена по исходному коду игры: что уже работает, на что опирается каждая следующая система и в каком порядке их выгоднее строить. Самая важная система — 3.0, «Фундамент». Это перестройка движка: мир становится глобусом, а симуляция уходит в отдельный поток и становится предсказуемой. Без этого не получится ни мультиплеер, ни другие планеты, ни по-настоящему живые жители.
+На карте видно, что уже работает, на что опирается каждая следующая система и в каком порядке их выгоднее строить. Самая важная система — 3.0, «Фундамент». Это перестройка движка: мир становится глобусом, а симуляция уходит в отдельный поток и становится предсказуемой. Без этого не получится ни мультиплеер, ни другие планеты, ни по-настоящему живые жители.
 
 Сроки на карте ориентировочные: что-то выйдет раньше, что-то позже. Порядок важнее дат.
 
