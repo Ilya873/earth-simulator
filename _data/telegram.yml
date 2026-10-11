@@ -1,6 +1,16 @@
-# Посты канала издателя об игре (виджет Telegram). Новые — сверху; на сайте показывается только самый новый.
+# Посты канала издателя об игре. Новые — сверху; на сайте показывается только самый новый.
 # Номер поста — последняя часть ссылки: t.me/gamesforfarmnews/3755 → 3755
+# Обычно достаточно номера — пост показывается официальным виджетом Telegram.
+# Если пост не встраивается (виджет пишет «Please open Telegram to view this post»),
+# пишется карточкой: id, date, title, text (ru/en), img — и ведёт на пост в Telegram.
 channel: gamesforfarmnews
 posts:
+  - id: 3916
+    date: 2026-10-02
+    title: { ru: "Earth Simulator 2.0 — глобальное обновление", en: "Earth Simulator 2.0 — the global update" }
+    text:
+      ru: "Прогулка от первого лица, история на 700–1000 лет, правители с характером, 35 видов животных и новая Мастерская. Пост закреплён в канале издателя."
+      en: "First-person walks, a 700–1,000-year history, rulers with personalities, 35 animal species and a new Workshop. The post is pinned on the publisher’s channel."
+    img: /assets/img/shots/walk-horse-800.jpg
   - 3755
   - 3693

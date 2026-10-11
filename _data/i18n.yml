@@ -182,6 +182,7 @@ devlog_lang_note: { ru: "", en: "Entries can be switched between Russian and Eng
 devlog_version: { ru: "Версия", en: "Version" }
 tg_title: { ru: "Последняя новость в канале издателя", en: "Latest news on the publisher’s channel" }
 tg_open: { ru: "Открыть канал", en: "Open the channel" }
+tg_view: { ru: "Читать пост в Telegram", en: "Read the post on Telegram" }
 
 # подвал
 colophon_title: { ru: "Выходные данные", en: "Colophon" }

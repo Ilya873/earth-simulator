@@ -39,6 +39,8 @@ Jekyll на GitHub Pages (классическая сборка из ветки 
 
 - `_data/versions.yml` — версии по новостям Steam (`steam` — id новости, `tg` — номер поста, `post` — запись дневника).
 - `_data/telegram.yml` — номера постов канала gamesforfarmnews про игру; на сайте виджетом показывается только самый новый (первый в списке).
+  Если Telegram не даёт встроить пост (виджет пишет «Please open Telegram to view this post», как у закреплённого №3916),
+  пост описывается карточкой: `id`, `date`, `title`, `text` (ru/en), `img` — она ведёт на пост в Telegram.
 - Виджет Steam встроен iframe-ом (`store.steampowered.com/widget/4932460/`), масштабируется скриптом.
 
 ## Оформление
