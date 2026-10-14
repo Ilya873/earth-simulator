@@ -156,7 +156,6 @@ phases:
         en: ["Quests from locals", "Quests born from world events: famine, plague, bandits, war, harvest."]
       - k: com
         s: done
-        req: true
         ru: ["17 языков", "Китайский, японский, корейский, немецкий, французский, испанский, португальский, польский, турецкий, итальянский, украинский, чешский, тайский, вьетнамский и другие."]
         en: ["17 languages", "Chinese, Japanese, Korean, German, French, Spanish, Portuguese, Polish, Turkish, Italian, Ukrainian, Czech, Thai, Vietnamese and more."]
       - k: play
@@ -198,27 +197,22 @@ phases:
         en: ["Technology you can see", "Horses and carts only after taming and the wheel; where there are no horses — the state’s own camels, llamas or reindeer. Swords, ships, writing on signs and buildings follow its inventions."]
       - k: walk
         s: plan
-        req: true
         ru: ["Техника в битвах как в армии", "В сражениях — те же танки и машины, что на базах державы; угнать технику можно прямо с поля боя."]
         en: ["Battle vehicles match the army", "Battles use the same tanks and vehicles as the state’s bases; steal them right off the battlefield."]
       - k: play
         s: plan
-        req: true
         ru: ["Закрепить что угодно", "Постоянной можно сделать не только температуру, но и осадки, уровень моря, CO₂ и другое — и снять закрепление."]
         en: ["Pin anything", "Hold not just temperature but rainfall, sea level, CO₂ and more fixed — and release it again."]
       - k: play
         s: plan
-        req: true
         ru: ["Реки своими руками", "Кисть рек: проложите русло — вода сама найдёт путь к морю, а вдоль реки поднимутся поля и города."]
         en: ["Rivers by hand", "A river brush: draw a channel and the water finds its way to the sea, with fields and towns rising along it."]
       - k: play
         s: plan
-        req: true
         ru: ["Торговые пути на виду", "Окно каждого торгового маршрута: кто с кем торгует, сколько и что везут."]
         en: ["Trade routes up close", "A window for every trade route: who trades with whom, how much and what they carry."]
       - k: play
         s: plan
-        req: true
         ru: ["Значки на карте", "Включайте и выключайте значки городов, баз, аэропортов и портов на 2D-карте."]
         en: ["Map icons", "Toggle the icons of cities, bases, airports and ports on the 2D map."]
       - k: sim
@@ -247,7 +241,6 @@ phases:
         en: ["Craters", "Meteors and nukes leave craters that fill with water and slowly heal over time."]
       - k: gfx
         s: plan
-        req: true
         ru: ["Руины как руины", "Разрушенные дома и стены выглядят обломками, обгоревшими каркасами и завалами, а не просто тёмными коробками."]
         en: ["Ruins that look ruined", "Destroyed houses and walls look like rubble, burnt frames and debris, not just dark boxes."]
       - k: play
@@ -262,7 +255,6 @@ phases:
         en: ["New map colours", "Eras and indicators distinct at a glance, a colour-blind mode, your own state colours."]
       - k: play
         s: plan
-        req: true
         ru: ["Удобнее интерфейс", "Поиск по державам и городам, понятнее окна и подсказки — по вашим отзывам."]
         en: ["A friendlier interface", "Search for states and cities, clearer windows and hints — from your feedback."]
 
@@ -296,42 +288,34 @@ phases:
     items:
       - k: walk
         s: plan
-        req: true
         ru: ["Единая сеть путей", "Дороги и железные дороги на прогулке совпадают с картой; вокзал есть у каждой линии."]
         en: ["One road network", "Roads and railways on foot match the world map; every line has its stations."]
       - k: walk
         s: plan
-        req: true
         ru: ["Автобусы", "Городские и междугородние маршруты: поездки пассажиром и работа водителем."]
         en: ["Buses", "City and intercity routes: ride as a passenger or work as a driver."]
       - k: walk
         s: plan
-        req: true
         ru: ["Дальнобойщики", "Фуры с грузом между городами — и работа дальнобойщиком."]
         en: ["Long-haul trucks", "Lorries carrying cargo between cities — and a trucker’s job."]
       - k: sim
         s: plan
-        req: true
         ru: ["Естественные границы", "Границы держав тянутся по хребтам и рекам, а не режут горы пополам."]
         en: ["Natural borders", "State borders follow ridges and rivers instead of cutting mountains in half."]
       - k: walk
         s: plan
-        req: true
         ru: ["Пограничные посты", "На границе — шлагбаум, пограничники и проверка документов."]
         en: ["Border checkpoints", "At the border — a barrier, border guards and a check of papers."]
       - k: sim
         s: plan
-        req: true
         ru: ["Воздушные бои", "Воздушные и совместные сражения — небо, земля и море; от бипланов и бомбардировщиков до машин будущего."]
         en: ["Air battles", "Air and combined battles — sky, land and sea; from biplanes and bombers to aircraft of the future."]
       - k: walk
         s: plan
-        req: true
         ru: ["Дирижабли и воздушные шары", "В небе над городами — и их тоже можно угнать."]
         en: ["Airships and balloons", "In the skies over cities — and yes, you can steal them too."]
       - k: gfx
         s: plan
-        req: true
         ru: ["Города по культуре и вере", "Облик городов зависит от народа и религии: храмы, крыши, цвета и украшения."]
         en: ["Cities by culture and faith", "Cities look different by people and religion: temples, roofs, colours and ornament."]
 
@@ -473,7 +457,6 @@ phases:
         en: ["Animals in the economy", "Herds provide food, wool and draught power, while riding, chariots and nomadic herding become discoveries in the tree."]
       - k: sim
         s: plan
-        req: true
         ru: ["Разведка недр", "Державы находят руду, уголь и нефть, только когда умеют их искать и добывать; до того месторождения скрыты."]
         en: ["Prospecting", "States find ore, coal and oil only once they know how to search for and mine them; until then deposits stay hidden."]
       - k: sim
@@ -549,7 +532,6 @@ phases:
         en: ["Gathering and crafting", "Hunting, foraging, cooking and simple crafting."]
       - k: walk
         s: plan
-        req: true
         ru: ["Стройка от первого лица", "Постройте дом, лавку или мастерскую своими руками — и они станут частью города."]
         en: ["Building in first person", "Build a house, a shop or a workshop with your own hands — and it becomes part of the town."]
       - k: walk
@@ -679,7 +661,6 @@ phases:
         en: ["Regional markets", "Prices from supply and demand; cargo moves by caravan, ship, train and truck."]
       - k: play
         s: plan
-        req: true
         ru: ["Компании", "Частные и государственные — в земледелии, добыче, промышленности, торговле и транспорте: найм, конкуренция, банкротства; они двигают экономику державы. Основать свою можно и на прогулке, и как правитель."]
         en: ["Companies", "Private and state-owned — in farming, mining, industry, trade and transport: hiring, competition, bankruptcy; they drive the state’s economy. Found your own on foot or as a ruler."]
       - k: sim
