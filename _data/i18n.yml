@@ -73,8 +73,8 @@ pp_release: { ru: "Выход", en: "Released" }
 pp_release_v: { ru: "20 августа 2026", en: "20 August 2026" }
 pp_version: { ru: "Версия", en: "Version" }
 pp_version_v:
-  ru: "2.0.2, готовится 2.1.0"
-  en: "2.0.2, 2.1.0 coming"
+  ru: "2.1.0"
+  en: "2.1.0"
 pp_reviews: { ru: "Отзывы", en: "Reviews" }
 pp_reviews_v: { ru: "очень положительные", en: "Very Positive" }
 pp_genre: { ru: "Жанр", en: "Genre" }

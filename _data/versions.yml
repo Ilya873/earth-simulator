@@ -5,26 +5,31 @@
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
 - ver: "2.1.0"
-  kind: upcoming
-  date: ""
-  when: { ru: "≈ октябрь 2026", en: "≈ October 2026" }
-  name: { ru: "Пути сообщения", en: "Connections" }
-  post: /devlog/2026/10/11/obnovlenie-2-1-0/
+  kind: update
+  date: 2026-10-15
+  name: { ru: "Транспорт, деньги и закон", en: "Transport, Money and the Law" }
+  post: /devlog/2026/10/15/vyshlo-obnovlenie-2-1-0/
   items:
     ru:
-      - "Морские порты: торговые суда прибывают и уходят, можно работать грузчиком и разговаривать с капитанами и матросами."
-      - "Морские сражения, которые можно смотреть с палубы от первого лица."
-      - "Военные базы: угнать танк или наняться в караул."
-      - "Поезда — от паровоза до магнитного поезда: пассажиром или машинистом."
-      - "Аэропорты, самолёты и вертолёты; угонщика перехватят истребители — придётся прыгать с парашютом."
-      - "Деньги держав, работа, закон и поручения жителей на прогулке."
+      - "Игра на 17 языках: китайский, японский, корейский, немецкий, французский, испанский, португальский, польский, турецкий, итальянский, украинский, чешский, тайский, вьетнамский и другие."
+      - "Железные дороги и вокзалы: поезда от паровоза до магнитного, поездки пассажиром, угон локомотива, работа машинистом."
+      - "Аэропорты: полёты пассажиром в другие аэропорты мира, работа пилотом, угон самолёта, перехватчики и парашют."
+      - "Морские порты, корабли 14 видов с палубой и экипажем, работа в порту, морские сражения с берега и с палубы."
+      - "Военные базы своей эпохи: служба, караул, угон танков и самолётов."
+      - "Деньги держав, подработки, лавки, поручения жителей, слава и её исправление."
+      - "Закон: правитель во дворце под охраной, розыск до пяти звёзд, полиция на машинах."
+      - "На карте: железные дороги, морские пути, порты, аэропорты, базы и морские сражения; окно битвы."
+      - "Свои названия и флаги держав, назначение клавиш, раздел «Авторы»."
     en:
-      - "Seaports: merchant ships arrive and depart; work as a docker and talk to captains and sailors."
-      - "Naval battles you can watch from the deck in first person."
-      - "Military bases: steal a tank or sign up for guard duty."
-      - "Trains — from steam engines to maglev: as a passenger or a driver."
-      - "Airports, planes and helicopters; hijackers get intercepted by fighters — time for the parachute."
-      - "State currencies, jobs, law and quests from locals in walk mode."
+      - "The game in 17 languages: Chinese, Japanese, Korean, German, French, Spanish, Portuguese, Polish, Turkish, Italian, Ukrainian, Czech, Thai, Vietnamese and more."
+      - "Railways and stations: trains from steam to maglev, passenger rides, locomotive hijacking, train-driver jobs."
+      - "Airports: fly as a passenger to other airports of the world, work as a pilot, hijack a plane, interceptors and the parachute."
+      - "Seaports, 14 kinds of ships with walkable decks and crews, dock work, naval battles from the shore and from the deck."
+      - "Military bases of every era: enlisting, guard duty, stealing tanks and planes."
+      - "National currencies, side jobs, shops, quests from locals, reputation and how to mend it."
+      - "The law: a guarded ruler in a palace, wanted levels up to five stars, police cars."
+      - "On the map: railways, sea lanes, ports, airports, bases and naval battles; a battle window."
+      - "Your own names and flags for nations, key rebinding, a Credits section."
 
 - ver: "2.0.2"
   kind: patch
