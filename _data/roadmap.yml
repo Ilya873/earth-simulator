@@ -32,7 +32,7 @@ eons:
     roman: "I"
     color: "#D9A75B"
     name: { ru: "Мир людей", en: "The Human World" }
-    span: { ru: "2026 — 2027", en: "2026 — 2027" }
+    span: { ru: "2026 — 2027/28", en: "2026 — 2027/28" }
     label: { x: 560, y: 92 }
   - id: e2
     roman: "II"
@@ -56,7 +56,7 @@ phases:
     color: "#E8D3A2"
     status: done
     t: 2026.76
-    pos: { x: 95, y: 330 }
+    pos: { x: 80, y: 330 }
     deps: []
     img: /assets/img/shots/walk-volaria-1600.jpg
     name: { ru: "Новый мир", en: "A New World" }
@@ -107,7 +107,7 @@ phases:
     color: "#E8B65E"
     status: done
     t: 2026.79
-    pos: { x: 205, y: 250 }
+    pos: { x: 190, y: 205 }
     deps: [v20]
     img: /assets/devlog/2026-10-15-update-2-1-0/container-port-1600.jpg
     name: { ru: "Транспорт, деньги и закон", en: "Transport, Money and the Law" }
@@ -176,120 +176,183 @@ phases:
     status: plan
     now: true
     t: 2026.88
-    pos: { x: 305, y: 365 }
+    pos: { x: 285, y: 390 }
     deps: [v21]
     name: { ru: "Достоверность", en: "Fidelity" }
     when: { ru: "≈ ноябрь 2026", en: "≈ November 2026" }
     goal:
-      ru: "На прогулке видно ровно то, до чего дошла держава: её животные, транспорт, оружие и постройки. Бедствия получают настоящие масштабы и следы, моря — лёд, карта — новые краски и больше сведений, а игрок — больше власти над миром."
-      en: "On foot you see exactly what a state has reached: its animals, vehicles, weapons and buildings. Disasters get real scales and lasting marks, seas get ice, the map gets new colours and more information, and the player gets more control over the world."
+      ru: "На прогулке видно ровно то, до чего дошла держава: её животные, транспорт, оружие и постройки, а города переходят в новую эпоху постепенно, дом за домом. Дома можно разрушить, в режиме «Выживание» появляются голод и жажда, а на прогулке — новое оружие и лечение. Бедствия получают настоящие масштабы и следы, моря — лёд, карта — новые краски и больше сведений."
+      en: "On foot you see exactly what a state has reached: its animals, vehicles, weapons and buildings, and towns move into a new era gradually, house by house. Houses can be destroyed, Survival mode gets hunger and thirst, and walk mode gets new weapons and healing. Disasters get real scales and lasting marks, seas get ice, the map gets new colours and more information."
     why:
-      ru: "С поездами, портами и базами на прогулке стало видно гораздо больше техники, и несостыковки эпох бросаются в глаза: меч из бронзы у народа, который не знает бронзы, всадники в городах, где ещё не приручили лошадь. Всё это делается на нынешнем движке: данные о приручённых животных и изобретениях держав в симуляции уже есть."
-      en: "With trains, ports and bases, walk mode now shows far more technology, and era mismatches stand out: a bronze sword among people who don’t know bronze, riders in towns that haven’t tamed the horse. All of it can be done on the current engine: the simulation already tracks each state’s tamed animals and inventions."
+      ru: "С поездами, портами и базами на прогулке стало видно гораздо больше техники, и несостыковки эпох бросаются в глаза: меч из бронзы у народа, который не знает бронзы, всадники в городах, где ещё не приручили лошадь. Всё это делается на нынешнем движке: данные о приручённых животных и изобретениях держав в симуляции уже есть. Перед ним выйдут небольшие патчи 2.1.1 и 2.1.2 с исправлениями по вашим отзывам. Часть пунктов — бедствия, моря, краски карты, дирижабли — может прийти отдельным патчем в начале декабря."
+      en: "With trains, ports and bases, walk mode now shows far more technology, and era mismatches stand out: a bronze sword among people who don’t know bronze, riders in towns that haven’t tamed the horse. All of it can be done on the current engine: the simulation already tracks each state’s tamed animals and inventions. Small patches 2.1.1 and 2.1.2 with fixes from your feedback come first. Some items — disasters, seas, map colours, airships — may arrive in a separate patch in early December."
     hood:
-      ru: "Прогулка спрашивает у симуляции не номер эпохи, а что держава действительно знает: каких из восьми одомашниваемых видов приручила (это уже считается — у каждой державы свои, по её землям) и какие из 32 изобретений сделала — письменность, колесо, бронзу, мореходство, порох, двигатель. Внутренняя «сила» бедствия пересчитывается в настоящие шкалы. Поиск морского пути учитывает лёд, а лёд — сезоны. Кратер со временем выравнивается, заполняется водой и зарастает. Закрепить можно любое поле мира, а не только температуру."
-      en: "Walk mode asks the simulation not for the era number but for what a state actually knows: which of the eight domesticable species it has tamed (already tracked — each state has its own, by its lands) and which of 32 inventions it has made — writing, the wheel, bronze, seafaring, gunpowder, the engine. A disaster’s internal ‘power’ is mapped to real scales. Sea pathfinding respects ice, and ice follows the seasons. A crater levels out over time, fills with water and greens over. Any world field can be pinned, not just temperature."
+      ru: "Прогулка спрашивает у симуляции не номер эпохи, а что держава действительно знает: каких из восьми одомашниваемых видов приручила (это уже считается — у каждой державы свои, по её землям) и какие из 32 изобретений сделала — письменность, колесо, бронзу, мореходство, порох, двигатель. Внутренняя «сила» бедствия пересчитывается в настоящие шкалы. Поиск морского пути учитывает лёд, а лёд — сезоны. Кратер со временем выравнивается, заполняется водой и зарастает. Закрепить можно любое поле мира, а не только температуру. У каждого дома свой «год перестройки», вычисляемый из его номера: когда держава входит в новую эпоху, город обновляется постепенно, и хранить для этого ничего не нужно. Так же, по своему «году», сменяется транспорт на улицах. Разрушенный дом запоминается и перестраивается отдельно от квартала. Оружие, предметы и здания эпох переезжают в таблицы данных, а сохранения получают цепочку миграций — первые части фундамента 3.0."
+      en: "Walk mode asks the simulation not for the era number but for what a state actually knows: which of the eight domesticable species it has tamed (already tracked — each state has its own, by its lands) and which of 32 inventions it has made — writing, the wheel, bronze, seafaring, gunpowder, the engine. A disaster’s internal ‘power’ is mapped to real scales. Sea pathfinding respects ice, and ice follows the seasons. A crater levels out over time, fills with water and greens over. Any world field can be pinned, not just temperature. Every house has its own ‘rebuild year’ derived from its number: when a state enters a new era the town renews gradually, with nothing extra to store. Vehicles on the streets change the same way, each by its own ‘year’. A destroyed house is remembered and rebuilt separately from its block. Weapons, items and buildings of every era move into data tables, and saves get a chain of migrations — the first parts of the 3.0 foundation."
+    grows:
+      ru:
+        - "Лавки: лекарь продаёт травы, бинты и аптечки, оружейник — гранаты и новое оружие; в режиме «Выживание» еда и вода нужны по-настоящему."
+        - "Бои: разрушенный дом остаётся развалинами, а солдаты, павшие от вашей руки, вычитаются из армии на карте."
+      en:
+        - "Shops: the healer sells herbs, bandages and medkits, the gunsmith grenades and new weapons; in Survival mode food and water truly matter."
+        - "Battles: a destroyed house stays in ruins, and soldiers who fall by your hand are subtracted from the army on the map."
     items:
       - k: walk
         s: plan
         req: true
-        ru: ["Технологии на прогулке", "Кони и повозки — только после приручения и колеса; там, где коня нет, — свои верблюды, ламы или олени. Мечи, корабли, письмена на вывесках и постройки — по изобретениям державы."]
-        en: ["Technology you can see", "Horses and carts only after taming and the wheel; where there are no horses — the state’s own camels, llamas or reindeer. Swords, ships, writing on signs and buildings follow its inventions."]
+        ru: ["Технологии на прогулке", "Кони и повозки — только после приручения и колеса, а где коня нет — верблюды, ламы или олени. Мечи, корабли, вывески и постройки — по изобретениям державы; на полях — пахарь с волами, жатка или комбайн; в век небоскрёбов не ходят парусники."]
+        en: ["Technology you can see", "Horses and carts only after taming and the wheel; where there are no horses — camels, llamas or reindeer. Swords, ships, signs and buildings follow the state’s inventions; fields get oxen ploughs, reapers or combines; no sailing ships in the age of skyscrapers."]
       - k: walk
         s: plan
-        ru: ["Техника в битвах как в армии", "В сражениях — те же танки и машины, что на базах державы; угнать технику можно прямо с поля боя."]
-        en: ["Battle vehicles match the army", "Battles use the same tanks and vehicles as the state’s bases; steal them right off the battlefield."]
+        ru: ["Постепенная смена эпох", "Город переходит в новую эпоху дом за домом, а улицы — повозка за повозкой: старые постройки и старый транспорт соседствуют с новыми, а не меняются все разом."]
+        en: ["Eras change gradually", "A town enters a new era house by house, and its streets cart by cart: old buildings and old vehicles stand beside new ones instead of all changing at once."]
+      - k: walk
+        s: plan
+        req: true
+        ru: ["Бои как в армии", "В сражениях — те же танки и машины, что на базах державы, окопы, ежи и блиндажи; технику можно угнать с поля боя, а павшие от вашей руки вычитаются из армии на карте."]
+        en: ["Battles like the real army", "Battles use the same tanks and vehicles as the state’s bases, with trenches, hedgehogs and dugouts; steal vehicles off the battlefield, and those who fall by your hand are subtracted from the army on the map."]
+      - k: walk
+        s: plan
+        ru: ["Разрушения и руины", "Танк, взрыв или пожар превращают дом в развалины, где на карте горит — на прогулке огонь и дым; руины выглядят обломками и обгоревшими каркасами, а не тёмными коробками."]
+        en: ["Destruction and ruins", "A tank, a blast or a fire turns a house into ruins; where the map burns, walk mode shows fire and smoke; ruins look like rubble and burnt frames, not dark boxes."]
       - k: play
         s: plan
-        ru: ["Закрепить что угодно", "Постоянной можно сделать не только температуру, но и осадки, уровень моря, CO₂ и другое — и снять закрепление."]
-        en: ["Pin anything", "Hold not just temperature but rainfall, sea level, CO₂ and more fixed — and release it again."]
-      - k: play
+        req: true
+        ru: ["Голод и жажда", "В режиме «Выживание» нужно есть и пить, а жара и холод зависят от климата; обычный режим остаётся спокойным."]
+        en: ["Hunger and thirst", "In Survival mode you need to eat and drink, and heat and cold follow the local climate; Standard mode stays relaxed."]
+      - k: walk
         s: plan
-        ru: ["Реки своими руками", "Кисть рек: проложите русло — вода сама найдёт путь к морю, а вдоль реки поднимутся поля и города."]
-        en: ["Rivers by hand", "A river brush: draw a channel and the water finds its way to the sea, with fields and towns rising along it."]
+        req: true
+        ru: ["Новое оружие и лечение", "Гранаты, дробовики и снайперские винтовки; травы, бинты и аптечки — по эпохе."]
+        en: ["New weapons and healing", "Grenades, shotguns and sniper rifles; herbs, bandages and medkits — by era."]
       - k: play
         s: plan
         ru: ["Торговые пути на виду", "Окно каждого торгового маршрута: кто с кем торгует, сколько и что везут."]
         en: ["Trade routes up close", "A window for every trade route: who trades with whom, how much and what they carry."]
-      - k: play
+      - k: walk
         s: plan
-        ru: ["Значки на карте", "Включайте и выключайте значки городов, баз, аэропортов и портов на 2D-карте."]
-        en: ["Map icons", "Toggle the icons of cities, bases, airports and ports on the 2D map."]
-      - k: sim
-        s: plan
-        ru: ["Мор плывёт на кораблях", "Эпидемии переходят за море вместе с торговыми и военными судами."]
-        en: ["Plague travels by ship", "Epidemics cross the sea with merchant and war ships."]
-      - k: play
-        s: plan
-        req: true
-        ru: ["Карточки бедствий", "Наведите на ураган или пожар — сила, площадь, осадки, ущерб и сколько ещё продлится."]
-        en: ["Disaster cards", "Hover a hurricane or a wildfire to see strength, area, rainfall, damage and time remaining."]
+        ru: ["Дирижабли и воздушные шары", "Дирижабли над городами индустриальной эпохи, а позже — прогулочные шары над полями и рекламные дирижабли; угнать можно и их."]
+        en: ["Airships and balloons", "Airships over industrial-era cities, and later pleasure balloons over the fields and advertising blimps; you can steal those too."]
       - k: sim
         s: plan
         req: true
-        ru: ["Настоящие шкалы", "Ураганы по Саффиру — Симпсону, вулканы по VEI, землетрясения по магнитуде, удары — в килотоннах."]
-        en: ["Real-world scales", "Hurricanes on Saffir–Simpson, volcanoes on VEI, earthquakes by magnitude, impacts in kilotons."]
+        ru: ["Реалистичные бедствия", "Карточки бедствий при наведении, настоящие шкалы — Саффир — Симпсон, VEI, магнитуда, килотонны — и кратеры, которые заполняются водой и зарастают."]
+        en: ["Realistic disasters", "Disaster cards on hover, real-world scales — Saffir–Simpson, VEI, magnitude, kilotons — and craters that fill with water and heal over."]
       - k: sim
         s: plan
         req: true
-        ru: ["Замерзающие моря", "Лёд закрывает путь кораблям: сезонные окна навигации и замёрзшие проливы."]
-        en: ["Freezing seas", "Ice blocks ships: seasonal navigation windows and frozen straits."]
-      - k: sim
+        ru: ["Моря замерзают, мор плывёт", "Лёд закрывает путь кораблям, проливы замерзают по сезонам, а эпидемии переходят за море вместе с судами."]
+        en: ["Freezing seas, sailing plagues", "Ice blocks ships and straits freeze by season, while epidemics cross the sea aboard ships."]
+      - k: play
         s: plan
-        req: true
-        ru: ["Кратеры", "Метеориты и ядерные удары оставляют кратеры, которые заполняются водой и со временем зарастают."]
-        en: ["Craters", "Meteors and nukes leave craters that fill with water and slowly heal over time."]
-      - k: gfx
-        s: plan
-        ru: ["Руины как руины", "Разрушенные дома и стены выглядят обломками, обгоревшими каркасами и завалами, а не просто тёмными коробками."]
-        en: ["Ruins that look ruined", "Destroyed houses and walls look like rubble, burnt frames and debris, not just dark boxes."]
+        ru: ["Власть над миром", "Закрепите не только температуру, но и осадки, уровень моря, CO₂ — и снимите закрепление; кисть рек: проложите русло — вода сама найдёт путь к морю."]
+        en: ["Power over the world", "Pin not just temperature but rainfall, sea level, CO₂ — and release them; a river brush: draw a channel and the water finds its way to the sea."]
       - k: play
         s: plan
         req: true
-        ru: ["Отклонение температуры", "Вместо средней температуры суши — насколько теплее или холоднее начала мира."]
-        en: ["Temperature anomaly", "Instead of average land temperature — how much warmer or colder than at the start."]
-      - k: gfx
-        s: plan
-        req: true
-        ru: ["Новые краски карты", "Эпохи и показатели различимы с первого взгляда, режим для дальтоников, свои цвета держав."]
-        en: ["New map colours", "Eras and indicators distinct at a glance, a colour-blind mode, your own state colours."]
-      - k: play
-        s: plan
-        ru: ["Удобнее интерфейс", "Поиск по державам и городам, понятнее окна и подсказки — по вашим отзывам."]
-        en: ["A friendlier interface", "Search for states and cities, clearer windows and hints — from your feedback."]
+        ru: ["Карта понятнее", "Значки городов, баз и портов включаются и выключаются, отклонение температуры от начала мира, новые краски и режим для дальтоников, поиск по державам и городам."]
+        en: ["A clearer map", "Toggle icons of cities, bases and ports, temperature anomaly since the start, new colours and a colour-blind mode, search for states and cities."]
 
   # ───────────────────────────── 2.3
   - id: v23
     ver: "2.3"
     eon: e1
-    color: "#E6C474"
+    color: "#EFB25C"
     status: plan
     t: 2026.96
-    pos: { x: 360, y: 470 }
+    pos: { x: 375, y: 215 }
     deps: [v22]
-    name: { ru: "Дороги и небо", en: "Roads and Sky" }
+    name: { ru: "Правитель", en: "The Ruler" }
     when: { ru: "≈ декабрь 2026", en: "≈ December 2026" }
     goal:
-      ru: "Пути на прогулке совпадают с картой, по ним ездят автобусы и фуры, на границах стоят посты, а в небе идут воздушные бои."
-      en: "Roads on foot match the map, buses and lorries run on them, borders get checkpoints, and the sky gets air battles."
+      ru: "Станьте правителем любой державы. Ведите её с карты, как в стратегии, — или спуститесь во дворец и правьте от первого лица: слушайте советников, принимайте послов, отдавайте указы с трона. Ваша держава живёт в том же мире, что и остальные, по тем же правилам, — но важные решения в ней принимаете вы."
+      en: "Become the ruler of any state. Lead it from the map like a strategy game — or go down to the palace and rule in first person: hear your counsellors, receive envoys, issue decrees from the throne. Your state lives in the same world as the others, by the same rules — but the big decisions are yours."
     why:
-      ru: "Последнее обновление на нынешнем движке. Сюда собраны идеи, которые просятся сразу после 2.1 и не требуют перестройки: транспорт, границы и воздушная война. Оно намеренно небольшое: каждая новая система до 3.0 — это код, который потом переносить на новую основу."
-      en: "The last update on the current engine. It gathers the ideas that follow naturally from 2.1 and need no rebuild: transport, borders and air war. It is deliberately small: every new system before 3.0 is code that has to be moved onto the new base later."
+      ru: "Об этом просят чаще всего, и для первой версии в игре уже есть всё нужное: державы с армиями и союзами, войны, вассалы, правители с династиями и родословными, дворец под охраной из 2.1. А дальше власть правителя будет расти: законы, партии и идеологии придут в 3.3, бюджет и налоги — в 3.4, армии, которые вы ведёте сами, — в 3.5."
+      en: "It is the most requested feature, and the game already has everything the first version needs: states with armies and alliances, wars, vassals, rulers with dynasties and family trees, the guarded palace from 2.1. And the ruler’s power keeps growing: laws, parties and ideologies arrive in 3.3, the budget and taxes in 3.4, armies you lead yourself in 3.5."
     hood:
-      ru: "Дороги и рельсы прогулки прокладываются по той же сети, что на карте мира, — вокзалы стоят на концах настоящих линий. Граница державы проводится по водоразделам и рекам, где они рядом; на пересечении с дорогой появляется пост. Воздушный бой — новый вид сражения в симуляции, рядом с сухопутным и морским, с самолётами по эпохе."
-      en: "Walk-mode roads and rails follow the same network as the world map — stations sit at the ends of real lines. A state border follows watersheds and rivers where they are close; where it crosses a road, a checkpoint appears. An air battle is a new kind of battle in the simulation, beside land and naval ones, with aircraft by era."
+      ru: "Каждое важное решение державы — объявить войну, заключить мир или союз, взять вассала, сменить курс, перенести столицу — становится приказом. За остальные державы приказы отдаёт ИИ, за вашу — вы, поэтому ваша держава подчиняется тем же правилам, что и все. Те же приказы потом станут основой мультиплеера. Интерьер собирается, когда вы входите в здание, — по его типу, эпохе и культуре, так что слабому ПК он ничего не стоит."
+      en: "Every major decision of a state — declaring war, making peace or an alliance, taking a vassal, changing course, moving the capital — becomes an order. The AI gives the orders for the other states and you give them for yours, so your state obeys the same rules as everyone else. The same orders later become the basis of multiplayer. An interior is built when you step inside — from the building’s type, era and culture — so it costs a weak PC nothing."
+    grows:
+      ru:
+        - "Дворец и стража из 2.1 становятся вашими: караул охраняет вас, а заговорщики приходят за вами."
+        - "Прогулка: из дворца можно выйти в свою столицу — и в ней знают, кто вы."
+      en:
+        - "The palace and guards from 2.1 become yours: the watch guards you, and conspirators come for you."
+        - "Walk mode: step out of the palace into your capital — where people know who you are."
+    items:
+      - k: play
+        s: plan
+        req: true
+        ru: ["Правление как в стратегии", "Выберите любую державу и ведите её с карты: война и мир, союзы и вассалы, направление главного удара, перенос столицы. Игру можно поставить на паузу и подумать."]
+        en: ["Rule like a strategy game", "Pick any state and lead it from the map: war and peace, alliances and vassals, the main thrust, moving the capital. Pause the game to think things over."]
+      - k: play
+        s: plan
+        ru: ["Курс державы", "Расширение, развитие, армия или вера: курс решает, на что держава тратит силы, — и видно, как это сказывается на ней."]
+        en: ["The state’s course", "Expansion, development, army or faith: the course decides where the state spends its strength — and you see what it does to it."]
+      - k: play
+        s: plan
+        req: true
+        ru: ["Правитель от первого лица", "Тронный зал во дворце: сядьте на трон, принимайте посетителей и отдавайте указы прямо в мире."]
+        en: ["Rule in first person", "A throne room in the palace: take the throne, receive visitors and issue decrees right in the world."]
+      - k: walk
+        s: plan
+        ru: ["Советники", "Полководец, казначей, посол и жрец докладывают о делах державы и советуют — прислушаться или нет, решаете вы."]
+        en: ["Counsellors", "A general, a treasurer, an envoy and a priest report on the state’s affairs and give advice — whether to listen is up to you."]
+      - k: play
+        s: plan
+        ru: ["Послы", "Другие державы присылают послов: союз, мир, дань или ультиматум. Ответ — за вами, и соседи его запомнят."]
+        en: ["Envoys", "Other states send envoys: an alliance, peace, tribute or an ultimatum. The answer is yours, and the neighbours will remember it."]
+      - k: play
+        s: plan
+        ru: ["Династия", "Умер правитель — играете за наследника из той же династии, что видна в родословной."]
+        en: ["Dynasty", "When the ruler dies you play the heir from the same dynasty shown in the family tree."]
+      - k: play
+        s: plan
+        ru: ["Смута", "Проигранная война, голод или чужая вера могут обернуться восстанием или переворотом — трон придётся удержать."]
+        en: ["Unrest", "A lost war, famine or a foreign faith can turn into a revolt or a coup — and you will have to hold on to the throne."]
+      - k: walk
+        s: plan
+        req: true
+        ru: ["Интерьеры", "Первые здания с дверьми: дворец, дом, таверна, лавка и храм — у каждой эпохи и культуры свои."]
+        en: ["Interiors", "The first buildings with doors: palace, house, tavern, shop and temple — each era and culture its own."]
+      - k: play
+        s: plan
+        ru: ["Летопись правления", "Ваши войны, союзы и реформы записываются в летопись державы; за правление — свои достижения."]
+        en: ["Chronicle of your reign", "Your wars, alliances and reforms go into the state’s chronicle; your reign earns achievements of its own."]
+
+  # ───────────────────────────── 2.4
+  - id: v24
+    ver: "2.4"
+    eon: e1
+    color: "#E6C474"
+    status: plan
+    t: 2027.08
+    pos: { x: 440, y: 480 }
+    deps: [v22]
+    name: { ru: "Дороги, небо и закон", en: "Roads, Sky and Law" }
+    when: { ru: "≈ январь — февраль 2027", en: "≈ January — February 2027" }
+    goal:
+      ru: "Дороги на прогулке совпадают с картой, между городами идут трассы, по ним ездят автобусы и фуры. Границы тянутся по хребтам и рекам, на них стоят посты. В небе — воздушные бои и летающие машины будущего. Города выглядят по климату, народу и вере. А у закона появляются тюрьмы — и пираты на морских путях."
+      en: "Roads on foot match the map, highways link cities, and buses and lorries run on them. Borders follow ridges and rivers, with checkpoints. The sky gets air battles and the flying cars of the future. Cities look the way their climate, people and faith make them. And the law gets prisons — with pirates on the sea lanes."
+    why:
+      ru: "Автобусам и фурам нужны дороги, которые совпадают с картой, — поэтому они приходят вместе с единой сетью путей. Тюрьмы, ограбления и пираты продолжают закон и моря из 2.1, а воздушные бои — небо с самолётами и вертолётами. Это последнее большое обновление перед 3.0."
+      en: "Buses and lorries need roads that match the map, so they arrive together with the single road network. Prisons, robbery and pirates continue the law and the seas of 2.1, and air battles continue the sky with its planes and helicopters. This is the last big update before 3.0."
+    hood:
+      ru: "Дороги и рельсы прогулки прокладываются по той же сети, что на карте мира, — вокзалы стоят на концах настоящих линий. Граница державы проводится по водоразделам и рекам, где они рядом; на пересечении с дорогой появляется пост. Воздушный бой — новый вид сражения в симуляции, рядом с сухопутным и морским, с самолётами по эпохе. Тюрьма — разновидность военной базы со своим назначением, пиратский корабль — экипаж из морских боёв на торговых путях. Облик домов выбирается по климату клетки (глина, срубы, камень, сваи, юрты) и по народу и вере. Работа водителя, дальнобойщика и пограничника описывается правилами-данными — так после 3.0 будут описаны все работы."
+      en: "Walk-mode roads and rails follow the same network as the world map — stations sit at the ends of real lines. A state border follows watersheds and rivers where they are close; where it crosses a road, a checkpoint appears. An air battle is a new kind of battle in the simulation, beside land and naval ones, with aircraft by era. A prison is a kind of military base with its own purpose; a pirate ship is a crew from the naval battles on the trade lanes. House style follows the cell’s climate (adobe, logs, stone, stilts, yurts) and the people and faith. The driver’s, trucker’s and border guard’s jobs are described as data rules — the way all jobs will be after 3.0."
     grows:
       ru:
         - "Работа: водитель автобуса и дальнобойщик рядом с машинистом и пилотом."
-        - "Закон: на границе спрашивают документы, а контрабанда становится преступлением."
+        - "Закон: на границе спрашивают документы, а контрабанда становится преступлением; вместо мгновенного штрафа — тюрьма, из которой можно бежать."
       en:
         - "Jobs: bus driver and long-haul trucker beside train driver and pilot."
-        - "Law: border guards ask for papers, and smuggling becomes a crime."
+        - "Law: border guards ask for papers, smuggling becomes a crime, and instead of an instant fine there is prison — which you can escape."
     items:
       - k: walk
         s: plan
-        ru: ["Единая сеть путей", "Дороги и железные дороги на прогулке совпадают с картой; вокзал есть у каждой линии."]
-        en: ["One road network", "Roads and railways on foot match the world map; every line has its stations."]
+        ru: ["Единая сеть путей", "Дороги, трассы между городами и железные дороги на прогулке совпадают с картой; вокзал есть у каждой линии."]
+        en: ["One road network", "Roads, highways between cities and railways on foot match the world map; every line has its stations."]
       - k: walk
         s: plan
         ru: ["Автобусы", "Городские и междугородние маршруты: поездки пассажиром и работа водителем."]
@@ -310,14 +373,30 @@ phases:
         s: plan
         ru: ["Воздушные бои", "Воздушные и совместные сражения — небо, земля и море; от бипланов и бомбардировщиков до машин будущего."]
         en: ["Air battles", "Air and combined battles — sky, land and sea; from biplanes and bombers to aircraft of the future."]
-      - k: walk
-        s: plan
-        ru: ["Дирижабли и воздушные шары", "В небе над городами — и их тоже можно угнать."]
-        en: ["Airships and balloons", "In the skies over cities — and yes, you can steal them too."]
       - k: gfx
         s: plan
-        ru: ["Города по культуре и вере", "Облик городов зависит от народа и религии: храмы, крыши, цвета и украшения."]
-        en: ["Cities by culture and faith", "Cities look different by people and religion: temples, roofs, colours and ornament."]
+        req: true
+        ru: ["Города по климату, народу и вере", "Глина и песчаник в пустынях, срубы в тайге, камень в горах, сваи на болотах, юрты в степи; храмы, святилища, тотемы, крыши и украшения — по народу и вере."]
+        en: ["Cities by climate, people and faith", "Adobe and sandstone in deserts, log houses in the taiga, stone in mountains, stilts in marshes, yurts on the steppe; temples, shrines, totems, roofs and ornament by people and faith."]
+      - k: walk
+        s: plan
+        req: true
+        ru: ["Летающие машины", "В эпоху будущего машины действительно летают — над улицами и между городами."]
+        en: ["Flying cars", "In the era of the future cars really fly — over streets and between cities."]
+      - k: walk
+        s: plan
+        req: true
+        ru: ["Тюрьмы и лагеря", "От ямы и частокола до тюрьмы с вышками: отсидите срок — и розыск снят, или бегите — и он растёт."]
+        en: ["Prisons and camps", "From a pit and a stockade to a prison with towers: serve your time and the wanted level clears, or escape and it grows."]
+      - k: walk
+        s: plan
+        ru: ["Ограбление", "Ограбить лавку или караван можно, но охрана, свидетели и розыск делают это риском, а не заработком."]
+        en: ["Robbery", "You can rob a shop or a caravan, but guards, witnesses and the wanted level make it a gamble, not a living."]
+      - k: walk
+        s: plan
+        req: true
+        ru: ["Пираты", "Одиночные пиратские корабли на торговых путях; наймитесь к ним или поднимите чёрный флаг на угнанном корабле."]
+        en: ["Pirates", "Lone pirate ships on the trade lanes; sign on with them or raise the black flag on a stolen ship."]
 
   # ───────────────────────────── 3.0
   - id: v30
@@ -326,17 +405,17 @@ phases:
     color: "#D9B98A"
     status: plan
     major: true
-    t: 2027.08
-    pos: { x: 415, y: 280 }
-    deps: [v23]
+    t: 2027.2
+    pos: { x: 500, y: 320 }
+    deps: [v23, v24]
     name: { ru: "Фундамент", en: "Foundation" }
-    when: { ru: "≈ январь — февраль 2027", en: "≈ January — February 2027" }
+    when: { ru: "≈ март 2027", en: "≈ March 2027" }
     goal:
       ru: "Перестроить движок под большие планы: мир становится шаром, симуляция — быстрой и предсказуемой, а код — готовым к сети и другим планетам."
       en: "Rebuild the engine for the big plans: the world becomes a globe, the simulation fast and predictable, the code ready for networking and other planets."
     why:
-      ru: "Самое важное обновление: от него тянутся связи почти ко всем остальным. Мультиплеер, другие планеты и живые жители невозможно надстроить поверх однопоточного мира, существующего в единственном экземпляре. Перестраивать движок стоит сразу после 2.2 и 2.3: так на новую основу переносятся уже готовые порты, поезда, работа, границы и технологии прогулки, и не придётся догонять их потом. Чем позже, тем больше кода придётся переписывать."
-      en: "The most important update: links run from it to almost all the others. Multiplayer, other planets and living inhabitants can’t be built on top of a single-threaded, one-of-a-kind world. It belongs right after 2.2 and 2.3: the rebuild moves the finished ports, trains, jobs, borders and walk-mode technology onto the new base instead of catching up with them later. The later it’s done, the more code must be rewritten."
+      ru: "Самое важное обновление: от него тянутся связи почти ко всем остальным. Мультиплеер, другие планеты и живые жители невозможно надстроить поверх однопоточного мира, существующего в единственном экземпляре. Часть этой работы придёт раньше, вместе с обновлениями 2.2–2.4: таблицы данных, приказы держав, правила для работы. А в 3.0 остаётся то, что можно сделать только целиком: симуляция в отдельном потоке, мир-глобус, большие миры и новая графика."
+      en: "The most important update: links run from it to almost all the others. Multiplayer, other planets and living inhabitants can’t be built on top of a single-threaded, one-of-a-kind world. Part of this work arrives earlier, with updates 2.2–2.4: data tables, state orders, rules for jobs. What’s left for 3.0 is what can only be done whole: the simulation on its own thread, the globe, bigger worlds and new graphics."
     hood:
       ru: "Симуляция переезжает в отдельный поток (Web Worker): состояние мира — типизированные массивы в общей памяти, рендер читает их без копирования. Каждое действие игрока — команда с номером тика; единый генератор случайности с зерном и фиксированный шаг дают воспроизводимую историю. Мир становится объектом — их может быть несколько. Технологии, здания, техника и товары описываются таблицами данных, которые читают и моды. Механики прогулки — работа, лавки, поручения — получают общий слой «фактов о мире» (что знает держава, её законы, климат клетки, достаток, войны) и правила с условиями на эти факты: так каждое следующее обновление углубляет их, добавляя факты и правила, а не переписывая код. Сохранения получают цепочку миграций. three.js обновляется с прицелом на WebGPU. Симуляцию можно запускать без интерфейса в Node.js — для автотестов, а позже для сервера. Каждая подсистема получает уровни подробности и бюджет времени: на слабом ПК — упрощённая симуляция, на мощном — полная."
       en: "The simulation moves to its own thread (Web Worker): world state lives in typed arrays in shared memory, read by the renderer without copying. Every player action becomes a command stamped with a tick; one seeded random generator and a fixed step make history reproducible. The world becomes an object — there can be several. Technologies, buildings, vehicles and goods are described in data tables that mods can read too. Walk-mode mechanics — jobs, shops, quests — get a shared layer of ‘world facts’ (what the state knows, its laws, the cell’s climate, wealth, wars) and rules with conditions on those facts: every following update deepens them by adding facts and rules rather than rewriting code. Saves get a chain of migrations. three.js is updated with WebGPU in mind. The simulation can run headless in Node.js — for automated tests now, and for the server later. Every subsystem gets levels of detail and a time budget: a simplified simulation on a weak PC, the full one on a strong one."
@@ -392,6 +471,10 @@ phases:
         s: plan
         ru: ["Уровни симуляции", "Упрощённая симуляция для слабых ПК и полная для мощных — выбор в настройках, как качество графики."]
         en: ["Simulation levels", "A simplified simulation for weak PCs and a full one for strong PCs — chosen in settings, like graphics quality."]
+      - k: sim
+        s: plan
+        ru: ["Атмосфера", "Давление, циклоны и облака рождаются из влажности и ветра; новый слой карты — давление."]
+        en: ["Atmosphere", "Pressure, cyclones and clouds arise from moisture and wind; a new map layer shows pressure."]
 
   # ───────────────────────────── 3.1
   - id: v31
@@ -399,20 +482,20 @@ phases:
     eon: e1
     color: "#C9C27A"
     status: plan
-    t: 2027.2
-    pos: { x: 520, y: 188 }
+    t: 2027.33
+    pos: { x: 565, y: 180 }
     deps: [v30]
-    name: { ru: "Древо знаний", en: "Tree of Knowledge" }
-    when: { ru: "≈ март 2027", en: "≈ March 2027" }
+    name: { ru: "Бесконечное развитие", en: "Endless Development" }
+    when: { ru: "≈ апрель — май 2027", en: "≈ April — May 2027" }
     goal:
-      ru: "Вместо одного числа «технологии» — настоящее древо открытий. Всё в мире, от повозок до архитектуры, следует тому, что этот народ уже знает."
-      en: "Instead of a single ‘technology’ number — a real tree of discoveries. Everything in the world, from carts to architecture, follows what this people actually knows."
+      ru: "Вместо одного числа «технологии» — древо открытий без потолка, а с ним живые языки, культуры и веры. Державы идут разными путями, и космос — лишь одна из дорог, а не финиш для всех."
+      en: "Instead of a single ‘technology’ number — a tree of discoveries with no ceiling, and with it living languages, cultures and faiths. States take different paths, and space is just one road, not everyone’s finish line."
     why:
       ru: "Одежда жителей, товары в лавках, техника армий, профессии и здания — всё ссылается на знания державы. Без древа каждая новая система снова привязывалась бы к номеру эпохи. Само древо — это таблицы данных из 3.0."
       en: "Clothing, shop goods, army equipment, professions and buildings all refer to what a state knows. Without the tree, every new system would again key off the era number. The tree itself is data tables from 3.0."
     hood:
-      ru: "Открытия образуют граф зависимостей; вес каждого направления зависит от условий державы — рельефа, ресурсов, войн, торговли, культуры. Эпоха становится следствием открытий, а не порогом числа. Прогулка, 3D-карта, лавки и армии спрашивают «знает ли держава X», а не «какая сейчас эпоха»."
-      en: "Discoveries form a dependency graph; each direction is weighted by the state’s conditions — terrain, resources, wars, trade, culture. An era becomes a consequence of discoveries rather than a numeric threshold. Walk mode, the 3D map, shops and armies ask ‘does this state know X’, not ‘what era is it’."
+      ru: "Открытия образуют граф зависимостей; вес каждого направления зависит от условий державы — рельефа, ресурсов, войн, торговли, культуры. Эпоха становится следствием открытий, а не порогом числа. Прогулка, 3D-карта, лавки и армии спрашивают «знает ли держава X», а не «какая сейчас эпоха». За известными открытиями древо продолжается сгенерированными — у каждой державы своими, с названиями на её языке. Язык — ветвь семьи с общим праязыком: у разошедшихся народов слова расходятся, имена городов и людей берутся из языка и меняются со временем, соседи заимствуют слова. Культуры расходятся и сливаются, веры раскалываются и реформируются."
+      en: "Discoveries form a dependency graph; each direction is weighted by the state’s conditions — terrain, resources, wars, trade, culture. An era becomes a consequence of discoveries rather than a numeric threshold. Walk mode, the 3D map, shops and armies ask ‘does this state know X’, not ‘what era is it’. Beyond the known discoveries the tree continues with generated ones — different for every state, named in its own language. A language is a branch of a family with a common proto-language: when peoples drift apart so do their words, names of towns and people come from the language and change over time, and neighbours borrow words. Cultures split and merge; faiths schism and reform."
     grows:
       ru:
         - "Работа и лавки: профессии и товары открываются вместе с открытиями — кузнец с металлургией, механик с двигателем."
@@ -423,12 +506,13 @@ phases:
     items:
       - k: sim
         s: plan
-        ru: ["Древо из ~150 открытий", "Шесть ветвей: хозяйство, ремесло, мореходство, военное дело, наука и общество."]
-        en: ["A tree of ~150 discoveries", "Six branches: economy, crafts, seafaring, warfare, science and society."]
+        ru: ["Древо без потолка", "Около 150 известных открытий в шести ветвях — хозяйство, ремесло, мореходство, военное дело, наука, общество, — а за ними новые, которых не было в нашей истории."]
+        en: ["A tree with no ceiling", "About 150 known discoveries in six branches — economy, crafts, seafaring, warfare, science, society — and beyond them new ones that never existed in our history."]
       - k: sim
         s: plan
-        ru: ["Больше эпох", "Между античностью и индустриальной эпохой появятся средневековье и Новое время."]
-        en: ["More eras", "The Middle Ages and the early modern era fill the gap between antiquity and industry."]
+        req: true
+        ru: ["Больше эпох", "Средневековье и Новое время между античностью и индустрией, эпоха мировых войн — первые танки, винтовки, бипланы, панельные кварталы — перед современностью."]
+        en: ["More eras", "The Middle Ages and the early modern era between antiquity and industry, and an age of world wars — first tanks, rifles, biplanes, prefab blocks — before the modern era."]
       - k: sim
         s: plan
         ru: ["Свой путь у каждого народа", "Степняки раньше приручат коня, островитяне раньше освоят мореходство."]
@@ -444,25 +528,36 @@ phases:
         en: ["Knowledge travels", "Through trade, war, migrants and spies; technologies can be lost in dark ages."]
       - k: walk
         s: plan
-        ru: ["Мир без анахронизмов", "Одежда, ремёсла, товары и профессии на прогулке следуют древу знаний державы."]
-        en: ["A world without anachronisms", "Clothing, crafts, goods and professions in walk mode follow the state’s tree of knowledge."]
-      - k: gfx
-        s: plan
-        req: true
-        ru: ["Региональная архитектура", "Глина и песчаник в пустынях, срубы в тайге, камень в горах, сваи на болотах, юрты в степи."]
-        en: ["Regional architecture", "Adobe and sandstone in deserts, log houses in the taiga, stone in mountains, stilts in marshes, yurts on the steppe."]
+        ru: ["Мир без анахронизмов", "Одежда, ремёсла, товары, профессии, транспорт и облик домов следуют древу знаний: новое открытие постепенно меняет то, что видно на улицах, — изучили двигатель, и среди повозок появляются первые машины."]
+        en: ["A world without anachronisms", "Clothing, crafts, goods, professions, vehicles and houses follow the tree of knowledge: a new discovery gradually changes what you see in the streets — learn the engine, and the first cars appear among the carts."]
       - k: sim
         s: plan
         ru: ["Животные в хозяйстве", "Стада дают пищу, шерсть и тягловую силу, а верховая езда, колесницы и кочевое скотоводство становятся открытиями в древе."]
         en: ["Animals in the economy", "Herds provide food, wool and draught power, while riding, chariots and nomadic herding become discoveries in the tree."]
       - k: sim
         s: plan
-        ru: ["Разведка недр", "Державы находят руду, уголь и нефть, только когда умеют их искать и добывать; до того месторождения скрыты."]
-        en: ["Prospecting", "States find ore, coal and oil only once they know how to search for and mine them; until then deposits stay hidden."]
+        ru: ["Разведка недр", "Державы находят руду, уголь и нефть — и нефть на морском шельфе, — только когда умеют их искать и добывать; до того месторождения скрыты."]
+        en: ["Prospecting", "States find ore, coal and oil — offshore oil too — only once they know how to search for and mine them; until then deposits stay hidden."]
       - k: sim
         s: plan
         ru: ["Транспортная сеть", "Дороги, рельсы и порты становятся настоящей сетью: по ней идут торговля и переселенцы, а позже — грузы и армии. Сейчас они только для красоты."]
         en: ["A transport network", "Roads, rails and ports become a real network carrying trade and migrants, and later cargo and armies. Today they are only decoration."]
+      - k: sim
+        s: plan
+        ru: ["Языки", "Языковые семьи и диалекты: имена городов и людей берутся из языка, меняются со временем и заимствуются у соседей."]
+        en: ["Languages", "Language families and dialects: names of towns and people come from the language, change over time and are borrowed from neighbours."]
+      - k: sim
+        s: plan
+        ru: ["Культуры живут", "Народы расходятся и сливаются, перенимают обычаи у соседей и завоевателей."]
+        en: ["Living cultures", "Peoples split and merge, and take up customs from neighbours and conquerors."]
+      - k: sim
+        s: plan
+        ru: ["Расколы и реформы", "Веры делятся на течения, реформируются и угасают — у каждой своя история."]
+        en: ["Schisms and reforms", "Faiths split into branches, reform and fade — each with a history of its own."]
+      - k: sim
+        s: plan
+        ru: ["Открытие мира", "Держава знает только тех, кого встретила: соседей, тех, до кого доплыли её корабли и дошли караваны; воевать и торговать можно лишь с известными."]
+        en: ["Discovering the world", "A state knows only those it has met: neighbours and those its ships and caravans have reached; it can trade and fight only with the known."]
 
   # ───────────────────────────── 3.2
   - id: v32
@@ -470,11 +565,11 @@ phases:
     eon: e1
     color: "#A8C48A"
     status: plan
-    t: 2027.35
+    t: 2027.56
     pos: { x: 625, y: 302 }
     deps: [v31]
     name: { ru: "Живые люди", en: "Living People" }
-    when: { ru: "≈ весна 2027", en: "≈ spring 2027" }
+    when: { ru: "≈ лето 2027", en: "≈ summer 2027" }
     goal:
       ru: "Каждый житель — человек со своей судьбой: имя, семья, работа, распорядок дня, память и история."
       en: "Every inhabitant is a person with a fate of their own: a name, family, job, daily routine, memory and story."
@@ -482,8 +577,8 @@ phases:
       ru: "Прогулка — самое необычное в игре. Постоянные люди с памятью нужны всему, что идёт дальше: карьере, вселению в любого человека, компаниям с владельцами и полководцам. А их ремёсла, одежда и быт берутся из древа знаний (3.1)."
       en: "Walk mode is the most unusual part of the game. Persistent people with memories are needed by everything that follows: careers, possessing anyone, companies with owners, generals. Their trades, clothing and daily life come from the tree of knowledge (3.1)."
     hood:
-      ru: "Уровни детализации общества: вдали от игрока жители — статистика клетки, ближе — кварталы с семьями и профессиями, рядом — полноценные люди. Встреченный человек «материализуется» по зерну и дальше живёт постоянно, даже когда вы ушли. Поведение — ИИ на потребностях с расписаниями. Интерьеры собираются из шаблонов комнат по эпохе и культуре."
-      en: "Levels of detail for society: far from the player, people are cell statistics; closer — neighbourhoods of families and trades; nearby — full individuals. A person you meet ‘materialises’ from the seed and lives on permanently after you leave. Behaviour is needs-based AI with schedules. Interiors are assembled from room templates by era and culture."
+      ru: "Уровни детализации общества: вдали от игрока жители — статистика клетки, ближе — кварталы с семьями и профессиями, рядом — полноценные люди. Встреченный человек «материализуется» по зерну и дальше живёт постоянно, даже когда вы ушли. Поведение — ИИ на потребностях с расписаниями. Генератор интерьеров из 2.3 распространяется на все здания, а в комнатах появляются их жильцы."
+      en: "Levels of detail for society: far from the player, people are cell statistics; closer — neighbourhoods of families and trades; nearby — full individuals. A person you meet ‘materialises’ from the seed and lives on permanently after you leave. Behaviour is needs-based AI with schedules. The interior generator from 2.3 extends to every building, and the rooms get their residents."
     grows:
       ru:
         - "Поручения рождаются из нужд конкретных людей, а не из списка."
@@ -519,13 +614,13 @@ phases:
       - k: walk
         s: plan
         req: true
-        ru: ["Интерьеры", "Дома, лавки, таверны, храмы, дворцы и заводы — у каждой эпохи и культуры свои."]
-        en: ["Interiors", "Houses, shops, taverns, temples, palaces and factories — each era and culture its own."]
+        ru: ["Жизнь внутри", "Интерьеры у всех зданий, от изб до заводов, — и в них живут, работают и празднуют."]
+        en: ["Life indoors", "Interiors for every building, from huts to factories — where people live, work and celebrate."]
       - k: play
         s: plan
         req: true
-        ru: ["Режим выживания", "Голод, жажда, усталость, холод и жара по климату клетки, болезни и травмы."]
-        en: ["Survival mode", "Hunger, thirst, fatigue, cold and heat from the local climate, illness and injury."]
+        ru: ["Режим выживания", "Голод и жажда из 2.2 становятся полным выживанием: усталость, болезни, травмы и лечение."]
+        en: ["Survival mode", "Hunger and thirst from 2.2 grow into full survival: fatigue, illness, injury and healing."]
       - k: walk
         s: plan
         ru: ["Добыча и ремесло", "Охота, собирательство, готовка и простое ремесло."]
@@ -558,11 +653,11 @@ phases:
     eon: e1
     color: "#D99A78"
     status: plan
-    t: 2027.46
+    t: 2027.68
     pos: { x: 730, y: 198 }
-    deps: [v32]
+    deps: [v32, v23]
     name: { ru: "Власть и вера", en: "Power and Faith" }
-    when: { ru: "≈ июнь 2027", en: "≈ June 2027" }
+    when: { ru: "≈ конец лета 2027", en: "≈ late summer 2027" }
     goal:
       ru: "Стать частью любой державы и пройти путь от простолюдина до правителя. Боги и идеологии начинают иметь значение."
       en: "Join any state and rise from commoner to ruler. Gods and ideologies start to matter."
@@ -576,9 +671,11 @@ phases:
       ru:
         - "Работа и закон: идеология и законы решают, какие профессии разрешены, кто платит налоги и что считается преступлением."
         - "Деньги: валюты и цены зависят от политики державы."
+        - "Правитель из 2.3 получает новые решения: законы, идеологию, отношения с партиями."
       en:
         - "Jobs and law: ideology and laws decide which trades are allowed, who pays taxes and what counts as a crime."
         - "Money: currencies and prices depend on the state’s policies."
+        - "The ruler from 2.3 gets new decisions: laws, ideology, dealing with parties."
     items:
       - k: sim
         s: plan
@@ -607,12 +704,8 @@ phases:
       - k: play
         s: plan
         req: true
-        ru: ["Правитель от первого лица", "Тронный зал, указы, назначения, объявление войны, приём послов."]
-        en: ["Rule in first person", "A throne room, decrees, appointments, declarations of war, receiving envoys."]
-      - k: play
-        s: plan
-        ru: ["Правление как в стратегии", "Управляйте любой державой с карты: экономика, армия, дипломатия, наука."]
-        en: ["Rule like a strategy game", "Run any state from the map: economy, army, diplomacy, science."]
+        ru: ["Своё поселение — своя держава", "Построенное своими руками растёт в поселение, а поселение — в державу на карте."]
+        en: ["Your settlement, your state", "What you build with your own hands grows into a settlement, and the settlement into a state on the map."]
       - k: sim
         s: plan
         req: true
@@ -629,17 +722,17 @@ phases:
     eon: e1
     color: "#E2B04F"
     status: plan
-    t: 2027.6
+    t: 2027.8
     pos: { x: 835, y: 312 }
     deps: [v31, v32, v33]
     name: { ru: "Капитал", en: "Capital" }
-    when: { ru: "≈ лето 2027", en: "≈ summer 2027" }
+    when: { ru: "≈ осень 2027", en: "≈ autumn 2027" }
     goal:
       ru: "Экономика из настоящих товаров, цен и компаний, где подъёмы и кризисы возникают сами."
       en: "An economy of real goods, prices and companies, where booms and crises emerge on their own."
     why:
-      ru: "Что можно производить, решает древо знаний (3.1). Компаниям нужны владельцы и работники (3.2). Бюджетом и налогами управляет правитель (3.3). Поэтому экономика идёт после них."
-      en: "What can be produced is decided by the tree of knowledge (3.1). Companies need owners and workers (3.2). Budgets and taxes are run by a ruler (3.3). That’s why the economy comes after them."
+      ru: "Что можно производить, решает древо знаний (3.1). Компаниям нужны владельцы и работники (3.2). Бюджетом и налогами управляет правитель (2.3, 3.3). Поэтому экономика идёт после них."
+      en: "What can be produced is decided by the tree of knowledge (3.1). Companies need owners and workers (3.2). Budgets and taxes are run by a ruler (2.3, 3.3). That’s why the economy comes after them."
     hood:
       ru: "Экономика на уровне фирм: у каждой есть владелец, работники, запасы и цены, а рынок в каждом регионе уравновешивает спрос и предложение. Товары — данные из таблиц 3.0. Перевозки идут по графу путей (дороги, рельсы, морские линии) с ограниченной пропускной способностью. Финансовый слой: кредит, ставка центробанка, акции как доли фирм."
       en: "A firm-level economy: each firm has an owner, workers, stock and prices, and every region’s market clears supply against demand. Goods are data from 3.0’s tables. Freight moves over a graph of routes (roads, rails, sea lanes) with limited capacity. A financial layer adds credit, a central bank rate and shares as stakes in firms."
@@ -682,11 +775,11 @@ phases:
     eon: e1
     color: "#D0805F"
     status: plan
-    t: 2027.7
+    t: 2027.92
     pos: { x: 940, y: 208 }
     deps: [v34, v32]
     name: { ru: "Фронт и тыл", en: "Front and Supply" }
-    when: { ru: "≈ сентябрь 2027", en: "≈ September 2027" }
+    when: { ru: "≈ конец 2027", en: "≈ late 2027" }
     goal:
       ru: "Армии, которые идут, едут и снабжаются, — вместо солдат, возникающих прямо на поле боя."
       en: "Armies that march, ride and need supplies — instead of soldiers appearing right on the battlefield."
@@ -711,8 +804,8 @@ phases:
         en: ["Armies on the march", "On foot, horseback, carts, trains, trucks and helicopters — by era and road."]
       - k: sim
         s: plan
-        ru: ["Фронты и осады", "Линии фронта, крепости, осады и оккупация."]
-        en: ["Fronts and sieges", "Front lines, fortresses, sieges and occupation."]
+        ru: ["Фронты и осады", "Линии фронта, крепости, окопы и блиндажи, осады и оккупация."]
+        en: ["Fronts and sieges", "Front lines, fortresses, trenches and dugouts, sieges and occupation."]
       - k: sim
         s: plan
         req: true
@@ -729,8 +822,12 @@ phases:
         en: ["Generals", "Commanders’ skills, army composition and terrain decide battles."]
       - k: walk
         s: plan
-        ru: ["Ваш бой имеет значение", "Сражение на прогулке влияет на исход битвы на карте."]
-        en: ["Your fight matters", "A battle fought on foot changes the outcome on the map."]
+        ru: ["Ваш бой имеет значение", "Не только потери: удержанная высота, спасённое знамя или павший полководец меняют исход битвы на карте."]
+        en: ["Your fight matters", "Not just casualties: a hill held, a banner saved or a fallen general change the outcome of the battle on the map."]
+      - k: play
+        s: plan
+        ru: ["Армии в ваших руках", "Как в RTS: правитель сам ведёт армии — маршруты, осады, высадки."]
+        en: ["Armies in your hands", "Like an RTS: the ruler leads the armies — routes, sieges, landings."]
 
   # ───────────────────────────── 4.0
   - id: v40
@@ -739,11 +836,11 @@ phases:
     color: "#9CC3B8"
     status: plan
     major: true
-    t: 2027.85
+    t: 2028.05
     pos: { x: 1045, y: 330 }
     deps: [v30, v33]
     name: { ru: "Общий мир", en: "Shared World" }
-    when: { ru: "≈ осень 2027", en: "≈ autumn 2027" }
+    when: { ru: "≈ зима 2027/28", en: "≈ winter 2027/28" }
     goal:
       ru: "Один мир на нескольких игроков — по интернету и по локальной сети."
       en: "One world for several players — over the internet and on a local network."
@@ -791,11 +888,11 @@ phases:
     color: "#7FB69A"
     status: plan
     major: true
-    t: 2028.0
+    t: 2028.2
     pos: { x: 1070, y: 525 }
     deps: [v30, v34]
     name: { ru: "Глубокое время", en: "Deep Time" }
-    when: { ru: "≈ зима 2027/28", en: "≈ winter 2027/28" }
+    when: { ru: "≈ весна 2028", en: "≈ spring 2028" }
     goal:
       ru: "Планета, живущая миллионы лет: плиты движутся, горы растут и разрушаются, а в недрах лежат настоящие руды."
       en: "A planet that lives for millions of years: plates drift, mountains rise and erode, and real ores lie deep below."
@@ -840,11 +937,11 @@ phases:
     eon: e2
     color: "#64B3AA"
     status: plan
-    t: 2028.3
+    t: 2028.45
     pos: { x: 1240, y: 440 }
     deps: [v50, v33]
     name: { ru: "Происхождение видов", en: "Origin of Species" }
-    when: { ru: "≈ весна 2028", en: "≈ spring 2028" }
+    when: { ru: "≈ лето 2028", en: "≈ summer 2028" }
     goal:
       ru: "Виды рождаются, приспосабливаются и вымирают сами, а разум может возникнуть у любого из них."
       en: "Species emerge, adapt and die out on their own — and intelligence can arise in any of them."
@@ -896,11 +993,11 @@ phases:
     color: "#8FB0DA"
     status: plan
     major: true
-    t: 2028.55
+    t: 2028.68
     pos: { x: 1255, y: 228 }
     deps: [v30, v50, v34]
     name: { ru: "Солнечная система", en: "Solar System" }
-    when: { ru: "≈ лето 2028", en: "≈ summer 2028" }
+    when: { ru: "≈ осень 2028", en: "≈ autumn 2028" }
     goal:
       ru: "Ваша планета становится одной из многих: орбиты, соседние миры, терраформирование и колонии."
       en: "Your planet becomes one of many: orbits, neighbouring worlds, terraforming and colonies."
@@ -936,8 +1033,9 @@ phases:
         en: ["Terraforming", "Melt the ice caps, give a barren planet an atmosphere, crash a moon."]
       - k: sim
         s: idea
-        ru: ["Космическая эра", "Ракеты, спутники, станции и высадки на другие планеты."]
-        en: ["The space age", "Rockets, satellites, stations and landings on other worlds."]
+        req: true
+        ru: ["Космическая эра", "Ракеты, спутники, станции, полёт на Луну и высадки на другие планеты."]
+        en: ["The space age", "Rockets, satellites, stations, a flight to the Moon and landings on other worlds."]
       - k: sim
         s: idea
         ru: ["Колонии", "Поселения на других планетах со своей историей."]
@@ -950,11 +1048,11 @@ phases:
     color: "#A49AE0"
     status: plan
     major: true
-    t: 2028.8
+    t: 2028.92
     pos: { x: 1338, y: 118 }
     deps: [v60, v40]
     name: { ru: "Галактика", en: "Galaxy" }
-    when: { ru: "≈ осень 2028", en: "≈ autumn 2028" }
+    when: { ru: "≈ зима 2028/29", en: "≈ winter 2028/29" }
     goal:
       ru: "Галактика, которую создаёте вы, и цивилизации, которые её заселяют."
       en: "A galaxy you create — and the civilisations that settle it."
