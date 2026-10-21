@@ -26,6 +26,8 @@ body_en: |
   ## Real Earth from real data
   The Real Earth map will be built from NOAA ETOPO1 elevation and NCEP/NCAR and GPCP climate normals: coasts, mountains, deserts and forests where they belong. Continents, oceans, seas and large lakes are labelled on the map from the start; peoples still give their own names, and those show up in the chronicle and the cell panel. On generated maps, peoples name their lands and seas themselves, and you can name any place with the Land names button. Real Earth looks best on Gigantic maps.
 
+  ![Europe and the Mediterranean on Real Earth after 200 years of history, in 3D](/earth-simulator/assets/devlog/update-2-1-2/earth-europe-3d-1600.jpg)
+
   ## Airships, war and strikes
   Airships can be hijacked, rented or flown as a captain, with their own controls and mooring at a mast. Armies dress for their era, rocket troops fire rockets, police roadblocks give way to tanks, and you can walk through a missile or nuclear strike — alarms, salvos, intercepts and a mushroom cloud on the horizon.
 
@@ -62,6 +64,8 @@ body_en: |
 ## «Реальная Земля» по настоящим данным
 
 Карта «Реальная Земля» будет построена по настоящим данным: рельеф NOAA ETOPO1, климатические нормы NCEP/NCAR и GPCP — берега, горы, пустыни и леса на своих местах. Части света, океаны, моря и крупные озёра подписаны на карте с первой минуты; народы по-прежнему дают местам свои имена — они видны в хронике и в панели клетки. На обычных картах народы сами называют земли и моря, а любое место можно назвать кнопкой «Названия земель». Лучше всего «Реальная Земля» выглядит на картах размера «Гигантская».
+
+{% include figure.html src="/assets/devlog/update-2-1-2/earth-europe-3d-1600.jpg" caption="Европа и Средиземноморье на «Реальной Земле» через 200 лет истории, 3D" wide=true %}
 
 ## Дирижабли, война и удары
 
