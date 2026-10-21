@@ -184,11 +184,11 @@ phases:
       ru: "На прогулке видно ровно то, до чего дошла держава: её животные, транспорт, оружие и постройки, а города переходят в новую эпоху постепенно, дом за домом. Дома можно разрушить, в режиме «Выживание» появляются голод и жажда, а на прогулке — новое оружие и лечение. Бедствия получают настоящие масштабы и следы, моря — лёд, карта — новые краски и больше сведений."
       en: "On foot you see exactly what a state has reached: its animals, vehicles, weapons and buildings, and towns move into a new era gradually, house by house. Houses can be destroyed, Survival mode gets hunger and thirst, and walk mode gets new weapons and healing. Disasters get real scales and lasting marks, seas get ice, the map gets new colours and more information."
     why:
-      ru: "С поездами, портами и базами на прогулке стало видно гораздо больше техники, и несостыковки эпох бросаются в глаза: меч из бронзы у народа, который не знает бронзы, всадники в городах, где ещё не приручили лошадь. Всё это делается на нынешнем движке: данные о приручённых животных и изобретениях держав в симуляции уже есть. Перед ним выйдут небольшие патчи 2.1.1 и 2.1.2 с исправлениями по вашим отзывам. Часть пунктов — бедствия, моря, краски карты, дирижабли — может прийти отдельным патчем в начале декабря."
-      en: "With trains, ports and bases, walk mode now shows far more technology, and era mismatches stand out: a bronze sword among people who don’t know bronze, riders in towns that haven’t tamed the horse. All of it can be done on the current engine: the simulation already tracks each state’s tamed animals and inventions. Small patches 2.1.1 and 2.1.2 with fixes from your feedback come first. Some items — disasters, seas, map colours, airships — may arrive in a separate patch in early December."
+      ru: "С поездами, портами и базами на прогулке стало видно гораздо больше техники, и несостыковки эпох бросаются в глаза: меч из бронзы у народа, который не знает бронзы, всадники в городах, где ещё не приручили лошадь. Всё это делается на нынешнем движке: данные о приручённых животных и изобретениях держав в симуляции уже есть. Многое из этого придёт уже в обновлении 2.1.2, которое выходит в ближайшие дни: технологии на прогулке, постепенная смена эпох, дирижабли; до 2.2 будет ещё одно-два обновления 2.1.x. Часть пунктов — бедствия, моря, краски карты — может прийти отдельным патчем в начале декабря."
+      en: "With trains, ports and bases, walk mode now shows far more technology, and era mismatches stand out: a bronze sword among people who don’t know bronze, riders in towns that haven’t tamed the horse. All of it can be done on the current engine: the simulation already tracks each state’s tamed animals and inventions. Much of this arrives already in update 2.1.2, out in the next few days: technology you can see, gradual era changes, airships; one or two more 2.1.x updates come before 2.2. Some items — disasters, seas, map colours — may arrive in a separate patch in early December."
     hood:
-      ru: "Прогулка спрашивает у симуляции не номер эпохи, а что держава действительно знает: каких из восьми одомашниваемых видов приручила (это уже считается — у каждой державы свои, по её землям) и какие из 32 изобретений сделала — письменность, колесо, бронзу, мореходство, порох, двигатель. Внутренняя «сила» бедствия пересчитывается в настоящие шкалы. Поиск морского пути учитывает лёд, а лёд — сезоны. Кратер со временем выравнивается, заполняется водой и зарастает. Закрепить можно любое поле мира, а не только температуру. У каждого дома свой «год перестройки», вычисляемый из его номера: когда держава входит в новую эпоху, город обновляется постепенно, и хранить для этого ничего не нужно. Так же, по своему «году», сменяется транспорт на улицах. Разрушенный дом запоминается и перестраивается отдельно от квартала. Оружие, предметы и здания эпох переезжают в таблицы данных, а сохранения получают цепочку миграций — первые части фундамента 3.0."
-      en: "Walk mode asks the simulation not for the era number but for what a state actually knows: which of the eight domesticable species it has tamed (already tracked — each state has its own, by its lands) and which of 32 inventions it has made — writing, the wheel, bronze, seafaring, gunpowder, the engine. A disaster’s internal ‘power’ is mapped to real scales. Sea pathfinding respects ice, and ice follows the seasons. A crater levels out over time, fills with water and greens over. Any world field can be pinned, not just temperature. Every house has its own ‘rebuild year’ derived from its number: when a state enters a new era the town renews gradually, with nothing extra to store. Vehicles on the streets change the same way, each by its own ‘year’. A destroyed house is remembered and rebuilt separately from its block. Weapons, items and buildings of every era move into data tables, and saves get a chain of migrations — the first parts of the 3.0 foundation."
+      ru: "Прогулка спрашивает у симуляции не номер эпохи, а что держава действительно знает: каких из восьми одомашниваемых видов приручила (это уже считается — у каждой державы свои, по её землям) и какие из 58 изобретений сделала — письменность, колесо, бронзу, мореходство, порох, двигатель. Внутренняя «сила» бедствия пересчитывается в настоящие шкалы. Поиск морского пути учитывает лёд, а лёд — сезоны. Кратер со временем выравнивается, заполняется водой и зарастает. Закрепить можно любое поле мира, а не только температуру. У каждого дома свой «год перестройки», вычисляемый из его номера: когда держава входит в новую эпоху, город обновляется постепенно, и хранить для этого ничего не нужно. Так же, по своему «году», сменяется транспорт на улицах. Разрушенный дом запоминается и перестраивается отдельно от квартала. Оружие, предметы и здания эпох переезжают в таблицы данных, а сохранения получают цепочку миграций — первые части фундамента 3.0."
+      en: "Walk mode asks the simulation not for the era number but for what a state actually knows: which of the eight domesticable species it has tamed (already tracked — each state has its own, by its lands) and which of 58 inventions it has made — writing, the wheel, bronze, seafaring, gunpowder, the engine. A disaster’s internal ‘power’ is mapped to real scales. Sea pathfinding respects ice, and ice follows the seasons. A crater levels out over time, fills with water and greens over. Any world field can be pinned, not just temperature. Every house has its own ‘rebuild year’ derived from its number: when a state enters a new era the town renews gradually, with nothing extra to store. Vehicles on the streets change the same way, each by its own ‘year’. A destroyed house is remembered and rebuilt separately from its block. Weapons, items and buildings of every era move into data tables, and saves get a chain of migrations — the first parts of the 3.0 foundation."
     grows:
       ru:
         - "Лавки: лекарь продаёт травы, бинты и аптечки, оружейник — гранаты и новое оружие; в режиме «Выживание» еда и вода нужны по-настоящему."
@@ -198,12 +198,12 @@ phases:
         - "Battles: a destroyed house stays in ruins, and soldiers who fall by your hand are subtracted from the army on the map."
     items:
       - k: walk
-        s: plan
+        s: wip
         req: true
         ru: ["Технологии на прогулке", "Кони и повозки — только после приручения и колеса, а где коня нет — верблюды, ламы или олени. Мечи, корабли, вывески и постройки — по изобретениям державы; на полях — пахарь с волами, жатка или комбайн; в век небоскрёбов не ходят парусники."]
         en: ["Technology you can see", "Horses and carts only after taming and the wheel; where there are no horses — camels, llamas or reindeer. Swords, ships, signs and buildings follow the state’s inventions; fields get oxen ploughs, reapers or combines; no sailing ships in the age of skyscrapers."]
       - k: walk
-        s: plan
+        s: wip
         ru: ["Постепенная смена эпох", "Город переходит в новую эпоху дом за домом, а улицы — повозка за повозкой: старые постройки и старый транспорт соседствуют с новыми, а не меняются все разом."]
         en: ["Eras change gradually", "A town enters a new era house by house, and its streets cart by cart: old buildings and old vehicles stand beside new ones instead of all changing at once."]
       - k: walk
@@ -212,7 +212,7 @@ phases:
         ru: ["Бои как в армии", "В сражениях — те же танки и машины, что на базах державы, окопы, ежи и блиндажи; технику можно угнать с поля боя, а павшие от вашей руки вычитаются из армии на карте."]
         en: ["Battles like the real army", "Battles use the same tanks and vehicles as the state’s bases, with trenches, hedgehogs and dugouts; steal vehicles off the battlefield, and those who fall by your hand are subtracted from the army on the map."]
       - k: walk
-        s: plan
+        s: wip
         ru: ["Разрушения и руины", "Танк, взрыв или пожар превращают дом в развалины, где на карте горит — на прогулке огонь и дым; руины выглядят обломками и обгоревшими каркасами, а не тёмными коробками."]
         en: ["Destruction and ruins", "A tank, a blast or a fire turns a house into ruins; where the map burns, walk mode shows fire and smoke; ruins look like rubble and burnt frames, not dark boxes."]
       - k: play
@@ -230,7 +230,7 @@ phases:
         ru: ["Торговые пути на виду", "Окно каждого торгового маршрута: кто с кем торгует, сколько и что везут."]
         en: ["Trade routes up close", "A window for every trade route: who trades with whom, how much and what they carry."]
       - k: walk
-        s: plan
+        s: wip
         ru: ["Дирижабли и воздушные шары", "Дирижабли над городами индустриальной эпохи, а позже — прогулочные шары над полями и рекламные дирижабли; угнать можно и их."]
         en: ["Airships and balloons", "Airships over industrial-era cities, and later pleasure balloons over the fields and advertising blimps; you can steal those too."]
       - k: sim
@@ -248,7 +248,7 @@ phases:
         ru: ["Власть над миром", "Закрепите не только температуру, но и осадки, уровень моря, CO₂ — и снимите закрепление; кисть рек: проложите русло — вода сама найдёт путь к морю."]
         en: ["Power over the world", "Pin not just temperature but rainfall, sea level, CO₂ — and release them; a river brush: draw a channel and the water finds its way to the sea."]
       - k: play
-        s: plan
+        s: wip
         req: true
         ru: ["Карта понятнее", "Значки городов, баз и портов включаются и выключаются, отклонение температуры от начала мира, новые краски и режим для дальтоников, поиск по державам и городам."]
         en: ["A clearer map", "Toggle icons of cities, bases and ports, temperature anomaly since the start, new colours and a colour-blind mode, search for states and cities."]
