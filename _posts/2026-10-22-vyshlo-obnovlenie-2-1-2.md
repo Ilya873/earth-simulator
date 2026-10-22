@@ -9,7 +9,7 @@ cover: /assets/devlog/update-2-1-2/cover-medieval-city-1600.jpg
 cover_caption: "Средневековый город на карте: фахверк, собор, замок и стены с башнями."
 cover_caption_en: "A medieval city on the map: half-timbered houses, a cathedral, a castle and walls with towers."
 body_en: |
-  Update 2.1.2 is out. It's a big update shaped by your feedback: history now has eight eras and 58 discoveries, and walk mode shows exactly what a nation has achieved. It also includes everything that was being prepared as patch 2.1.1 — hundreds of fixes and conveniences. Saves from 2.0 and 2.1 load, Workshop add-ons keep working, and the demo is updated too.
+  Update 2.1.2 is out. It's a big update shaped by your feedback: history now has eight eras and 58 discoveries, and walk mode shows exactly what a nation has achieved. It also brings hundreds of fixes and conveniences, and your old saves load.
 
   ## Eight eras
   A Medieval era now sits between the Classical and Industrial eras, and a Post-Industrial era between the Industrial and Modern ones, in the spirit of the early 20th century. There are 58 discoveries instead of 32: animal husbandry, the wheel, writing, the stirrup, castles, the crossbow, the telegraph, the machine gun, the airship, the tank, radar, rocketry and more. Who discovered each one first is shown in the chronicle and in the statistics. History moves at the same pace: getting from tribes to space takes as many years as before.
@@ -26,7 +26,7 @@ body_en: |
   ![Where nobody tamed the horse, people ride camels](/earth-simulator/assets/devlog/update-2-1-2/camel-rider-1600.jpg)
 
   ## Airships
-  The airship is no longer passengers-only: you can hijack it, rent it or work as a captain. It has its own controls — throttle and rudder, elevators, ballast and venting gas; it's slow and buoyant, and the wind pushes it around. Fly from the control car in the gondola or from a chase view, and moor at a mast: nose into the cone, the winch, the gangway. Airfields appear only for nations with airships or aviation, and they match what flies on the map.
+  Airships are new to the game: you can hijack one, rent one or work as a captain. It has its own controls — throttle and rudder, elevators, ballast and venting gas; it's slow and buoyant, and the wind pushes it around. Fly from the control car in the gondola or from a chase view, and moor at a mast: nose into the cone, the winch, the gangway. Airfields appear only for nations with airships or aviation, and they match what flies on the map.
 
   ![An airship over a spired tower](/earth-simulator/assets/devlog/update-2-1-2/airship-spire-1600.jpg)
 
@@ -40,7 +40,7 @@ body_en: |
   ![A nuclear strike](/earth-simulator/assets/devlog/update-2-1-2/nuclear-strike-1600.jpg)
 
   ## The map
-  Peoples now name their own continents, islands, seas and oceans in their own language, and the names go into the chronicle. You can give your own names with the Land names button or the N key. Real Earth is now built from real data: NOAA ETOPO1 elevation and NCEP/NCAR and GPCP climate normals, and its continents, oceans, seas and large lakes are labelled from the start. Borders on the 3D map are smooth curves, and currents and winds help ships and trade. The 3D map now matches walk mode: walls, tall buildings, paths across empty land, herds that no longer overlap and ships that belong to their own nation's era.
+  Peoples now name their own continents, islands, seas and oceans in their own language, and the names go into the chronicle. You can give your own names with the Land names button or the N key. Real Earth is now built from real data: NOAA ETOPO1 elevation and NCEP/NCAR and GPCP climate normals, and its continents, oceans, seas and large lakes are labelled from the start. Borders on the 3D map are smooth curves, and currents and winds help ships and trade. The 3D map now matches walk mode: walls, tall buildings and paths across empty land.
 
   ![Names that peoples gave to their lands](/earth-simulator/assets/devlog/update-2-1-2/land-names-1600.jpg)
 
@@ -54,7 +54,7 @@ body_en: |
   ![A car interior](/earth-simulator/assets/devlog/update-2-1-2/car-cockpit-1600.jpg)
 
   ## Fixes and conveniences
-  This update includes everything that was being prepared as patch 2.1.1: roads on the 2D map and the Map marks button, rebuilt bridges, cockpit and helm views, a bow you draw by holding the button, ice floes where the map shows ice, port work and "First steps" for newcomers. The bow now points exactly where the arrow flies, riders lean with their horse, and guards follow you aboard ships. The full list is in the update news on Steam.
+  We've also made a great many fixes and improvements: roads on the 2D map and the Map marks button, rebuilt bridges, cockpit and helm views, a bow you draw by holding the button, ice floes where the map shows ice, port work and "First steps" for newcomers. The bow now points exactly where the arrow flies, riders lean with their horse, and guards follow you aboard ships. The short list of changes is in the version history on this site.
 
   ![Roads on the 2D map and the Map marks button](/earth-simulator/assets/devlog/update-2-1-2/map-marks-1600.jpg)
 
@@ -62,10 +62,10 @@ body_en: |
 
   ![Ice floes where the map shows ice](/earth-simulator/assets/devlog/update-2-1-2/ice-floes-1600.jpg)
 
-  Thank you for your feedback — most of this update grew out of it. Next come one or two more 2.1.x updates, and then 2.2 "Fidelity".
+  Thank you for your feedback — most of this update grew out of it.
 ---
 
-Обновление 2.1.2 вышло. Это большое обновление по вашим отзывам: в истории теперь восемь эпох и 58 открытий, а прогулка от первого лица показывает ровно то, до чего дошла держава. В него вошло и всё, что готовилось как патч 2.1.1, — сотни исправлений и удобств. Сохранения 2.0 и 2.1 загружаются, дополнения из Мастерской работают, демоверсия обновлена вместе с игрой.
+Обновление 2.1.2 вышло. Это большое обновление по вашим отзывам: в истории теперь восемь эпох и 58 открытий, а прогулка от первого лица показывает ровно то, до чего дошла держава. А ещё — сотни исправлений и удобств, и старые сохранения загружаются.
 
 ## Восемь эпох
 
@@ -83,7 +83,7 @@ body_en: |
 
 ## Дирижабли
 
-Дирижабль больше не только пассажирский: его можно угнать, взять в аренду или наняться капитаном рейса. У него своё управление — ход и руль, рули высоты, балласт и сброс газа; он медленный, плавучий, и его сносит ветром. Лететь можно из рубки в гондоле или с видом сзади, а у мачты — швартоваться: нос в конус, лебёдка, сходни. Аэродромы появляются только у держав с воздухоплаванием или авиацией и совпадают с тем, что летает на карте.
+В игре появились дирижабли: их можно угнать, взять в аренду или наняться капитаном рейса. У него своё управление — ход и руль, рули высоты, балласт и сброс газа; он медленный, плавучий, и его сносит ветром. Лететь можно из рубки в гондоле или с видом сзади, а у мачты — швартоваться: нос в конус, лебёдка, сходни. Аэродромы появляются только у держав с воздухоплаванием или авиацией и совпадают с тем, что летает на карте.
 
 {% include figure.html src="/assets/devlog/update-2-1-2/airship-spire-1600.jpg" caption="Дирижабль над высоткой со шпилем" wide=true %}
 
@@ -95,7 +95,7 @@ body_en: |
 
 ## Карта
 
-Народы сами называют свои материки, острова, моря и океаны на своём языке, а имена попадают в хронику. Своё имя можно дать кнопкой «Названия земель» или клавишей N. «Реальная Земля» теперь построена по настоящим данным: рельеф NOAA ETOPO1, климатические нормы NCEP/NCAR и GPCP. На ней сразу подписаны части света, океаны, моря и крупные озёра. Границы держав на 3D-карте — плавные линии, течения и ветра помогают судам и торговле. 3D-карта теперь совпадает с прогулкой: стены, высотки, тропы через безлюдные земли, стада, где звери больше не налезают друг на друга, и суда по эпохе своей державы.
+Народы сами называют свои материки, острова, моря и океаны на своём языке, а имена попадают в хронику. Своё имя можно дать кнопкой «Названия земель» или клавишей N. «Реальная Земля» теперь построена по настоящим данным: рельеф NOAA ETOPO1, климатические нормы NCEP/NCAR и GPCP. На ней сразу подписаны части света, океаны, моря и крупные озёра. Границы держав на 3D-карте — плавные линии, течения и ветра помогают судам и торговле. 3D-карта теперь совпадает с прогулкой: стены, высотки и тропы через безлюдные земли.
 
 {% include gallery.html images="/assets/devlog/update-2-1-2/land-names-1600.jpg|/assets/devlog/update-2-1-2/earth-atlas-1600.jpg" captions="Имена, которые народы дали своим землям|«Реальная Земля» на карте размера «Гигантская»" %}
 
@@ -107,8 +107,8 @@ body_en: |
 
 ## Исправления и удобства
 
-Сюда вошло всё, что готовилось как патч 2.1.1: дороги на 2D-карте и кнопка «Обозначения», новые мосты, вид из кабины и от штурвала, лук, который натягивают кнопкой, льдины там, где на карте лёд, работа в порту и «Первые шаги» для новичков. Лук теперь смотрит точно туда, куда летит стрела, всадник кренится вместе с конём, а стража поднимается за вами на корабль. Полный список — в новости обновления в Steam.
+Мы сделали и множество исправлений и улучшений: дороги на 2D-карте и кнопка «Обозначения», новые мосты, вид из кабины и от штурвала, лук, который натягивают кнопкой, льдины там, где на карте лёд, работа в порту и «Первые шаги» для новичков. Лук теперь смотрит точно туда, куда летит стрела, всадник кренится вместе с конём, а стража поднимается за вами на корабль. Краткий список изменений — в летописи версий на этом сайте.
 
 {% include gallery.html images="/assets/devlog/update-2-1-2/map-marks-1600.jpg|/assets/devlog/update-2-1-2/bow-draw-1600.jpg|/assets/devlog/update-2-1-2/ice-floes-1600.jpg" captions="Дороги на 2D-карте и кнопка «Обозначения»|Лук натягивается кнопкой|Льдины там, где на карте лёд" %}
 
-Спасибо за отзывы — большая часть этого обновления выросла из них. Дальше — ещё одно-два обновления 2.1.x, а затем 2.2 «Достоверность».
+Спасибо за отзывы — большая часть этого обновления выросла из них.

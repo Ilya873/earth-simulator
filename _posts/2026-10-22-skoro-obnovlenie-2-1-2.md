@@ -9,7 +9,7 @@ cover: /assets/devlog/update-2-1-2/earth-atlas-1600.jpg
 cover_caption: "«Реальная Земля» на карте размера «Гигантская»: части света, океаны и моря подписаны с первой минуты."
 cover_caption_en: "Real Earth on a Gigantic map: continents, oceans and seas are labelled from the very first minute."
 body_en: |
-  Update 2.1.2 "Eight Eras" is almost ready and will reach Steam in the next few days, together with the demo. It's a big update shaped by your feedback: history gets eight eras and 58 discoveries, and walk mode shows exactly what a nation has achieved. It also includes everything that was being prepared as patch 2.1.1. Saves from 2.0 and 2.1 will load, and Workshop add-ons will keep working.
+  Update 2.1.2 "Eight Eras" is almost ready and will reach Steam in the next few days. It's a big update shaped by your feedback: history gets eight eras and 58 discoveries, and walk mode shows exactly what a nation has achieved. It also brings hundreds of fixes and conveniences, and your old saves will load.
 
   ## Eight eras
   A Medieval era will sit between the Classical and Industrial eras, and a Post-Industrial era between the Industrial and Modern ones, in the spirit of the early 20th century. There will be 58 discoveries instead of 32: animal husbandry, the wheel, writing, the stirrup, castles, the crossbow, the telegraph, the airship, the tank, radar, rocketry and more. Cities will rebuild house by house when a new era arrives, and their look will depend on the people, the climate and the faith.
@@ -38,7 +38,7 @@ body_en: |
   ![A tank smashes through a police roadblock](/earth-simulator/assets/devlog/update-2-1-2/tank-roadblock-1600.jpg)
 
   ## Streets, cars and hundreds of fixes
-  Modern cities get six new car bodies, a new truck, bus and police car with proper interiors, and busier streets. Everything from patch 2.1.1 is in too: roads on the 2D map and Map marks, rebuilt bridges, cockpit and helm views, a bow you draw by holding the button, ice floes, port work and "First steps" for newcomers.
+  Modern cities get six new car bodies, a new truck, bus and police car with proper interiors, and busier streets. Plus many fixes and improvements: roads on the 2D map and Map marks, rebuilt bridges, cockpit and helm views, a bow you draw by holding the button, ice floes, port work and "First steps" for newcomers.
 
   ![An avenue in a modern capital](/earth-simulator/assets/devlog/update-2-1-2/modern-street-1600.jpg)
 
@@ -47,7 +47,7 @@ body_en: |
   Thank you for your feedback — most of this update grew out of it. We'll post the full list of changes on Steam and here on release day.
 ---
 
-Обновление 2.1.2 «Восемь эпох» почти готово и в ближайшие дни выйдет в Steam вместе с демоверсией. Это большое обновление по вашим отзывам: в истории будет восемь эпох и 58 открытий, а прогулка от первого лица покажет ровно то, до чего дошла держава. В него войдёт и всё, что готовилось как патч 2.1.1. Сохранения 2.0 и 2.1 будут загружаться, дополнения из Мастерской продолжат работать.
+Обновление 2.1.2 «Восемь эпох» почти готово и в ближайшие дни выйдет в Steam. Это большое обновление по вашим отзывам: в истории будет восемь эпох и 58 открытий, а прогулка от первого лица покажет ровно то, до чего дошла держава. А ещё — сотни исправлений и удобств, и старые сохранения будут загружаться.
 
 ## Восемь эпох
 
@@ -75,7 +75,7 @@ body_en: |
 
 ## Улицы, машины и сотни исправлений
 
-В современных городах — шесть новых легковых кузовов, новые грузовик, автобус и полицейская машина с салонами, и улицы станут люднее. Войдёт и всё из патча 2.1.1: дороги на 2D-карте и «Обозначения», новые мосты, вид из кабины и от штурвала, лук, который натягивают кнопкой, льдины, работа в порту и «Первые шаги» для новичков.
+В современных городах — шесть новых легковых кузовов, новые грузовик, автобус и полицейская машина с салонами, и улицы станут люднее. А ещё множество исправлений и улучшений: дороги на 2D-карте и «Обозначения», новые мосты, вид из кабины и от штурвала, лук, который натягивают кнопкой, льдины, работа в порту и «Первые шаги» для новичков.
 
 {% include gallery.html images="/assets/devlog/update-2-1-2/modern-street-1600.jpg|/assets/devlog/update-2-1-2/bow-draw-1600.jpg" captions="Проспект современной столицы|Лук натягивается кнопкой" %}
 

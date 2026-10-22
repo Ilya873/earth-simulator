@@ -17,7 +17,7 @@
       - "Дирижабли: угон, аренда, работа капитаном, швартовка к мачте."
       - "Прогулка во время ракетного и ядерного удара — и к месту удара прямо из окна войны; рыцари, первые танки, гранатомётчики в бою."
       - "Новые современные машины и людные улицы; железные дороги прогулки — те же, что на карте."
-      - "Всё из патча 2.1.1: дороги на 2D-карте, «Обозначения», мосты, вид из кабины, натяжение лука и сотни исправлений."
+      - "Сотни исправлений и удобств: дороги на 2D-карте, «Обозначения», мосты, вид из кабины, натяжение лука; старые сохранения загружаются."
     en:
       - "Eight eras and 58 discoveries: the Medieval and Post-Industrial eras, and cities that rebuild house by house."
       - "The walk follows each nation's development: tamed animals, caravans and porters, the wheel, writing, weapons and vehicles by discovery."
@@ -25,7 +25,7 @@
       - "Airships: hijack, rent, work as a captain, moor at a mast."
       - "Walk through missile and nuclear strikes, or straight to a strike site from the war window; knights, the first tanks, rocket troops in battle."
       - "New modern cars and busier streets; walk-mode railways match the map."
-      - "Everything from patch 2.1.1: roads on the 2D map, Map marks, bridges, cockpit views, drawing the bow and hundreds of fixes."
+      - "Hundreds of fixes and conveniences: roads on the 2D map, Map marks, bridges, cockpit views, drawing the bow; old saves load."
 
 - ver: "2.1.0"
   kind: update
