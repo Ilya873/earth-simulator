@@ -5,17 +5,17 @@
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
 - ver: "2.1.2"
-  kind: upcoming
-  when: { ru: "≈ конец октября 2026", en: "≈ late October 2026" }
+  kind: update
+  date: 2026-10-23          # в день выхода: проверить дату и добавить steam: <id новости Steam>
   name: { ru: "Восемь эпох", en: "Eight Eras" }
-  post: /devlog/2026/10/22/skoro-obnovlenie-2-1-2/
+  post: /devlog/2026/10/23/vyshlo-obnovlenie-2-1-2/
   items:
     ru:
       - "Восемь эпох и 58 открытий: средневековая и постиндустриальная эпохи, города перестраиваются дом за домом."
       - "Прогулка по развитию державы: приручённые звери, караваны и носильщики, колесо, письменность, оружие и техника — по открытиям."
       - "«Реальная Земля» по настоящим данным рельефа и климата, с подписями частей света, океанов и морей; народы сами называют земли."
       - "Дирижабли: угон, аренда, работа капитаном, швартовка к мачте."
-      - "Прогулка во время ракетного и ядерного удара; рыцари, первые танки, гранатомётчики в бою."
+      - "Прогулка во время ракетного и ядерного удара — и к месту удара прямо из окна войны; рыцари, первые танки, гранатомётчики в бою."
       - "Новые современные машины и людные улицы; железные дороги прогулки — те же, что на карте."
       - "Всё из патча 2.1.1: дороги на 2D-карте, «Обозначения», мосты, вид из кабины, натяжение лука и сотни исправлений."
     en:
@@ -23,7 +23,7 @@
       - "The walk follows each nation's development: tamed animals, caravans and porters, the wheel, writing, weapons and vehicles by discovery."
       - "Real Earth built from real elevation and climate data, with continents, oceans and seas labelled; peoples name their own lands."
       - "Airships: hijack, rent, work as a captain, moor at a mast."
-      - "Walk through missile and nuclear strikes; knights, the first tanks, rocket troops in battle."
+      - "Walk through missile and nuclear strikes, or straight to a strike site from the war window; knights, the first tanks, rocket troops in battle."
       - "New modern cars and busier streets; walk-mode railways match the map."
       - "Everything from patch 2.1.1: roads on the 2D map, Map marks, bridges, cockpit views, drawing the bow and hundreds of fixes."
 
