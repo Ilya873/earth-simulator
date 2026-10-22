@@ -4,7 +4,7 @@ title_en: "Update 2.1.2 is out: eight eras"
 summary: "Восемь эпох и 58 открытий, прогулка по развитию державы, дирижабли, прогулка во время ракетного удара, новые машины и сотни исправлений."
 summary_en: "Eight eras and 58 discoveries, a walk that follows each nation's development, airships, walking through missile strikes, new cars and hundreds of fixes."
 version: "2.1.2"
-date: 2026-10-23 12:00:00 +0300
+date: 2026-10-22 20:00:00 +0300
 cover: /assets/devlog/update-2-1-2/cover-medieval-city-1600.jpg
 cover_caption: "Средневековый город на карте: фахверк, собор, замок и стены с башнями."
 cover_caption_en: "A medieval city on the map: half-timbered houses, a cathedral, a castle and walls with towers."
