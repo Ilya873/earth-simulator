@@ -226,9 +226,22 @@ phases:
         ru: ["Новое оружие и лечение", "Гранаты, дробовики и снайперские винтовки; травы, бинты и аптечки — по эпохе."]
         en: ["New weapons and healing", "Grenades, shotguns and sniper rifles; herbs, bandages and medkits — by era."]
       - k: play
-        s: plan
-        ru: ["Торговые пути на виду", "Окно каждого торгового маршрута: кто с кем торгует, сколько и что везут."]
-        en: ["Trade routes up close", "A window for every trade route: who trades with whom, how much and what they carry."]
+        s: done
+        ru: ["Торговые пути на виду", "Окно каждого торгового маршрута: кто с кем торгует, сколько и что везут. 26 товаров и партии груза с цепочкой от производителя до покупателя; к грузу можно прогуляться и ограбить его."]
+        en: ["Trade routes up close", "A window for every trade route: who trades with whom, how much and what they carry. 26 goods and consignments with a chain from maker to buyer; you can walk to a cargo and rob it."]
+      - k: sim
+        s: done
+        ru: ["Живая дикая природа", "Звери не берутся из ничего: люди теснят их, вернуться они могут только с соседних земель, а самозарождение жизни включается настройкой мира. На 3D-карте у них двигаются ноги и крылья."]
+        en: ["Living wildlife", "Animals no longer come from nowhere: people push them out, they return only from neighbouring land, and new life appearing on its own is a world setting. Legs and wings move on the 3D map."]
+      - k: play
+        s: done
+        req: true
+        ru: ["Контроллер и свои единицы", "Вся игра на контроллере, от меню до штурвала, с назначением кнопок. Градусы Фаренгейта, мили и футы в настройках."]
+        en: ["Controller and your units", "The whole game on a controller, from the menu to the helm, with button assignment. Fahrenheit, miles and feet in the settings."]
+      - k: com
+        s: done
+        ru: ["Моды с кодом", "Дополнения Мастерской, меняющие код игры, подключаются сами, без установщиков, и не ломаются от обновлений."]
+        en: ["Code mods", "Workshop add-ons that change the game's code load by themselves, without installers, and updates don't break them."]
       - k: walk
         s: wip
         ru: ["Дирижабли и воздушные шары", "Дирижабли над городами индустриальной эпохи, а позже — прогулочные шары над полями и рекламные дирижабли; угнать можно и их."]

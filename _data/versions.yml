@@ -4,6 +4,29 @@
 # tg — номер поста в канале t.me/gamesforfarmnews (необязательно)
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
+- ver: "2.1.3"
+  kind: upcoming
+  date: 2026-11-02
+  name: { ru: "Торговля, дикая природа и моды", en: "Trade, Wildlife and Mods" }
+  post: /devlog/2026/11/02/obnovlenie-2-1-3/
+  items:
+    ru:
+      - "26 товаров и партии груза с цепочкой: кто произвёл, кто перекупал, на чём везут и кому; окна путей, слой карты, вкладки в статистике."
+      - "Прогулка к грузу: караван на дороге, поезд, судно в море; с перевозчиками можно поговорить, груз можно ограбить, у дорогого — охрана."
+      - "Дирижабли и грузовые самолёты везут дорогое и лёгкое."
+      - "Дикая природа: звери не берутся из ничего, настройка «Самозарождение жизни», ноги и крылья на 3D-карте."
+      - "Моды с кодом подключаются сами, без установщиков, и не ломаются от обновлений."
+      - "Поддержка контроллера с назначением кнопок, °F и мили, бесконечные здоровье и деньги на прогулке."
+      - "3D-карта плавнее на больших мирах, тени и берег не дёргаются, поверхности не мерцают."
+    en:
+      - "26 goods and consignments with a supply chain: who made it, who resold it, what carries it and who buys it; route windows, a map layer, statistics tabs."
+      - "Walk to a cargo: a caravan on the road, a train, a ship at sea; talk to the carriers, rob the load, and deal with guards on valuable goods."
+      - "Airships and cargo planes carry valuable light goods."
+      - "Wildlife: animals no longer come from nowhere, the Life appears on its own setting, legs and wings on the 3D map."
+      - "Code mods load by themselves, without installers, and updates no longer break them."
+      - "Controller support with button assignment, °F and miles, infinite health and money in walk mode."
+      - "A smoother 3D map on big worlds, calm shadows and shores, no flickering surfaces."
+
 - ver: "2.1.2"
   kind: update
   date: 2026-10-22
