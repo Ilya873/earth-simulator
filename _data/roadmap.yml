@@ -173,7 +173,7 @@ phases:
     ver: "2.2"
     eon: e1
     color: "#EDD08A"
-    status: plan
+    status: wip
     now: true
     t: 2026.88
     pos: { x: 285, y: 390 }
@@ -363,7 +363,7 @@ phases:
         - "Law: border guards ask for papers, smuggling becomes a crime, and instead of an instant fine there is prison — which you can escape."
     items:
       - k: walk
-        s: plan
+        s: wip
         ru: ["Единая сеть путей", "Дороги, трассы между городами и железные дороги на прогулке совпадают с картой; вокзал есть у каждой линии."]
         en: ["One road network", "Roads, highways between cities and railways on foot match the world map; every line has its stations."]
       - k: walk
@@ -387,7 +387,7 @@ phases:
         ru: ["Воздушные бои", "Воздушные и совместные сражения — небо, земля и море; от бипланов и бомбардировщиков до машин будущего."]
         en: ["Air battles", "Air and combined battles — sky, land and sea; from biplanes and bombers to aircraft of the future."]
       - k: gfx
-        s: plan
+        s: wip
         req: true
         ru: ["Города по климату, народу и вере", "Глина и песчаник в пустынях, срубы в тайге, камень в горах, сваи на болотах, юрты в степи; храмы, святилища, тотемы, крыши и украшения — по народу и вере."]
         en: ["Cities by climate, people and faith", "Adobe and sandstone in deserts, log houses in the taiga, stone in mountains, stilts in marshes, yurts on the steppe; temples, shrines, totems, roofs and ornament by people and faith."]
@@ -402,7 +402,7 @@ phases:
         ru: ["Тюрьмы и лагеря", "От ямы и частокола до тюрьмы с вышками: отсидите срок — и розыск снят, или бегите — и он растёт."]
         en: ["Prisons and camps", "From a pit and a stockade to a prison with towers: serve your time and the wanted level clears, or escape and it grows."]
       - k: walk
-        s: plan
+        s: wip
         ru: ["Ограбление", "Ограбить лавку или караван можно, но охрана, свидетели и розыск делают это риском, а не заработком."]
         en: ["Robbery", "You can rob a shop or a caravan, but guards, witnesses and the wanted level make it a gamble, not a living."]
       - k: walk
