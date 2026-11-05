@@ -5,6 +5,13 @@
 # пишется карточкой: id, date, title, text (ru/en), img — и ведёт на пост в Telegram.
 channel: gamesforfarmnews
 posts:
+  - id: 4116
+    date: 2026-11-05
+    title: { ru: "В Earth Simulator появится сетевой режим", en: "Earth Simulator is getting multiplayer" }
+    text:
+      ru: "Обновление 2.1.4: до 16 игроков в одном мире — комнаты в интернете и по локальной сети с паролем, приглашения друзей через Steam, общий мир на прогулке и бои между игроками."
+      en: "Update 2.1.4: up to 16 players in one world — password-protected rooms over the internet and on a LAN, Steam friend invites, a shared world on walks and player duels."
+    img: /assets/devlog/update-2-1-4/players-and-chat-800.jpg
   - id: 3916
     date: 2026-10-02
     title: { ru: "Earth Simulator 2.0 — глобальное обновление", en: "Earth Simulator 2.0 — the global update" }
