@@ -457,7 +457,7 @@ phases:
         ru: ["Большие миры", "Карты примерно до 500×250 клеток и смена размера без перезапуска игры."]
         en: ["Bigger worlds", "Maps up to roughly 500×250 cells, resized without restarting the game."]
       - k: eng
-        s: plan
+        s: wip
         ru: ["Предсказуемая история", "Одно зерно — одна история: повторы, воспроизводимые ошибки и основа мультиплеера."]
         en: ["Reproducible history", "One seed, one history: replays, reproducible bugs and the basis for multiplayer."]
       - k: eng
@@ -847,7 +847,7 @@ phases:
     ver: "4.0"
     eon: e1
     color: "#9CC3B8"
-    status: plan
+    status: wip
     major: true
     t: 2028.05
     pos: { x: 1045, y: 330 }
@@ -858,11 +858,11 @@ phases:
       ru: "Один мир на нескольких игроков — по интернету и по локальной сети."
       en: "One world for several players — over the internet and on a local network."
     why:
-      ru: "Сеть стоит на фундаменте 3.0: команды, предсказуемая симуляция и запуск без интерфейса. Роли — бог, правитель, житель — появляются в 3.3. Выпускать мультиплеер имеет смысл, когда основные системы перестали меняться каждую неделю."
-      en: "Networking stands on 3.0’s foundation: commands, a predictable simulation and headless runs. Roles — god, ruler, citizen — arrive in 3.3. It makes sense to ship multiplayer once the core systems stop changing every week."
+      ru: "Основа сетевой игры выходит раньше срока, уже в обновлении 2.1.4: команды, предсказуемая симуляция, комнаты, интернет и локальная сеть. Здесь остаются роли — бог, правитель, житель — и режимы: им нужны системы 3.3."
+      en: "The foundation of multiplayer arrives ahead of schedule, in update 2.1.4: commands, a predictable simulation, rooms, internet and LAN. What stays here is the roles — god, ruler, citizen — and the modes, which need the systems of 3.3."
     hood:
-      ru: "Авторитетный сервер: симуляция идёт на сервере (Node.js на VPS или у хоста в локальной сети), клиенты отправляют команды и получают изменения состояния. Прогулка считается локально, синхронизируются позиции и действия. Предсказуемость симуляции позволяет быстро ловить рассинхронизацию."
-      en: "An authoritative server: the simulation runs on the server (Node.js on a VPS, or on the host’s PC for LAN), clients send commands and receive state changes. Walk mode runs locally, with positions and actions synchronised. A predictable simulation makes desyncs quick to catch."
+      ru: "Каждый игрок считает мир сам, а по сети идут только команды и порядок ходов: сервер в локальной сети работает прямо в игре, в интернете — маленькая программа на Node.js. Новичок получает точный снимок мира, история у него идёт бит в бит как у всех. Кто гуляет рядом, видит один мир: тех же жителей, зверей, машины и сражения."
+      en: "Each player computes the world themselves, and only commands and the order of turns travel over the network: on a LAN the server runs inside the game, on the internet it is a small Node.js program. A newcomer receives an exact snapshot of the world, and history then runs bit for bit as it does for everyone else. Players walking near each other see one world: the same residents, animals, vehicles and battles."
     grows:
       ru:
         - "Экономика, законы и войны работают для нескольких игроков сразу."
@@ -870,25 +870,25 @@ phases:
         - "The economy, laws and wars work for several players at once."
     items:
       - k: eng
-        s: plan
-        ru: ["Сервер и локальная сеть", "Выделенный сервер для больших миров и игра с друзьями по LAN."]
-        en: ["Server and LAN", "A dedicated server for big worlds and LAN play with friends."]
+        s: wip
+        ru: ["Сервер и локальная сеть", "Комнаты с паролем, вход в любой момент, интернет и игра с друзьями по локальной сети — в обновлении 2.1.4."]
+        en: ["Server and LAN", "Rooms with passwords, joining at any moment, internet and LAN play with friends — in update 2.1.4."]
       - k: play
-        s: plan
-        ru: ["Роли", "Несколько богов в одном мире, правители держав, жители и путешественники."]
-        en: ["Roles", "Several gods in one world, rulers of states, citizens and travellers."]
+        s: wip
+        ru: ["Роли", "Несколько богов в одном мире — уже в 2.1.4. Впереди правители держав, жители и путешественники."]
+        en: ["Roles", "Several gods in one world arrive in 2.1.4. Rulers of states, citizens and travellers come next."]
       - k: play
-        s: plan
-        ru: ["Режимы", "Совместная песочница, соперничество богов, дипломатия держав, ролевой сервер."]
-        en: ["Modes", "Co-op sandbox, rival gods, diplomacy between states, a role-play server."]
+        s: wip
+        ru: ["Режимы", "Совместная песочница и соперничество держав — в 2.1.4. Впереди дипломатия держав и ролевой сервер."]
+        en: ["Modes", "The co-op sandbox and the rivalry of nations arrive in 2.1.4. Diplomacy between states and a role-play server come next."]
       - k: play
-        s: plan
-        ru: ["Правила мира", "Кто что может менять, голосование за паузу и скорость времени."]
-        en: ["World rules", "Who may change what; votes on pausing and the speed of time."]
+        s: wip
+        ru: ["Правила мира", "В 2.1.4 кто меняет мир, а кто смотрит, решает создатель комнаты, он же управляет временем. Впереди голосование за паузу и скорость."]
+        en: ["World rules", "In 2.1.4 the room creator decides who edits and who watches, and controls time. Votes on pausing and speed come next."]
       - k: com
-        s: plan
-        ru: ["Steam и сообщество", "Приглашения через Steam, чат, серверы сообщества."]
-        en: ["Steam and community", "Steam invites, chat, community servers."]
+        s: wip
+        ru: ["Steam и сообщество", "Приглашения через Steam, чат и флаги стран — в 2.1.4. Впереди серверы сообщества."]
+        en: ["Steam and community", "Steam invites, chat and country flags arrive in 2.1.4. Community servers come next."]
       - k: gfx
         s: idea
         ru: ["Графика «Ультра»", "Для мощных ПК: WebGPU, физически корректные материалы, объёмные облака, густая растительность."]
