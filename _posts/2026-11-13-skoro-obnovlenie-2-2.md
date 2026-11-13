@@ -4,7 +4,7 @@ title_en: "Coming soon: update 2.2, the biggest update yet"
 summary: "Политика и мировые войны, авиация и ядерное оружие, компании и биржа, руины и достопримечательности, исторический старт с 3000 г. до н. э., карты до 1000×1000, а на прогулке — дома, в которые можно войти, работа, служба в армии и выживание. Обновление проходит проверку, дату выхода объявим."
 summary_en: "Politics and world wars, air forces and nuclear weapons, companies and a stock exchange, ruins and landmarks, a historical start from 3000 BC, maps up to 1000×1000 — and on foot, buildings you can enter, jobs, army service and survival. The update is in testing; the release date will be announced."
 version: "2.2"
-date: 2026-11-13 18:00:00 +0300
+date: 2026-11-13 10:00:00 +0300
 cover: /assets/devlog/update-2-2/cover-modern-capital-1600.jpg
 cover_caption: "Столица современной эпохи на 3D-карте: высотки, телебашня, изогнутые улицы и река."
 cover_caption_en: "A modern-era capital on the 3D map: towers, a TV tower, curving streets and a river."
