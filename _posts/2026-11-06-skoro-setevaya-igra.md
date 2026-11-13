@@ -1,15 +1,15 @@
 ---
-title: "Скоро обновление 2.1.4: сетевая игра"
-title_en: "Coming soon: update 2.1.4, multiplayer"
-summary: "Один мир на всех: комнаты с друзьями через интернет и по локальной сети, прогулка вместе, бой игроков, игра за одним экраном и соперничество держав. Выйдет в ближайшее время."
-summary_en: "One world for everyone: rooms with friends over the internet and on a local network, walking together, player duels, playing at one screen and a rivalry of nations. Out soon."
+title: "Обновление 2.1.4: сетевая игра"
+title_en: "Update 2.1.4: multiplayer"
+summary: "Один мир на всех: комнаты с друзьями через интернет и по локальной сети, прогулка вместе, бой игроков, игра за одним экраном и соперничество держав. Вышло в Steam 6 ноября."
+summary_en: "One world for everyone: rooms with friends over the internet and on a local network, walking together, player duels, playing at one screen and a rivalry of nations. Out on Steam since 6 November."
 version: "2.1.4"
 date: 2026-11-06 01:00:00 +0300
 cover: /assets/devlog/update-2-1-4/riders-side-by-side-1600.jpg
 cover_caption: "Двое игроков верхом на одной прогулке: над головой у каждого — его имя."
 cover_caption_en: "Two players riding on one walk, each with their name above their head."
 body_en: |
-  Multiplayer is almost ready and will reach Steam soon as update 2.1.4. On the roadmap it stood much further ahead, but it arrives now. You can shape the world together: open a room, set a password if you like, and invite your friends. They can join at any moment, even when thousands of years have passed in the world: a newcomer gets the world exactly as it is right now.
+  Multiplayer came out on Steam on 6 November as update 2.1.4. On the roadmap it stood much further ahead, but it arrived early. You can shape the world together: open a room, set a password if you like, and invite your friends. They can join at any moment, even when thousands of years have passed in the world: a newcomer gets the world exactly as it is right now.
 
   ## One world for everyone
   Everyone paints, raises mountains, calls disasters and helps nations in one world, and every change shows up for everybody at once. Over the map you see your friends' cursors with their names, on the left the player panel with country flags, and below the chat. The room creator controls time and decides who changes the world and who only watches.
@@ -43,7 +43,7 @@ body_en: |
   A room can start from the current world, a new world or a save. All players need the same game version and the same add-ons, while each can use their own language. This is the first version of multiplayer. Tell us what is missing: voting on pauses and ruler roles are already planned.
 ---
 
-Сетевая игра почти готова и в ближайшее время выйдет в Steam обновлением 2.1.4. На дорожной карте она стояла гораздо дальше, но выходит уже сейчас. Мир можно создавать вместе: откройте комнату, поставьте пароль, если хотите, и зовите друзей. Войти можно в любой момент, даже когда в мире прошли тысячи лет: новичок сразу получает мир таким, какой он сейчас.
+Сетевая игра вышла в Steam 6 ноября обновлением 2.1.4. На дорожной карте она стояла гораздо дальше, но вышла раньше срока. Мир можно создавать вместе: откройте комнату, поставьте пароль, если хотите, и зовите друзей. Войти можно в любой момент, даже когда в мире прошли тысячи лет: новичок сразу получает мир таким, какой он сейчас.
 
 ## Один мир на всех
 

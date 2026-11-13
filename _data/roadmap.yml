@@ -858,8 +858,8 @@ phases:
       ru: "Один мир на нескольких игроков — по интернету и по локальной сети."
       en: "One world for several players — over the internet and on a local network."
     why:
-      ru: "Основа сетевой игры выходит раньше срока, уже в обновлении 2.1.4: команды, предсказуемая симуляция, комнаты, интернет и локальная сеть. Здесь остаются роли — бог, правитель, житель — и режимы: им нужны системы 3.3."
-      en: "The foundation of multiplayer arrives ahead of schedule, in update 2.1.4: commands, a predictable simulation, rooms, internet and LAN. What stays here is the roles — god, ruler, citizen — and the modes, which need the systems of 3.3."
+      ru: "Основа сетевой игры вышла раньше срока, в обновлении 2.1.4: команды, предсказуемая симуляция, комнаты, интернет и локальная сеть. Здесь остаются роли — бог, правитель, житель — и режимы: им нужны системы 3.3."
+      en: "The foundation of multiplayer arrived ahead of schedule, in update 2.1.4: commands, a predictable simulation, rooms, internet and LAN. What stays here is the roles — god, ruler, citizen — and the modes, which need the systems of 3.3."
     hood:
       ru: "Каждый игрок считает мир сам, а по сети идут только команды и порядок ходов: сервер в локальной сети работает прямо в игре, в интернете — маленькая программа на Node.js. Новичок получает точный снимок мира, история у него идёт бит в бит как у всех. Кто гуляет рядом, видит один мир: тех же жителей, зверей, машины и сражения."
       en: "Each player computes the world themselves, and only commands and the order of turns travel over the network: on a LAN the server runs inside the game, on the internet it is a small Node.js program. A newcomer receives an exact snapshot of the world, and history then runs bit for bit as it does for everyone else. Players walking near each other see one world: the same residents, animals, vehicles and battles."
@@ -875,12 +875,12 @@ phases:
         en: ["Server and LAN", "Rooms with passwords, joining at any moment, internet and LAN play with friends — in update 2.1.4."]
       - k: play
         s: wip
-        ru: ["Роли", "Несколько богов в одном мире — уже в 2.1.4. Впереди правители держав, жители и путешественники."]
-        en: ["Roles", "Several gods in one world arrive in 2.1.4. Rulers of states, citizens and travellers come next."]
+        ru: ["Роли", "Несколько богов в одном мире — уже в игре с 2.1.4. Впереди правители держав, жители и путешественники."]
+        en: ["Roles", "Several gods in one world have been in the game since 2.1.4. Rulers of states, citizens and travellers come next."]
       - k: play
         s: wip
         ru: ["Режимы", "Совместная песочница и соперничество держав — в 2.1.4. Впереди дипломатия держав и ролевой сервер."]
-        en: ["Modes", "The co-op sandbox and the rivalry of nations arrive in 2.1.4. Diplomacy between states and a role-play server come next."]
+        en: ["Modes", "The co-op sandbox and the rivalry of nations arrived in 2.1.4. Diplomacy between states and a role-play server come next."]
       - k: play
         s: wip
         ru: ["Правила мира", "В 2.1.4 кто меняет мир, а кто смотрит, решает создатель комнаты, он же управляет временем. Впереди голосование за паузу и скорость."]
@@ -888,7 +888,7 @@ phases:
       - k: com
         s: wip
         ru: ["Steam и сообщество", "Приглашения через Steam, чат и флаги стран — в 2.1.4. Впереди серверы сообщества."]
-        en: ["Steam and community", "Steam invites, chat and country flags arrive in 2.1.4. Community servers come next."]
+        en: ["Steam and community", "Steam invites, chat and country flags arrived in 2.1.4. Community servers come next."]
       - k: gfx
         s: idea
         ru: ["Графика «Ультра»", "Для мощных ПК: WebGPU, физически корректные материалы, объёмные облака, густая растительность."]

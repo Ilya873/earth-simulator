@@ -4,9 +4,32 @@
 # tg — номер поста в канале t.me/gamesforfarmnews (необязательно)
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
-- ver: "2.1.4"
+- ver: "2.2"
   kind: upcoming
-  when: { ru: "≈ ноябрь 2026", en: "≈ November 2026" }
+  when: { ru: "в проверке", en: "in testing" }
+  name: { ru: "Глобальное обновление", en: "The Global Update" }
+  post: /devlog/2026/11/13/skoro-obnovlenie-2-2/
+  items:
+    ru:
+      - "Политика и дипломатия: идеологии, 19 форм правления, державы знакомятся постепенно, блоки, мировой совет, мирные договоры и мировые войны «эффектом домино»."
+      - "Войны фронтами и полками с командирами, авиация держав, ядерное оружие по истории; после удара остаются руины и воронка."
+      - "Прогулка: в любое здание можно войти, города разных народов, работа водителем автобуса, таксистом, дальнобойщиком и капитаном, служба в армии, тюрьмы."
+      - "Исторический старт: Реальная Земля с 3000 г. до н. э., древние цивилизации на своих местах, годы до нашей эры."
+      - "Компании и биржа, заводы со своими марками машин, танков и самолётов; торговля меняет державы."
+      - "Руины и достопримечательности, бедствия в настоящих шкалах, эпидемии с именами, кисть рек, правила мира, карты до 1000×1000."
+      - "Выживание: голод, жажда, холод и жара; воздушные шары, гранаты, новый транспорт эпох; общий транспорт в сетевой игре и свои державы в редакторе дополнений."
+    en:
+      - "Politics and diplomacy: ideologies, 19 forms of government, nations meeting gradually, blocs, a world council, peace treaties and «domino effect» world wars."
+      - "Wars along fronts with regiments and commanders, air forces, nuclear weapons that follow history; a strike leaves ruins and a crater."
+      - "On foot: every building can be entered, cities of different peoples, jobs as a bus driver, taxi driver, trucker and captain, army service, prisons."
+      - "A historical start: Real Earth from 3000 BC, ancient civilisations in their real places, years before the common era."
+      - "Companies and a stock exchange, manufacturers with their own makes of cars, tanks and aircraft; trade changes nations."
+      - "Ruins and landmarks, disasters on real scales, named epidemics, a river brush, world rules, maps up to 1000×1000."
+      - "Survival: hunger, thirst, cold and heat; hot-air balloons, grenades, new vehicles of every era; shared vehicles in multiplayer and your own nations in the add-on editor."
+
+- ver: "2.1.4"
+  kind: update
+  date: 2026-11-06
   name: { ru: "Сетевая игра", en: "Multiplayer" }
   post: /devlog/2026/11/06/skoro-setevaya-igra/
   steam: "674010909028384914"
