@@ -22,7 +22,7 @@ body_en: |
 
   Right after the release I fixed what players found first: in multiplayer, disasters, cities and huge brushes no longer flood the room and cause stutters, and brushes on 144–240 Hz monitors behave the same as on 60 Hz.
 
-  The star map has been updated: 2.2 is marked as released, and a good part of the plans for later updates is already done — interiors, buses and trucks, natural borders and border posts, air battles, prisons, ideologies, treaties, companies, fronts and commanders. Next up is 2.3, «The Ruler».
+  The star map has been updated: 2.2 is marked as released. Many plans of later updates got their first version in 2.2 — interiors, buses and trucks, natural borders and border posts, air battles, prisons, ideologies, treaties, companies, fronts and commanders — so on the map they are now «in progress»: each of them will keep growing until it is complete. Next up is 2.3, «The Ruler».
 ---
 Обновление 2.2 вышло в Steam. Это самое большое обновление игры — коротко о том, что в нём есть. Подробно, со снимками, о каждой части — в записи [«Скоро обновление 2.2»]({{ '/devlog/2026/11/13/skoro-obnovlenie-2-2/' | relative_url }}).
 
@@ -37,4 +37,4 @@ body_en: |
 
 Сразу после выхода я поправил то, что игроки нашли первым: в сетевой игре стихии, города и огромные кисти больше не заваливают комнату и не вызывают фризов, а кисти на мониторах 144–240 Гц работают так же, как на 60 Гц.
 
-Звёздная карта обновлена: 2.2 отмечено как вышедшее, а заметная часть планов следующих обновлений уже сделана — интерьеры, автобусы и дальнобойщики, естественные границы и пограничные посты, воздушные бои, тюрьмы, идеологии, договоры, компании, фронты и полководцы. Дальше — 2.3 «Правитель».
+Звёздная карта обновлена: 2.2 отмечено как вышедшее. Многие планы следующих обновлений получили в 2.2 первую версию — интерьеры, автобусы и дальнобойщики, естественные границы и пограничные посты, воздушные бои, тюрьмы, идеологии, договоры, компании, фронты и полководцы, — поэтому на карте они теперь «в работе»: каждый из них будет дорабатываться до полного вида. Дальше — 2.3 «Правитель».

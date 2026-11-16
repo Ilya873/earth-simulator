@@ -325,7 +325,7 @@ phases:
         ru: ["Смута", "Проигранная война, голод или чужая вера могут обернуться восстанием или переворотом — трон придётся удержать."]
         en: ["Unrest", "A lost war, famine or a foreign faith can turn into a revolt or a coup — and you will have to hold on to the throne."]
       - k: walk
-        s: done
+        s: wip
         req: true
         ru: ["Интерьеры", "Первые здания с дверьми: дворец, дом, таверна, лавка и храм — у каждой эпохи и культуры свои."]
         en: ["Interiors", "The first buildings with doors: palace, house, tavern, shop and temple — each era and culture its own."]
@@ -363,31 +363,31 @@ phases:
         - "Law: border guards ask for papers, smuggling becomes a crime, and instead of an instant fine there is prison — which you can escape."
     items:
       - k: walk
-        s: done
+        s: wip
         ru: ["Единая сеть путей", "Дороги, трассы между городами и железные дороги на прогулке совпадают с картой; вокзал есть у каждой линии."]
         en: ["One road network", "Roads, highways between cities and railways on foot match the world map; every line has its stations."]
       - k: walk
-        s: done
+        s: wip
         ru: ["Автобусы", "Городские и междугородние маршруты: поездки пассажиром и работа водителем."]
         en: ["Buses", "City and intercity routes: ride as a passenger or work as a driver."]
       - k: walk
-        s: done
+        s: wip
         ru: ["Дальнобойщики", "Фуры с грузом между городами — и работа дальнобойщиком."]
         en: ["Long-haul trucks", "Lorries carrying cargo between cities — and a trucker’s job."]
       - k: sim
-        s: done
+        s: wip
         ru: ["Естественные границы", "Границы держав тянутся по хребтам и рекам, а не режут горы пополам."]
         en: ["Natural borders", "State borders follow ridges and rivers instead of cutting mountains in half."]
       - k: walk
-        s: done
+        s: wip
         ru: ["Пограничные посты", "На границе — шлагбаум, пограничники и проверка документов."]
         en: ["Border checkpoints", "At the border — a barrier, border guards and a check of papers."]
       - k: sim
-        s: done
+        s: wip
         ru: ["Воздушные бои", "Воздушные и совместные сражения — небо, земля и море; от бипланов и бомбардировщиков до машин будущего."]
         en: ["Air battles", "Air and combined battles — sky, land and sea; from biplanes and bombers to aircraft of the future."]
       - k: gfx
-        s: done
+        s: wip
         req: true
         ru: ["Города по климату, народу и вере", "Глина и песчаник в пустынях, срубы в тайге, камень в горах, сваи на болотах, юрты в степи; храмы, святилища, тотемы, крыши и украшения — по народу и вере."]
         en: ["Cities by climate, people and faith", "Adobe and sandstone in deserts, log houses in the taiga, stone in mountains, stilts in marshes, yurts on the steppe; temples, shrines, totems, roofs and ornament by people and faith."]
@@ -397,12 +397,12 @@ phases:
         ru: ["Летающие машины", "В эпоху будущего машины действительно летают — над улицами и между городами."]
         en: ["Flying cars", "In the era of the future cars really fly — over streets and between cities."]
       - k: walk
-        s: done
+        s: wip
         req: true
         ru: ["Тюрьмы и лагеря", "От ямы и частокола до тюрьмы с вышками: отсидите срок — и розыск снят, или бегите — и он растёт."]
         en: ["Prisons and camps", "From a pit and a stockade to a prison with towers: serve your time and the wanted level clears, or escape and it grows."]
       - k: walk
-        s: done
+        s: wip
         ru: ["Ограбление", "Ограбить лавку или караван можно, но охрана, свидетели и розыск делают это риском, а не заработком."]
         en: ["Robbery", "You can rob a shop or a caravan, but guards, witnesses and the wanted level make it a gamble, not a living."]
       - k: walk
@@ -531,7 +531,7 @@ phases:
         ru: ["Свой путь у каждого народа", "Степняки раньше приручат коня, островитяне раньше освоят мореходство."]
         en: ["Every people finds its own path", "Steppe folk tame the horse first, islanders master the sea first."]
       - k: play
-        s: done
+        s: wip
         req: true
         ru: ["Окно исследований", "У любой державы видно, что изучено, что изучается сейчас и что в планах."]
         en: ["Research window", "For any state: what has been learned, what is being studied and what comes next."]
@@ -691,7 +691,7 @@ phases:
         - "The ruler from 2.3 gets new decisions: laws, ideology, dealing with parties."
     items:
       - k: sim
-        s: done
+        s: wip
         req: true
         ru: ["Идеологии", "Феодализм, либерализм, демократия, социализм, коммунизм, центризм, теократия, диктатуры — с сильными и слабыми сторонами."]
         en: ["Ideologies", "Feudalism, liberalism, democracy, socialism, communism, centrism, theocracy, dictatorships — with strengths and weaknesses."]
@@ -725,7 +725,7 @@ phases:
         ru: ["Вера отвечает богу", "Часто бьёте молниями — рождается культ Громовержца; засухи, чудеса и кары создают пантеоны, пророков и ереси."]
         en: ["Faith answers the god", "Strike often with lightning and a Thunder God cult is born; droughts, miracles and wrath create pantheons, prophets and heresies."]
       - k: sim
-        s: done
+        s: wip
         ru: ["Договоры", "Союзы, торговые соглашения, пакты о ненападении и границы как настоящие документы."]
         en: ["Treaties", "Alliances, trade agreements, non-aggression pacts and borders as real documents."]
 
@@ -766,7 +766,7 @@ phases:
         ru: ["Рынки регионов", "Цены из спроса и предложения; грузы везут караваны, корабли, поезда и грузовики."]
         en: ["Regional markets", "Prices from supply and demand; cargo moves by caravan, ship, train and truck."]
       - k: play
-        s: done
+        s: wip
         ru: ["Компании", "Частные и государственные — в земледелии, добыче, промышленности, торговле и транспорте: найм, конкуренция, банкротства; они двигают экономику державы. Основать свою можно и на прогулке, и как правитель."]
         en: ["Companies", "Private and state-owned — in farming, mining, industry, trade and transport: hiring, competition, bankruptcy; they drive the state’s economy. Found your own on foot or as a ruler."]
       - k: sim
@@ -811,12 +811,12 @@ phases:
         - "Naval battles and landings become part of the war’s logistics."
     items:
       - k: sim
-        s: done
+        s: wip
         req: true
         ru: ["Армии на марше", "Пешком, на конях, повозках, поездах, машинах и вертолётах — по эпохе и дорогам."]
         en: ["Armies on the march", "On foot, horseback, carts, trains, trucks and helicopters — by era and road."]
       - k: sim
-        s: done
+        s: wip
         ru: ["Фронты и осады", "Линии фронта, крепости, окопы и блиндажи, осады и оккупация."]
         en: ["Fronts and sieges", "Front lines, fortresses, trenches and dugouts, sieges and occupation."]
       - k: sim
@@ -830,11 +830,11 @@ phases:
         ru: ["Партизанская война", "Сопротивление, повстанцы со своими армиями, борьба за население."]
         en: ["Guerrilla war", "Resistance, rebels with armies of their own, the struggle for hearts and minds."]
       - k: sim
-        s: done
+        s: wip
         ru: ["Полководцы", "Навыки командиров, состав армии и рельеф решают исход сражения."]
         en: ["Generals", "Commanders’ skills, army composition and terrain decide battles."]
       - k: walk
-        s: done
+        s: wip
         ru: ["Ваш бой имеет значение", "Не только потери: удержанная высота, спасённое знамя или павший полководец меняют исход битвы на карте."]
         en: ["Your fight matters", "Not just casualties: a hill held, a banner saved or a fallen general change the outcome of the battle on the map."]
       - k: play
