@@ -1,6 +1,6 @@
 {%- assign L = page.lang | default: site.lang | default: 'ru' -%}
 {%- assign t = site.data.i18n -%}
-{%- if L == 'en' -%}{%- assign home = '/en/' | relative_url -%}{%- assign devlog_url = '/en/devlog/' | relative_url -%}{%- else -%}{%- assign home = '/' | relative_url -%}{%- assign devlog_url = '/devlog/' | relative_url -%}{%- endif -%}
+{%- if L == 'en' -%}{%- assign home = '/en/' | relative_url -%}{%- assign devlog_url = '/en/devlog/' | relative_url -%}{%- assign modding_url = '/en/modding/' | relative_url -%}{%- else -%}{%- assign home = '/' | relative_url -%}{%- assign devlog_url = '/devlog/' | relative_url -%}{%- assign modding_url = '/modding/' | relative_url -%}{%- endif -%}
 {%- if page.alt_url -%}{%- assign alt = page.alt_url | relative_url -%}{%- elsif L == 'en' -%}{%- assign alt = '/' | relative_url -%}{%- else -%}{%- assign alt = '/en/' | relative_url -%}{%- endif -%}
 <header class="runhead" data-runhead>
   <div class="runhead__in">
@@ -10,6 +10,7 @@
       <a href="{{ home }}#roadmap">{{ t.nav_roadmap[L] }}</a>
       <a href="{{ home }}#versions">{{ t.nav_versions[L] }}</a>
       <a href="{{ devlog_url }}"{% if page.layout == 'post' or page.devlog_index %} aria-current="page"{% endif %}>{{ t.nav_devlog[L] }}</a>
+      <a href="{{ modding_url }}"{% if page.layout == 'guide' %} aria-current="page"{% endif %}>{{ t.nav_modding[L] }}</a>
     </nav>
     <div class="runhead__ext">
       <a href="{{ site.steam_url }}" rel="noopener" target="_blank">Steam<span class="ext" aria-hidden="true">↗</span></a>

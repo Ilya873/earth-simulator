@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{%- assign L = page.lang | default: 'ru' -%}
+{%- assign t = site.data.i18n -%}
+{%- if L == 'en' -%}{%- assign home = '/en/' | relative_url -%}{%- else -%}{%- assign home = '/' | relative_url -%}{%- endif -%}
+<article class="post">
+  <header class="post__head">
+    <a class="post__back" href="{{ home }}">← Earth Simulator</a>
+    <h1 class="post__title">{{ page.title }}</h1>
+    {%- if page.summary %}<p class="post__lead">{{ page.summary }}</p>{% endif %}
+  </header>
+  {%- if page.cover %}
+  <figure class="post__cover fig" data-lb-group="post" data-lb-src="{{ page.cover | relative_url }}" data-lb-cap="{{ page.cover_caption | default: page.title | xml_escape }}">
+    <button type="button" class="plate-fig__btn" aria-label="{{ t.zoom[L] }}"><img src="{{ page.cover | relative_url }}" alt="{{ page.cover_caption | default: '' | xml_escape }}" loading="eager"></button>
+    {%- if page.cover_caption %}<figcaption>{{ page.cover_caption }}</figcaption>{% endif %}
+  </figure>
+  {%- endif %}
+  <div class="prose" lang="{{ L }}">
+{{ content }}
+  </div>
+  <footer class="post__foot">
+    <div class="subscribe">
+      <a class="btn btn--solid" href="{{ site.steam_url }}" rel="noopener" target="_blank">{{ t.cta_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>
+      <a class="btn btn--ghost" href="https://steamcommunity.com/app/4932460/workshop/" rel="noopener" target="_blank">{% if L == 'en' %}Steam Workshop{% else %}Мастерская Steam{% endif %}<span class="ext" aria-hidden="true">↗</span></a>
+    </div>
+  </footer>
+</article>

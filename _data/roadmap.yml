@@ -173,13 +173,12 @@ phases:
     ver: "2.2"
     eon: e1
     color: "#EDD08A"
-    status: wip
-    now: true
+    status: done
     t: 2026.88
     pos: { x: 285, y: 390 }
     deps: [v21]
     name: { ru: "Достоверность", en: "Fidelity" }
-    when: { ru: "≈ ноябрь 2026", en: "≈ November 2026" }
+    when: { ru: "16 ноября 2026", en: "16 November 2026" }
     goal:
       ru: "На прогулке видно ровно то, до чего дошла держава: её животные, транспорт, оружие и постройки, а города переходят в новую эпоху постепенно, дом за домом. Дома можно разрушить, в режиме «Выживание» появляются голод и жажда, а на прогулке — новое оружие и лечение. Бедствия получают настоящие масштабы и следы, моря — лёд, карта — новые краски и больше сведений."
       en: "On foot you see exactly what a state has reached: its animals, vehicles, weapons and buildings, and towns move into a new era gradually, house by house. Houses can be destroyed, Survival mode gets hunger and thirst, and walk mode gets new weapons and healing. Disasters get real scales and lasting marks, seas get ice, the map gets new colours and more information."
@@ -207,21 +206,21 @@ phases:
         ru: ["Постепенная смена эпох", "Город переходит в новую эпоху дом за домом, а улицы — повозка за повозкой: старые постройки и старый транспорт соседствуют с новыми, а не меняются все разом."]
         en: ["Eras change gradually", "A town enters a new era house by house, and its streets cart by cart: old buildings and old vehicles stand beside new ones instead of all changing at once."]
       - k: walk
-        s: plan
+        s: done
         req: true
         ru: ["Бои как в армии", "В сражениях — те же танки и машины, что на базах державы, окопы, ежи и блиндажи; технику можно угнать с поля боя, а павшие от вашей руки вычитаются из армии на карте."]
         en: ["Battles like the real army", "Battles use the same tanks and vehicles as the state’s bases, with trenches, hedgehogs and dugouts; steal vehicles off the battlefield, and those who fall by your hand are subtracted from the army on the map."]
       - k: walk
-        s: wip
+        s: done
         ru: ["Разрушения и руины", "Танк, взрыв или пожар превращают дом в развалины, где на карте горит — на прогулке огонь и дым; руины выглядят обломками и обгоревшими каркасами, а не тёмными коробками."]
         en: ["Destruction and ruins", "A tank, a blast or a fire turns a house into ruins; where the map burns, walk mode shows fire and smoke; ruins look like rubble and burnt frames, not dark boxes."]
       - k: play
-        s: plan
+        s: done
         req: true
         ru: ["Голод и жажда", "В режиме «Выживание» нужно есть и пить, а жара и холод зависят от климата; обычный режим остаётся спокойным."]
         en: ["Hunger and thirst", "In Survival mode you need to eat and drink, and heat and cold follow the local climate; Standard mode stays relaxed."]
       - k: walk
-        s: plan
+        s: done
         req: true
         ru: ["Новое оружие и лечение", "Гранаты, дробовики и снайперские винтовки; травы, бинты и аптечки — по эпохе."]
         en: ["New weapons and healing", "Grenades, shotguns and sniper rifles; herbs, bandages and medkits — by era."]
@@ -243,25 +242,25 @@ phases:
         ru: ["Моды с кодом", "Дополнения Мастерской, меняющие код игры, подключаются сами, без установщиков, и не ломаются от обновлений."]
         en: ["Code mods", "Workshop add-ons that change the game's code load by themselves, without installers, and updates don't break them."]
       - k: walk
-        s: wip
+        s: done
         ru: ["Дирижабли и воздушные шары", "Дирижабли над городами индустриальной эпохи, а позже — прогулочные шары над полями и рекламные дирижабли; угнать можно и их."]
         en: ["Airships and balloons", "Airships over industrial-era cities, and later pleasure balloons over the fields and advertising blimps; you can steal those too."]
       - k: sim
-        s: plan
+        s: done
         req: true
         ru: ["Реалистичные бедствия", "Карточки бедствий при наведении, настоящие шкалы — Саффир — Симпсон, VEI, магнитуда, килотонны — и кратеры, которые заполняются водой и зарастают."]
         en: ["Realistic disasters", "Disaster cards on hover, real-world scales — Saffir–Simpson, VEI, magnitude, kilotons — and craters that fill with water and heal over."]
       - k: sim
-        s: plan
+        s: done
         req: true
         ru: ["Моря замерзают, мор плывёт", "Лёд закрывает путь кораблям, проливы замерзают по сезонам, а эпидемии переходят за море вместе с судами."]
         en: ["Freezing seas, sailing plagues", "Ice blocks ships and straits freeze by season, while epidemics cross the sea aboard ships."]
       - k: play
-        s: plan
+        s: done
         ru: ["Власть над миром", "Закрепите не только температуру, но и осадки, уровень моря, CO₂ — и снимите закрепление; кисть рек: проложите русло — вода сама найдёт путь к морю."]
         en: ["Power over the world", "Pin not just temperature but rainfall, sea level, CO₂ — and release them; a river brush: draw a channel and the water finds its way to the sea."]
       - k: play
-        s: wip
+        s: done
         req: true
         ru: ["Карта понятнее", "Значки городов, баз и портов включаются и выключаются, отклонение температуры от начала мира, новые краски и режим для дальтоников, поиск по державам и городам."]
         en: ["A clearer map", "Toggle icons of cities, bases and ports, temperature anomaly since the start, new colours and a colour-blind mode, search for states and cities."]
@@ -272,6 +271,7 @@ phases:
     eon: e1
     color: "#EFB25C"
     status: plan
+    now: true
     t: 2026.96
     pos: { x: 375, y: 215 }
     deps: [v22]
@@ -325,7 +325,7 @@ phases:
         ru: ["Смута", "Проигранная война, голод или чужая вера могут обернуться восстанием или переворотом — трон придётся удержать."]
         en: ["Unrest", "A lost war, famine or a foreign faith can turn into a revolt or a coup — and you will have to hold on to the throne."]
       - k: walk
-        s: plan
+        s: done
         req: true
         ru: ["Интерьеры", "Первые здания с дверьми: дворец, дом, таверна, лавка и храм — у каждой эпохи и культуры свои."]
         en: ["Interiors", "The first buildings with doors: palace, house, tavern, shop and temple — each era and culture its own."]
@@ -363,46 +363,46 @@ phases:
         - "Law: border guards ask for papers, smuggling becomes a crime, and instead of an instant fine there is prison — which you can escape."
     items:
       - k: walk
-        s: wip
+        s: done
         ru: ["Единая сеть путей", "Дороги, трассы между городами и железные дороги на прогулке совпадают с картой; вокзал есть у каждой линии."]
         en: ["One road network", "Roads, highways between cities and railways on foot match the world map; every line has its stations."]
       - k: walk
-        s: plan
+        s: done
         ru: ["Автобусы", "Городские и междугородние маршруты: поездки пассажиром и работа водителем."]
         en: ["Buses", "City and intercity routes: ride as a passenger or work as a driver."]
       - k: walk
-        s: plan
+        s: done
         ru: ["Дальнобойщики", "Фуры с грузом между городами — и работа дальнобойщиком."]
         en: ["Long-haul trucks", "Lorries carrying cargo between cities — and a trucker’s job."]
       - k: sim
-        s: plan
+        s: done
         ru: ["Естественные границы", "Границы держав тянутся по хребтам и рекам, а не режут горы пополам."]
         en: ["Natural borders", "State borders follow ridges and rivers instead of cutting mountains in half."]
       - k: walk
-        s: plan
+        s: done
         ru: ["Пограничные посты", "На границе — шлагбаум, пограничники и проверка документов."]
         en: ["Border checkpoints", "At the border — a barrier, border guards and a check of papers."]
       - k: sim
-        s: plan
+        s: done
         ru: ["Воздушные бои", "Воздушные и совместные сражения — небо, земля и море; от бипланов и бомбардировщиков до машин будущего."]
         en: ["Air battles", "Air and combined battles — sky, land and sea; from biplanes and bombers to aircraft of the future."]
       - k: gfx
-        s: wip
+        s: done
         req: true
         ru: ["Города по климату, народу и вере", "Глина и песчаник в пустынях, срубы в тайге, камень в горах, сваи на болотах, юрты в степи; храмы, святилища, тотемы, крыши и украшения — по народу и вере."]
         en: ["Cities by climate, people and faith", "Adobe and sandstone in deserts, log houses in the taiga, stone in mountains, stilts in marshes, yurts on the steppe; temples, shrines, totems, roofs and ornament by people and faith."]
       - k: walk
-        s: plan
+        s: wip
         req: true
         ru: ["Летающие машины", "В эпоху будущего машины действительно летают — над улицами и между городами."]
         en: ["Flying cars", "In the era of the future cars really fly — over streets and between cities."]
       - k: walk
-        s: plan
+        s: done
         req: true
         ru: ["Тюрьмы и лагеря", "От ямы и частокола до тюрьмы с вышками: отсидите срок — и розыск снят, или бегите — и он растёт."]
         en: ["Prisons and camps", "From a pit and a stockade to a prison with towers: serve your time and the wanted level clears, or escape and it grows."]
       - k: walk
-        s: wip
+        s: done
         ru: ["Ограбление", "Ограбить лавку или караван можно, но охрана, свидетели и розыск делают это риском, а не заработком."]
         en: ["Robbery", "You can rob a shop or a caravan, but guards, witnesses and the wanted level make it a gamble, not a living."]
       - k: walk
@@ -453,7 +453,7 @@ phases:
         ru: ["Симуляция в отдельном потоке", "Интерфейс и прогулка не тормозят; ускорение ×100 и выше."]
         en: ["Simulation on its own thread", "The UI and walk mode stay smooth; speeds of ×100 and beyond."]
       - k: eng
-        s: plan
+        s: wip
         ru: ["Большие миры", "Карты примерно до 500×250 клеток и смена размера без перезапуска игры."]
         en: ["Bigger worlds", "Maps up to roughly 500×250 cells, resized without restarting the game."]
       - k: eng
@@ -465,7 +465,7 @@ phases:
         ru: ["Данные вместо кода", "Технологии, здания, техника и товары — в таблицах; моды получают доступ ко всему."]
         en: ["Data, not code", "Technologies, buildings, vehicles and goods live in tables that mods can reach."]
       - k: eng
-        s: plan
+        s: wip
         ru: ["Правила мира как данные", "Работа, профессии, лавки и поручения описываются условиями: эпоха и знания, климат, законы, достаток, война. Новые обновления добавляют условия, не переписывая механику."]
         en: ["World rules as data", "Jobs, professions, shops and quests are described by conditions: era and knowledge, climate, laws, wealth, war. New updates add conditions without rewriting the mechanic."]
       - k: eng
@@ -531,7 +531,7 @@ phases:
         ru: ["Свой путь у каждого народа", "Степняки раньше приручат коня, островитяне раньше освоят мореходство."]
         en: ["Every people finds its own path", "Steppe folk tame the horse first, islanders master the sea first."]
       - k: play
-        s: plan
+        s: done
         req: true
         ru: ["Окно исследований", "У любой державы видно, что изучено, что изучается сейчас и что в планах."]
         en: ["Research window", "For any state: what has been learned, what is being studied and what comes next."]
@@ -540,7 +540,7 @@ phases:
         ru: ["Знания путешествуют", "Через торговлю, войны, переселенцев и шпионов; бывают утраченные технологии и тёмные века."]
         en: ["Knowledge travels", "Through trade, war, migrants and spies; technologies can be lost in dark ages."]
       - k: walk
-        s: plan
+        s: wip
         ru: ["Мир без анахронизмов", "Одежда, ремёсла, товары, профессии, транспорт и облик домов следуют древу знаний: новое открытие постепенно меняет то, что видно на улицах, — изучили двигатель, и среди повозок появляются первые машины."]
         en: ["A world without anachronisms", "Clothing, crafts, goods, professions, vehicles and houses follow the tree of knowledge: a new discovery gradually changes what you see in the streets — learn the engine, and the first cars appear among the carts."]
       - k: sim
@@ -625,12 +625,12 @@ phases:
         ru: ["Жизнеописания простых людей", "Как у правителей сейчас: рождение, браки, ремесло, переезды и войны."]
         en: ["Biographies for commoners", "Like rulers have today: birth, marriage, trade, moves and wars."]
       - k: walk
-        s: plan
+        s: wip
         req: true
         ru: ["Жизнь внутри", "Интерьеры у всех зданий, от изб до заводов, — и в них живут, работают и празднуют."]
         en: ["Life indoors", "Interiors for every building, from huts to factories — where people live, work and celebrate."]
       - k: play
-        s: plan
+        s: wip
         req: true
         ru: ["Режим выживания", "Голод и жажда из 2.2 становятся полным выживанием: усталость, болезни, травмы и лечение."]
         en: ["Survival mode", "Hunger and thirst from 2.2 grow into full survival: fatigue, illness, injury and healing."]
@@ -643,7 +643,7 @@ phases:
         ru: ["Стройка от первого лица", "Постройте дом, лавку или мастерскую своими руками — и они станут частью города."]
         en: ["Building in first person", "Build a house, a shop or a workshop with your own hands — and it becomes part of the town."]
       - k: walk
-        s: plan
+        s: wip
         ru: ["Профессии и карьера", "Ремёсла зависят от эпохи, климата и места; у игрока — карьера вместо разовых подработок."]
         en: ["Professions and careers", "Trades depend on the era, climate and place; the player gets a career instead of odd jobs."]
       - k: walk
@@ -651,7 +651,7 @@ phases:
         ru: ["Квесты из нужд жителей", "Цепочки поручений, последствия которых видны в городе и державе."]
         en: ["Quests from real needs", "Quest chains whose consequences show up in the town and the state."]
       - k: sim
-        s: plan
+        s: wip
         req: true
         ru: ["Эпидемии и вирусы", "Болезни со штаммами и переносчиками, карантины, лекари и вакцины."]
         en: ["Epidemics and viruses", "Diseases with strains and carriers, quarantines, healers and vaccines."]
@@ -691,7 +691,7 @@ phases:
         - "The ruler from 2.3 gets new decisions: laws, ideology, dealing with parties."
     items:
       - k: sim
-        s: plan
+        s: done
         req: true
         ru: ["Идеологии", "Феодализм, либерализм, демократия, социализм, коммунизм, центризм, теократия, диктатуры — с сильными и слабыми сторонами."]
         en: ["Ideologies", "Feudalism, liberalism, democracy, socialism, communism, centrism, theocracy, dictatorships — with strengths and weaknesses."]
@@ -725,7 +725,7 @@ phases:
         ru: ["Вера отвечает богу", "Часто бьёте молниями — рождается культ Громовержца; засухи, чудеса и кары создают пантеоны, пророков и ереси."]
         en: ["Faith answers the god", "Strike often with lightning and a Thunder God cult is born; droughts, miracles and wrath create pantheons, prophets and heresies."]
       - k: sim
-        s: plan
+        s: done
         ru: ["Договоры", "Союзы, торговые соглашения, пакты о ненападении и границы как настоящие документы."]
         en: ["Treaties", "Alliances, trade agreements, non-aggression pacts and borders as real documents."]
 
@@ -766,11 +766,11 @@ phases:
         ru: ["Рынки регионов", "Цены из спроса и предложения; грузы везут караваны, корабли, поезда и грузовики."]
         en: ["Regional markets", "Prices from supply and demand; cargo moves by caravan, ship, train and truck."]
       - k: play
-        s: plan
+        s: done
         ru: ["Компании", "Частные и государственные — в земледелии, добыче, промышленности, торговле и транспорте: найм, конкуренция, банкротства; они двигают экономику державы. Основать свою можно и на прогулке, и как правитель."]
         en: ["Companies", "Private and state-owned — in farming, mining, industry, trade and transport: hiring, competition, bankruptcy; they drive the state’s economy. Found your own on foot or as a ruler."]
       - k: sim
-        s: plan
+        s: wip
         ru: ["Банки и биржи", "Кредит, инфляция, валюты, акции и дивиденды."]
         en: ["Banks and exchanges", "Credit, inflation, currencies, shares and dividends."]
       - k: sim
@@ -811,12 +811,12 @@ phases:
         - "Naval battles and landings become part of the war’s logistics."
     items:
       - k: sim
-        s: plan
+        s: done
         req: true
         ru: ["Армии на марше", "Пешком, на конях, повозках, поездах, машинах и вертолётах — по эпохе и дорогам."]
         en: ["Armies on the march", "On foot, horseback, carts, trains, trucks and helicopters — by era and road."]
       - k: sim
-        s: plan
+        s: done
         ru: ["Фронты и осады", "Линии фронта, крепости, окопы и блиндажи, осады и оккупация."]
         en: ["Fronts and sieges", "Front lines, fortresses, trenches and dugouts, sieges and occupation."]
       - k: sim
@@ -830,11 +830,11 @@ phases:
         ru: ["Партизанская война", "Сопротивление, повстанцы со своими армиями, борьба за население."]
         en: ["Guerrilla war", "Resistance, rebels with armies of their own, the struggle for hearts and minds."]
       - k: sim
-        s: plan
+        s: done
         ru: ["Полководцы", "Навыки командиров, состав армии и рельеф решают исход сражения."]
         en: ["Generals", "Commanders’ skills, army composition and terrain decide battles."]
       - k: walk
-        s: plan
+        s: done
         ru: ["Ваш бой имеет значение", "Не только потери: удержанная высота, спасённое знамя или павший полководец меняют исход битвы на карте."]
         en: ["Your fight matters", "Not just casualties: a hill held, a banner saved or a fallen general change the outcome of the battle on the map."]
       - k: play

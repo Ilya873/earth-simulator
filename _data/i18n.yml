@@ -11,6 +11,7 @@ nav_world: { ru: "Мир сегодня", en: "The world today" }
 nav_roadmap: { ru: "Дорожная карта", en: "Roadmap" }
 nav_versions: { ru: "Летопись версий", en: "Versions" }
 nav_devlog: { ru: "Дневник", en: "Journal" }
+nav_modding: { ru: "Моддинг", en: "Modding" }
 lang_name: { ru: "RU", en: "EN" }
 lang_other: { ru: "EN", en: "RU" }
 lang_other_label: { ru: "English version", en: "Русская версия" }
@@ -73,8 +74,8 @@ pp_release: { ru: "Выход", en: "Released" }
 pp_release_v: { ru: "20 августа 2026", en: "20 August 2026" }
 pp_version: { ru: "Версия", en: "Version" }
 pp_version_v:
-  ru: "2.1.4"
-  en: "2.1.4"
+  ru: "2.2"
+  en: "2.2"
 pp_reviews: { ru: "Отзывы", en: "Reviews" }
 pp_reviews_v: { ru: "очень положительные", en: "Very Positive" }
 pp_genre: { ru: "Жанр", en: "Genre" }
