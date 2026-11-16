@@ -1,110 +1,91 @@
 ---
 layout: guide
 lang: en
-title: "How to make your own add-on"
-summary: "A step-by-step guide to modding Earth Simulator: your own scenarios, worlds, nations, balance, eras and the look of the world — in the built-in editor, no programming needed. And for those who want more, add-ons with code."
+chapter: start
+title: "Modding: getting started"
+summary: "How Earth Simulator add-ons work, what you can make with them and which chapter of the guide to start with: the editor with no programming, mod.json by hand, or code."
 alt_url: /modding/
 permalink: /en/modding/
-cover: /assets/modding/scenario-en-1600.jpg
-cover_caption: "The built-in add-on editor: a scenario card."
+cover: /assets/modding/layer-en-1600.jpg
+cover_caption: "A code add-on has added a new «To the sea» layer to the map — with its own button, legend and line in the cursor tooltip."
 ---
 
-An add-on (mod) is a folder with a `mod.json` file and, if needed, images, sounds, models and worlds. The game reads it at start-up: it adds scenarios, changes the balance, recolours the eras, replaces the music. **Almost everything can be put together with the mouse in the built-in editor** — you don't have to write files by hand. Below is the path from an empty folder to a page in the Steam Workshop.
+An add-on (a mod) is a **folder** with a `mod.json` file and, if needed, pictures, sounds, models, worlds and scripts. The game reads it on startup and adds whatever it describes. Players install add-ons from the Steam Workshop with a single «Subscribe» button — or drop them by hand into the `mods` folder next to the game.
 
-## 1. Where add-ons live and how to turn them on
+## What you can make
 
-Main menu → **Workshop**. Here is the list of installed add-ons: the checkbox on the left turns each one on and off, and **«Restart the game»** applies the changes. The game finds Steam Workshop subscriptions by itself; your own add-ons live in the `mods` folder next to the game (the **«Mods folder»** button).
+There are two kinds of add-ons, and one add-on can be both.
 
-{% include figure.html src="/assets/modding/workshop-en-1600.jpg" caption="The Workshop section: the list of add-ons, creating your own, the mods folder." wide=true %}
+**Data** — things the game reads and applies by itself. No programming needed; almost everything can be put together with the mouse in the built-in editor:
 
-The `mods` folder contains a ready sample, **example-pack** — it is off by default. Tick it and restart the game to see what add-ons can do: two scenarios, scheduled events, custom names, an animal, balance tweaks, a seventh era and custom biomes.
+- scenarios with starting conditions, goals, defeat conditions and events;
+- your own nations on the map from the very first second — with borders, capitals, flags, alliances and wars;
+- ready-made worlds, and a world built from a heightmap (PNG);
+- about five hundred balance parameters: population growth, wars, climate, disasters, trade, walk mode;
+- your own ladder of eras, your own biomes, animals, names of nations, cities and people, forms of government;
+- the look of the world: era colours, models of buildings and vehicles (OBJ), textures, sounds, your own music.
 
-## 2. Create an add-on
+**Code** — JavaScript that the game loads alongside its own files. It does everything that data can't describe:
 
-Click **«Create an add-on»** and choose where to start: «Scenario», «Rebalance», «Your own world», «Name set», «Era recolour» or an empty add-on. A template is only a beginning: every add-on has all the sections.
+- new rules and mechanics («no wars in the first hundred years», «a capital on the coast adds stability»);
+- your own windows, buttons, map layers, tabs on the nation page, chronicle entries;
+- events and HUD panels in first-person walk mode, your own keys;
+- any change to the world: treasury, stability, climate, pollution, ruins.
 
-{% include figure.html src="/assets/modding/templates-en-1600.jpg" caption="Choosing a template for a new add-on." wide=true %}
+## Chapters of the guide
 
-The editor's sections are on the left; at the top are the add-on's name, folder and status. The **«Overview»** tab shows what the add-on changes and everything the game will skip or fix on loading — a click on a line takes you straight to the field. Creating an add-on doesn't send it anywhere — the folder simply lands in `mods`, and your draft survives even if you close the game.
+<ul class="cards">
+<li><a href="{{ '/en/modding/editor/' | relative_url }}"><strong>The add-on editor</strong></a><br>Everything with the mouse, no programming: from a template to publishing in the Workshop. Start here.</li>
+<li><a href="{{ '/en/modding/data/' | relative_url }}"><strong>mod.json by hand</strong></a><br>Every section and every field of <code>mod.json</code> with examples: scenarios, goals, worlds, balance, eras, biomes, models, limits.</li>
+<li><a href="{{ '/en/modding/code/' | relative_url }}"><strong>Code add-ons</strong></a><br>How the game loads code, your first add-on step by step, ModAPI, events, wrappers, anchor patches, multiplayer, debugging.</li>
+<li><a href="{{ '/en/modding/recipes/' | relative_url }}"><strong>What code can change</strong></a><br>Ten ready-made add-ons — from a map layer to chain mail in walk mode. Each one is tested in the game and available for download.</li>
+</ul>
 
-{% include figure.html src="/assets/modding/overview-en-1600.jpg" caption="«Overview»: what the add-on changes and the validation — the game tells you in advance what it will accept." wide=true %}
+## Where add-ons live
 
-## 3. A scenario: start, goals, defeat
+- **From the Workshop.** Once you subscribe, the game finds the add-on by itself the next time it starts.
+- **Your own.** The `mods` folder next to the game: in your Steam library, right-click the game → «Manage» → «Browse local files». The **example-pack** sample is there too — it is off by default; turn it on to see what data add-ons can do.
 
-A scenario is a starting world, its conditions and goals. In the **«Scenarios»** tab set the name and description (each field in two languages — the RU/EN button), an icon and an internal name. Below is the card as the player will see it.
-
-- **Start:** the shape of the land (continents, a pangaea, islands, the real Earth, an empty ocean), map size, the Sun, CO₂, sea level, the pace of history, disaster frequency, the starting year. Since 2.2 — a historical start on Real Earth from 3000 BC, a shifted equator and world rules: no wars, no uprisings, an era ceiling and more.
-- **Goals** — up to six. A goal is a world measure and a threshold: «a population of 1.5 million», «three nations in the Classical era», «keep the ecology above 25%». The editor shows the measure's value **in the world open right now** — so you can see whether the threshold is realistic.
-- **Defeat** — population, ecology, temperature, extinct species or any measure above or below a threshold.
-- **Locks** — Planet sliders and tools the player can't use: without them many goals are reached with a single slider move.
-
-{% include figure.html src="/assets/modding/scenario-en-1600.jpg" caption="«Scenarios»: the card, icon and internal name; below — start, goals and defeat." wide=true %}
-
-**Tip.** Add a goal or a condition based on time — otherwise a scenario is over in half a minute. Fast-forward the world by the number of years you need and see where the threshold lands.
-
-## 4. Your own nations on the map
-
-In the **«Nations»** tab paint the nations that are on the map from the very first second — up to 32. The brush paints a nation's land, the eraser removes it, a click places the capital. Each nation has a name, a capital name, a colour, a pixel flag, a form of government, an ideology, an era, population, a treasury and permanent traits (military might, economy, order, science). Below you set alliances, vassals and wars between them. **«From the open world»** takes nations straight from the world on screen.
-
-{% include figure.html src="/assets/modding/nations-en-1600.jpg" caption="«Nations»: the scenario map with the land brush, eraser and capital." wide=true %}
-
-## 5. Ready-made worlds and a world from a picture
-
-The **«Worlds»** tab gives two ways to bring a whole world along — terrain, climate, nations, cities and all of history:
-
-- **«Add the current world»** — whatever is on screen behind the menu. Create a world in the game, shape it with the brushes, let history run — and add it. A scenario can start in such a world.
-- **«World from a picture»** — a PNG or JPG heightmap becomes a new world: light is mountains, dark is sea. The game works out the climate, rivers and biomes itself.
-
-{% include figure.html src="/assets/modding/worlds-en-1600.jpg" caption="«Worlds»: the add-on's ready-made worlds and a world from a picture." wide=true %}
-
-The **«Events»** tab holds scheduled events: in a given year or on a condition (for example, when the average temperature drops below 4 °C) — a volcano, a meteorite, a plague, a drought, a benevolent power, a climate shift or just a chronicle entry.
-
-## 6. Rules: balance, eras, names, wildlife
-
-- **«Balance»** — about five hundred parameters of every game system: population growth, wars, climate, disasters, wildlife, walk mode, trade, politics, armies. Search, sliders within sensible limits, a reset for each parameter and an «only changed» filter. The out-of-the-box value is marked with a tick.
-- **«Eras»** — your own ladder of eras: names and science thresholds, harvests, military strength, seafaring. A new era can be inserted between existing ones with «Put in order».
-- **«Names»** — your own names for nations, cities, rulers and dynasties, flags for the nations the game creates, and names of forms of government («Fire Kingdom», the title «Smith King»).
-- **«Wildlife»** — your own species: a body from the built-in shapes, the climate it lives in, size, herd, danger.
-
-{% include figure.html src="/assets/modding/balance-en-1600.jpg" caption="«Balance»: every game parameter with search, sliders and reset." wide=true %}
-
-{% include figure.html src="/assets/modding/eras-en-1600.jpg" caption="«Eras»: your own ladder of eras with thresholds and multipliers." wide=true %}
-
-## 7. The look of the world: colours, biomes, models, sounds
-
-- **«Era look»** — the colours of buildings and vehicles for every era.
-- **«Biomes»** — your own climate-based biomes: colour, how arable they are, a terrain texture and vegetation (built-in or your own sprite).
-- **«Files»** — your own building and vehicle models in OBJ format (from Blender and other programs), textures, sounds for any event and your own music instead of the built-in soundtrack.
-
-{% include figure.html src="/assets/modding/look-en-1600.jpg" caption="«Era look»: the colours of houses, factories and vehicles for each era." wide=true %}
-
-## 8. Testing and publishing
-
-1. **«Test in game»** saves the add-on, turns it on and starts the scenario right away (or a new world if there are no scenarios).
-2. The **«Details»** tab — the name, author and Workshop description in two languages.
-3. The **«Publishing»** tab — a showcase image (it can be captured straight from the map, 640×360), a change note and the **«Publish»** button.
-
-{% include figure.html src="/assets/modding/publish-en-1600.jpg" caption="«Publishing»: the showcase image, the pre-flight check, the change note." wide=true %}
-
-The Workshop item is created **hidden** — open its page, accept the agreement and make it visible. Publishing again updates the same item (its number is kept in a `workshop.id` file next to `mod.json` — don't delete it). Since 2.2, Russian and other non-English titles and descriptions reach Steam correctly.
-
-## 9. Add-ons with code
-
-If data isn't enough, you can change the game itself: add mechanics, windows, rules. The game loads the code itself on every start, the game files on disk stay untouched, no installers are needed. For a player it's a single checkbox, but after subscribing an add-on with code stays **off** until they tick it — and it starts working after a restart. If a start with code fails, such add-ons are turned off by themselves on the next start.
-
-In `mod.json` this is the `code` section: your scripts (`scripts`) and patches to game files by an «anchor» — a piece of code that occurs in the file exactly once (`patches`). The best route is the `ModAPI` object: subscriptions to world events (`ModAPI.on('war', …)`, `'year'`, `'disaster'`, `'save'`, `'load'`…) and wrappers around game functions (`ModAPI.before`, `after`, `wrap`). Anything built on `ModAPI` and the game's public names doesn't break with updates: every game build checks the known code add-ons itself.
-
-```js
-// meteorites only by the player's will
-ModAPI.before('disasterTrigger', function (type, cell, power, byPlayer) {
-  if (type === 'meteor' && !byPlayer) return false;
-}, 'my-mod');
+```
+Earth Simulator/
+  EarthSimulator.exe
+  mods/
+    example-pack/      ← sample: scenarios, events, names, balance, eras, biomes
+    my-first-mod/      ← your add-on
+      mod.json
 ```
 
-In multiplayer everyone in a room must have the same add-ons — the game checks this. Change the world inside world events or through `netAct` / `netDo`, not from a timer or a button.
+Add-ons are turned on and off in the main menu, in the **«Workshop»** section: each one has a checkbox, and the «Restart the game» button applies the changes.
 
-## Limits and where to learn more
+{% include figure.html src="/assets/modding/workshop-en-1600.jpg" caption="The «Workshop» section: the list of add-ons, creating your own, the mods folder." wide=true %}
 
-Add-on data is only read: numbers are clamped to sensible limits, strings are cleaned, files are taken only from inside the add-on folder, and a bad entry doesn't break the whole add-on — the game skips it and loads the rest. Limits: 12 scenarios, 6 goals each, 32 nations, 8 worlds, 24 biomes, 16 animal species, 400 custom vehicles.
+## The smallest add-on
 
-The full reference — every balance parameter, goal measures, nation fields and anchor patches — is in the Steam guide and in the editor itself: hover over any field and it tells you what it means. Questions and finds — in the game's Steam discussions.
+A folder `mods/my-first-mod` with a `mod.json` inside:
+
+```json
+{
+  "id": "my-first-mod",
+  "name": { "ru": "Тёплая планета", "en": "Warm planet" },
+  "author": "Your name",
+  "description": { "ru": "Солнце светит на 3 % ярче.", "en": "The Sun shines 3% brighter." },
+  "version": "1.0",
+  "events": [
+    { "year": 0, "do": "climate", "solar": 0.03, "text": { "ru": "Солнце разгорелось", "en": "The Sun flares up" } }
+  ]
+}
+```
+
+Start the game — the add-on appears in the «Workshop», and in every new world the Sun gets brighter in the very first year. Any text the player sees is written in two languages at once: `{ "ru": "…", "en": "…" }`; in the game's other languages the player sees the English one.
+
+## Safety
+
+- **Data runs nothing.** Goals and events are a measure, a threshold and an action from a fixed list — not a formula. Numbers are clamped to sensible limits, strings are cleaned, and files are read only from inside the add-on's folder. A bad entry doesn't break the whole add-on — the game skips it and loads the rest.
+- **Only the player turns code on.** After subscribing, a code add-on stays off until the player ticks its checkbox, and it starts working after a restart. If the game fails to start with the code, those add-ons turn themselves off on the next start.
+- **Multiplayer.** Everyone in a room must have the same add-ons — the game compares their contents.
+
+## Publishing
+
+A finished add-on is published straight from the editor: the «Publishing» tab, a preview picture for the Workshop page, a change note and the «Publish» button. The Workshop item is created hidden — open its page in Steam, accept the agreement and make it visible. Details are in the chapter [«The add-on editor»]({{ '/en/modding/editor/' | relative_url }}).
+
+Questions and discoveries — in the game's discussions on Steam.

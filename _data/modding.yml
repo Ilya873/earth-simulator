@@ -1,0 +1,17 @@
+# Главы руководства по моддингу (раздел «Моддинг»): порядок, адреса и подписи для навигации между главами.
+# key — то же, что chapter: в шапке страницы главы.
+- key: start
+  ru: { t: "С чего начать", url: "/modding/" }
+  en: { t: "Getting started", url: "/en/modding/" }
+- key: editor
+  ru: { t: "Редактор дополнений", url: "/modding/editor/" }
+  en: { t: "The add-on editor", url: "/en/modding/editor/" }
+- key: data
+  ru: { t: "mod.json вручную", url: "/modding/data/" }
+  en: { t: "mod.json by hand", url: "/en/modding/data/" }
+- key: code
+  ru: { t: "Дополнения с кодом", url: "/modding/code/" }
+  en: { t: "Code add-ons", url: "/en/modding/code/" }
+- key: recipes
+  ru: { t: "Что можно менять кодом", url: "/modding/recipes/" }
+  en: { t: "What code can change", url: "/en/modding/recipes/" }

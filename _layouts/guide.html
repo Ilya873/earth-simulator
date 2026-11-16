@@ -10,6 +10,17 @@ layout: default
     <h1 class="post__title">{{ page.title }}</h1>
     {%- if page.summary %}<p class="post__lead">{{ page.summary }}</p>{% endif %}
   </header>
+  {%- if page.chapter %}
+  {%- assign chs = site.data.modding -%}
+  <nav class="guide-nav" aria-label="{% if L == 'en' %}Guide chapters{% else %}Главы руководства{% endif %}">
+    <ol>
+    {%- for c in chs %}
+      {%- assign cl = c[L] -%}
+      <li{% if c.key == page.chapter %} class="on"{% endif %}><a href="{{ cl.url | relative_url }}"{% if c.key == page.chapter %} aria-current="page"{% endif %}><span>{{ forloop.index }}</span>{{ cl.t }}</a></li>
+    {%- endfor %}
+    </ol>
+  </nav>
+  {%- endif %}
   {%- if page.cover %}
   <figure class="post__cover fig" data-lb-group="post" data-lb-src="{{ page.cover | relative_url }}" data-lb-cap="{{ page.cover_caption | default: page.title | xml_escape }}">
     <button type="button" class="plate-fig__btn" aria-label="{{ t.zoom[L] }}"><img src="{{ page.cover | relative_url }}" alt="{{ page.cover_caption | default: '' | xml_escape }}" loading="eager"></button>
@@ -19,6 +30,15 @@ layout: default
   <div class="prose" lang="{{ L }}">
 {{ content }}
   </div>
+  {%- if page.chapter %}
+  {%- assign chs = site.data.modding -%}
+  {%- for c in chs %}{% if c.key == page.chapter %}{% assign ci = forloop.index0 %}{% endif %}{% endfor %}
+  {%- assign pi = ci | minus: 1 -%}{%- assign ni = ci | plus: 1 -%}
+  <nav class="guide-pn">
+    {%- if ci > 0 %}{% assign pc = chs[pi][L] %}<a class="prev" href="{{ pc.url | relative_url }}">← {{ pc.t }}</a>{% else %}<span></span>{% endif %}
+    {%- if ni < chs.size %}{% assign nc = chs[ni][L] %}<a class="next" href="{{ nc.url | relative_url }}">{{ nc.t }} →</a>{% endif %}
+  </nav>
+  {%- endif %}
   <footer class="post__foot">
     <div class="subscribe">
       <a class="btn btn--solid" href="{{ site.steam_url }}" rel="noopener" target="_blank">{{ t.cta_steam[L] }}<span class="ext" aria-hidden="true">↗</span></a>
