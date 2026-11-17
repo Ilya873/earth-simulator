@@ -4,6 +4,27 @@
 # tg — номер поста в канале t.me/gamesforfarmnews (необязательно)
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
+- ver: "2.2.1"
+  kind: patch
+  date: 2026-11-18
+  name: { ru: "Быстродействие и исправления", en: "Performance and fixes" }
+  post: /devlog/2026/11/18/vyshel-patch-2-2-1/
+  items:
+    ru:
+      - "Кисти рельефа и биомов без фризов: пересчитывается только место мазка; в 3D клик кистью стоит 0,03–0,13 с вместо 0,4–1,4 с."
+      - "Звери на 3D-карте ходят ровно, без остановок раз в секунду."
+      - "Кисти больше не оставляют пятен жарче 100 °C."
+      - "Окно игры не прокручивается само; автосохранение в фоне на любой карте."
+      - "Сетевая игра: выход из комнаты из главного меню, водитель не сбивает пассажира, всадника-игрока не окликают как жителя."
+      - "Прогулка: факел днём не пересвечивает, огни светят в тени домов, на компасе погони — «Конная полиция», надзиратель отвечает на удар."
+    en:
+      - "Terrain and biome brushes without freezes: only the stroke area is recalculated; in 3D a brush click costs 0.03–0.13 s instead of 0.4–1.4 s."
+      - "Animals on the 3D map move smoothly, without stopping once a second."
+      - "Brushes no longer leave spots hotter than 100 °C."
+      - "The game window no longer scrolls by itself; autosave in the background on any map."
+      - "Multiplayer: leave a room from the main menu, a driver no longer runs over his passenger, a player on horseback can't be hailed like a resident."
+      - "Walk mode: the torch no longer washes out daylight, lights shine in the shadow of buildings, the chase compass says «Mounted police», the warden fights back."
+
 - ver: "2.2"
   kind: major
   when: { ru: "16 ноября 2026", en: "16 November 2026" }
