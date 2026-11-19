@@ -4,6 +4,26 @@
 # tg — номер поста в канале t.me/gamesforfarmnews (необязательно)
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
+- ver: "2.2.2"
+  kind: patch
+  date: 2026-11-19
+  name: { ru: "Мир на вашем языке", en: "The world in your language" }
+  items:
+    ru:
+      - "Названия держав, городов, народов, вер и земель, придуманные на другом языке, — на вашем: в сетевой комнате, в сохранении друга и после смены языка."
+      - "Хроника, летописи держав, уведомления и газеты на прогулке собираются заново на языке читателя, с его единицами и записью чисел; имена мировых войн — тоже."
+      - "Прогулка: «E — напиться» у колодцев, родников и снега больше не перестаёт работать после повторного входа."
+      - "Купленный транспорт не пропадает: метка «Ваш транспорт» на компасе и картах, в журнале — где он и кнопка «Подогнать»."
+      - "Жители в домах сидят на стульях, а не внутри них; солдаты и стража, отбиваясь от мертвецов, расталкивают друг друга."
+      - "«Пик населения мира» в таблицах лидеров показывает людей — «212,4 млн», а не тысячи."
+    en:
+      - "Names of nations, cities, peoples, faiths and lands made up in another language are shown in yours: in a multiplayer room, in a friend's save and after a language change."
+      - "The chronicle, nation annals, notifications and walk-mode newspapers are rebuilt in the reader's language, with the reader's own units and number format; names of world wars too."
+      - "Walk mode: «E — drink» at wells, springs and snow no longer stops working after you enter walk mode again."
+      - "A vehicle you bought no longer disappears: a «Your vehicle» mark on the compass and maps, and the journal shows where it is, with a «Bring it here» button."
+      - "Residents sit on chairs, not inside them; soldiers and guards fighting the walking dead push each other apart."
+      - "«Peak world population» on the leaderboards shows people — «212.4 million», not thousands."
+
 - ver: "2.2.1"
   kind: patch
   date: 2026-11-18
