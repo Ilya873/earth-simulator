@@ -4,6 +4,50 @@
 # tg — номер поста в канале t.me/gamesforfarmnews (необязательно)
 # post — ссылка на запись дневника на этом сайте (необязательно)
 
+- ver: "2.2.4"
+  kind: patch
+  date: 2026-11-25
+  name: { ru: "Новые звуки, музыка и транспорт", en: "New sounds, music and vehicles" }
+  items:
+    ru:
+      - "Звуки больше не звучат «восьмибитно»: шаги, выстрелы, голоса, звери, двигатели и фон посчитаны по-настоящему, у каждого звука несколько вариантов. Свои звуки у метеорита, астероида, ракет и пожара, у поезда — стук колёс и пар паровоза."
+      - "Семь новых мелодий под обстоятельства: на палубе, в полёте, в пустыне, ночью, в руинах, дома и в мирное время — всего в игре 19 треков."
+      - "Полный экран — окно без рамки ровно по монитору, как в играх на своих движках; камера на прогулке больше не застревает при повороте, в том числе после разговора."
+      - "Новая мини-карта прогулки и карта мира на M: все дороги и дома, приближение колесом до улиц в любом месте мира."
+      - "Самолёты, поезда и корабли перерисованы; в аэровокзал можно войти; работа на судах и лов рыбы своими руками, служба в полку и в дружине вождя."
+      - "Города и мир: плотнее большие города, на склонах улицы — только там, где могут стоять дома, платформы вокзалов идут по уклону пути; ветер у гор дует как надо, а горы державы осваивают медленнее."
+      - "Сетевая игра плавнее, новичок входит в комнату быстрее; отчёты об ошибках (F8) — с подтверждением Steam."
+    en:
+      - "Sounds no longer sound «8-bit»: steps, shots, voices, animals, engines and the background are computed properly, and every sound has several variants. Meteors, asteroids, rockets and fires have sounds of their own; trains clatter over rail joints and steam locomotives puff."
+      - "Seven new tunes for the moment: on deck, in flight, in the desert, at night, in ruins, at home and in times of peace — 19 tracks in all."
+      - "Fullscreen is a borderless window exactly the size of the monitor, as in games on their own engines; the walk camera no longer gets stuck while turning, also after talking to someone."
+      - "A new walk-mode minimap and a world map on M: every road and house, zoom in with the wheel down to the streets anywhere in the world."
+      - "Planes, trains and ships are redrawn; you can walk into the airport terminal; jobs on ships and fishing by hand, service in a regiment and in a chief's war band."
+      - "Cities and the world: big cities are denser, on slopes streets go only where houses can stand, station platforms follow the track grade; wind behaves properly around mountains, and nations settle mountains more slowly."
+      - "Smoother multiplayer, newcomers join a room faster; bug reports (F8) carry a Steam confirmation."
+
+- ver: "2.2.3"
+  kind: patch
+  date: 2026-11-23
+  name: { ru: "Новые языки и исправления по вашим отзывам", en: "New languages and fixes from your reports" }
+  items:
+    ru:
+      - "Тринадцать новых языков: шведский, норвежский, датский, финский, нидерландский, венгерский, румынский, греческий, болгарский, индонезийский, португальский (Португалия), испанский (Латинская Америка) и арабский — справа налево. Всего в игре 30 языков."
+      - "Державы первых эпох устойчивее и реже распадаются, о переворотах в маленьких державах больше не всплывают уведомления; в индустриальную эпоху бывают идеологические гражданские войны."
+      - "Границы естественнее: не «мигают», отрезанные клетки и анклавы отходят соседям, державы растут вдоль равнин и долин, а не ровным кругом; колонисты плывут и к туземным островам."
+      - "Города на прогулке не только сеткой: кривые улицы старых городов, кольца вокруг площади больших столиц, террасы на склонах, улицы вдоль берега и реки. Правители сидят на тронах, кони ходят шагом, рысью и галопом."
+      - "Окно игры как в других играх: своя полоса заголовка, полный экран без рамки, оверлей Steam не оставляет следов; новая иконка — планета."
+      - "Дополнения: замена любого из 169 звуков, свои формы правления и идеологии, конструктор зданий для 3D-карты."
+      - "Сетевая игра: служба в армии вместе, пассажиры боевых машин, понятное объяснение, каких дополнений не хватает; F8 — отчёт об ошибке разработчику."
+    en:
+      - "Thirteen new languages: Swedish, Norwegian, Danish, Finnish, Dutch, Hungarian, Romanian, Greek, Bulgarian, Indonesian, Portuguese (Portugal), Spanish (Latin America) and Arabic, read right to left. The game now has 30 languages."
+      - "Nations of the first eras are steadier and fall apart less often, coups in small nations no longer pop up as notifications; ideological civil wars can break out in the industrial era."
+      - "More natural borders: they no longer «blink», cut-off cells and exclaves pass to the neighbours, nations grow along plains and valleys instead of in a perfect circle; colonists also sail to tribal islands."
+      - "Cities on foot are not only grids: crooked old-town streets, rings around the plaza of big capitals, terraces on slopes, streets along a coast or river. Rulers sit on their thrones, horses walk, trot and gallop."
+      - "The game window works like in other games: its own title bar, borderless fullscreen, the Steam overlay leaves no traces; a new icon — the planet."
+      - "Add-ons: replace any of the 169 sounds, your own forms of government and ideologies, a building constructor for the 3D map."
+      - "Multiplayer: army service together, passengers in military vehicles, a clear explanation of which add-ons are missing; F8 sends a bug report to the developer."
+
 - ver: "2.2.2"
   kind: patch
   date: 2026-11-19
